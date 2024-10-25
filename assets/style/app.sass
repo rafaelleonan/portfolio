@@ -1,0 +1,39 @@
+@import "variables"
+
+*
+  box-sizing: border-box
+  font-family: "Montserrat", sans-serif
+
+  &::before,
+  &::after
+    box-sizing: inherit
+
+html, body
+  height: 100%
+  margin: 0
+  padding: 0
+  background-color: $app-white
+  color: $secondary-color
+  overflow: hidden
+
+  #__nuxt
+    height: 100%
+    display: flex
+
+    main
+      background-color: transparent
+      overflow: auto
+      height: 100%
+      display: flex
+      flex: 1
+      flex-direction: column
+      justify-content: space-between
+
+      header
+        background-color: $secondary-color
+
+      .content
+        flex: 1
+        padding: 26pt 26pt
+
+
