@@ -62,25 +62,25 @@ const certs = ref([
   },
   {
     link: 'https://drive.google.com/file/d/1QUKAcKbgH8OeyeVm6LdGp1WXj8FB263e/view',
-    image: '/images/GopherCon2022.png',
+    image: '/portfolio/images/GopherCon2022.png',
     title: 'GopherCon Brasil 2022',
     description: 'Entre os dias 30/09/2022 - 01/10/2022'
   },
   {
     link: 'https://drive.google.com/file/d/12GSDLJHYbYuTUg2T_wFHm7ooKdIHwwHR/view?usp=drive_link',
-    image: '/images/html_avancado.png',
+    image: '/portfolio/images/html_avancado.png',
     title: 'HTML - Avançado',
     description: 'Fundação Bradesco, 2017 - 6 horas'
   },
   {
     link: 'https://drive.google.com/file/d/1bDJHnbezaj7JVvH_FoABUUBnCNftrIsE/view?usp=drive_link',
-    image: '/images/css.png',
+    image: '/portfolio/images/css.png',
     title: 'Inovando com CSS',
     description: 'Fundação Bradesco, 2017 - 26 horas'
   },
   {
     link: 'https://drive.google.com/file/d/10gM-_DNJdcjp5XaB64COdVrBQVqkHA2E/view?usp=drive_link',
-    image: '/images/html_basico.png',
+    image: '/portfolio/images/html_basico.png',
     title: 'HTML - Básico',
     description: 'Fundação Bradesco, 2017 - 11 horas'
   },

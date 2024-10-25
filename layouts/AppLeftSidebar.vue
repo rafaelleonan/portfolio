@@ -11,7 +11,7 @@ export default defineComponent({
 <template>
   <div class="left-sidebar">
     <section class="ls-header">
-      <img src="@/assets/images/1629036542049_2.jpg" alt="Foto" width="120px"/>
+      <img :src="`/portfolio/public/images/1629036542049_2.jpg`" alt="Foto" width="120px"/>
       <span class="ls-text-title">Rafael Leonan</span>
       <span class="ls-text-subtitle">Desenvolvedor Full Stack</span>
     </section>
