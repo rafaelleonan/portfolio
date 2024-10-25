@@ -1,0 +1,1 @@
+import{u as e}from"./D8HNCQ1P.js";import{f as o,_ as t,c as n,o as a}from"./D2oF3n-Q.js";const s=o({name:"About",methods:{defineHead(){e({title:"Sobre mim"})}},mounted(){this.defineHead()}});function r(c,d,m,f,i,p){return a(),n("h1",null,"Tela Sobre")}const l=t(s,[["render",r]]);export{l as default};

@@ -1,0 +1,1 @@
+import{u as e}from"./D8HNCQ1P.js";import{f as t,_ as o,c as n,o as a}from"./D2oF3n-Q.js";const s=t({name:"Contacts",methods:{defineHead(){e({title:"Contatos"})}},mounted(){this.defineHead()}});function c(r,d,f,i,m,p){return a(),n("h1",null,"Tela de Contatos")}const u=o(s,[["render",c]]);export{u as default};
