@@ -1,84 +1,114 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script lang="ts" setup>
+import {ref} from 'vue'
 import { useHead } from '#imports';
-import PDFViewer from '@/components/PdfViewer.vue';
 import 'vue-pdf-embed/dist/styles/annotationLayer.css'
 import 'vue-pdf-embed/dist/styles/textLayer.css'
 
-export default defineComponent({
-  name: "Resume",
-  components: {
-    PDFViewer,
-  },
-  data() {
-    return {
-      pdfUrl: "/docs/RAFAEL_LEONAN_ABREU_RODRIGUES.pdf",
-      currentPage: 1, // Página inicial
-      totalPages: 0, // Total de páginas
-    };
-  },
-  methods: {
-    defineHead() {
-      useHead({
-        title: 'Resumo',
-      });
-    },
-    downloadPdf() {
-      const pdfUrl = this.pdfUrl;
-      const fileName = 'CURRICULO_RAFAEL_LEONAN_ABREU_RODRIGUES.pdf';
+const pdfUrl = ref('/portfolio/docs/RAFAEL_LEONAN_ABREU_RODRIGUES.pdf')
+const pageCount = ref(0)
 
-      // Verificar se o navegador suporta o atributo download
-      const isHtml5DownloadSupported = 'download' in document.createElement('a');
+useHead({
+  title: 'Resumo',
+});
 
-      if (isHtml5DownloadSupported) {
-        // Criar um link para download nativo HTML5
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = fileName;
+const handleDocumentLoad = ({numPages}) => {
+  pageCount.value = numPages
+}
 
-        // Adicionar o link ao DOM, clicar nele, e removê-lo em seguida
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        // Fallback: abrir o PDF em uma nova aba
-        window.open(pdfUrl, '_blank');
-      }
-    },
-  },
-  mounted() {
-    this.defineHead();
+const downloadPdf = () => {
+  const fileName = 'CURRICULO_RAFAEL_LEONAN_ABREU_RODRIGUES.pdf';
+
+  // Verificar se o navegador suporta o atributo download
+  const isHtml5DownloadSupported = 'download' in document.createElement('a');
+
+  if (isHtml5DownloadSupported) {
+    // Criar um link para download nativo HTML5
+    const link = document.createElement('a');
+    link.href = pdfUrl.value;
+    link.download = fileName;
+
+    // Adicionar o link ao DOM, clicar nele, e removê-lo em seguida
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } else {
+    // Fallback: abrir o PDF em uma nova aba
+    window.open(pdfUrl.value, '_blank');
   }
-})
+}
+
 </script>
 
 <template>
-<!--  <PDFViewer pdf-path="/docs/RAFAEL_LEONAN_ABREU_RODRIGUES.pdf"/>-->
-  <div class="pdf-controls">
-    <button @click="downloadPdf">Baixar currículo</button>
+  <div class="app-page-resume">
+    <div class="pdf-controls">
+      <div class="btn-actions-pdf">
+        <button @click="downloadPdf">Baixar currículo</button>
+        <span class="total-pages-pdf">{{ pageCount }} página(s)</span>
+      </div>
+    </div>
+    <div class="app-vue-pdf-embed">
+      <client-only>
+        <PdfEmbed :source="pdfUrl"
+                  @loaded="handleDocumentLoad"
+                  annotation-layer
+                  text-layer
+        />
+      </client-only>
+    </div>
   </div>
-
-  <client-only>
-    <PdfEmbed annotation-layer text-layer
-              :source="pdfUrl"/>
-  </client-only>
 </template>
 
-<style scoped lang="sass">
+<style lang="sass">
 @import "@/assets/style/_variables.sass"
 
-.pdf-controls
-  button
-    padding: 10px
+.vue-pdf-embed__page
+  margin-bottom: 20px
+  box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1)
+
+
+.app-page-resume
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+  background-color: #ccc
+
+  .pdf-controls
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
     background-color: $secondary-color
-    color: $tertiary-color
-    border: none
-    border-radius: 5px
-    cursor: pointer
-    transition: color 500ms
     margin-bottom: 20px
 
-    &:hover
-      color: $primary-color
+    .btn-actions-pdf
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: 20px 0
+      width: 95%
+      height: 100%
+
+      .total-pages-pdf
+        color: $tertiary-color
+        font-size: 16px
+        font-weight: 500
+
+      button
+        padding: 10px
+        background-color: $secondary-color
+        border: 1px solid $tertiary-color
+        color: $tertiary-color
+        border-radius: 5px
+        cursor: pointer
+        transition: color 500ms
+
+        &:hover
+          color: $primary-color
+          border: 1px solid $primary-color
+
+  .app-vue-pdf-embed
+    width: 95%
 
 </style>
