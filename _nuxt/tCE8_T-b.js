@@ -1,1 +1,0 @@
-import{u as e}from"./BMoa0YU0.js";import{f as o,_ as t,c as s,o as n}from"./61Hfyp2z.js";const r=o({name:"Projects",methods:{defineHead(){e({title:"Projetos"})}},mounted(){this.defineHead()}});function a(c,d,f,m,p,i){return n(),s("h1",null,"Projetos - Tela em construção...")}const l=t(r,[["render",a]]);export{l as default};
