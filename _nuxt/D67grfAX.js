@@ -1,1 +1,0 @@
-import{u as e}from"./Be2jp9ON.js";import{f as o,_ as t,c as n,o as c}from"./QB6Vsphd.js";const i=o({name:"bitcoin",methods:{defineHead(){e({title:"Bitcoin"})}},mounted(){this.defineHead()}});function s(a,r,d,f,m,p){return c(),n("h1",null,"Bitcoin - Tela em construção...")}const l=t(i,[["render",s]]);export{l as default};
