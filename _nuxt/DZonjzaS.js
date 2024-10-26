@@ -1,1 +1,0 @@
-import{u as e}from"./XvLOGQuT.js";import{f as o,_ as t,c as n,o as a}from"./Bh-X8eHw.js";const s=o({name:"About",methods:{defineHead(){e({title:"Sobre mim"})}},mounted(){this.defineHead()}});function r(c,d,m,f,i,p){return a(),n("h1",null,"Tela Sobre")}const l=t(s,[["render",r]]);export{l as default};

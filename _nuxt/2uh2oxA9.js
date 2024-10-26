@@ -1,0 +1,1 @@
+import{u as e}from"./BfDkxCXY.js";import{f as n,_ as o,c as t,o as s}from"./Bng0QV6_.js";const a=n({name:"Experience",methods:{defineHead(){e({title:"Experiências"})}},mounted(){this.defineHead()}});function r(c,i,p,d,f,m){return s(),t("h1",null,"Experiências - Tela em construção...")}const _=o(a,[["render",r]]);export{_ as default};
