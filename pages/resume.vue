@@ -111,4 +111,34 @@ const downloadPdf = () => {
   .app-vue-pdf-embed
     width: 95%
 
-</style>
+
+@media (max-width: 520px)
+  .app-page-resume
+    .pdf-controls
+      .btn-actions-pdf
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 20px 0
+        width: 95%
+        height: 100%
+
+        .total-pages-pdf
+          color: $tertiary-color
+          font-size: 10px
+          font-weight: 500
+
+        button
+          font-size: 10px
+          padding: 10px
+          background-color: $secondary-color
+          border: 1px solid $tertiary-color
+          color: $tertiary-color
+          border-radius: 5px
+          cursor: pointer
+          transition: color 500ms
+
+          &:hover
+            color: $primary-color
+            border: 1px solid $primary-color
+  </style>

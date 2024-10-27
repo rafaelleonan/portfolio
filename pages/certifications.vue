@@ -124,6 +124,7 @@ const certs = ref([
   width: 100%
   display: flex
   flex-wrap: wrap
+  justify-content: center
   gap: 36px
 
   .card-link
@@ -161,5 +162,9 @@ const certs = ref([
       background-color: $secondary-color
       color: $tertiary-color
 
+
+@media (max-width: 520px)
+  .title-page
+    font-size: 14px
 
 </style>

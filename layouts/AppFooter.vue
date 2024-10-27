@@ -12,7 +12,7 @@ export default defineComponent({
   </footer>
 </template>
 
-<style scoped lang="sass">
+<style lang="sass" scoped>
 @import "@/assets/style/_variables.sass"
 
 footer
@@ -23,4 +23,17 @@ footer
 
   p
     font-size: 12px
+    transition: font-size 250ms ease-out
+
+.toggle-menu-left-sidebar
+  footer
+    padding: 6px
+
+    p
+      font-size: 6pt
+
+@media (max-width: 520px)
+  footer
+    p
+      font-size: 6pt
 </style>

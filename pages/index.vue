@@ -2,7 +2,7 @@
 import { useHead } from '#imports'
 
 useHead({
-  title: 'Meu portfólio',
+  title: 'Portfólio',
 });
 
 </script>
@@ -47,7 +47,7 @@ useHead({
     <section class="app-home-section-2">
       <div class="app-card">
         <span class="card-title">Tecnologias ⚡</span>
-        <div class="card-body">
+        <div class="card-body mt-10px">
           <img src="https://img.shields.io/badge/-HTML5-333333?style=flat&logo=html5&logoColor=E34F26" alt="HTML"/>
           <img src="https://img.shields.io/badge/-CSS-333333?style=flat&logo=css3&logoColor=1572B6" alt="CSS"/>
           <img src="https://img.shields.io/badge/-SASS-333333?style=flat&logo=sass&logoColor=CC6699" alt="SASS"/>
@@ -127,9 +127,6 @@ useHead({
     .app-card
       width: 100%
 
-      &.mt-25px
-        margin-top: 25px
-
       .card-title
         display: block
         color: $secondary-color
@@ -143,6 +140,9 @@ useHead({
         font-size: 14px
         text-align: justify
 
+        &.mt-10px
+          margin-top: 10px
+
         img
           margin: 5px 5px 5px 0
 
@@ -151,5 +151,25 @@ useHead({
 
   .app-home-section-2
     width: 35%
+
+
+
+@media (max-width: 520px)
+  .app-home
+    flex-direction: column
+
+    .app-home-section-1, .app-home-section-2
+      width: 100%
+
+      .app-card
+        .card-title
+          font-size: 14px
+
+        .card-body
+          font-size: 12px
+          text-align: justify
+
+    .app-home-section-2
+      margin-top: 20px
 
 </style>

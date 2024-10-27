@@ -1,14 +1,34 @@
 <script lang="ts" setup>
 import {ref} from 'vue'
 import AppFooter from "~/layouts/AppFooter.vue";
+import { useSidebar } from '~/composables/useSidebar';
 
+const toggleLeftSideBar = ref(false)
+const toggleLeftSideBarMobile = useSidebar()
 const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
 </script>
 
 <template>
-  <div class="left-sidebar">
+  <div class="left-sidebar" :class="{'toggle-menu-left-sidebar': toggleLeftSideBar,
+   'toggle-menu-left-sidebar-mobile': toggleLeftSideBarMobile}">
     <section class="ls-header">
-      <img :src="photoUrl" alt="Foto" width="120px"/>
+      <svg @click="toggleLeftSideBar = !toggleLeftSideBar"
+           class="toggle-left-sidebar"
+           xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24">
+        <title>Recolher menu lateral</title>
+        <path d="M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M15.4,16.6L10.8,12L15.4,7.4L14,6L8,12L14,18L15.4,16.6Z" />
+      </svg>
+
+      <svg
+          @click="toggleLeftSideBarMobile = !toggleLeftSideBarMobile"
+          class="toggle-left-sidebar-mobile"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>Fechar</title>
+        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+      </svg>
+
+      <img :src="photoUrl" alt="Foto"/>
       <span class="ls-text-title">Rafael Leonan</span>
       <span class="ls-text-subtitle">Desenvolvedor Full Stack</span>
     </section>
@@ -54,6 +74,7 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
 @import "@/assets/style/_variables.sass"
 
 .left-sidebar
+  z-index: 99
   width: 250px
   height: 100%
   background-color: $secondary-color
@@ -61,8 +82,42 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
   flex-direction: column
   justify-content: space-between
   align-items: center
+  transition: width 250ms ease-out
+
+  &.toggle-menu-left-sidebar
+    width: 85px
+
+    .ls-header, .ls-content
+      padding: 20px 10px 10px
+
+    .ls-header
+      text-align: center
+
+      .toggle-left-sidebar
+        transform: rotateY(180deg)
+
+      .ls-text-title
+        color: $tertiary-color
+        font-size: 8pt
+        font-weight: 800
+        margin-top: 15px
+
+      .ls-text-subtitle
+        color: $tertiary-color
+        font-size: 6pt
+        font-weight: 300
+        margin-top: 10px
+
+    .ls-content
+      .ls-links
+        .ls-link
+          justify-content: center
+
+          span
+            display: none
 
   .ls-header, .ls-content
+    position: relative
     display: flex
     width: 100%
     flex-direction: column
@@ -73,6 +128,22 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
     justify-content: center
     padding: 36px 30px 25px
     border-bottom: 1px solid $tertiary-color
+
+    .toggle-left-sidebar-mobile
+      display: none
+
+    .toggle-left-sidebar
+      position: absolute
+      z-index: 99
+      right: -8px
+      top: 33px
+      width: 20px
+      cursor: pointer
+      fill: $tertiary-color
+      transition: all 500ms ease-out
+
+      &:hover
+        fill: $primary-color
 
     .ls-text-title
       color: $tertiary-color
@@ -87,6 +158,7 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
       margin-top: 10px
 
     img
+      width: 65%
       border-radius: 10px
       border: 2px solid $tertiary-color
 
@@ -145,5 +217,31 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
 
           span
             color: $primary-color
+
+
+
+@media (max-width: 520px)
+  .left-sidebar
+    position: absolute
+    width: 100%
+    overflow: hidden
+    display: none
+
+    &.toggle-menu-left-sidebar-mobile
+      display: flex
+
+    .ls-header
+      .toggle-left-sidebar
+        display: none
+
+      .toggle-left-sidebar-mobile
+        display: block
+        position: absolute
+        z-index: 99
+        right: 20px
+        top: 33px
+        width: 30px
+        cursor: pointer
+        fill: $tertiary-color
 
 </style>
