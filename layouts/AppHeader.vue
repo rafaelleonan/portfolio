@@ -22,7 +22,7 @@ function toggleSidebar() {
           <path d="M211 0H176.5V69H230V34.5H211V0Z" class="svg-icon-part-2" fill="$secondary-color"/>
           <path d="M176 88V83H229.5V88H176Z" class="svg-icon-part-3" fill="$tertiary-color" stroke="$tertiary-color"/>
         </svg>
-        <span>Início teste</span>
+        <span>Início testee</span>
       </nuxt-link>
 <!--      <nuxt-link to="/projects">-->
 <!--        <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">-->
