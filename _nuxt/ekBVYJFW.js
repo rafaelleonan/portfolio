@@ -1,0 +1,1 @@
+import{f as e,u as t,_ as n,c as o,o as c}from"./FI76A4As.js";const s=e({name:"bitcoin",methods:{defineHead(){t({title:"Bitcoin"})}},mounted(){this.defineHead()}});function a(i,r,d,f,m,p){return c(),o("h1",null,"Bitcoin - Tela em construção...")}const _=n(s,[["render",a]]);export{_ as default};
