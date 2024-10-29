@@ -12,13 +12,13 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
   <div class="left-sidebar" :class="{'toggle-menu-left-sidebar': toggleLeftSideBar,
    'toggle-menu-left-sidebar-mobile': toggleLeftSideBarMobile}">
     <section class="ls-header">
-      <svg @click="toggleLeftSideBar = !toggleLeftSideBar"
-           class="toggle-left-sidebar"
-           xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 0 24 24">
-        <title>Recolher menu lateral</title>
-        <path d="M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M15.4,16.6L10.8,12L15.4,7.4L14,6L8,12L14,18L15.4,16.6Z" />
-      </svg>
+<!--      <svg @click="toggleLeftSideBar = !toggleLeftSideBar"-->
+<!--           class="toggle-left-sidebar"-->
+<!--           xmlns="http://www.w3.org/2000/svg"-->
+<!--           viewBox="0 0 24 24">-->
+<!--        <title>Recolher menu lateral</title>-->
+<!--        <path d="M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M15.4,16.6L10.8,12L15.4,7.4L14,6L8,12L14,18L15.4,16.6Z" />-->
+<!--      </svg>-->
 
       <svg
           @click="toggleLeftSideBarMobile = !toggleLeftSideBarMobile"
@@ -135,7 +135,7 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
     .toggle-left-sidebar
       position: absolute
       z-index: 99
-      right: -8px
+      right: 0
       top: 33px
       width: 20px
       cursor: pointer

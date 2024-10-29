@@ -23,4 +23,9 @@ export default defineNuxtConfig({
       ]
     },
   },
+  runtimeConfig: {
+    public: {
+      gtagId: 'G-KDCM80SSV7',
+    }
+  }
 })
