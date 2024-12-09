@@ -63,25 +63,25 @@ const certs = ref([
   },
   {
     link: 'https://drive.google.com/file/d/1QUKAcKbgH8OeyeVm6LdGp1WXj8FB263e/view',
-    image: '/portfolio/images/GopherCon2022.png',
+    image: '/images/GopherCon2022.png',
     title: 'GopherCon Brasil 2022',
     description: 'Entre os dias 30/09/2022 - 01/10/2022'
   },
   {
     link: 'https://drive.google.com/file/d/12GSDLJHYbYuTUg2T_wFHm7ooKdIHwwHR/view?usp=drive_link',
-    image: '/portfolio/images/html_avancado.png',
+    image: '/images/html_avancado.png',
     title: 'HTML - Avançado',
     description: 'Fundação Bradesco, 2017 - 6 horas'
   },
   {
     link: 'https://drive.google.com/file/d/1bDJHnbezaj7JVvH_FoABUUBnCNftrIsE/view?usp=drive_link',
-    image: '/portfolio/images/css.png',
+    image: '/images/css.png',
     title: 'Inovando com CSS',
     description: 'Fundação Bradesco, 2017 - 26 horas'
   },
   {
     link: 'https://drive.google.com/file/d/10gM-_DNJdcjp5XaB64COdVrBQVqkHA2E/view?usp=drive_link',
-    image: '/portfolio/images/html_basico.png',
+    image: '/images/html_basico.png',
     title: 'HTML - Básico',
     description: 'Fundação Bradesco, 2017 - 11 horas'
   },
@@ -90,81 +90,112 @@ const certs = ref([
 </script>
 
 <template>
-  <span class="title-page">
-    Meus certificados
-  </span>
-  <section class="list-certs">
-    <a v-for="(cert, key) in certs" :key="`cert-${key}`"
-       :href="cert.link"
-       target="_blank" rel="noopener noreferrer"
-       class="card-link">
-      <img :src="cert.image" :alt="cert.title">
-      <div class="card-l-text">
-        <span class="card-l-title">{{ cert.title }}</span><br/>
-        <span class="card-l-subtitle">{{ cert.description }}</span>
-      </div>
-    </a>
-  </section>
+  <div class="app-page">
+    <section class="section-default">
+      <span class="title-section">
+      Meus certificados
+    </span>
+    <section class="list-certs">
+      <a v-for="(cert, key) in certs" :key="`cert-${key}`"
+         :href="cert.link"
+         target="_blank" rel="noopener noreferrer"
+         class="card-link">
+        <img :src="cert.image" :alt="cert.title">
+        <div class="card-l-text">
+          <span class="card-l-title">{{ cert.title }}</span><br/>
+          <span class="card-l-subtitle">{{ cert.description }}</span>
+        </div>
+      </a>
+    </section>
+    </section>
+  </div>
 </template>
 
-<style scoped lang="sass">
-@import "@/assets/style/_variables.sass"
+<style scoped lang="scss">
+@import "assets/style/variables.scss";
 
-.title-page
-  display: block
-  color: $secondary-color
-  border-left: 4px solid $secondary-color
-  width: 100%
-  font-size: 18px
-  font-weight: 600
-  padding-left: 8px
-  margin-bottom: 26px
+.list-certs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
 
-.list-certs
-  width: 100%
-  display: flex
-  flex-wrap: wrap
-  justify-content: center
-  gap: 36px
+  .card-link {
+    position: relative;
+    display: block;
+    flex: 1 1 240px;
+    width: 240px;
+    border: 1px solid $rl-app-grey-100;
+    border-radius: $rl-app-desktop-br-sm;
+    cursor: pointer;
+    box-shadow: 0 0 8px $rl-app-grey-100;
+    transition: all 250ms linear;
+    text-decoration: none;
+    background-color: $rl-app-white;
+    color: $rl-app-blue-500;
+    flex-grow: 0;
 
-  .card-link
-    position: relative
-    display: block
-    flex: 1 1 280px
-    border: 1px solid $secondary-color
-    border-radius: 10px
-    cursor: pointer
-    box-shadow: 0 4px 8px rgba(27, 41, 50, 0.1)
-    transition: all 250ms linear
-    text-decoration: none
-    background-color: $app-white
-    color: $secondary-color
-    flex-grow: 0
+    img {
+      width: 100%;
+      border-radius: $rl-app-desktop-br-sm $rl-app-desktop-br-sm 0 0;
+    }
 
-    img
-      width: 100%
-      border-radius: 10px 10px 0 0
+    .card-l-text {
+      padding: 6px 10px;
 
-    .card-l-text
-      padding: 10px
+      .card-l-title {
+        font-size: $rl-app-desktop-fs-md;
+        font-weight: 300;
+      }
 
-      .card-l-title
-        font-size: 14px
-        font-weight: 500
+      .card-l-subtitle {
+        font-size: $rl-app-desktop-fs-xxs;
+        color: $rl-app-grey-500;
+        font-weight: 600;
+      }
+    }
 
-      .card-l-subtitle
-        font-size: 12px
-        font-weight: 300
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 8px $rl-app-grey-300;
+    }
+  }
+}
 
-    &:hover
-      transform: scale(1.02)
-      box-shadow: 0 10px 20px rgba(27, 41, 50, 0.1)
-      background-color: $secondary-color
-      color: $tertiary-color
+@media (max-width: 520px) {
+  .list-certs {
+    gap: 8px;
 
+    .card-link {
+      flex: 1 1 calc(50% - 8px);
+      max-width: calc(50% - 8px);
 
-@media (max-width: 520px)
-  .title-page
-    font-size: 14px
+      img {
+        width: 100%;
+        border-radius: $rl-app-desktop-br-sm $rl-app-desktop-br-sm 0 0;
+      }
 
+      .card-l-text {
+        padding: 4px 6px;
+
+        .card-l-title {
+          font-size: $rl-app-desktop-fs-xxs;
+          font-weight: 400;
+        }
+
+        .card-l-subtitle {
+          font-size: $rl-app-desktop-fs-xxs;
+          color: $rl-app-grey-500;
+          font-weight: lighter;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 4px 8px $rl-app-grey-300;
+      }
+    }
+  }
+}
 </style>

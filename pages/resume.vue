@@ -4,14 +4,14 @@ import { useHead } from '#imports';
 import 'vue-pdf-embed/dist/styles/annotationLayer.css'
 import 'vue-pdf-embed/dist/styles/textLayer.css'
 
-const pdfUrl = ref('/portfolio/docs/RAFAEL_LEONAN_ABREU_RODRIGUES.pdf')
+const pdfUrl = ref('/docs/RAFAEL_LEONAN_ABREU_RODRIGUES.pdf')
 const pageCount = ref(0)
 
 useHead({
   title: 'Resumo',
 });
 
-const handleDocumentLoad = ({numPages}) => {
+const handleDocumentLoad = ({numPages}: any) => {
   pageCount.value = numPages
 }
 
@@ -40,105 +40,132 @@ const downloadPdf = () => {
 </script>
 
 <template>
-  <div class="app-page-resume">
-    <div class="pdf-controls">
-      <div class="btn-actions-pdf">
-        <button @click="downloadPdf">Baixar currículo</button>
-        <span class="total-pages-pdf">{{ pageCount }} página(s)</span>
+  <div class="app-page">
+    <section class="section-default">
+      <div class="pdf-controls">
+        <div class="actions-pdf">
+          <button @click="downloadPdf">
+            <span>BAIXAR</span>
+            <svg class="icon" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.166687 14.6667H11.8334V13H0.166687V14.6667ZM11.8334 5.5H8.50002V0.5H3.50002V5.5H0.166687L6.00002 11.3333L11.8334 5.5Z"/>
+            </svg>
+          </button>
+          <span class="total-pages-pdf">{{ pageCount }} página(s)</span>
+        </div>
       </div>
-    </div>
-    <div class="app-vue-pdf-embed">
-      <client-only>
-        <PdfEmbed :source="pdfUrl"
-                  @loaded="handleDocumentLoad"
-                  annotation-layer
-                  text-layer
-        />
-      </client-only>
-    </div>
+      <div class="app-vue-pdf-embed">
+        <client-only>
+          <PdfEmbed :source="pdfUrl"
+                    @loaded="handleDocumentLoad"
+                    annotation-layer
+                    text-layer
+          />
+        </client-only>
+      </div>
+    </section>
   </div>
 </template>
 
-<style lang="sass">
-@import "@/assets/style/_variables.sass"
+<style lang="scss">
+@import "assets/style/variables.scss";
 
-.vue-pdf-embed__page
-  margin-bottom: 20px
-  box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1)
+.vue-pdf-embed__page {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
+}
 
+.pdf-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $rl-app-blue-500;
+  margin-bottom: 20px;
 
-.app-page-resume
-  display: flex
-  flex-direction: column
-  align-items: center
-  width: 100%
-  background-color: #ccc
+  .actions-pdf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    width: 100%;
+    height: 100%;
 
-  .pdf-controls
-    display: flex
-    justify-content: center
-    align-items: center
-    width: 100%
-    background-color: $secondary-color
-    margin-bottom: 20px
+    .total-pages-pdf {
+      color: $rl-app-blue-50;
+      font-size: $rl-app-desktop-fs-md;
+      font-weight: normal;
+    }
 
-    .btn-actions-pdf
-      display: flex
-      align-items: center
-      justify-content: space-between
-      padding: 20px 0
-      width: 95%
-      height: 100%
+    button {
+      padding: 8px 16px;
+      background-color: $rl-app-blue-500;
+      border: 1px solid $rl-app-blue-50;
+      color: $rl-app-blue-50;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: color 500ms;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: $rl-app-desktop-fs-md;
+      font-weight: normal;
+      gap: 10px;
 
-      .total-pages-pdf
-        color: $tertiary-color
-        font-size: 16px
-        font-weight: 500
+      .icon {
+        fill: $rl-app-blue-50;
+        transition: fill 500ms;
+        width: 10px;
+      }
 
-      button
-        padding: 10px
-        background-color: $secondary-color
-        border: 1px solid $tertiary-color
-        color: $tertiary-color
-        border-radius: 5px
-        cursor: pointer
-        transition: color 500ms
+      &:hover {
+        color: $rl-app-white;
+        border: 1px solid $rl-app-white;
 
-        &:hover
-          color: $primary-color
-          border: 1px solid $primary-color
+        .icon {
+          fill: $rl-app-white;
+        }
+      }
+    }
+  }
+}
 
-  .app-vue-pdf-embed
-    width: 95%
+@media (max-width: 520px) {
+  .pdf-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: $rl-app-blue-500;
+    margin-bottom: 20px;
 
+    .actions-pdf {
+      padding: 12px;
 
-@media (max-width: 520px)
-  .app-page-resume
-    .pdf-controls
-      .btn-actions-pdf
-        display: flex
-        align-items: center
-        justify-content: space-between
-        padding: 20px 0
-        width: 95%
-        height: 100%
+      .total-pages-pdf {
+        font-size: $rl-app-desktop-fs-xs;
+      }
 
-        .total-pages-pdf
-          color: $tertiary-color
-          font-size: 10px
-          font-weight: 500
+      button {
+        padding: 4px;
+        font-size: $rl-app-desktop-fs-xs;
 
-        button
-          font-size: 10px
-          padding: 10px
-          background-color: $secondary-color
-          border: 1px solid $tertiary-color
-          color: $tertiary-color
-          border-radius: 5px
-          cursor: pointer
-          transition: color 500ms
+        .icon {
+          fill: $rl-app-blue-50;
+          transition: fill 500ms;
+          width: 8px;
+        }
 
-          &:hover
-            color: $primary-color
-            border: 1px solid $primary-color
-  </style>
+        &:hover {
+          color: $rl-app-white;
+          border: 1px solid $rl-app-white;
+
+          .icon {
+            fill: $rl-app-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+</style>

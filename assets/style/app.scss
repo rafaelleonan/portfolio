@@ -1,0 +1,67 @@
+@import "variables";
+@import "utilities";
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $rl-app-white;
+  color: $rl-app-blue-500;
+  overflow: hidden;
+
+  #__nuxt {
+    height: 100%;
+    display: flex;
+
+    main {
+      background-color: transparent;
+      overflow: auto;
+      height: 100%;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .content {
+        flex: 1;
+        flex-direction: column;
+        padding: 20px;
+        width: 850px;
+        box-shadow: 4px 4px 16px $rl-app-grey-300;
+
+        .page {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  html,
+  body {
+    #__nuxt {
+      main {
+        flex-direction: column-reverse;
+
+        .content {
+          width: 100%;
+          padding: 12px 12px 80px 12px;
+        }
+      }
+    }
+  }
+}

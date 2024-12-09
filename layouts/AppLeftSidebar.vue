@@ -5,7 +5,7 @@ import { useSidebar } from '~/composables/useSidebar';
 
 const toggleLeftSideBar = ref(false)
 const toggleLeftSideBarMobile = useSidebar()
-const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
+const photoUrl = ref('/images/1629036542049_2.jpg')
 </script>
 
 <template>
@@ -70,178 +70,211 @@ const photoUrl = ref('/portfolio/images/1629036542049_2.jpg')
   </div>
 </template>
 
-<style lang="sass" scoped>
-@import "@/assets/style/_variables.sass"
+<style lang="scss" scoped>
+@import "assets/style/variables.scss";
 
-.left-sidebar
-  z-index: 99
-  width: 250px
-  height: 100%
-  background-color: $secondary-color
-  display: flex
-  flex-direction: column
-  justify-content: space-between
-  align-items: center
-  transition: width 250ms ease-out
+.left-sidebar {
+  z-index: 99;
+  width: 250px;
+  height: 100%;
+  background-color: $rl-app-blue-500;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: width 250ms ease-out;
 
-  &.toggle-menu-left-sidebar
-    width: 85px
+  &.toggle-menu-left-sidebar {
+    width: 85px;
 
-    .ls-header, .ls-content
-      padding: 20px 10px 10px
+    .ls-header,
+    .ls-content {
+      padding: 20px 10px 10px;
+    }
 
-    .ls-header
-      text-align: center
+    .ls-header {
+      text-align: center;
 
-      .toggle-left-sidebar
-        transform: rotateY(180deg)
+      .toggle-left-sidebar {
+        transform: rotateY(180deg);
+      }
 
-      .ls-text-title
-        color: $tertiary-color
-        font-size: 8pt
-        font-weight: 800
-        margin-top: 15px
+      .ls-text-title {
+        color: $rl-app-blue-200;
+        font-size: 8pt;
+        font-weight: 800;
+        margin-top: 15px;
+      }
 
-      .ls-text-subtitle
-        color: $tertiary-color
-        font-size: 6pt
-        font-weight: 300
-        margin-top: 10px
+      .ls-text-subtitle {
+        color: $rl-app-blue-200;
+        font-size: 6pt;
+        font-weight: 300;
+        margin-top: 10px;
+      }
+    }
 
-    .ls-content
-      .ls-links
-        .ls-link
-          justify-content: center
+    .ls-content {
+      .ls-links {
+        .ls-link {
+          justify-content: center;
 
-          span
-            display: none
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 
-  .ls-header, .ls-content
-    position: relative
-    display: flex
-    width: 100%
-    flex-direction: column
-    align-items: center
-    padding: 25px 30px 15px
+  .ls-header,
+  .ls-content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 30px 15px;
+  }
 
-  .ls-header
-    justify-content: center
-    padding: 36px 30px 25px
-    border-bottom: 1px solid $tertiary-color
+  .ls-header {
+    justify-content: center;
+    padding: 36px 30px 25px;
+    border-bottom: 1px solid $rl-app-blue-200;
 
-    .toggle-left-sidebar-mobile
-      display: none
+    .toggle-left-sidebar-mobile {
+      display: none;
+    }
 
-    .toggle-left-sidebar
-      position: absolute
-      z-index: 99
-      right: 0
-      top: 33px
-      width: 20px
-      cursor: pointer
-      fill: $tertiary-color
-      transition: all 500ms ease-out
+    .toggle-left-sidebar {
+      position: absolute;
+      z-index: 99;
+      right: 0;
+      top: 33px;
+      width: 20px;
+      cursor: pointer;
+      fill: $rl-app-blue-200;
+      transition: all 500ms ease-out;
 
-      &:hover
-        fill: $primary-color
+      &:hover {
+        fill: $rl-app-brown-500;
+      }
+    }
 
-    .ls-text-title
-      color: $tertiary-color
-      font-size: 14px
-      font-weight: 800
-      margin-top: 25px
+    .ls-text-title {
+      color: $rl-app-blue-200;
+      font-size: 14px;
+      font-weight: 800;
+      margin-top: 25px;
+    }
 
-    .ls-text-subtitle
-      color: $tertiary-color
-      font-size: 12px
-      font-weight: 300
-      margin-top: 10px
+    .ls-text-subtitle {
+      color: $rl-app-blue-200;
+      font-size: 12px;
+      font-weight: 300;
+      margin-top: 10px;
+    }
 
-    img
-      width: 65%
-      border-radius: 10px
-      border: 2px solid $tertiary-color
+    img {
+      width: 65%;
+      border-radius: 10px;
+      border: 2px solid $rl-app-blue-200;
+    }
+  }
 
+  .ls-content {
+    align-items: end;
+    flex: 1;
 
-  .ls-content
-    align-items: end
-    flex: 1
+    .ls-links {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 15px 0;
 
-    .ls-links
-      width: 100%
-      display: flex
-      justify-content: center
-      flex-direction: column
-      margin: 15px 0
+      .ls-link {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        padding: 6px 10px;
+        border-radius: 10px;
+        border: 1px solid $rl-app-blue-200;
+        transition: border 500ms;
+        overflow: hidden;
+        text-wrap: nowrap;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-decoration: none;
 
-      .ls-link
-        display: flex
-        align-items: center
-        justify-content: start
-        padding: 6px 10px
-        border-radius: 10px
-        border: 1px solid $tertiary-color
-        transition: border 500ms
-        overflow: hidden
-        text-wrap: nowrap
-        white-space: nowrap
-        text-overflow: ellipsis
-        text-decoration: none
+        &:not(:first-child) {
+          margin-top: 10px;
+        }
 
-        &:not(:first-child)
-          margin-top: 10px
+        .ls-svg-link {
+          fill: $rl-app-blue-200;
+          width: 20px;
+          height: 20px;
+          transition: fill 500ms;
+          flex-shrink: 0;
+        }
 
-        .ls-svg-link
-          fill: $tertiary-color
-          width: 20px
-          height: 20px
-          transition: fill 500ms
-          flex-shrink: 0
+        span {
+          margin-left: 8px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 10px;
+          color: $rl-app-blue-200;
+          flex-grow: 1;
+          transition: color 500ms;
+        }
 
-        span
-          margin-left: 8px
-          overflow: hidden
-          text-overflow: ellipsis
-          white-space: nowrap
-          font-size: 10px
-          color: $tertiary-color
-          flex-grow: 1
-          transition: color 500ms
+        &:hover {
+          cursor: pointer;
+          border-color: $rl-app-brown-500;
 
-        &:hover
-          cursor: pointer
-          border-color: $primary-color
+          .ls-svg-link {
+            fill: $rl-app-brown-500;
+          }
 
-          .ls-svg-link
-            fill: $primary-color
+          span {
+            color: $rl-app-brown-500;
+          }
+        }
+      }
+    }
+  }
+}
 
-          span
-            color: $primary-color
+@media (max-width: 520px) {
+  .left-sidebar {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    display: none;
 
+    &.toggle-menu-left-sidebar-mobile {
+      display: flex;
+    }
 
+    .ls-header {
+      .toggle-left-sidebar {
+        display: none;
+      }
 
-@media (max-width: 520px)
-  .left-sidebar
-    position: absolute
-    width: 100%
-    overflow: hidden
-    display: none
-
-    &.toggle-menu-left-sidebar-mobile
-      display: flex
-
-    .ls-header
-      .toggle-left-sidebar
-        display: none
-
-      .toggle-left-sidebar-mobile
-        display: block
-        position: absolute
-        z-index: 99
-        right: 20px
-        top: 33px
-        width: 30px
-        cursor: pointer
-        fill: $tertiary-color
+      .toggle-left-sidebar-mobile {
+        display: block;
+        position: absolute;
+        z-index: 99;
+        right: 20px;
+        top: 33px;
+        width: 30px;
+        cursor: pointer;
+        fill: $rl-app-blue-200;
+      }
+    }
+  }
+}
 
 </style>

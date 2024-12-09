@@ -1,0 +1,153 @@
+@import "variables";
+
+.title-section {
+  display: block;
+  color: $rl-app-brown-500;
+  width: 100%;
+  font-size: $rl-app-desktop-fs-xxl;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+section {
+  &.section-default {
+    display: block;
+    padding: 14px 22px;
+    width: 100%;
+  }
+}
+
+.app-card {
+  width: 100%;
+
+  .card-body {
+    font-size: $rl-app-desktop-fs-xm;
+    text-align: justify;
+  }
+}
+
+.badge-xxl {
+  width: 180px;
+  height: 35px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  border-radius: $rl-app-desktop-br-sm;
+  text-transform: uppercase;
+
+  &.default {
+    background-color: $rl-app-blue-400;
+    color: $rl-app-blue-50;
+    font-size: $rl-app-desktop-fs-md;
+    font-weight: normal;
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 100%;
+      background-color: $rl-app-blue-800;
+      border-bottom-left-radius: $rl-app-desktop-br-sm;
+      border-top-left-radius: $rl-app-desktop-br-sm;
+    }
+  }
+}
+
+
+.app-w100 {
+  width: 100%;
+}
+
+/* FLEXBOX & GRID */
+.app-flex {
+  display: flex;
+}
+.app-justify-content-center {
+  justify-content: center;
+}
+.app-justify-content-space-between {
+  justify-content: space-between;
+}
+.app-justify-content-space-around {
+  justify-content: space-around;
+}
+.app-justify-content-space-evenly {
+  justify-content: space-evenly;
+}
+.app-justify-content-start {
+  justify-content: start;
+}
+.app-justify-content-end {
+  justify-content: end;
+}
+.app-align-items-center {
+  align-items: center;
+}
+.app-align-items-start {
+  align-items: start;
+}
+.app-align-items-end {
+  align-items: end;
+}
+.app-flex-wrap {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* FONT COLORs */
+.font-color-brown-900 {
+  color: $rl-app-brown-900 !important;
+}
+
+.divisor-vertical {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: $rl-app-blue-50;
+}
+
+
+@media (max-width: 520px) {
+  .title-section {
+    font-size: $rl-app-desktop-fs-xm;
+    margin-bottom: 10px;
+  }
+
+  section {
+    &.section-default {
+      padding: 0;
+    }
+  }
+
+  .app-card {
+    .card-body {
+      font-size: $rl-app-desktop-fs-sm;
+      text-align: justify;
+    }
+  }
+
+  .badge-xxl {
+    flex: 1 1 calc(50% - 10px);
+    height: 35px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 6px;
+    border-radius: $rl-app-desktop-br-sm;
+    text-transform: uppercase;
+
+    &.default {
+      .icon {
+        width: 30px;
+        height: 100%;
+
+        img {
+          width: 16px;
+        }
+      }
+    }
+  }
+}

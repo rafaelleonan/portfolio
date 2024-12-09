@@ -1,0 +1,301 @@
+
+/* COR PRIMÁRIA E SUAS VARIAÇÕES: #1b2932 */
+$rl-app-blue-50: #e8eaeb;
+$rl-app-blue-100: #b8bdbf;
+$rl-app-blue-200: #969da1;
+$rl-app-blue-300: #667076;
+$rl-app-blue-400: #49545b;
+$rl-app-blue-500: #1b2932;
+$rl-app-blue-600: #19252e;
+$rl-app-blue-700: #131d24;
+$rl-app-blue-800: #0f171c;
+$rl-app-blue-900: #0b1115;
+
+/* COR SECUNDÁRIA E SUAS VARIAÇÕES: #C8AD8C */
+$rl-app-brown-50: #faf7f4;
+$rl-app-brown-100: #eee6db;
+$rl-app-brown-200: #e6d9ca;
+$rl-app-brown-300: #dac8b2;
+$rl-app-brown-400: #d3bda3;
+$rl-app-brown-500: #C8AD8C;
+$rl-app-brown-600: #b69d7f;
+$rl-app-brown-700: #8e7b63;
+$rl-app-brown-800: #6e5f4d;
+$rl-app-brown-900: #54493b;
+
+/* CORES BÁSICAS E SUAS VARIAÇÕES, #808080, #FFF, #000 */
+$rl-app-grey-50: #f2f2f2;
+$rl-app-grey-100: #d8d8d8;
+$rl-app-grey-200: #c5c5c5;
+$rl-app-grey-300: #aaaaaa;
+$rl-app-grey-400: #999999;
+$rl-app-grey-500: #808080;
+$rl-app-grey-600: #747474;
+$rl-app-grey-700: #5b5b5b;
+$rl-app-grey-800: #464646;
+$rl-app-grey-900: #363636;
+
+$rl-app-white: #fff;
+$rl-app-white-10: rgba(255, 255, 255, 0.1);
+$rl-app-white-20: rgba(255, 255, 255, 0.2);
+$rl-app-white-30: rgba(255, 255, 255, 0.3);
+$rl-app-white-40: rgba(255, 255, 255, 0.4);
+$rl-app-white-50: rgba(255, 255, 255, 0.5);
+$rl-app-white-60: rgba(255, 255, 255, 0.6);
+$rl-app-white-70: rgba(255, 255, 255, 0.7);
+$rl-app-white-80: rgba(255, 255, 255, 0.8);
+$rl-app-white-90: rgba(255, 255, 255, 0.9);
+
+$rl-app-black: #000;
+$rl-app-black-10: rgba(0, 0, 0, 0.1);
+$rl-app-black-20: rgba(0, 0, 0, 0.2);
+$rl-app-black-30: rgba(0, 0, 0, 0.3);
+$rl-app-black-40: rgba(0, 0, 0, 0.4);
+$rl-app-black-50: rgba(0, 0, 0, 0.5);
+$rl-app-black-60: rgba(0, 0, 0, 0.6);
+$rl-app-black-70: rgba(0, 0, 0, 0.7);
+$rl-app-black-80: rgba(0, 0, 0, 0.8);
+$rl-app-black-90: rgba(0, 0, 0, 0.9);
+
+/* SIZES BASE */
+$rl-app-size-0: 0;
+$rl-app-size-1: 2;
+$rl-app-size-2: 4;
+$rl-app-size-3: 6;
+$rl-app-size-4: 8;
+$rl-app-size-5: 10;
+$rl-app-size-6: 12;
+$rl-app-size-7: 14;
+$rl-app-size-8: 16;
+$rl-app-size-9: 18;
+$rl-app-size-10: 20;
+$rl-app-size-11: 22;
+$rl-app-size-12: 24;
+$rl-app-size-13: 26;
+$rl-app-size-14: 28;
+$rl-app-size-15: 30;
+$rl-app-size-16: 32;
+$rl-app-size-17: 34;
+$rl-app-size-18: 36;
+$rl-app-size-19: 38;
+$rl-app-size-20: 40;
+$rl-app-size-full: 100;
+
+/* FONT-SIZES */
+$rl-app-desktop-fs-xxs: #{$rl-app-size-4}px;
+$rl-app-desktop-fs-xs: #{$rl-app-size-5}px;
+$rl-app-desktop-fs-sm: #{$rl-app-size-6}px;
+$rl-app-desktop-fs-md: #{$rl-app-size-7}px;
+$rl-app-desktop-fs-xm: #{$rl-app-size-8}px;
+$rl-app-desktop-fs-lg: #{$rl-app-size-9}px;
+$rl-app-desktop-fs-xl: #{$rl-app-size-10}px;
+$rl-app-desktop-fs-xxl: #{$rl-app-size-11}px;
+$rl-app-desktop-fs-h4: #{$rl-app-size-12}px;
+$rl-app-desktop-fs-h3: #{$rl-app-size-13}px;
+$rl-app-desktop-fs-h2: #{$rl-app-size-14}px;
+$rl-app-desktop-fs-h1: #{$rl-app-size-16}px;
+
+/* BORDER-RADIUS */
+$rl-app-br-full: #{$rl-app-size-full}px;
+
+$rl-app-desktop-br-sm: #{$rl-app-size-2}px;
+$rl-app-desktop-br-md: #{$rl-app-size-4}px;
+$rl-app-desktop-br-lg: #{$rl-app-size-6}px;
+$rl-app-desktop-br-xl: #{$rl-app-size-8}px;
+
+$rl-app-mobile-br-sm: #{$rl-app-size-1}px;
+$rl-app-mobile-br-md: #{$rl-app-size-3}px;
+$rl-app-mobile-br-lg: #{$rl-app-size-5}px;
+$rl-app-mobile-br-xl: #{$rl-app-size-7}px;
+
+/* MARGINs */
+// MARGIN ALL
+$rl-app-m-0: $rl-app-size-0;
+$rl-app-m-1: #{$rl-app-size-1}px;
+$rl-app-m-2: #{$rl-app-size-2}px;
+$rl-app-m-3: #{$rl-app-size-3}px;
+$rl-app-m-4: #{$rl-app-size-4}px;
+$rl-app-m-5: #{$rl-app-size-5}px;
+$rl-app-m-6: #{$rl-app-size-6}px;
+$rl-app-m-7: #{$rl-app-size-7}px;
+$rl-app-m-8: #{$rl-app-size-8}px;
+$rl-app-m-9: #{$rl-app-size-9}px;
+$rl-app-m-10: #{$rl-app-size-10}px;
+$rl-app-m-11: #{$rl-app-size-11}px;
+$rl-app-m-12: #{$rl-app-size-12}px;
+$rl-app-m-13: #{$rl-app-size-13}px;
+$rl-app-m-14: #{$rl-app-size-14}px;
+$rl-app-m-15: #{$rl-app-size-15}px;
+$rl-app-m-16: #{$rl-app-size-16}px;
+
+// MARGIN-RIGHT
+$rl-app-mr-0: $rl-app-size-0;
+$rl-app-mr-1: #{$rl-app-size-1}px;
+$rl-app-mr-2: #{$rl-app-size-2}px;
+$rl-app-mr-3: #{$rl-app-size-3}px;
+$rl-app-mr-4: #{$rl-app-size-4}px;
+$rl-app-mr-5: #{$rl-app-size-5}px;
+$rl-app-mr-6: #{$rl-app-size-6}px;
+$rl-app-mr-7: #{$rl-app-size-7}px;
+$rl-app-mr-8: #{$rl-app-size-8}px;
+$rl-app-mr-9: #{$rl-app-size-9}px;
+$rl-app-mr-10: #{$rl-app-size-10}px;
+$rl-app-mr-11: #{$rl-app-size-11}px;
+$rl-app-mr-12: #{$rl-app-size-12}px;
+$rl-app-mr-13: #{$rl-app-size-13}px;
+$rl-app-mr-14: #{$rl-app-size-14}px;
+$rl-app-mr-15: #{$rl-app-size-15}px;
+$rl-app-mr-16: #{$rl-app-size-16}px;
+
+// MARGIN-LEFT
+$rl-app-ml-0: $rl-app-size-0;
+$rl-app-ml-1: #{$rl-app-size-1}px;
+$rl-app-ml-2: #{$rl-app-size-2}px;
+$rl-app-ml-3: #{$rl-app-size-3}px;
+$rl-app-ml-4: #{$rl-app-size-4}px;
+$rl-app-ml-5: #{$rl-app-size-5}px;
+$rl-app-ml-6: #{$rl-app-size-6}px;
+$rl-app-ml-7: #{$rl-app-size-7}px;
+$rl-app-ml-8: #{$rl-app-size-8}px;
+$rl-app-ml-9: #{$rl-app-size-9}px;
+$rl-app-ml-10: #{$rl-app-size-10}px;
+$rl-app-ml-11: #{$rl-app-size-11}px;
+$rl-app-ml-12: #{$rl-app-size-12}px;
+$rl-app-ml-13: #{$rl-app-size-13}px;
+$rl-app-ml-14: #{$rl-app-size-14}px;
+$rl-app-ml-15: #{$rl-app-size-15}px;
+$rl-app-ml-16: #{$rl-app-size-16}px;
+
+// MARGIN-TOP
+$rl-app-mt-0: $rl-app-size-0;
+$rl-app-mt-1: #{$rl-app-size-1}px;
+$rl-app-mt-2: #{$rl-app-size-2}px;
+$rl-app-mt-3: #{$rl-app-size-3}px;
+$rl-app-mt-4: #{$rl-app-size-4}px;
+$rl-app-mt-5: #{$rl-app-size-5}px;
+$rl-app-mt-6: #{$rl-app-size-6}px;
+$rl-app-mt-7: #{$rl-app-size-7}px;
+$rl-app-mt-8: #{$rl-app-size-8}px;
+$rl-app-mt-9: #{$rl-app-size-9}px;
+$rl-app-mt-10: #{$rl-app-size-10}px;
+$rl-app-mt-11: #{$rl-app-size-11}px;
+$rl-app-mt-12: #{$rl-app-size-12}px;
+$rl-app-mt-13: #{$rl-app-size-13}px;
+$rl-app-mt-14: #{$rl-app-size-14}px;
+$rl-app-mt-15: #{$rl-app-size-15}px;
+$rl-app-mt-16: #{$rl-app-size-16}px;
+
+// MARGIN-BOTTOM
+$rl-app-mb-0: $rl-app-size-0;
+$rl-app-mb-1: #{$rl-app-size-1}px;
+$rl-app-mb-2: #{$rl-app-size-2}px;
+$rl-app-mb-3: #{$rl-app-size-3}px;
+$rl-app-mb-4: #{$rl-app-size-4}px;
+$rl-app-mb-5: #{$rl-app-size-5}px;
+$rl-app-mb-6: #{$rl-app-size-6}px;
+$rl-app-mb-7: #{$rl-app-size-7}px;
+$rl-app-mb-8: #{$rl-app-size-8}px;
+$rl-app-mb-9: #{$rl-app-size-9}px;
+$rl-app-mb-10: #{$rl-app-size-10}px;
+$rl-app-mb-11: #{$rl-app-size-11}px;
+$rl-app-mb-12: #{$rl-app-size-12}px;
+$rl-app-mb-13: #{$rl-app-size-13}px;
+$rl-app-mb-14: #{$rl-app-size-14}px;
+$rl-app-mb-15: #{$rl-app-size-15}px;
+$rl-app-mb-16: #{$rl-app-size-16}px;
+
+/* PADDINGs */
+// PADDING ALL
+$rl-app-p-0: $rl-app-size-0;
+$rl-app-p-1: #{$rl-app-size-1}px;
+$rl-app-p-2: #{$rl-app-size-2}px;
+$rl-app-p-3: #{$rl-app-size-3}px;
+$rl-app-p-4: #{$rl-app-size-4}px;
+$rl-app-p-5: #{$rl-app-size-5}px;
+$rl-app-p-6: #{$rl-app-size-6}px;
+$rl-app-p-7: #{$rl-app-size-7}px;
+$rl-app-p-8: #{$rl-app-size-8}px;
+$rl-app-p-9: #{$rl-app-size-9}px;
+$rl-app-p-10: #{$rl-app-size-10}px;
+$rl-app-p-11: #{$rl-app-size-11}px;
+$rl-app-p-12: #{$rl-app-size-12}px;
+$rl-app-p-13: #{$rl-app-size-13}px;
+$rl-app-p-14: #{$rl-app-size-14}px;
+$rl-app-p-15: #{$rl-app-size-15}px;
+$rl-app-p-16: #{$rl-app-size-16}px;
+
+// PADDING-RIGHT
+$rl-app-pr-0: $rl-app-size-0;
+$rl-app-pr-1: #{$rl-app-size-1}px;
+$rl-app-pr-2: #{$rl-app-size-2}px;
+$rl-app-pr-3: #{$rl-app-size-3}px;
+$rl-app-pr-4: #{$rl-app-size-4}px;
+$rl-app-pr-5: #{$rl-app-size-5}px;
+$rl-app-pr-6: #{$rl-app-size-6}px;
+$rl-app-pr-7: #{$rl-app-size-7}px;
+$rl-app-pr-8: #{$rl-app-size-8}px;
+$rl-app-pr-9: #{$rl-app-size-9}px;
+$rl-app-pr-10: #{$rl-app-size-10}px;
+$rl-app-pr-11: #{$rl-app-size-11}px;
+$rl-app-pr-12: #{$rl-app-size-12}px;
+$rl-app-pr-13: #{$rl-app-size-13}px;
+$rl-app-pr-14: #{$rl-app-size-14}px;
+$rl-app-pr-15: #{$rl-app-size-15}px;
+$rl-app-pr-16: #{$rl-app-size-16}px;
+
+// PADDING-LEFT
+$rl-app-pl-0: $rl-app-size-0;
+$rl-app-pl-1: #{$rl-app-size-1}px;
+$rl-app-pl-2: #{$rl-app-size-2}px;
+$rl-app-pl-3: #{$rl-app-size-3}px;
+$rl-app-pl-4: #{$rl-app-size-4}px;
+$rl-app-pl-5: #{$rl-app-size-5}px;
+$rl-app-pl-6: #{$rl-app-size-6}px;
+$rl-app-pl-7: #{$rl-app-size-7}px;
+$rl-app-pl-8: #{$rl-app-size-8}px;
+$rl-app-pl-9: #{$rl-app-size-9}px;
+$rl-app-pl-10: #{$rl-app-size-10}px;
+$rl-app-pl-11: #{$rl-app-size-11}px;
+$rl-app-pl-12: #{$rl-app-size-12}px;
+$rl-app-pl-13: #{$rl-app-size-13}px;
+$rl-app-pl-14: #{$rl-app-size-14}px;
+$rl-app-pl-15: #{$rl-app-size-15}px;
+$rl-app-pl-16: #{$rl-app-size-16}px;
+
+// PADDING-TOP
+$rl-app-pt-0: $rl-app-size-0;
+$rl-app-pt-1: #{$rl-app-size-1}px;
+$rl-app-pt-2: #{$rl-app-size-2}px;
+$rl-app-pt-3: #{$rl-app-size-3}px;
+$rl-app-pt-4: #{$rl-app-size-4}px;
+$rl-app-pt-5: #{$rl-app-size-5}px;
+$rl-app-pt-6: #{$rl-app-size-6}px;
+$rl-app-pt-7: #{$rl-app-size-7}px;
+$rl-app-pt-8: #{$rl-app-size-8}px;
+$rl-app-pt-9: #{$rl-app-size-9}px;
+$rl-app-pt-10: #{$rl-app-size-10}px;
+$rl-app-pt-11: #{$rl-app-size-11}px;
+$rl-app-pt-12: #{$rl-app-size-12}px;
+$rl-app-pt-13: #{$rl-app-size-13}px;
+$rl-app-pt-14: #{$rl-app-size-14}px;
+$rl-app-pt-15: #{$rl-app-size-15}px;
+$rl-app-pt-16: #{$rl-app-size-16}px;
+
+// PADDING-BOTTOM
+$rl-app-pb-0: $rl-app-size-0;
+$rl-app-pb-1: #{$rl-app-size-1}px;
+$rl-app-pb-2: #{$rl-app-size-2}px;
+$rl-app-pb-3: #{$rl-app-size-3}px;
+$rl-app-pb-4: #{$rl-app-size-4}px;
+$rl-app-pb-5: #{$rl-app-size-5}px;
+$rl-app-pb-6: #{$rl-app-size-6}px;
+$rl-app-pb-7: #{$rl-app-size-7}px;
+$rl-app-pb-8: #{$rl-app-size-8}px;
+$rl-app-pb-9: #{$rl-app-size-9}px;
+$rl-app-pb-10: #{$rl-app-size-10}px;
+$rl-app-pb-11: #{$rl-app-size-11}px;
+$rl-app-pb-12: #{$rl-app-size-12}px;
+$rl-app-pb-13: #{$rl-app-size-13}px;
+$rl-app-pb-14: #{$rl-app-size-14}px;
+$rl-app-pb-15: #{$rl-app-size-15}px;
+$rl-app-pb-16: #{$rl-app-size-16}px;
