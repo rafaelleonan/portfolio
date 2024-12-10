@@ -193,6 +193,7 @@ header {
   header {
     position: fixed;
     padding: 0 12px 12px 12px;
+    z-index: 999;
 
     nav {
       justify-content: start;
@@ -235,7 +236,6 @@ header {
 
       a {
         display: none;
-        //display: flex;
         justify-content: end;
         align-items: center;
         flex-direction: column;

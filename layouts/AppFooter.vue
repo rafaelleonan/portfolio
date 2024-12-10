@@ -373,7 +373,7 @@ footer {
                   background-color: $rl-app-blue-50;
                   color: $rl-app-blue-500;
                   font-size: $rl-app-desktop-fs-xs;
-                  font-weight: lighter;
+                  font-weight: 400;
 
                   &:last-child {
                     border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
