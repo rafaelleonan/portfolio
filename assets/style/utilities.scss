@@ -110,7 +110,7 @@ section {
 }
 
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   .title-section {
     font-size: $rl-app-desktop-fs-xm;
     margin-bottom: 10px;
@@ -131,7 +131,7 @@ section {
 
   .badge-xxl {
     flex: 1 1 calc(50% - 10px);
-    height: 35px;
+    max-width: calc(50% - 10px);
     display: flex;
     justify-content: start;
     align-items: center;
@@ -146,6 +146,45 @@ section {
 
         img {
           width: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+  .title-section {
+    font-size: $rl-app-desktop-fs-xl;
+    margin-bottom: 16px;
+  }
+
+  section {
+    &.section-default {
+      padding: 0;
+    }
+  }
+
+  .app-card {
+    .card-body {
+      font-size: $rl-app-desktop-fs-md;
+      text-align: justify;
+    }
+  }
+
+  .badge-xxl {
+    flex: 1 1 calc(33% - 10px);
+    max-width: calc(33% - 10px);
+    gap: 4px;
+
+    &.default {
+      font-size: $rl-app-desktop-fs-sm;
+
+      .icon {
+        width: 35px;
+        height: 100%;
+
+        img {
+          width: 14px;
         }
       }
     }

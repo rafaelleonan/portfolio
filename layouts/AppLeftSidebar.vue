@@ -247,7 +247,7 @@ const photoUrl = ref('/images/1629036542049_2.jpg')
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   .left-sidebar {
     position: absolute;
     width: 100%;

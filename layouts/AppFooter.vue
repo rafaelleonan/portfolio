@@ -262,13 +262,13 @@ footer {
     }
 
     p {
-      font-size: 12px;
+      font-size: $rl-app-desktop-fs-sm;
       transition: font-size 250ms ease;
     }
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   footer {
     width: 100%;
     transition: all 800ms ease;
@@ -462,6 +462,114 @@ footer {
           position: relative;
           transform: translateY(0);
         }
+      }
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+  footer {
+    .footer {
+      gap: 10px;
+      width: 100%;
+      padding: 12px 8px;
+
+      .app-footer {
+        gap: 16px;
+        width: 100%;
+
+        .section-contacts, .section-links {
+          min-width: 160px;
+
+          .item-contact {
+            padding: 4px 8px;
+            gap: 4px;
+            font-size: $rl-app-desktop-fs-xs;
+
+            ul {
+              &.item-options {
+                transition: all 250ms;
+                left: 0;
+                right: 0;
+                top: 12px;
+                z-index: -1;
+                position: absolute;
+                display: none;
+                list-style: none;
+                padding: 0;
+                border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+
+                .item-option {
+                  transition: all 250ms;
+                  width: 100%;
+                  padding: 6px;
+                  gap: 6px;
+                  font-size: $rl-app-desktop-fs-xxs;
+                  font-weight: bold;
+
+                  .icon {
+                    fill: $rl-app-blue-500;
+                    width: 12px;
+                    transition: fill 250ms;
+                  }
+
+                  &:hover {
+                    background-color: $rl-app-white;
+                  }
+                }
+              }
+            }
+
+            .icon {
+              fill: $rl-app-blue-50;
+              width: 12px;
+              transition: fill 250ms;
+            }
+
+            .icon-link {
+              fill: $rl-app-blue-50;
+              width: 20px;
+              transition: fill 250ms;
+            }
+
+            &:hover {
+              background-color: $rl-app-white-10;
+              color: $rl-app-white;
+
+              ul {
+                &.item-options {
+                  z-index: 99;
+                  display: block;
+                }
+              }
+
+              .icon-link, .icon {
+                fill: $rl-app-white;
+              }
+            }
+          }
+        }
+      }
+
+      .btn-toggle-header {
+        display: none;
+        width: 40px;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $rl-app-blue-400;
+        border-radius: $rl-app-br-full;
+        cursor: pointer;
+
+        .icon-arrow {
+          width: 10px;
+          fill: $rl-app-blue-200;
+        }
+      }
+
+      p {
+        font-size: $rl-app-desktop-fs-xxs;
+        transition: font-size 250ms ease;
       }
     }
   }

@@ -189,7 +189,7 @@ header {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   header {
     position: fixed;
     padding: 0 12px 12px 12px;
@@ -265,6 +265,64 @@ header {
 
         &.router-link-active, &:hover {
           border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+  header {
+    padding: 15px 15px 0 15px;
+
+    nav {
+      padding-left: 50px;
+      height: 50px;
+
+      .header-profile {
+        img {
+          height: 70px;
+        }
+
+        .app-header-text {
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;
+          margin-right: 10px;
+          padding-right: 10px;
+
+          span {
+            &:first-child {
+              font-size: $rl-app-desktop-fs-xm;
+            }
+
+            &:last-child {
+              font-size: $rl-app-desktop-fs-xxs;
+            }
+          }
+        }
+      }
+
+      .btn-menu-mobile {
+        display: none;
+      }
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $rl-app-blue-200;
+        font-size: $rl-app-desktop-fs-xxs;
+        height: 35px;
+        padding: 4px;
+
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+
+        .svg-icon {
+          width: 18px;
+          margin-right: 8px;
         }
       }
     }

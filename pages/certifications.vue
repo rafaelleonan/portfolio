@@ -163,7 +163,7 @@ const certs = ref([
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   .list-certs {
     gap: 8px;
 
@@ -194,6 +194,29 @@ const certs = ref([
       &:hover {
         transform: scale(1.01);
         box-shadow: 0 4px 8px $rl-app-grey-300;
+      }
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+  .list-certs {
+    gap: 6px;
+
+    .card-link {
+      flex: 1 1 calc(33% - 8px);
+      max-width: calc(33% - 8px);
+
+      .card-l-text {
+        padding: 4px 6px;
+
+        .card-l-title {
+          font-size: $rl-app-desktop-fs-xs;
+        }
+
+        .card-l-subtitle {
+          font-size: $rl-app-desktop-fs-xs;
+        }
       }
     }
   }

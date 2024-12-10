@@ -88,10 +88,4 @@ const list = ref([
 
 <style scoped lang="scss">
 @import "assets/style/variables.scss";
-
-
-
-@media (max-width: 520px) {
-
-}
 </style>

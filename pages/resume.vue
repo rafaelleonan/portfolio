@@ -129,7 +129,7 @@ const downloadPdf = () => {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   .pdf-controls {
     display: flex;
     justify-content: center;
@@ -162,6 +162,29 @@ const downloadPdf = () => {
           .icon {
             fill: $rl-app-white;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+  .pdf-controls {
+    margin-bottom: 20px;
+
+    .actions-pdf {
+      padding: 12px;
+
+      .total-pages-pdf {
+        font-size: $rl-app-desktop-fs-sm;
+      }
+
+      button {
+        padding: 4px 8px;
+        font-size: $rl-app-desktop-fs-sm;
+
+        .icon {
+          width: 10px;
         }
       }
     }
