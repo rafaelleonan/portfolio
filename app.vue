@@ -137,6 +137,7 @@ onMounted(async () => {
     loading.value = false;
     counting.value = 0
     info.value = []
+    window.scrollTo(0, 0);
   }, 800)
 });
 </script>
