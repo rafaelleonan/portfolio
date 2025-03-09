@@ -1,0 +1,1220 @@
+@import "variables";
+
+.bg-modal {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $rl-app-black-40;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .modal {
+    max-width: 80%;
+    max-height: 90%;
+    overflow: hidden;
+
+    .modal-header {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .options-zoom-image {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $rl-app-grey-50;
+          color: $rl-app-blue-500;
+          width: 100px;
+          height: 35px;
+          border-radius: $rl-app-desktop-br-sm;
+          font-weight: 600;
+        }
+
+        .btn-action {
+          font-size: 22px;
+          height: 35px;
+          width: 35px;
+          border: none;
+          background-color: $rl-app-blue-500;
+          color: $rl-app-brown-500;
+          border-radius: $rl-app-desktop-br-sm;
+          cursor: pointer;
+        }
+      }
+
+      .btn-close {
+        font-size: 22px;
+        height: 35px;
+        width: 35px;
+        border: none;
+        background-color: $rl-app-blue-500;
+        color: $rl-app-brown-500;
+        border-radius: $rl-app-desktop-br-sm;
+        cursor: pointer;
+      }
+    }
+
+    .modal-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: auto;
+      background-color: $rl-app-blue-500;
+      border: 1px solid $rl-app-brown-500;
+
+      .zoom-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        .zoom-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 300ms ease;
+        }
+
+        .zoom-lens {
+          position: absolute;
+          border-radius: 50%;
+          border: 1px solid $rl-app-black-50;
+          background: $rl-app-black-10;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &.form-modal {
+    .modal {
+      border-radius: $rl-app-desktop-br-sm;
+
+      .modal-header {
+        justify-content: space-between;
+        margin-bottom: 0;
+        background-color: $rl-app-white;
+        padding: 22px 15px;
+        border-bottom: 1px solid $rl-app-grey-100;
+
+        .title-modal {
+          font-size: $rl-app-desktop-fs-xl;
+          font-weight: 600;
+        }
+
+        .btn-close {
+          font-size: 22px;
+          height: auto;
+          width: auto;
+          padding: 0;
+          border: none;
+          color: $rl-app-blue-200;
+          background-color: $rl-app-white;
+          border-radius: $rl-app-desktop-br-sm;
+          cursor: pointer;
+          transition: color 250ms ease-in-out;
+
+          &:hover {
+            color: $rl-app-blue-500;
+          }
+        }
+      }
+
+      .modal-content {
+        position: relative;
+        border: none;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+        background-color: $rl-app-white;
+        border-radius: 0;
+        padding: 32px 15px;
+
+        .form-comment {
+          width: 450px;
+          padding: 0;
+          border: none;
+        }
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $rl-app-white;
+        border-top: 1px solid $rl-app-grey-100;
+        border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+        flex-wrap: wrap;
+
+        button {
+          height: 45px;
+          border: none;
+          cursor: pointer;
+          transition: all 300ms ease-in-out;
+
+          &.btn-back {
+            background-color: $rl-app-blue-100;
+            width: 40%;
+            border-radius: 0 0 0 $rl-app-desktop-br-sm;
+
+            &:hover {
+              background-color: $rl-app-blue-200;
+            }
+          }
+
+          &.btn-confirm {
+            background-color: $rl-app-blue-500;
+            color: $rl-app-blue-50;
+            flex-grow: 1;
+            border-radius: 0 0 $rl-app-desktop-br-sm 0;
+            font-weight: 600;
+
+            &:hover {
+              background-color: $rl-app-blue-700;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.header-section {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid $rl-app-grey-100;
+
+  .h-section-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    .button-back {
+      border-radius: 50%;
+      background-color: $rl-app-brown-50;
+      border: 1px solid $rl-app-brown-100;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: all 250ms ease-in-out;
+
+      &:hover {
+        background-color: $rl-app-brown-50;
+        border: 1px solid $rl-app-brown-500;
+      }
+
+      i {
+        position: absolute;
+        font-size: 10px;
+        right: 2.5px;
+        color: $rl-app-brown-500;
+      }
+    }
+  }
+
+  .h-section-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 6px;
+
+    .posted-at {
+      color: $rl-app-grey-500;
+      font-size: $rl-app-desktop-fs-xs;
+
+      span {
+        font-weight: 500;
+      }
+    }
+
+    .list-links-externals {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      align-items: center;
+      gap: 4px;
+      color: $rl-app-grey-500;
+      font-size: $rl-app-desktop-fs-xs;
+
+      span {
+        font-weight: 500;
+      }
+
+      a {
+        color: $rl-app-grey-500;
+        transition: all 250ms ease-in-out;
+
+        &:first-child {
+          margin-left: 4px;
+        }
+
+        &:hover {
+          background-color: $rl-app-grey-50;
+          color: $rl-app-grey-900;
+          border-radius: 2px;
+        }
+      }
+    }
+
+    .list-technologies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      align-items: center;
+      gap: 4px;
+      margin: 8px 0 15px 0;
+    }
+  }
+}
+
+.title-content {
+  font-size: $rl-app-desktop-fs-xl;
+  font-weight: bold;
+  color: $rl-app-black;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.component-text {
+  font-size: $rl-app-desktop-fs-xm;
+  color: $rl-app-black;
+}
+
+.slide-card-resume {
+  position: relative;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  .card-list {
+    position: relative;
+    width: 100%;
+
+    .card-resume {
+      display: inline-flex;
+      flex-direction: column;
+      width: 100%;
+      z-index: -1;
+      visibility: hidden;
+      position: absolute;
+
+      .card-title {
+        font-size: $rl-app-desktop-fs-xm;
+        font-weight: bold;
+        color: $rl-app-grey-900;
+        display: block;
+        text-decoration: underline;
+      }
+
+      .card-body {
+        display: flex;
+        width: 100%;
+        height: 250px;
+        padding: 4px 0;
+        justify-content: space-between;
+
+        .resume-project {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          height: 100%;
+          background-color: $rl-app-white;
+          color: $rl-app-grey-900;
+          transition: all 0.2s ease-in;
+          text-align: justify;
+          font-size: $rl-app-desktop-fs-xm;
+          overflow: hidden;
+        }
+
+        .image-card {
+          position: relative;
+          width: 48%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+
+          .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            img {
+              width: 100%;
+              height: 100%;
+              box-shadow: 0 4px 4px $rl-app-black-50;
+              border-radius: $rl-app-desktop-br-sm;
+            }
+
+            i {
+              position: absolute;
+              background-color: transparent;
+              right: 10px;
+              bottom: 10px;
+              cursor: pointer;
+              border: 1px solid $rl-app-brown-700;
+              border-radius: 5px;
+              color: $rl-app-brown-700;
+              transition: all 250ms ease-in-out;
+
+              &:hover {
+                transform: scale(1.1);
+                background-color: $rl-app-brown-100;
+                box-shadow: 2px 2px 2px $rl-app-brown-500;
+              }
+            }
+          }
+        }
+      }
+
+      &.active {
+        position: relative;
+        z-index: 9;
+        visibility: visible;
+      }
+    }
+  }
+
+  .slide-pointers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 6px;
+      cursor: pointer;
+      min-width: 40px;
+      transition: all 250ms ease-in-out;
+
+      &.btn-next, &.btn-prev {
+        border: 1px solid transparent;
+        background-color: transparent;
+        border-radius: $rl-app-desktop-br-md;
+        color: $rl-app-brown-500;
+
+        i {
+          &.material-icons {
+            font-size: 30px;
+          }
+        }
+
+        &:hover {
+          background-color: $rl-app-brown-50;
+          border: 1px solid $rl-app-brown-300;
+        }
+      }
+
+      &.pointer {
+        border: none;
+        height: 8px;
+        background-color: $rl-app-brown-200;
+        border-radius: $rl-app-desktop-br-sm;
+
+        &.active, &:hover {
+          box-shadow: 0 4px 8px $rl-app-brown-500;
+          background-color: $rl-app-brown-500;
+        }
+
+        &.show {
+          display: block;
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.component-instructions {
+  margin-top: 15px;
+
+  .title-instructions {
+    font-size: $rl-app-desktop-fs-lg;
+    font-weight: bold;
+    color: $rl-app-grey-900;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .list-instructions {
+    width: 100%;
+    padding: 6px 12px;
+    background-color: $rl-app-brown-50;
+
+    .item-instruction {
+      font-weight: 700;
+
+      .instruction-code {
+        display: flex;
+        margin: 10px 0 15px 0;
+        width: 100%;
+        padding: 12px 8px;
+        color: $rl-app-blue-50;
+        background-color: $rl-app-blue-500;
+        justify-content: start;
+        align-items: center;
+        gap: 8px;
+        cursor: copy;
+
+        .code-content {
+          width: 100%;
+          font-family: "Fira Code", serif;
+          font-size: $rl-app-desktop-fs-md;
+          overflow: scroll;
+        }
+
+        .material-icons {
+          color: $rl-app-blue-200;
+          transition: color 250ms ease;
+        }
+
+        &:hover {
+          .material-icons {
+            color: $rl-app-blue-50;
+          }
+        }
+      }
+
+      .instruction-image {
+        margin: 10px 0 15px 0;
+        width: 100%;
+        display: block;
+        position: relative;
+
+        img {
+          width: 100%;
+        }
+
+        i {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          background-color: $rl-app-brown-100;
+          cursor: pointer;
+          border: 1px solid $rl-app-brown-700;
+          border-radius: 5px;
+          color: $rl-app-brown-700;
+          transition: all 250ms ease-in-out;
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 2px 2px 2px $rl-app-brown-500;
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-comment {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  border-bottom: 1px solid $rl-app-grey-100;
+  padding-bottom: 20px;
+
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+
+    label {
+      font-size: $rl-app-desktop-fs-md;
+      font-weight: 500;
+      color: $rl-app-grey-900;
+    }
+
+    input, textarea {
+      padding: 8px 16px;
+      border-radius: $rl-app-desktop-br-sm;
+      border: 1px solid $rl-app-grey-100;
+      resize: none;
+      transition: all 250ms ease-in-out;
+
+      &:focus {
+        outline: 1px solid $rl-app-blue-500;
+        box-shadow: 1px 1px 4px $rl-app-blue-500;
+      }
+    }
+
+    .header-options-input {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+
+      label {
+        font-size: $rl-app-desktop-fs-xm;
+        font-weight: 700;
+        color: $rl-app-grey-900;
+      }
+
+      .options-input-field {
+        z-index: 99;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 6px;
+        cursor: pointer;
+        background-color: transparent;
+        border: 0.5px solid $rl-app-grey-100;
+        transition: all 250ms ease-in-out;
+        border-radius: $rl-app-desktop-br-sm;
+        font-size: $rl-app-desktop-fs-sm;
+        min-width: 150px;
+
+        .material-icons {
+          font-size: 16px;
+        }
+
+        .options {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          position: absolute;
+          left: 0;
+          width: 100%;
+          top: 0;
+          border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+          border: 1px solid $rl-app-grey-300;
+          border-top: none;
+
+          .opt-item {
+            width: 100%;
+            padding: 8px 6px;
+            background-color: $rl-app-blue-50;
+            color: $rl-app-blue-500;
+            font-size: $rl-app-desktop-fs-sm;
+            transition: all 250ms ease-in-out;
+            border: none;
+            cursor: pointer;
+
+            &:last-of-type {
+              border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+            }
+
+            &:hover, &.active {
+              background-color: $rl-app-blue-300;
+              color: $rl-app-blue-50;
+            }
+          }
+        }
+
+        &:hover {
+          border-color: $rl-app-grey-300;
+        }
+
+        &:focus {
+          border-color: $rl-app-grey-300;
+          border-radius: $rl-app-desktop-br-sm $rl-app-desktop-br-sm 0 0;
+
+          .options {
+            display: flex;
+            top: 32px;
+          }
+        }
+      }
+    }
+  }
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+}
+
+.options-comment {
+
+  .options {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    button {
+      height: 40px;
+      flex-grow: 1;
+      background-color: transparent;
+      transition: all 250ms ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: $rl-app-desktop-br-md;
+      cursor: pointer;
+      border: 1px solid $rl-app-blue-50;
+
+      &:hover {
+        background-color: $rl-app-blue-50;
+        border-color: $rl-app-blue-200;
+      }
+    }
+  }
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+
+  .comment {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-direction: column;
+    position: relative;
+
+    .comment-main {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+      flex-direction: column;
+
+      .comment-body {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex-direction: column;
+        padding: 12px 16px;
+        border-radius: $rl-app-desktop-br-sm;
+        box-shadow: 0 0 4px $rl-app-grey-200;
+
+        .comment-header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .comment-nickname {
+            font-size: $rl-app-desktop-fs-md;
+            color: $rl-app-black;
+            font-weight: bold;
+          }
+
+          .comment-posted-at {
+            font-size: $rl-app-desktop-fs-sm;
+            color: $rl-app-grey-300;
+          }
+        }
+
+        .comment-content {
+          width: 100%;
+          font-size: $rl-app-desktop-fs-sm;
+          color: $rl-app-grey-900;
+        }
+      }
+
+      .comment-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        align-items: center;
+        width: 100%;
+        min-height: 25px;
+
+        .comment-reply, .material-icons {
+          color: $rl-app-grey-200;
+          cursor: pointer;
+          transition: all 250ms ease-in-out;
+        }
+
+        .comment-reply {
+          font-size: $rl-app-desktop-fs-sm;
+
+          &:hover {
+            text-decoration: underline;
+            color: $rl-app-grey-500;
+          }
+        }
+
+        .reactions {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          position: relative;
+
+          .reactions-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+
+            .emoji {
+              border-radius: $rl-app-desktop-br-xl;
+              background-color: $rl-app-blue-50;
+              padding: 2px 4px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              gap: 3px;
+              transition: all 250ms ease-in-out;
+
+              .count-reactions {
+                font-size: $rl-app-desktop-fs-xs;
+                font-weight: 600;
+              }
+
+              &:hover, &.active {
+                background-color: $rl-app-blue-100;
+              }
+            }
+          }
+
+          button {
+            font-size: $rl-app-desktop-fs-lg;
+            box-shadow: 2px 2px 4px $rl-app-grey-100;
+            display: block;
+            border-radius: 50%;
+            position: relative;
+            border: none;
+            background-color: transparent;
+            padding: 0;
+
+            .options-react {
+              display: none;
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 40px;
+              gap: 8px;
+              justify-content: center;
+              align-items: end;
+
+              .emoji {
+                font-size: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                align-items: center;
+                cursor: pointer;
+                gap: 0;
+                transition: all 150ms ease-in-out;
+
+                .shadow {
+                  height: 2px;
+                  width: 100%;
+                  background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.1) 70%, rgba(0, 0, 0, 0) 100%);
+                  border-radius: 50%;
+                  transition: all 150ms ease-in-out;
+                }
+
+                &:hover {
+                  transform: scale(1.1);
+                  gap: 4px;
+
+                  .shadow {
+                    background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.1) 70%, rgba(0, 0, 0, 0) 100%);
+                  }
+                }
+              }
+            }
+
+            &:hover, &:focus {
+              color: $rl-app-grey-500;
+              box-shadow: 3px 3px 6px $rl-app-grey-300;
+              transform: scale(1.1);
+            }
+
+            &:focus {
+              .options-react {
+                display: flex;
+                bottom: 25px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .comment-replies {
+      display: flex;
+      flex-direction: column;
+      width: 98%;
+
+      &.inside-reply {
+        width: 100%;
+      }
+    }
+
+    .tree-replies {
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 2px;
+      background-color: $rl-app-brown-500;
+      bottom: 18px;
+    }
+
+    .tree-reply-horizontal {
+      top: 10px;
+      left: -6px;
+      position: absolute;
+      height: 2px;
+      width: 10px;
+      background-color: $rl-app-brown-500;
+
+      .ball {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: $rl-app-brown-500;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -4px;
+      }
+    }
+  }
+}
+
+.editor-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  z-index: 9;
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    border: 1px solid $rl-app-grey-100;
+    border-radius: $rl-app-desktop-br-sm $rl-app-desktop-br-sm 0 0;
+    border-bottom: none;
+
+    .btn-action {
+      display: flex;
+      justify-content: center;
+      padding: 0 5px;
+      align-items: center;
+      min-height: 45px;
+      flex-grow: 1;
+      font-size: $rl-app-desktop-fs-md;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      background-color: transparent;
+      color: $rl-app-blue-500;
+      position: relative;
+      transition: all 250ms ease-in-out;
+      text-transform: uppercase;
+
+      &.btn-with-dropdown {
+        flex-basis: auto;
+        padding: 0 12px;
+        justify-content: space-between;
+        border-left: 1px solid $rl-app-grey-50;
+        font-weight: 500;
+      }
+
+      .material-icons {
+        font-size: $rl-app-desktop-fs-xl;
+      }
+
+      &:hover {
+        background-color: $rl-app-blue-50;
+      }
+
+      &:focus {
+        .options-select {
+          display: flex;
+          background-color: $rl-app-blue-50;
+        }
+      }
+
+      &:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &:last-of-type {
+        border-radius: 0 4px 4px 0;
+      }
+
+      .options-select {
+        position: absolute;
+        left: 0;
+        min-width: 100%;
+        top: 35px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        overflow-y: auto;
+        z-index: 99;
+        border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+        box-shadow: 0 2px 8px $rl-app-grey-100;
+
+        .item-option {
+          display: flex;
+          justify-content: center;
+          padding: 0 5px;
+          align-items: center;
+          min-height: 35px;
+          min-width: 45px;
+          width: 100%;
+          text-wrap: nowrap;
+          font-size: $rl-app-desktop-fs-sm;
+          cursor: pointer;
+          border: none;
+          text-align: center;
+          background-color: $rl-app-blue-50;
+          color: $rl-app-blue-500;
+          transition: 250ms;
+
+          &:last-of-type {
+            border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+          }
+
+          &.selected, &:hover {
+            background-color: $rl-app-blue-500;
+            color: $rl-app-blue-50;
+          }
+        }
+
+        /* Estilo da barra de rolagem */
+        &::-webkit-scrollbar {
+          width: 1px; /* Largura da barra de rolagem */
+          height: 1px; /* Altura da barra de rolagem horizontal */
+        }
+
+        /* Estilo do track (trilho) */
+        &::-webkit-scrollbar-track {
+          background-color: #f1f1f1; /* Cor de fundo do track */
+          border-radius: 10px; /* Bordas arredondadas no track */
+        }
+
+        /* Estilo do thumb (polegar) */
+        &::-webkit-scrollbar-thumb {
+          background-color: #888; /* Cor do polegar */
+          border-radius: 10px; /* Bordas arredondadas no polegar */
+          border: 1px solid #f1f1f1; /* Borda ao redor do polegar */
+        }
+
+        /* Estilo do polegar quando estiver em hover (passar o mouse sobre ele) */
+        &::-webkit-scrollbar-thumb:hover {
+          background-color: #555; /* Cor mais escura no hover */
+        }
+
+      }
+    }
+
+    input[type="number"] {
+      margin-left: 10px;
+      width: 50px;
+      padding: 5px;
+    }
+  }
+
+  .editor {
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: $rl-app-desktop-fs-xm;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    text-wrap: wrap;
+    padding: 8px 16px;
+    border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+    border: 1px solid $rl-app-grey-100;
+    transition: all 250ms ease-in-out;
+
+    &:focus {
+      outline: 1px solid $rl-app-blue-500;
+      box-shadow: 1px 1px 4px $rl-app-blue-500;
+    }
+
+    &:empty {
+      &::before {
+        content: attr(placeholder);
+        color: $rl-app-grey-300;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header-section {
+    margin-bottom: 20px;
+  }
+
+  .slide-card-resume {
+    overflow: hidden;
+    gap: 8px;
+    margin-bottom: 15px;
+
+    .card-list {
+      .card-resume {
+        .card-title {
+          font-size: $rl-app-desktop-fs-xm;
+          font-weight: bold;
+          color: $rl-app-grey-900;
+          display: block;
+          text-decoration: underline;
+        }
+
+        .card-body {
+          height: auto;
+          flex-direction: column;
+          gap: 12px;
+
+          .resume-project {
+            width: 100%;
+          }
+
+          .image-card {
+            width: 100%;
+
+            .image {
+              position: relative;
+
+              img {
+                width: 100%;
+                box-shadow: 0 4px 4px $rl-app-black-50;
+                border-radius: $rl-app-desktop-br-sm;
+              }
+
+              i {
+                position: absolute;
+                background-color: transparent;
+                right: 10px;
+                bottom: 10px;
+                cursor: pointer;
+                border: 1px solid $rl-app-brown-700;
+                border-radius: 5px;
+                color: $rl-app-brown-700;
+                transition: all 250ms ease-in-out;
+
+                &:hover {
+                  transform: scale(1.1);
+                  background-color: $rl-app-brown-100;
+                  box-shadow: 2px 2px 2px $rl-app-brown-500;
+                }
+              }
+            }
+          }
+        }
+
+        &.active {
+          position: relative;
+          z-index: 9;
+          visibility: visible;
+        }
+      }
+    }
+
+    .slide-pointers {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 6px;
+        cursor: pointer;
+        min-width: 40px;
+        transition: all 250ms ease-in-out;
+
+        &.btn-next, &.btn-prev {
+          border: 1px solid transparent;
+          background-color: transparent;
+          border-radius: $rl-app-desktop-br-md;
+          color: $rl-app-brown-500;
+
+          i {
+            &.material-icons {
+              font-size: 30px;
+            }
+          }
+
+          &:hover {
+            background-color: $rl-app-brown-50;
+            border: 1px solid $rl-app-brown-300;
+          }
+        }
+
+        &.pointer {
+          border: none;
+          height: 8px;
+          background-color: $rl-app-brown-200;
+          border-radius: $rl-app-desktop-br-sm;
+
+          &.active, &:hover {
+            box-shadow: 0 4px 8px $rl-app-brown-500;
+            background-color: $rl-app-brown-500;
+          }
+        }
+      }
+    }
+  }
+
+  .title-content {
+    margin-bottom: 0;
+  }
+}

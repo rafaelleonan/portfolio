@@ -1,0 +1,315 @@
+<!-- IMPLEMENTAR SISTEMA DE COMENTÁRIOS -->
+    <div class="bg-modal form-modal" ref="modalLoginEmailAndPassword">
+      <div class="modal">
+        <div class="modal-header">
+          <span class="title-modal">
+            Informe seus dados abaixo
+          </span>
+          <button class="btn-close material-icons" type="button" @click="closeModalLoginEmailAndPassword">
+            close
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="form-comment">
+            <!--            <div class="form-input">-->
+            <!--              <label for="nickname">Nome:</label>-->
+            <!--              <input name="nickname"-->
+            <!--                     id="nickname"-->
+            <!--                     type="text"-->
+            <!--                     placeholder="Informe seu nome ou apelido"/>-->
+            <!--            </div>-->
+            <div class="form-input">
+              <label for="email">E-mail*:</label>
+              <input name="email"
+                     id="email"
+                     type="email"
+                     placeholder="example@gmail.com..."/>
+            </div>
+            <div class="form-input">
+              <label for="password">Senha*:</label>
+              <input name="password"
+                     id="password"
+                     type="password"
+                     placeholder="**********"/>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-back" @click="closeModalLoginEmailAndPassword">
+            VOLTAR
+          </button>
+          <button type="button" class="btn-confirm" @click="closeModalLoginEmailAndPassword">
+            CONTINUAR
+          </button>
+        </div>
+      </div>
+    </div>
+    <section class="section-default" v-if="!hiddenFeatures">
+      <span class="title-content"># Opiniões/Sugestões</span>
+      <div class="comments">
+        <div class="comment" v-for="(comment, cmtKey) in project?.comments" :key="`comment-${cmtKey}-${comment.id}`">
+          <div class="comment-main">
+            <div class="comment-body">
+              <div class="comment-header">
+                <span class="comment-nickname">{{ comment.user_name }}</span>
+                <span class="comment-posted-at">{{ comment.posted_at }}</span>
+              </div>
+              <div class="comment-content" v-html="comment.content"></div>
+            </div>
+            <div class="comment-actions">
+              <span class="comment-reply">Responder</span>
+              <div class="reactions">
+                <div class="reactions-list">
+                  <div class="emoji" v-for="(react, reactKey) in comment.reactions"
+                       :key="`reaction-${reactKey}-${react.id}`"
+                       :class="{ 'active': react.list_users_id.indexOf(user.id) > -1 }"
+                       @click.passive="addReaction(comment.reactions, react.reaction_type)"
+                  >
+                    <span v-if="react.reaction_type === 'smile'">😂</span>
+                    <span v-else-if="react.reaction_type === 'like'">👍</span>
+                    <span v-else-if="react.reaction_type === 'dislike'">👎</span>
+                    <span v-else-if="react.reaction_type === 'thinking_face'">🤔</span>
+                    <span v-else-if="react.reaction_type === 'greeting'">🫡</span>
+                    <span v-else>◻️</span>
+                    <span class="count-reactions">{{ react.count }}</span>
+                  </div>
+                </div>
+                <button type="button" class="material-icons">
+                  add_reaction
+                  <div class="options-react">
+                    <div class="emoji" @click.passive="addReaction(comment.reactions, 'smile')">
+                      <span>😂</span>
+                      <div class="shadow"></div>
+                    </div>
+                    <div class="emoji" @click.passive="addReaction(comment.reactions, 'thinking_face')">
+                      <span>🤔</span>
+                      <div class="shadow"></div>
+                    </div>
+                    <div class="emoji" @click.passive="addReaction(comment.reactions, 'greeting')">
+                      <span>🫡</span>
+                      <div class="shadow"></div>
+                    </div>
+                    <div class="emoji" @click.passive="addReaction(comment.reactions, 'like')">
+                      <span>👍</span>
+                      <div class="shadow"></div>
+                    </div>
+                    <div class="emoji" @click.passive="addReaction(comment.reactions, 'dislike')">
+                      <span>👎</span>
+                      <div class="shadow"></div>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="tree-replies"></div>
+          <div class="comment-replies" v-if="comment.replies.length > 0">
+            <div class="comment" v-for="(reply, replyKey) in comment.replies" :key="`reply-${replyKey}-${reply.id}`">
+              <div class="tree-reply-horizontal">
+                <div class="ball"></div>
+              </div>
+              <div class="comment-main">
+                <div class="comment-body">
+                  <div class="comment-header">
+                    <span class="comment-nickname">{{ reply.user_name }}</span>
+                    <span class="comment-posted-at">{{ reply.posted_at }}</span>
+                  </div>
+                  <div class="comment-content" v-html="reply.content"></div>
+                </div>
+                <div class="comment-actions">
+                  <span class="comment-reply">Responder</span>
+                  <div class="reactions">
+                    <div class="reactions-list">
+                      <div class="emoji" v-for="(replyReaction, replyReactionKey) in reply.reactions"
+                           :key="`reaction-${replyReactionKey}-${replyReaction.id}`"
+                           :class="{ 'active': replyReaction.list_users_id.indexOf(user.id) > -1 }"
+                           @click.passive="addReaction(reply.reactions, replyReaction.reaction_type)"
+                      >
+                        <span v-if="replyReaction.reaction_type === 'smile'">😂</span>
+                        <span v-else-if="replyReaction.reaction_type === 'like'">👍</span>
+                        <span v-else-if="replyReaction.reaction_type === 'dislike'">👎</span>
+                        <span v-else-if="replyReaction.reaction_type === 'thinking_face'">🤔</span>
+                        <span v-else-if="replyReaction.reaction_type === 'greeting'">🫡</span>
+                        <span v-else>◻️</span>
+                        <span class="count-reactions">{{ replyReaction.count }}</span>
+                      </div>
+                    </div>
+                    <button type="button" class="material-icons">
+                      add_reaction
+                      <div class="options-react">
+                        <div class="emoji" @click.passive="addReaction(reply.reactions, 'smile')">
+                          <span>😂</span>
+                          <div class="shadow"></div>
+                        </div>
+                        <div class="emoji" @click.passive="addReaction(reply.reactions, 'thinking_face')">
+                          <span>🤔</span>
+                          <div class="shadow"></div>
+                        </div>
+                        <div class="emoji" @click.passive="addReaction(reply.reactions, 'greeting')">
+                          <span>🫡</span>
+                          <div class="shadow"></div>
+                        </div>
+                        <div class="emoji" @click.passive="addReaction(reply.reactions, 'like')">
+                          <span>👍</span>
+                          <div class="shadow"></div>
+                        </div>
+                        <div class="emoji" @click.passive="addReaction(reply.reactions, 'dislike')">
+                          <span>👎</span>
+                          <div class="shadow"></div>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-default" v-if="!hiddenFeatures">
+      <span class="title-content"># Deixe sua opinião/sugestão</span>
+      <form class="form-comment" @submit.prevent="() => {}">
+        <div class="form-input">
+          <div class="header-options-input">
+            <label for="comment">
+              Comentário*:
+            </label>
+            <button type="button" class="options-input-field">
+              <span>{{ fieldCommentWithOptions ? 'Editor com opções' : 'Editor simples' }}</span>
+              <span class="material-icons">unfold_more</span>
+              <div class="options">
+                <div class="opt-item"
+                     @click.passive="changeFieldCommentsType(false)"
+                     :class="{'active': !fieldCommentWithOptions}">Editor simples</div>
+                <div class="opt-item"
+                     @click.passive="changeFieldCommentsType(true)"
+                     :class="{'active': fieldCommentWithOptions}">Editor com opções</div>
+              </div>
+            </button>
+          </div>
+          <div class="editor-container" v-if="fieldCommentWithOptions">
+            <!-- Barra de ferramentas -->
+            <div class="toolbar">
+              <button class="btn-action" @click="changeFontWeight('bold')">
+                <span class="material-icons">format_bold</span>
+              </button>
+              <button class="btn-action" @click="changeFontStyle('italic')">
+                <span class="material-icons">format_italic</span>
+              </button>
+              <button class="btn-action" @click="changeTextDecoration('underline')">
+                <span class="material-icons">format_underlined</span>
+              </button>
+              <button class="btn-action" @click="changeTextDecoration('line-through')">
+                <span class="material-icons">strikethrough_s</span>
+              </button>
+              <button class="btn-action" @click="changeListOrDiv('OL')">
+            <span class="material-icons">
+              format_list_numbered
+            </span>
+              </button>
+              <button class="btn-action" @click="changeListOrDiv('UL')">
+            <span class="material-icons">
+              format_list_bulleted
+            </span>
+              </button>
+              <button class="btn-action">
+                <span class="material-icons" v-if="alignment === 'left'">format_align_left</span>
+                <span class="material-icons" v-else-if="alignment === 'center'">format_align_center</span>
+                <span class="material-icons" v-else-if="alignment === 'right'">format_align_right</span>
+                <span class="material-icons" v-else>format_align_justify</span>
+                <ul class="options-select">
+                  <li class="item-option" :class="{ 'selected': alignment === 'left' }" @click.passive="alignText('left')">
+                <span class="material-icons">
+                  format_align_left
+                </span>
+                  </li>
+                  <li class="item-option" :class="{ 'selected': alignment === 'center' }" @click.passive="alignText('center')">
+                <span class="material-icons">
+                  format_align_center
+                </span>
+                  </li>
+                  <li class="item-option" :class="{ 'selected': alignment === 'right' }" @click.passive="alignText('right')">
+                <span class="material-icons">
+                  format_align_right
+                </span>
+                  </li>
+                  <li class="item-option" :class="{ 'selected': alignment === '' }" @click.passive="alignText('justify')">
+                <span class="material-icons">
+                  format_align_justify
+                </span>
+                  </li>
+                </ul>
+              </button>
+              <button class="btn-action" @click="insertImage">
+                <span class="material-icons">image</span>
+              </button>
+              <button class="btn-action" @click="insertLink">
+                <span class="material-icons">link</span>
+              </button>
+              <button class="btn-action" @click="insertQuoteOrCode('blockquote')">
+                <span class="material-icons">format_quote</span>
+              </button>
+              <button class="btn-action" @click="insertQuoteOrCode('pre')">
+                <span class="material-icons">code</span>
+              </button>
+              <button class="btn-action btn-with-dropdown">
+                <span :style="{ fontSize: returnFontSize(fontSize.value) }">{{ fontSize.label }}</span>
+                <span class="material-icons">unfold_more</span>
+                <ul class="options-select">
+                  <li class="item-option"
+                      v-for="(item, fsKey) in OptionsFontSize" :key="`font-size-${fsKey}`"
+                      :class="{ 'selected': fontSize.label === item.label }"
+                      @click.passive="changeFontSize(item)">
+                    <span :style="{ fontSize: item.value }">{{ item.label }}</span>
+                  </li>
+                </ul>
+              </button>
+            </div>
+
+            <!-- Área de edição -->
+            <div
+                class="editor"
+                ref="editor"
+                contenteditable="true"
+                @input="onInput"
+                placeholder="Deixe uma sugestão de melhoria, ou sua opinião sobre o projeto..."
+            >
+            </div>
+          </div>
+          <textarea v-else name="comment"
+                    id="comment"
+                    rows="10"
+                    placeholder="Deixe uma sugestão de melhoria, ou sua opinião sobre o projeto..."/>
+        </div>
+        <button type="submit" class="btn-primary">
+          ENVIAR
+        </button>
+      </form>
+      <div class="options-comment">
+        <p>Comentar com:</p>
+        <div class="options">
+          <button>
+            <img src="/images/google.svg" width="30px" alt="Google" />
+          </button>
+          <button>
+            <img src="/images/apple.svg" width="30px" alt="Apple" />
+          </button>
+          <button>
+            <img src="/images/facebook.svg" width="30px" alt="Facebook" />
+          </button>
+          <button>
+            <img src="/images/twitter.svg" width="30px" alt="Twitter" />
+          </button>
+          <button>
+            <img src="/images/microsoft.svg" width="30px" alt="Microsoft" />
+          </button>
+          <button type="button" @click="openModalLoginEmailAndPassword">
+            <img src="/images/email-fast.svg" width="30px" alt="Email e senha" />
+          </button>
+          <button type="button">
+            <img src="/images/anonymous.svg" width="30px" alt="Anônimo" />
+          </button>
+        </div>
+      </div>
+    </section>

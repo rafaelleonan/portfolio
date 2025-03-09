@@ -28,42 +28,117 @@ section {
 }
 
 .badge-xxl {
-  width: 180px;
-  height: 35px;
+  height: 40px;
+  min-width: 180px;
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 10px;
   border-radius: $rl-app-desktop-br-sm;
   text-transform: uppercase;
+  font-size: $rl-app-desktop-fs-md;
+  font-weight: 600;
+  padding-right: 15px;
 
-  &.default {
-    background-color: $rl-app-blue-400;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+    border-bottom-left-radius: $rl-app-desktop-br-sm;
+    border-top-left-radius: $rl-app-desktop-br-sm;
+  }
+
+  &.badge-blue-dark {
+    background-color: $rl-app-blue-500;
     color: $rl-app-blue-50;
-    font-size: $rl-app-desktop-fs-md;
-    font-weight: normal;
 
     .icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 100%;
-      background-color: $rl-app-blue-800;
-      border-bottom-left-radius: $rl-app-desktop-br-sm;
-      border-top-left-radius: $rl-app-desktop-br-sm;
+      background-color: $rl-app-blue-900;
+    }
+  }
+
+  &.badge-blue-dark-2 {
+    background-color: $rl-app-blue-800;
+    color: $rl-app-blue-100;
+
+    .icon {
+      background-color: $rl-app-blue-500;
+    }
+  }
+
+  &.badge-brown-dark {
+    background-color: $rl-app-brown-500;
+    color: $rl-app-brown-50;
+
+    .icon {
+      background-color: $rl-app-brown-900;
     }
   }
 }
 
+.badge-xs {
+  background-color: $rl-app-blue-500;
+  border-radius: 20px 100px 100px 20px;
+  display: flex;
+  width: min-content;
+  border: 2px solid $rl-app-blue-500;
+  font-size: 8px;
+  text-wrap: nowrap;
+
+  img {
+    min-width: 12px;
+    margin-left: 2px;
+  }
+
+  .badge-title {
+    padding: 2px 4px;
+    color: $rl-app-white;
+    font-weight: bold;
+  }
+
+  .badge-version {
+    padding: 2px 4px;
+    background-color: $rl-app-white;
+    color: $rl-app-blue-500;
+    font-weight: bold;
+    border-radius: 4px 100px 100px 4px;
+  }
+}
 
 .app-w100 {
   width: 100%;
 }
 
+.btn-primary {
+  background-color: $rl-app-blue-500;
+  color: $rl-app-blue-50;
+  border-radius: $rl-app-desktop-br-sm;
+  padding: 12px 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+  font-size: $rl-app-desktop-fs-md;
+  font-weight: 600;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $rl-app-blue-300;
+  }
+
+  &:hover {
+    background-color: $rl-app-blue-700;
+    box-shadow: 2px 2px 6px $rl-app-blue-200;
+  }
+}
+
 /* FLEXBOX & GRID */
 .app-flex {
   display: flex;
+}
+.app-flex-direction-column {
+  flex-direction: column;
 }
 .app-justify-content-center {
   justify-content: center;
@@ -97,7 +172,7 @@ section {
   gap: 10px;
 }
 
-/* FONT COLORs */
+/* FONT COLORS */
 .font-color-brown-900 {
   color: $rl-app-brown-900 !important;
 }
@@ -109,6 +184,10 @@ section {
   background-color: $rl-app-blue-50;
 }
 
+/* OTHERS */
+.app-mt-2 {
+  margin-top: 20px;
+}
 
 @media (max-width: 600px) {
   .title-section {
@@ -130,25 +209,12 @@ section {
   }
 
   .badge-xxl {
-    flex: 1 1 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-    display: flex;
-    justify-content: start;
-    align-items: center;
+    min-width: 100px;
+    height: 30px;
     gap: 6px;
     border-radius: $rl-app-desktop-br-sm;
     text-transform: uppercase;
-
-    &.default {
-      .icon {
-        width: 30px;
-        height: 100%;
-
-        img {
-          width: 16px;
-        }
-      }
-    }
+    font-size: $rl-app-desktop-fs-xs;
   }
 }
 

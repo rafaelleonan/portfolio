@@ -1,0 +1,363 @@
+const formatText = (command: string) => {
+  document.execCommand(command, false, undefined)
+}
+
+const alignText = (align: string) => {
+  alignment.value = align
+  console.log(`alignText: ${align}`)
+  try {
+    changeTextAlign(align)
+  } catch (e) {
+    console.log(e)
+    document.execCommand('justify' + (align === 'justify' ? '' : align), false, undefined)
+  }
+}
+
+const changeFontSize = (item: any) => {
+  fontSize.value = item.value
+  fontSize.label = item.label
+  console.log(`changeFontSize: ${fontSize}`)
+  try {
+    changeAttr("fontSize", fontSize.value)
+  } catch (e) {
+    console.log(e)
+    document.execCommand('fontSize', false, fontSize.value)
+  }
+}
+
+const changeFontWeight = (value: string) => {
+  console.log(`changeFontWeight: ${value}`)
+  try {
+    changeAttr("fontWeight", value)
+  } catch (e) {
+    console.log(e)
+    document.execCommand(value, false, undefined)
+  }
+}
+
+const changeFontStyle = (value: string) => {
+  console.log(`changeFontStyle: ${value}`)
+  try {
+    changeAttr("fontStyle", value)
+  } catch (e) {
+    console.log(e)
+    document.execCommand(value, false, undefined)
+  }
+}
+
+const changeTextAlign = (value: string) => {
+  console.log(`changeTextAlign: ${value}`)
+  try {
+    changeAttr("textAlign", value)
+  } catch (e) {
+    console.log(e)
+    document.execCommand('justify' + value, false, undefined)
+  }
+}
+
+const changeTextDecoration = (value: string) => {
+  console.log(`changeTextDecoration: ${value}`)
+  try {
+    changeAttr("textDecoration", value)
+  } catch (e) {
+    console.log(e)
+    document.execCommand(value === "line-through" ? "strikeThrough" : value, false, undefined)
+  }
+}
+
+const insertImage = () => {
+  const url = prompt('Enter image URL')
+  if (url) {
+    try {
+      insertImageNew(url)
+    } catch (e) {
+      console.log(e)
+      insertImageOld(url)
+    }
+  }
+}
+
+const insertImageOld = (url: string) => {
+  document.execCommand('insertImage', false, url)
+};
+
+const insertImageNew = (url: string) => {
+  // const div: HTMLDivElement = document.createElement('div')
+  // div.style.display = "inline-block"
+  // div.style.resize = "both"
+  // div.style.overflow = "hidden"
+  // div.style.border = "1px dashed #000"
+  // div.style.width = "200px"
+  // div.style.height = "auto"
+  // div.setAttribute("contenteditable", "false")
+  const img: HTMLImageElement = document.createElement('img')
+  img.src = url
+  img.style.width = "250px"
+  // div.appendChild(img)
+  editor.value?.appendChild(img)
+}
+
+const insertLink = () => {
+  const url = prompt('Enter link URL')
+  if (url) {
+    try {
+      toggleLinkOrDiv(url)
+    } catch (e) {
+      document.execCommand('createLink', false, url)
+    }
+  } else {
+    toggleLinkOrDiv('')
+  }
+};
+
+const insertQuoteOrCode = (tag='BLOCKQUOTE') => {
+  try {
+    toggleQuoteOrCodeOrDiv(tag)
+  } catch (e) {
+    document.execCommand('formatBlock', false, tag.toLowerCase() === 'pre' ? 'pre' : 'blockquote')
+  }
+}
+
+const returnFontSize = (value: string): string => {
+  const newValue = parseInt(value.replace("px", ""))
+  if (newValue > 16) {
+    return '16px'
+  }
+  return `${newValue}px`
+}
+
+const changeAttr = (attr: any, value: string) => {
+  const selection: any = window.getSelection()
+  const textSelected = selection.toString()
+
+  if (selection.rangeCount > 0 && textSelected.length > 0) {
+    const range = selection.getRangeAt(0);
+    if (textSelected === range.commonAncestorContainer.textContent && editor.value?.contains(range.commonAncestorContainer)) {
+      range.commonAncestorContainer.parentElement.style[attr] = value
+    } else if (range.commonAncestorContainer.children) {
+      for (const child of range.commonAncestorContainer.children) {
+        if (child.textContent === textSelected && editor.value?.contains(child)) {
+          if (child.style[attr] === value) {
+            child.style[attr] = 'initial'
+          } else {
+            child.style[attr] = value;
+          }
+        }
+      }
+    } else if (editor.value?.contains(range.commonAncestorContainer)) {
+      const span = document.createElement('span')
+      span.style[attr] = value;
+      span.appendChild(range.extractContents())
+      range.insertNode(span);
+    }
+  } else if (editor.value?.textContent) {
+    if (editor.value.style[attr] === value) {
+      editor.value.style[attr] = 'initial'
+    } else {
+      editor.value.style[attr] = value
+    }
+  } else {
+    console.log('nada foi selecionado')
+  }
+
+  selection.removeAllRanges()
+}
+
+const changeListOrDiv = (value: string) => {
+  value = value.toUpperCase()
+  try {
+    toggleListOrDiv(value)
+  } catch (e) {
+    console.log(e)
+    formatText(value === 'UL' ? 'insertUnorderedList' : 'insertOrderedList')
+  }
+}
+
+const toggleListOrDiv = (typeList='UL') => {
+  typeList = typeList.toUpperCase()
+  let indexList = ['UL', 'OL'].indexOf(typeList)
+  if (indexList === -1) {
+    typeList = 'UL'
+  }
+  const selection: any = window.getSelection()
+  const range = selection.getRangeAt(0)
+  const selectedText = range.toString().trim()
+
+  if (selectedText && editor.value?.contains(range.commonAncestorContainer)) {
+    // debugger
+    const parentElement = range.commonAncestorContainer.parentElement;
+    // Se a seleção já for uma lista (UL ou OL), converta para uma div
+    const index = ['LI', typeList].indexOf(parentElement.tagName)
+    if (index > -1) {
+      // debugger
+      const listParent = index === 0 ? parentElement.parentElement : parentElement
+      const div = document.createElement('div')
+
+      for (const li of listParent.children) {
+        let el: HTMLDivElement = document.createElement('div')
+        el.innerHTML = li.innerHTML
+        div.appendChild(el)
+      }
+
+      listParent.insertAdjacentElement('beforebegin', div)
+      range.deleteContents()
+      listParent.remove()
+    } else {
+      // Caso contrário, transforme o texto selecionado em uma lista
+      const ul = document.createElement(typeList.toLowerCase())
+      const li = document.createElement('li')
+      li.textContent = selectedText
+
+      // Substituir a seleção pela lista
+      ul.appendChild(li)
+      range.deleteContents()
+      range.insertNode(ul)
+    }
+  } else {
+    alert('Selecione uma linha de texto primeiro!')
+  }
+
+  selection.removeAllRanges()
+}
+
+const toggleQuoteOrCodeOrDiv = (tag='BLOCKQUOTE') => {
+  tag = tag.toUpperCase()
+  const tags = ['PRE', 'BLOCKQUOTE']
+  let indexList = tags.indexOf(tag)
+  if (indexList === -1) tag = 'BLOCKQUOTE'
+
+  const selection: any = window.getSelection()
+  const range = selection.getRangeAt(0)
+  const textSelected = range.toString().trim()
+
+  if (textSelected && editor.value?.contains(range.commonAncestorContainer)) {
+    //debugger
+    const parentElement = range.commonAncestorContainer.parentElement
+    if (tags.indexOf(parentElement.tagName) === -1) {
+      const newElement = document.createElement(tag.toLowerCase())
+      newElement.textContent = textSelected
+      range.deleteContents()
+      range.insertNode(newElement)
+    } else {
+      const newElement = document.createElement('span');
+      newElement.textContent = textSelected
+      parentElement.insertAdjacentElement('beforebegin', newElement)
+      parentElement.remove()
+      range.deleteContents()
+    }
+  } else {
+    alert('Selecione uma linha de texto primeiro!')
+  }
+  selection.removeAllRanges()
+}
+
+const toggleLinkOrDiv = (link: string) => {
+  const selection: any = window.getSelection()
+  const range = selection.getRangeAt(0)
+  const textSelected = range.toString().trim()
+
+  if (textSelected && editor.value?.contains(range.commonAncestorContainer)) {
+    const parentElement = range.commonAncestorContainer.parentElement
+    if (parentElement.tagName !== 'A' && link.length > 0) {
+      const newElement = document.createElement('a')
+      newElement.href = link
+      newElement.rel = 'noopener noreferrer'
+      newElement.target = '_blank'
+      newElement.textContent = textSelected
+      range.deleteContents()
+      range.insertNode(newElement)
+    } else if (range.commonAncestorContainer.children) {
+      for (const child of range.commonAncestorContainer.children) {
+        if (child.textContent === textSelected && child.tagName === "A") {
+          let newElement = document.createElement('span')
+          newElement.textContent = textSelected
+          child.insertAdjacentElement('beforebegin', newElement)
+          child.remove()
+        }
+      }
+    } else if (editor.value?.textContent === textSelected) {
+      if (link.length > 0) {
+        let el = document.createElement("a")
+        el.href = link
+        el.rel = 'noopener noreferrer'
+        el.target = '_blank'
+        el.textContent = textSelected;
+        editor.value.textContent = ""
+        editor.value.appendChild(el)
+      } else {
+        let el = document.createElement("span")
+        el.textContent = textSelected
+        editor.value.textContent = ""
+        editor.value.appendChild(el)
+      }
+    }
+  } else {
+    alert('Selecione uma linha de texto primeiro!')
+  }
+
+  selection.removeAllRanges()
+}
+
+const onInput = () => {
+  // console.log(editor.value?.innerHTML)
+};
+
+const openModalLoginEmailAndPassword = () => {
+  if (modalLoginEmailAndPassword.value) {
+    if (modalLoginEmailAndPassword.value.style.display !== 'none' && modalLoginEmailAndPassword.value.style.display !== '') {
+      modalLoginEmailAndPassword.value.style.display = 'none'
+    } else {
+      modalLoginEmailAndPassword.value.style.display = 'flex'
+    }
+  }
+}
+
+const closeModalLoginEmailAndPassword = () => {
+  if (modalLoginEmailAndPassword.value) {
+    if (modalLoginEmailAndPassword.value.style.display !== 'none' && modalLoginEmailAndPassword.value.style.display !== '') {
+      modalLoginEmailAndPassword.value.style.display = 'none'
+    }
+  }
+}
+
+const addReaction = (reactions: ReactionComment[], type='like') => {
+  let isReact: boolean = false
+  for (let i: number = 0; i < reactions.length; i++) {
+    if (reactions[i].reaction_type === type) {
+      let indexUser = reactions[i].list_users_id.indexOf(user.id)
+      if (indexUser === -1) {
+        reactions[i].count += 1
+        reactions[i].list_users_id.push(user.id)
+        isReact = true
+        return
+      } else {
+        reactions[i].count -= 1
+        reactions[i].list_users_id.splice(indexUser, 1)
+        isReact = true
+        if (reactions[i].count <= 0) {
+          reactions.splice(i, 1)
+        }
+        return
+      }
+    }
+  }
+  if (!isReact) {
+    reactions.push({
+      id: reactions.length + 1,
+      list_users_id: [user.id],
+      count: 1,
+      reaction_type: type
+    })
+  }
+}
+
+const changeFieldCommentsType = (bool: boolean) => {
+  fieldCommentWithOptions.value = bool
+}
+
+const editor = ref<HTMLDivElement | null>(null)
+const modalLoginEmailAndPassword = ref<HTMLDivElement | null>(null)
+const fontSize = reactive({label: 'normal', value: '16px'})
+const alignment = ref('')
+const fieldCommentWithOptions = ref(false)
+const user = reactive({id: 10, name: "teste"})

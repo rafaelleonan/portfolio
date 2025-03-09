@@ -1,26 +1,11 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
-import { useHead } from '#imports';
+<script setup lang="ts">
 
-export default defineComponent({
-  name: "Projects",
-  methods: {
-    defineHead() {
-      useHead({
-        title: 'Projetos',
-      });
-    },
-  },
-  mounted() {
-    this.defineHead();
-  }
-})
 </script>
 
 <template>
-  <h1>Projetos - Tela em construção...</h1>
+  <NuxtPage />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

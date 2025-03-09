@@ -113,6 +113,7 @@ const photoUrl = ref('/images/1629036542049_2.jpg')
       </div>
       <p>© 2024 Rafael Leonan</p>
     </div>
+    <div :class="{'click-to-close-mobile': isHeaderMobileVisible}" @click="toggleHeaderMobile"></div>
   </footer>
 </template>
 
@@ -445,6 +446,7 @@ footer {
       width: 100%;
       height: 100%;
       background-color: $rl-app-black-50;
+      z-index: 99;
 
       .footer {
         border-bottom-left-radius: $rl-app-desktop-br-xl;
@@ -462,6 +464,10 @@ footer {
           position: relative;
           transform: translateY(0);
         }
+      }
+
+      .click-to-close-mobile {
+        height: 100%;
       }
     }
   }

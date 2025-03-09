@@ -1,0 +1,123 @@
+@import "variables.scss";
+
+.vue-pdf-embed__page {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $rl-app-blue-500;
+  margin-bottom: 20px;
+
+  .actions-pdf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    width: 100%;
+    height: 100%;
+
+    .total-pages-pdf {
+      color: $rl-app-blue-50;
+      font-size: $rl-app-desktop-fs-md;
+      font-weight: normal;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: $rl-app-blue-500;
+      border: 1px solid $rl-app-blue-50;
+      color: $rl-app-blue-50;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: color 500ms;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: $rl-app-desktop-fs-md;
+      font-weight: normal;
+      gap: 10px;
+
+      .icon {
+        fill: $rl-app-blue-50;
+        transition: fill 500ms;
+        width: 10px;
+      }
+
+      &:hover {
+        color: $rl-app-white;
+        border: 1px solid $rl-app-white;
+
+        .icon {
+          fill: $rl-app-white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .pdf-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: $rl-app-blue-500;
+    margin-bottom: 20px;
+
+    .actions-pdf {
+      padding: 12px;
+
+      .total-pages-pdf {
+        font-size: $rl-app-desktop-fs-xs;
+      }
+
+      button {
+        padding: 4px;
+        font-size: $rl-app-desktop-fs-xs;
+
+        .icon {
+          fill: $rl-app-blue-50;
+          transition: fill 500ms;
+          width: 8px;
+        }
+
+        &:hover {
+          color: $rl-app-white;
+          border: 1px solid $rl-app-white;
+
+          .icon {
+            fill: $rl-app-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+  .pdf-controls {
+    margin-bottom: 20px;
+
+    .actions-pdf {
+      padding: 12px;
+
+      .total-pages-pdf {
+        font-size: $rl-app-desktop-fs-sm;
+      }
+
+      button {
+        padding: 4px 8px;
+        font-size: $rl-app-desktop-fs-sm;
+
+        .icon {
+          width: 10px;
+        }
+      }
+    }
+  }
+}

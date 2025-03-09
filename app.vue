@@ -5,7 +5,7 @@ import AppFooter from "~/layouts/AppFooter.vue";
 
 <template>
   <NuxtLayout>
-    <main>
+    <main style="overflow-x: hidden">
       <AppHeader/>
       <div class="content">
         <NuxtPage />

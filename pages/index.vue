@@ -1,37 +1,10 @@
 <script setup lang="ts">
-import { useHead, ref } from '#imports'
+import { useHead } from '#imports'
+import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
 
 useHead({
   title: 'Portfólio',
 });
-
-const list = ref([
-    { src: "/images/svg/html.svg", title: "HTML" },
-    { src: "/images/svg/css.svg", title: "CSS" },
-    { src: "/images/svg/sass.svg", title: "SASS" },
-    { src: "/images/svg/js.svg", title: "JAVASCRIPT" },
-    { src: "/images/svg/ts.svg", title: "TYPESCRIPT" },
-    { src: "/images/svg/py.svg", title: "PYTHON" },
-    { src: "/images/svg/dart.svg", title: "DART" },
-    { src: "/images/svg/ruby.svg", title: "RUBY" },
-    { src: "/images/svg/swift.svg", title: "SWIFT" },
-    { src: "/images/svg/elixir.svg", title: "ELIXIR" },
-    { src: "/images/svg/kotlin.svg", title: "KOTLIN" },
-    { src: "/images/svg/shellscript.svg", title: "SHELLSCRIPT" },
-    { src: "/images/svg/go.svg", title: "GO" },
-    { src: "/images/svg/vue.svg", title: "VUE JS" },
-    { src: "/images/svg/flutter.svg", title: "FLUTTER" },
-    { src: "/images/svg/rails.svg", title: "RUBY ON RAILS" },
-    { src: "/images/svg/django.svg", title: "DJANGO" },
-    { src: "/images/svg/mysql.svg", title: "MYSQL" },
-    { src: "/images/svg/postgresql.svg", title: "POSTGRESQL" },
-    { src: "/images/svg/sqs.svg", title: "AWS SQS" },
-    { src: "/images/svg/s3.svg", title: "AWS S3" },
-    { src: "/images/svg/docker.svg", title: "DOCKER" },
-    { src: "/images/svg/figma.svg", title: "FIGMA" },
-    { src: "/images/svg/kafka.svg", title: "KAFKA" },
-    { src: "/images/svg/git.svg", title: "GIT & GIT FLOW" },
-]);
 
 </script>
 
@@ -41,45 +14,106 @@ const list = ref([
       <span class="title-section">SOBRE MIM</span>
       <div class="app-card">
         <div class="card-body">
-          <span class="font-color-brown-900">
-            Olá, sou Rafael Leonan, desenvolvedor Full Stack com experiência em uma variedade de tecnologias.
-            Minha jornada no desenvolvimento de software começou em 2017, durante o ensino médio, quando fiz um curso
-            técnico em informática e construí uma base em programação com linguagens como Python, Java, SQL,
-            PHP, JavaScript, HTML e CSS. No final de 2019, tive a oportunidade de realizar um estágio, onde
-            ganhei experiência prática com Django 2 e Vue.js.
-          </span>
-
-          <p class="font-color-brown-900">
-            Desde 2020, tenho atuado em diferentes frentes como MEI, estagiário e CLT, o que me permitiu expandir minhas
-            habilidades em tecnologias como Go, Flutter, TypeScript, Ruby on Rails, AWS (SQS e S3), Kafka, PostgreSQL,
-            Git (incluindo Git Flow) e SASS. Tenho vasta experiência tanto em frontend (Web e Mobile) quanto em backend,
-            desenvolvendo APIs REST, JOBs e integração de filas SQS e Kafka.
-          </p>
-
-          <p class="font-color-brown-900">
-            Além disso, entre 2021 e 2022, participei de diversos projetos freelancers, consolidando ainda mais minhas
-            competências em desenvolvimento de software.
-          </p>
-
-          <p class="font-color-brown-900">
-            Estudo regularmente as tecnologias com as quais já tenho familiaridade e procuro sempre me manter
-            atualizado com novas ferramentas e linguagens.
-            Esse ciclo constante de aprendizado me permite aplicar o que aprendo em projetos pessoais,
-            sempre com foco em manter o código o mais limpo e organizado possível, buscando boas práticas
-            e melhorias contínuas.
-          </p>
-
+           <span class="font-color-brown-900">
+             Sou desenvolvedor full stack com experiência em desenvolvimento de aplicações back-end: APIs RESTful,
+             serviços agendados (Cron Service), Webhooks e serviços de mensageria Kafka e AWS SQS, aplicações frond-end: mobile, web e desktop. Também possuo
+             conhecimento em armazenamento e leitura de dados com AWS S3, Firebase Firestore, além de banco de dados relacionais
+             como MySQL e PostgreSQL. Também possuo experiência com Firebase Authentication e Storage.
+           </span>
         </div>
       </div>
     </section>
     <section class="section-default">
-      <span class="title-section">EXPERIÊNCIA EM</span>
-      <div class="app-flex app-flex-wrap app-justify-content-space-between app-w100">
-        <div class="badge-xxl default" v-for="(item, key) in list" :key="`${item.title}-${key}`">
-          <div class="icon">
-            <img :src="item.src" :alt="item.title"/>
+      <span class="title-section">TRAJETÓRIA</span>
+      <div class="trajectory">
+        <div class="trail"></div>
+        <div class="item-trajectory" v-for="(trajectory, tKey) in MockTrajectories" :key="`trajectory-${tKey}`">
+          <div class="left-side" :class="{ 'html-side': tKey % 2 != 0 }">
+            <span class="font-color-brown-900" v-if="tKey % 2 === 0">
+              {{ trajectory.text }}
+            </span>
+            <div v-else
+                 v-for="(html, hKey) in trajectory.html" :key="`html-${hKey}`"
+                 class="resume-year">
+              <div class="resume-images" v-if="html.type === 'images'">
+                <img v-for="(image, iKey) in html.data"
+                     class="resume-image"
+                     :key="`image-${iKey}`"
+                     :src="image.url"
+                     :alt="image.text"
+                     width="50px"
+                />
+              </div>
+              <div class="resume-links" v-else-if="html.type === 'links'">
+                <div class="links-title">
+                  {{ html.text }}
+                  <div class="divisor"></div>
+                </div>
+                <a v-for="(link, lKey) in html.data"
+                   :key="`link-${lKey}`"
+                   class="resume-link"
+                   :href="link.url"
+                   target="_blank" rel="noopener noreferrer">
+                  {{ link.text }}
+                </a>
+              </div>
+            </div>
           </div>
-          <span>{{ item.title }}</span>
+          <div class="pointer-time" :class="{ 'first-pointer': tKey === 0 }">
+            {{ trajectory.year }}
+          </div>
+          <div class="pointer-end" v-if="tKey === (MockTrajectories.length - 1)">
+            ...
+          </div>
+          <div class="right-side" :class="{ 'html-side': tKey % 2 === 0 }">
+            <span class="font-color-brown-900" v-if="tKey % 2 != 0">
+              {{ trajectory.text }}
+            </span>
+            <div v-else
+                 v-for="(html, hKey) in trajectory.html" :key="`html-${hKey}`"
+                 class="resume-year">
+              <div class="resume-images" v-if="html.type === 'images'">
+                <img v-for="(image, iKey) in html.data"
+                     :key="`image-${iKey}`"
+                     class="resume-image"
+                     :src="image.url"
+                     :alt="image.text"
+                     width="50px"
+                />
+              </div>
+              <div class="resume-links" v-else-if="html.type === 'links'">
+                <div class="links-title">
+                  {{ html.text }}
+                  <div class="divisor"></div>
+                </div>
+                <a v-for="(link, lKey) in html.data"
+                   :key="`link-${lKey}`"
+                   class="resume-link"
+                   :href="link.url"
+                   target="_blank" rel="noopener noreferrer">
+                  {{ link.text }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-default app-mt-2">
+      <span class="title-section">EXPERIÊNCIA</span>
+      <div class="app-flex app-flex-direction-column app-w100">
+        <div class="card-experience"
+             v-for="(tech, techKey) in MockTechnologies"
+             :key="`tech-${techKey}`">
+          <span class="title-card-experience"><div class="divisor"></div>{{ tech.title }}<div class="divisor"></div></span>
+          <div class="badge-xxl badge-blue-dark-2"
+               v-for="(line, lineKey) in tech.badges"
+               :key="`line-${lineKey}`">
+            <div class="icon">
+              <img :src="line.src" :alt="line.title" :width="line.title === 'JAVA' ? '25px' : '15px'"/>
+            </div>
+            <span>{{ line.title }}</span>
+          </div>
         </div>
       </div>
     </section>
@@ -87,5 +121,5 @@ const list = ref([
 </template>
 
 <style scoped lang="scss">
-@import "assets/style/variables.scss";
+@import "assets/style/homepage";
 </style>

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  target: 'static',
+  css: ["material-icons/iconfont/material-icons.css"],
+  //target: 'static',
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   app: {
@@ -17,14 +18,16 @@ export default defineNuxtConfig({
         },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'
-        }
+          href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Fira+Code:wght@300..700&display=swap'
+        },
       ]
     },
   },
   runtimeConfig: {
     public: {
-      gtagId: 'G-KDCM80SSV7',
+      apiBaseUrl: process.env.NODE_ENV === 'production'
+                ? 'https://backoffice.fly.dev/api/v1'
+                : 'http://localhost:3000/api/v1'
     }
   }
 })
