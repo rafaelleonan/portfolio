@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import {useHead} from "#imports";
 import {MockCertificates} from "~/data/mock-certificates";
+import {onMounted, nextTick} from "vue";
 
 useHead({
   title: 'Certificações',
 });
+
+onMounted(() => {
+  nextTick(() => {
+    window.scrollTo(0, 0);
+  });
+})
 
 </script>
 

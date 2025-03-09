@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, reactive, ref, computed} from "vue";
+import {onMounted, reactive, ref, computed, nextTick} from "vue";
 import { useRoute, useRouter } from 'vue-router';
 import {useHead} from '#imports';
 import type {
@@ -185,6 +185,9 @@ onMounted(() => {
       statusMessage: 'Página não encontrada!!!'
     })
   }
+  nextTick(() => {
+    window.scrollTo(0, 0);
+  });
 });
 </script>
 

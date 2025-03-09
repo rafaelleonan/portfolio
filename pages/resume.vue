@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {ref} from 'vue'
+import {nextTick, onMounted, ref} from 'vue'
 import { useHead } from '#imports';
 import 'vue-pdf-embed/dist/styles/annotationLayer.css'
 import 'vue-pdf-embed/dist/styles/textLayer.css'
@@ -36,6 +36,12 @@ const downloadPdf = () => {
     window.open(pdfUrl.value, '_blank');
   }
 }
+
+onMounted(() => {
+  nextTick(() => {
+    window.scrollTo(0, 0);
+  });
+})
 
 </script>
 

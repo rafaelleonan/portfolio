@@ -3,6 +3,7 @@ import { useHead } from '#imports';
 import { useRouter } from 'vue-router';
 import { MockProjects } from "~/data/mock-projects";
 import type {Project} from "~/interfaces/projects";
+import {nextTick, onMounted} from "vue";
 
 useHead({
   title: 'Projetos',
@@ -32,6 +33,12 @@ const getSlideClass = (index: number, project: Project) => {
   if (index < project.current_index) return 'next';
   return '';
 };
+
+onMounted(() => {
+  nextTick(() => {
+    window.scrollTo(0, 0);
+  });
+})
 
 </script>
 
