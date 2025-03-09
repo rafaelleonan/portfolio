@@ -19,3 +19,7 @@ export interface GenericOption {
     label: string
     value: string
 }
+
+export interface ImageExternal {
+    src: string
+}

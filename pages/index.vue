@@ -14,7 +14,7 @@ useHead({
       <span class="title-section">SOBRE MIM</span>
       <div class="app-card">
         <div class="card-body">
-           <span class="font-color-brown-900">
+           <span>
              Sou desenvolvedor full stack com experiência em desenvolvimento de aplicações back-end: APIs RESTful,
              serviços agendados (Cron Service), Webhooks e serviços de mensageria Kafka e AWS SQS, aplicações frond-end: mobile, web e desktop. Também possuo
              conhecimento em armazenamento e leitura de dados com AWS S3, Firebase Firestore, além de banco de dados relacionais
@@ -23,13 +23,13 @@ useHead({
         </div>
       </div>
     </section>
-    <section class="section-default">
+    <section class="section-default app-mt-2">
       <span class="title-section">TRAJETÓRIA</span>
       <div class="trajectory">
         <div class="trail"></div>
         <div class="item-trajectory" v-for="(trajectory, tKey) in MockTrajectories" :key="`trajectory-${tKey}`">
           <div class="left-side" :class="{ 'html-side': tKey % 2 != 0 }">
-            <span class="font-color-brown-900" v-if="tKey % 2 === 0">
+            <span v-if="tKey % 2 === 0">
               {{ trajectory.text }}
             </span>
             <div v-else
@@ -66,7 +66,7 @@ useHead({
             ...
           </div>
           <div class="right-side" :class="{ 'html-side': tKey % 2 === 0 }">
-            <span class="font-color-brown-900" v-if="tKey % 2 != 0">
+            <span v-if="tKey % 2 != 0">
               {{ trajectory.text }}
             </span>
             <div v-else

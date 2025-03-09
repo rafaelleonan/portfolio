@@ -2,8 +2,6 @@ import {reactive} from "#imports";
 import type {BadgeCategory, BadgeTech} from "~/interfaces/homepage";
 import type {Trajectory} from "~/interfaces/geral";
 
-
-
 const Languages = reactive<BadgeTech[]>([
     { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVASCRIPT" },
     { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fts.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "TYPESCRIPT" },
