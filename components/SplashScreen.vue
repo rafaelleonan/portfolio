@@ -41,8 +41,8 @@ watch(
     () => count.value,
     (newValue) => {
       const start = animatedCount.value;
-      const end = Math.min(newValue, total.value);
-      const duration = 1000; // Duração da animação em ms
+      const end = Math.min((newValue / total.value) * 100, 100);
+      const duration = 1000;
       let startTime = null;
 
       function animate(time) {
@@ -51,11 +51,11 @@ watch(
 
         if (progressTime < 1) {
           animatedCount.value = Math.floor(start + (end - start) * progressTime);
-          progress.value = (animatedCount.value / total.value) * 100;
+          progress.value = animatedCount.value;
           requestAnimationFrame(animate);
         } else {
-          animatedCount.value = end;
-          progress.value = (end / total.value) * 100;
+          animatedCount.value = Math.floor(end);
+          progress.value = animatedCount.value;
         }
       }
 

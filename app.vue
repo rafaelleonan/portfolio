@@ -127,6 +127,7 @@ const preloadCertificatesImages = async () => {
 
 onMounted(async () => {
   counting.value = 0
+  loading.value = true;
   info.value = []
   await preloadTechnologiesImages();
   await preloadTrajectoriesImages();
@@ -135,7 +136,8 @@ onMounted(async () => {
   setTimeout(() => {
     loading.value = false;
     counting.value = 0
-  }, 1500)
+    info.value = []
+  }, 800)
 });
 </script>
 
