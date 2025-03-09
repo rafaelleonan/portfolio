@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { useHead } from '#imports'
 import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
+import {onMounted, nextTick} from "vue";
 
 useHead({
   title: 'Portfólio',
 });
+
+onMounted(() => {
+  nextTick(() => {
+    window.scrollTo(0, 0);
+  });
+})
 
 </script>
 
