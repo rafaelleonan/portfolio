@@ -6,7 +6,7 @@ import {useCountLoading, useLoading, useInfoLoading} from "~/composables/useLoad
 import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
 import {MockProjects} from "~/data/mock-projects";
 import {MockCertificates} from "~/data/mock-certificates";
-import {onMounted} from "vue";
+import {onMounted, nextTick} from "vue";
 
 const loading = useLoading();
 const counting = useCountLoading();
@@ -137,7 +137,10 @@ onMounted(async () => {
     loading.value = false;
     counting.value = 0
     info.value = []
-    window.scrollTo(0, 0);
+
+    nextTick(() => {
+      window.scrollTo(0, 0);
+    });
   }, 800)
 });
 </script>
