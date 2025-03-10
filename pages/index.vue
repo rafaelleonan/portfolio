@@ -7,12 +7,6 @@ useHead({
   title: 'Portfólio',
 });
 
-onMounted(() => {
-  nextTick(() => {
-    window.scrollTo(0, 0);
-  });
-})
-
 </script>
 
 <template>
