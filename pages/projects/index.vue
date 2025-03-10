@@ -34,12 +34,6 @@ const getSlideClass = (index: number, project: Project) => {
   return '';
 };
 
-onMounted(() => {
-  nextTick(() => {
-    window.scrollTo(0, 0);
-  });
-})
-
 </script>
 
 <template>

@@ -185,9 +185,6 @@ onMounted(() => {
       statusMessage: 'Página não encontrada!!!'
     })
   }
-  nextTick(() => {
-    window.scrollTo(0, 0);
-  });
 });
 </script>
 
