@@ -15,20 +15,20 @@ const isOpen = ref(false);
 const isOpenTwo = ref(false);
 
 const toggleOptionSelectTypeProject = (option: string) => {
-  if (!filterCertificateTypeSelected.value.some((o) => o === option)) {
+  if (!filterCertificateTypeSelected.value.some((o) => o.toUpperCase() === option.toUpperCase())) {
     filterCertificateTypeSelected.value.push(option.toUpperCase());
     searchProjectType.value = ""
   } else {
-    filterCertificateTypeSelected.value = filterCertificateTypeSelected.value.filter((opt) => opt !== option);
+    filterCertificateTypeSelected.value = filterCertificateTypeSelected.value.filter((opt) => opt.toUpperCase() !== option.toUpperCase());
   }
 };
 
 const toggleOptionSelect = (option: string) => {
-  if (!filterCertificateTechSelected.value.some((o) => o === option)) {
+  if (!filterCertificateTechSelected.value.some((o) => o.toUpperCase() === option.toUpperCase())) {
     filterCertificateTechSelected.value.push(option.toUpperCase());
     searchTechnology.value = ""
   } else {
-    filterCertificateTechSelected.value = filterCertificateTechSelected.value.filter((opt) => opt !== option);
+    filterCertificateTechSelected.value = filterCertificateTechSelected.value.filter((opt) => opt.toUpperCase() !== option.toUpperCase());
   }
 };
 
@@ -227,7 +227,7 @@ useHead({
                        v-for="(tech, techKey) in option.badges"
                        :key="`option-key-tech-${techKey}`"
                        :class="{
-                       'selected': filterCertificateTechSelected.some((o) => o === tech.title),
+                       'selected': filterCertificateTechSelected.some((o) => o.toUpperCase() === tech.title.toUpperCase()),
                        'searched': searchTechnology.toUpperCase() === tech.title.toUpperCase()
                      }"
                        @click="toggleOptionSelect(tech.title)"

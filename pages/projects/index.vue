@@ -90,20 +90,20 @@ const stopDrag = () => {
 };
 
 const toggleOptionSelectTypeProject = (option: string) => {
-  if (!filterProjectTypeSelected.value.some((o) => o === option)) {
-    filterProjectTypeSelected.value.push(option);
+  if (!filterProjectTypeSelected.value.some((o) => o.toUpperCase() === option.toUpperCase())) {
+    filterProjectTypeSelected.value.push(option.toUpperCase());
     searchProjectType.value = ""
   } else {
-    filterProjectTypeSelected.value = filterProjectTypeSelected.value.filter((opt) => opt !== option);
+    filterProjectTypeSelected.value = filterProjectTypeSelected.value.filter((opt) => opt.toUpperCase() !== option.toUpperCase());
   }
 };
 
 const toggleOptionSelect = (option: string) => {
-  if (!filterProjectTechSelected.value.some((o) => o === option)) {
-    filterProjectTechSelected.value.push(option);
+  if (!filterProjectTechSelected.value.some((o) => o.toUpperCase() === option.toUpperCase())) {
+    filterProjectTechSelected.value.push(option.toUpperCase());
     searchTechnology.value = ""
   } else {
-    filterProjectTechSelected.value = filterProjectTechSelected.value.filter((opt) => opt !== option);
+    filterProjectTechSelected.value = filterProjectTechSelected.value.filter((opt) => opt.toUpperCase() !== option.toUpperCase());
   }
 };
 
@@ -123,11 +123,11 @@ const computedProjects = computed(() => {
   let projects = MockProjects
 
   if (filterProjectTypeSelected.value.length > 0) {
-    projects = projects.filter((project) => project.type_project.some((type: string) => filterProjectTypeSelected.value.includes(type)))
+    projects = projects.filter((project) => project.type_project.some((type: string) => filterProjectTypeSelected.value.includes(type.toUpperCase())))
   }
 
   if (filterProjectTechSelected.value.length > 0) {
-    projects = projects.filter((project) => project.technologies.some((tech: Technology) => filterProjectTechSelected.value.includes(tech.name)))
+    projects = projects.filter((project) => project.technologies.some((tech: Technology) => filterProjectTechSelected.value.includes(tech.name.toUpperCase())))
   }
 
   if (filterProjectName.value.trim().length > 0) {
@@ -249,7 +249,7 @@ onUnmounted(() => {
                 <div class="option"
                      @click="toggleOptionSelectTypeProject(option)"
                      :class="{
-                       'selected': filterProjectTypeSelected.some((o) => o === option),
+                       'selected': filterProjectTypeSelected.some((o) => o.toUpperCase() === option.toUpperCase()),
                        'searched': searchProjectType.toUpperCase() === option.toUpperCase()
                      }"
                 >
@@ -297,7 +297,7 @@ onUnmounted(() => {
                      v-for="(tech, techKey) in option.badges"
                      :key="`option-key-tech-${techKey}`"
                      :class="{
-                       'selected': filterProjectTechSelected.some((o) => o === tech.title),
+                       'selected': filterProjectTechSelected.some((o) => o.toUpperCase() === tech.title.toUpperCase()),
                        'searched': searchTechnology.toUpperCase() === tech.title.toUpperCase()
                      }"
                      @click="toggleOptionSelect(tech.title)"
