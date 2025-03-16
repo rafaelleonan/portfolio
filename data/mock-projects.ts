@@ -522,6 +522,202 @@ export const MockProjects = reactive<Project[]>([
                 ]
             }
         ]
+    },
+    {
+        "id": 3,
+        "title": "CALCULADORA DE JUROS SIMPLES/COMPOSTOS",
+        "type_project": ["Desktop", "Frontend"],
+        "current_index": 0,
+        "description": `Uma aplicação desktop simples desenvolvida em Java com o intuito de calcular juros simples e compostos.
+                        Esse projeto foi desenvolvido durante o curso Técnico em Informática que realizei no período de 2017 à 2019.`,
+        "post_date": "11/01/2025 19:55",
+        "images": [
+            { "alt": "Tela inicial", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/tela-inicial.png" },
+            { "alt": "Formulário de juros simples - 1", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-1.png" },
+            { "alt": "Formulário de juros simples - 2", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-2.png" },
+            { "alt": "Formulário de juros simples - 3", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-3.png" },
+            { "alt": "Formulário de juros simples - 4", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-4.png" },
+            { "alt": "Formulário de juros compostos - 1", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-1.png" },
+            { "alt": "Formulário de juros compostos - 2", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-2.png" },
+            { "alt": "Formulário de juros compostos - 3", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-3.png" },
+            { "alt": "Formulário de juros compostos - 4", "src": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-4.png" },
+        ],
+        "external_links": [
+            {
+                "label": "Repositório do projeto",
+                "url": "https://github.com/rafaelleonan/calculadora-juros-java"
+            },
+        ],
+        "technologies": [
+            { "name": "JAVA", "version": "8", "icon_url": "https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjava.svg?alt=media&token=fcc57e6f-5fb4-4a97-9fd9-71db7faf7d7b" },
+        ],
+        "sections": [
+            {
+                "id": 7,
+                "title": "Sobre o projeto",
+                "order": 1,
+                "components": [
+                    {
+                        "id": 1,
+                        "type": "text",
+                        "content": `<p>Uma aplicação desktop simples desenvolvida em Java com o intuito de calcular juros simples e compostos.
+                        Esse projeto foi desenvolvido durante o curso Técnico em Informática que realizei no período de 2017 à 2019.</p>`,
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "title": "Por tela",
+                "order": 2,
+                "components": [
+                    {
+                        "id": 2,
+                        "type": "carousel_image_with_text",
+                        "content": {
+                            "current_index": 0,
+                            "items": [
+                                {
+                                    "id": 1,
+                                    "title": "Tela inicial",
+                                    "text": `Essa tela contém as duas opções disponíveis na calculadora, juros simples ou juros compostos.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/tela-inicial.png"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Tela de juros simples - 1",
+                                    "text": `Essa tela contém o formulário de juros simples vazio para ser preenchido e realizar o cálculo.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-1.png"
+                                },
+                                {
+                                    "id": 3,
+                                    "title": "Tela de juros simples - 2",
+                                    "text": `Essa tela contém o formulário de juros simples preenchido e com o cálculo realizado, exibindo o resultando no final.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-2.png"
+                                },
+                                {
+                                    "id": 4,
+                                    "title": "Tela de juros simples - 3",
+                                    "text": `Essa tela contém o formulário de juros simples preenchido e com o dropdown "Tipo Período" aberto com as opções disponíveis.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-3.png"
+                                },
+                                {
+                                    "id": 5,
+                                    "title": "Tela de juros simples - 4",
+                                    "text": `Essa tela contém o formulário de juros composto preenchido e com o dropdown "Tipo de Taxa" aberto com as opções disponíveis.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-simples-4.png"
+                                },
+                                {
+                                    "id": 6,
+                                    "title": "Tela de juros composto - 1",
+                                    "text": `Essa tela contém o formulário de juros composto vazio para ser preenchido e realizar o cálculo.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-1.png"
+                                },
+                                {
+                                    "id": 7,
+                                    "title": "Tela de juros composto - 2",
+                                    "text": `Essa tela contém o formulário de juros composto preenchido e com o cálculo realizado, exibindo o resultando no final.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-2.png"
+                                },
+                                {
+                                    "id": 8,
+                                    "title": "Tela de juros composto - 3",
+                                    "text": `Essa tela contém o formulário de juros composto preenchido e com o dropdown "Tipo Período" aberto com as opções disponíveis.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-3.png"
+                                },
+                                {
+                                    "id": 9,
+                                    "title": "Tela de juros composto - 4",
+                                    "text": `Essa tela contém o formulário de juros composto preenchido e com o dropdown "Tipo de Taxa" aberto com as opções disponíveis.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/calculadora-juros-java/main/assets/juros-composto-4.png"
+                                },
+                            ]
+                        }
+                    },
+                ]
+            },
+            {
+                "id": 9,
+                "title": "Baixando e executando localmente",
+                "order": 3,
+                "components": [
+                    {
+                        "id": 4,
+                        "type": "text",
+                        "content": `<p>É necessário ter instalado e configurado em máquina o <b>JDK 8</b> ou superior 
+                            com seus binários adicionados ao <b>$PATH</b>.</p>`,
+                    },
+                    {
+                        "id": 5,
+                        "type": "code_or_instructions",
+                        "content": [
+                            {
+                                "title": "Instalando e executando via terminal",
+                                "instructions": [
+                                    {
+                                        "title": "Clonar o projeto:",
+                                        "type": "code",
+                                        "content": "git clone https://github.com/rafaelleonan/calculadora-juros-java"
+                                    },
+                                    {
+                                        "title": "Acessar o diretório raiz do projeto:",
+                                        "type": "code",
+                                        "content": "cd calculadora-juros-java/src"
+                                    },
+                                    {
+                                        "title": "Compile os arquivos java, utilizando javac:",
+                                        "type": "code",
+                                        "content": "javac calcularjuros/*.java"
+                                    },
+                                    {
+                                        "title": "Executar o projeto:",
+                                        "type": "code",
+                                        "content": "java calcularjuros.TelaInicial"
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            }
+        ],
+        "comments": [
+            {
+                "id": 1,
+                "user_name": "John Doe",
+                "content": "Great project! Loved the design.",
+                "posted_at": "10/12/2024 ás 17:11",
+                "replies": [
+                    {
+                        "id": 2,
+                        "user_name": "Author",
+                        "content": "Thank you, John!",
+                        "posted_at": "11/12/2024 ás 12:35",
+                        "reactions": [
+                            {
+                                "id": 1,
+                                "count": 1,
+                                "list_users_id": [1],
+                                "reaction_type": "like",
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "id": 2,
+                        "count": 3,
+                        "list_users_id": [1, 3, 4],
+                        "reaction_type": "like",
+                    },
+                    {
+                        "id": 3,
+                        "count": 5,
+                        "list_users_id": [1, 5, 6, 7, 13],
+                        "reaction_type": "smile",
+                    }
+                ]
+            }
+        ]
     }
 ])
 

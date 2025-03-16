@@ -348,12 +348,17 @@
           flex-direction: column;
           width: 50%;
           height: 100%;
-          background-color: $rl-app-white;
-          color: $rl-app-grey-900;
+          background-color: $rl-app-brown-100;
+          color: $rl-app-brown-900;
           transition: all 0.2s ease-in;
           text-align: justify;
           font-size: $rl-app-desktop-fs-xm;
+          font-style: italic;
+          font-weight: 500;
           overflow: hidden;
+          border-radius: $rl-app-desktop-br-sm 0 0 $rl-app-desktop-br-sm;
+          padding: 4px 8px;
+          border-left: 2px solid $rl-app-brown-500;
         }
 
         .image-card {
