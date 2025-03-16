@@ -27,7 +27,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Lógica de programação"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/introducao-a-programacao-com-ruby-e-jogos-2",
@@ -41,7 +41,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Lógica de programação"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/introducao-a-programacao-com-ruby-e-jogos-3",
@@ -55,7 +55,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Lógica de programação"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/ruby-on-rails-5",
@@ -222,7 +222,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Kotlin"},
             {"tag": "default-app", "name": "POO"},
         ],
-        "tags": ["Lógica", "Terminal", "POO"]
+        "tags": ["Lógica", "Terminal", "POO", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-heranca-polimorfismo-interface",
@@ -236,7 +236,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Kotlin"},
             {"tag": "default-app", "name": "POO"},
         ],
-        "tags": ["Lógica", "Terminal", "POO"]
+        "tags": ["Lógica", "Terminal", "POO", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-recursos-da-linguagem-com-pacotes-e-composicao",
@@ -249,7 +249,7 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-exceptions-null-safety",
@@ -262,7 +262,7 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-introducao-collections-arrays-listas",
@@ -275,7 +275,7 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-recursos-do-paradigma-funcional",
@@ -288,7 +288,7 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-collections-set-map",
@@ -301,7 +301,7 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
         ],
-        "tags": ["Lógica", "Terminal"]
+        "tags": ["Lógica", "Terminal", "Backend"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-87bd7a34-7c0e-47a4-91fc-c8583628fe42/",
@@ -315,7 +315,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Elixir"},
             {"tag": "default-app", "name": "Programação funcional"}
         ],
-        "tags": ["Lógica", "Terminal", "Progamação funcional"]
+        "tags": ["Lógica", "Terminal", "Progamação funcional", "Backend"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-9ad3b702-32f2-4e9f-a1a1-55b05dba5596/",
@@ -329,7 +329,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Elixir"},
             {"tag": "default-app", "name": "Programação funcional"}
         ],
-        "tags": ["Lógica", "Terminal", "Progamação funcional"]
+        "tags": ["Lógica", "Terminal", "Progamação funcional", "Backend"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-277a8a2d-a235-48aa-8ff3-6b14692b4ad0/",
@@ -358,7 +358,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Linux"},
             {"tag": "default-app", "name": "ShellScript"}
         ],
-        "tags": ["Terminal", "Lógica"]
+        "tags": ["Terminal", "Lógica", "Backend"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-bb81955d-6f98-4fbc-9b5d-3602bc849d0d/",
@@ -543,7 +543,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Terminal"},
             {"tag": "default-app", "name": "Apache"}
         ],
-        "tags": ["Terminal"]
+        "tags": ["Terminal", "Backend"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-e29bd996-0660-4e72-9aa1-8d30bd172f05/",
