@@ -365,4 +365,19 @@ onMounted(() => {
     }
   }
 }
+
+@media (max-width: 600px) {
+  .notifications {
+    left: 20px;
+    right: 20px;
+    transform: translateX(0%);
+
+    .notification {
+      box-shadow: 2px 2px 8px $rl-app-brown-900;
+      gap: 16px;
+      padding: 8px 12px;
+      font-size: $rl-app-desktop-fs-xs;
+    }
+  }
+}
 </style>
