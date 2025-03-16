@@ -269,6 +269,23 @@ section {
           background-color: $rl-app-blue-500;
           color: $rl-app-brown-500;
         }
+
+        .icon-dropdown {
+          cursor: pointer;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 25px;
+          height: 25px;
+          border-radius: $rl-app-desktop-br-sm;
+          font-size: $rl-app-desktop-fs-md;
+          color: $rl-app-brown-500;
+          background-color: $rl-app-brown-100;
+        }
       }
 
       .dropdown {

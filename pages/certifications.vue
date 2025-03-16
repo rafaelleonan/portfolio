@@ -112,6 +112,16 @@ const computedCertifications = computed(() => {
   return certificates
 })
 
+const toggleSelect = () => {
+  isOpen.value = !isOpen.value
+  if (isOpen.value) isOpenTwo.value = false
+}
+
+const toggleSelectTwo = () => {
+  isOpenTwo.value = !isOpenTwo.value
+  if (isOpenTwo.value) isOpen.value = false
+}
+
 onMounted(() => {
   document.addEventListener("click", closeDropdown);
   document.addEventListener("click", closeDropdownTwo);
@@ -140,7 +150,7 @@ useHead({
         </div>
         <div class="form-filter col-4">
           <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="isOpen = !isOpen">
+            <div class="input-box" @click="toggleSelect">
               <input
                   type="text"
                   v-model="searchProjectType"
@@ -149,9 +159,14 @@ useHead({
               />
               <span class="material-icons clear-all"
                     @click="clearFilterProjectType()"
-                    v-show="filterCertificateTypeSelected.length > 0 || searchProjectType.length > 0"
+                    v-if="(filterCertificateTypeSelected.length > 0 || searchProjectType.length > 0) && !isOpen"
               >
                 close
+              </span>
+              <span class="material-icons icon-dropdown"
+                    v-else
+              >
+                {{ isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
             </div>
   
@@ -164,7 +179,7 @@ useHead({
                 <div class="option"
                      @click="toggleOptionSelectTypeProject(option)"
                      :class="{
-                       'selected': filterCertificateTypeSelected.some((o) => o === option),
+                       'selected': filterCertificateTypeSelected.some((o) => o.toUpperCase() === option.toUpperCase()),
                        'searched': searchProjectType.toUpperCase() === option.toUpperCase()
                      }"
                 >
@@ -180,7 +195,7 @@ useHead({
         </div>
         <div class="form-filter col-4">
           <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="isOpenTwo = !isOpenTwo">
+            <div class="input-box" @click="toggleSelectTwo">
               <input
                   type="text"
                   v-model="searchTechnology"
@@ -189,9 +204,14 @@ useHead({
               />
               <span class="material-icons clear-all"
                     @click="clearFilterTechnologies()"
-                    v-show="filterCertificateTechSelected.length > 0 || searchTechnology.length > 0"
+                    v-if="(filterCertificateTechSelected.length > 0 || searchTechnology.length > 0) && !isOpenTwo"
               >
                 close
+              </span>
+              <span class="material-icons icon-dropdown"
+                    v-else
+              >
+                {{ isOpenTwo ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
             </div>
   

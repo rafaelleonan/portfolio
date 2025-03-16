@@ -187,6 +187,16 @@ const listTechnologiesSearch = computed((): BadgeCategory[] => {
   return listTechnologies
 })
 
+const toggleSelect = () => {
+  isOpen.value = !isOpen.value
+  if (isOpen.value) isOpenTwo.value = false
+}
+
+const toggleSelectTwo = () => {
+  isOpenTwo.value = !isOpenTwo.value
+  if (isOpenTwo.value) isOpen.value = false
+}
+
 onMounted(initCarousels);
 
 onUnmounted(() => {
@@ -210,7 +220,7 @@ onUnmounted(() => {
         </div>
         <div class="form-filter col-4">
           <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="isOpen = !isOpen">
+            <div class="input-box" @click="toggleSelect">
               <input
                   type="text"
                   v-model="searchProjectType"
@@ -219,9 +229,14 @@ onUnmounted(() => {
               />
               <span class="material-icons clear-all"
                     @click="clearFilterProjectType()"
-                    v-show="filterProjectTypeSelected.length > 0 || searchProjectType.length > 0"
+                    v-if="(filterProjectTypeSelected.length > 0 || searchProjectType.length > 0) && !isOpen"
               >
                 close
+              </span>
+              <span class="material-icons icon-dropdown"
+                    v-else
+              >
+                {{ isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
             </div>
 
@@ -250,7 +265,7 @@ onUnmounted(() => {
         </div>
         <div class="form-filter col-4">
           <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="isOpenTwo = !isOpenTwo">
+            <div class="input-box" @click="toggleSelectTwo">
               <input
                   type="text"
                   v-model="searchTechnology"
@@ -259,9 +274,14 @@ onUnmounted(() => {
               />
               <span class="material-icons clear-all"
                     @click="clearFilterTechnologies()"
-                    v-show="filterProjectTechSelected.length > 0 || searchTechnology.length > 0"
+                    v-if="(filterProjectTechSelected.length > 0 || searchTechnology.length > 0) && !isOpenTwo"
               >
                 close
+              </span>
+              <span class="material-icons icon-dropdown"
+                    v-else
+              >
+                {{ isOpenTwo ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
             </div>
 
