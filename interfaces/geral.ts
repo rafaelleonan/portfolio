@@ -20,6 +20,7 @@ export interface GenericOption {
     value: string
 }
 
-export interface ImageExternal {
-    src: string
+export interface LogsLoading {
+    local: string
+    value: string
 }

@@ -1,4 +1,4 @@
-interface Tas {
+export interface Tech {
     tag: string
     name: string
 }
@@ -11,5 +11,6 @@ export interface Certificates {
     description: string
     issuer: string
     issuer_date: string
-    techs: Tas[]
+    techs: Tech[]
+    tags: string[]
 }

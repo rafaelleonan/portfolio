@@ -2,14 +2,27 @@
 import { useHead } from '#imports';
 import { useRouter } from 'vue-router';
 import { MockProjects } from "~/data/mock-projects";
-import type {Project} from "~/interfaces/projects";
-import {nextTick, onMounted} from "vue";
+import {MockTechnologies} from "~/data/mock-homepage";
+import type {Project, Technology} from "~/interfaces/projects";
+import {onMounted, onUnmounted, nextTick, ref, computed} from "vue";
+import type {BadgeCategory} from "~/interfaces/homepage";
 
 useHead({
   title: 'Projetos',
 });
 
 const router = useRouter();
+const carousels = ref<HTMLDivElement[]>([]);
+const isDragging = ref<boolean[]>([]);
+const startX = ref<number[]>([]);
+const startScrollLeft = ref<number[]>([]);
+const filterProjectName = ref('')
+const filterProjectTechSelected = ref<string[]>([])
+const searchTechnology = ref<string>("")
+const filterProjectTypeSelected = ref<string[]>([])
+const searchProjectType = ref<string>("")
+const isOpen = ref(false);
+const isOpenTwo = ref(false);
 
 const goToProject = (projectId: number) => {
   router.push(`/projects/${projectId}`);
@@ -34,16 +47,259 @@ const getSlideClass = (index: number, project: Project) => {
   return '';
 };
 
+const initCarousels = async () => {
+  await nextTick();
+  carousels.value.forEach((carousel: HTMLDivElement, index: number) => {
+    if (carousel) {
+      isDragging.value[index] = false;
+      startX.value[index] = 0;
+      startScrollLeft.value[index] = 0;
+    }
+  });
+
+  window.addEventListener("mousemove", onDrag);
+  window.addEventListener("mouseup", stopDrag);
+  window.addEventListener("touchmove", onDrag);
+  window.addEventListener("touchend", stopDrag);
+  document.addEventListener("click", closeDropdown);
+  document.addEventListener("click", closeDropdownTwo);
+};
+
+const startDrag = (event: MouseEvent | TouchEvent, index: number) => {
+  if (carousels.value[index]) {
+    isDragging.value[index] = true;
+    startX.value[index] = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+    startScrollLeft.value[index] = carousels.value[index].scrollLeft;
+    document.body.style.userSelect = "none";
+  }
+};
+
+const onDrag = (event: MouseEvent | TouchEvent) => {
+  carousels.value.forEach((carousel: HTMLDivElement, index: number) => {
+    if (isDragging.value[index] && carousel) {
+      const x = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+      const distance = x - startX.value[index];
+      carousel.scrollLeft = startScrollLeft.value[index] - distance;
+    }
+  });
+};
+
+const stopDrag = () => {
+  isDragging.value.fill(false);
+  document.body.style.userSelect = "auto";
+};
+
+const toggleOptionSelectTypeProject = (option: string) => {
+  if (!filterProjectTypeSelected.value.some((o) => o === option)) {
+    filterProjectTypeSelected.value.push(option);
+    searchProjectType.value = ""
+  } else {
+    filterProjectTypeSelected.value = filterProjectTypeSelected.value.filter((opt) => opt !== option);
+  }
+};
+
+const toggleOptionSelect = (option: string) => {
+  if (!filterProjectTechSelected.value.some((o) => o === option)) {
+    filterProjectTechSelected.value.push(option);
+    searchTechnology.value = ""
+  } else {
+    filterProjectTechSelected.value = filterProjectTechSelected.value.filter((opt) => opt !== option);
+  }
+};
+
+const closeDropdown = (event: Event) => {
+  if (!(event.target as HTMLElement).closest(".dropdown-container")) {
+    isOpen.value = false;
+  }
+};
+
+const closeDropdownTwo = (event: Event) => {
+  if (!(event.target as HTMLElement).closest(".dropdown-container")) {
+    isOpenTwo.value = false;
+  }
+};
+
+const computedProjects = computed(() => {
+  let projects = MockProjects
+
+  if (filterProjectTypeSelected.value.length > 0) {
+    projects = projects.filter((project) => project.type_project.some((type: string) => filterProjectTypeSelected.value.includes(type)))
+  }
+
+  if (filterProjectTechSelected.value.length > 0) {
+    projects = projects.filter((project) => project.technologies.some((tech: Technology) => filterProjectTechSelected.value.includes(tech.name)))
+  }
+
+  if (filterProjectName.value.trim().length > 0) {
+    projects = projects.filter((project) => project.title.toUpperCase().includes(filterProjectName.value.toUpperCase()))
+  }
+
+  return projects
+})
+
+const placeholderSelectTypeProject = (): string => {
+  if (filterProjectTypeSelected.value.length === 0) {
+    return 'TAGS'
+  } else if (filterProjectTypeSelected.value.length > 0 && filterProjectTypeSelected.value.length < 3) {
+    return filterProjectTypeSelected.value.join(", ")
+  } else {
+    return `${filterProjectTypeSelected.value.length} tags selecionadas...`
+  }
+}
+
+const clearFilterProjectType = () => {
+  filterProjectTypeSelected.value = []
+  searchProjectType.value = ""
+}
+
+const clearFilterTechnologies = () => {
+  filterProjectTechSelected.value = []
+  searchTechnology.value = ""
+}
+
+const placeholderSelectTechnology = (): string => {
+  if (filterProjectTechSelected.value.length === 0) {
+    return 'LINGUAGEM/FRAMEWORK'
+  } else if (filterProjectTechSelected.value.length > 0 && filterProjectTechSelected.value.length < 3) {
+    return filterProjectTechSelected.value.join(", ")
+  } else {
+    return `${filterProjectTechSelected.value.length} techs selecionadas...`
+  }
+}
+
+const listProjectTypesSearch = computed((): string[] => {
+  let value = searchProjectType.value
+  let listProjectTypes = ["Frontend", "Mobile", "Desktop", "Web", "Backend", "API RESTful", "Fullstack", "Design"]
+  if (value.trim().length > 0) {
+    return listProjectTypes.filter((f) => f.toLowerCase().includes(value.toLowerCase()))
+  }
+
+  return listProjectTypes
+})
+
+const listTechnologiesSearch = computed((): BadgeCategory[] => {
+  let value = searchTechnology.value
+  let listTechnologies = MockTechnologies
+  if (value.trim().length > 0) {
+    return listTechnologies.filter((f) => f.badges.filter((tech) => tech.title.toUpperCase().includes(value.toUpperCase())).length > 0)
+  }
+
+  return listTechnologies
+})
+
+onMounted(initCarousels);
+
+onUnmounted(() => {
+  window.removeEventListener("mousemove", onDrag);
+  window.removeEventListener("mouseup", stopDrag);
+  window.removeEventListener("touchmove", onDrag);
+  window.removeEventListener("touchend", stopDrag);
+  document.removeEventListener("click", closeDropdown);
+  document.removeEventListener("click", closeDropdownTwo);
+});
+
 </script>
 
 <template>
   <div class="page">
     <section class="section-default">
       <span class="title-section">MEUS PROJETOS</span>
+      <div class="form-filters">
+        <div class="form-filter col-4">
+          <input type="text" class="form-input" v-model="filterProjectName" placeholder="NOME PROJETO"/>
+        </div>
+        <div class="form-filter col-4">
+          <div class="dropdown-container" @click.stop>
+            <div class="input-box" @click="isOpen = !isOpen">
+              <input
+                  type="text"
+                  v-model="searchProjectType"
+                  :placeholder="placeholderSelectTypeProject()"
+                  class="input"
+              />
+              <span class="material-icons clear-all"
+                    @click="clearFilterProjectType()"
+                    v-show="filterProjectTypeSelected.length > 0 || searchProjectType.length > 0"
+              >
+                close
+              </span>
+            </div>
+
+            <ul v-if="isOpen" class="dropdown">
+              <li
+                  v-if="listProjectTypesSearch.length > 0"
+                  v-for="(option, key) in listProjectTypesSearch"
+                  :key="`option-${key}`"
+              >
+                <div class="option"
+                     @click="toggleOptionSelectTypeProject(option)"
+                     :class="{
+                       'selected': filterProjectTypeSelected.some((o) => o === option),
+                       'searched': searchProjectType.toUpperCase() === option.toUpperCase()
+                     }"
+                >
+                  {{ option }}
+                  <span class="material-icons remove">close</span>
+                </div>
+              </li>
+              <div class="not-found-results" v-else>
+                Nenhum resultado encontrado
+              </div>
+            </ul>
+          </div>
+        </div>
+        <div class="form-filter col-4">
+          <div class="dropdown-container" @click.stop>
+            <div class="input-box" @click="isOpenTwo = !isOpenTwo">
+              <input
+                  type="text"
+                  v-model="searchTechnology"
+                  :placeholder="placeholderSelectTechnology()"
+                  class="input"
+              />
+              <span class="material-icons clear-all"
+                    @click="clearFilterTechnologies()"
+                    v-show="filterProjectTechSelected.length > 0 || searchTechnology.length > 0"
+              >
+                close
+              </span>
+            </div>
+
+            <ul v-if="isOpenTwo" class="dropdown">
+              <li
+                  v-if="listTechnologiesSearch.length > 0"
+                  v-for="(option, key) in listTechnologiesSearch"
+                  :key="`option-${key}`"
+              >
+                <div class="select-group">
+                  <span class="title-group">{{ option.title }}</span>
+                  <div class="option-group"
+                     v-for="(tech, techKey) in option.badges"
+                     :key="`option-key-tech-${techKey}`"
+                     :class="{
+                       'selected': filterProjectTechSelected.some((o) => o === tech.title),
+                       'searched': searchTechnology.toUpperCase() === tech.title.toUpperCase()
+                     }"
+                     @click="toggleOptionSelect(tech.title)"
+                  >
+                    {{ tech.title }}
+                    <span class="material-icons remove">close</span>
+                  </div>
+                </div>
+              </li>
+              <div class="not-found-results" v-else>
+                Nenhum resultado encontrado
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="card-project"
-           v-for="(project, pKey) in MockProjects"
-           :key="`key_project_${pKey}`"
-            @click="goToProject(project.id)">
+         v-if="computedProjects.length > 0"
+         v-for="(project, pKey) in computedProjects"
+         :key="`key_project_${pKey}`"
+         @click="goToProject(project.id)"
+      >
         <div class="images-project">
           <div class="background-blur">
             <img class="background-image" :src="project.images[project.current_index].src" :alt="project.images[project.current_index].alt"/>
@@ -69,10 +325,35 @@ const getSlideClass = (index: number, project: Project) => {
             <span class="title">{{ project.title }}</span>
             <i class="material-icons">open_in_new</i>
           </div>
+          <div ref="carousel"
+               class="carousel-techs"
+               @mousedown.passive="(event: MouseEvent | TouchEvent) => startDrag(event, pKey)"
+               @touchstart.passive="(event: MouseEvent | TouchEvent) => startDrag(event, pKey)">
+            <div class="badge-xs slide-techs" v-for="(tech, techKey) in project.technologies" :key="`tech-key-${techKey}`">
+              <img :src="tech.icon_url" width="12px" :alt="tech.name" />
+              <div class="badge-title">{{ tech.name }}</div>
+              <div class="badge-version">{{ tech.version }}</div>
+            </div>
+          </div>
           <div class="text-resume">
             {{ project.description }}
           </div>
         </div>
+      </div>
+      <div class="not-found-projects" v-else-if="filterProjectName.length > 0 || filterProjectTechSelected.length > 0 || filterProjectTypeSelected.length > 0">
+        Nenhum resultado encontrado para os filtros aplicados
+        <div v-if="filterProjectName.length > 0" class="item-not-found">
+          NOME DO PROJETO: {{ filterProjectName }}
+        </div>
+        <div v-if="filterProjectTechSelected.length > 0" class="item-not-found">
+          TECNOLOGIAS: {{ filterProjectTechSelected.join(", ") }}
+        </div>
+        <div v-if="filterProjectTypeSelected.length > 0" class="item-not-found">
+          TAGS: {{ filterProjectTypeSelected.join(", ") }}
+        </div>
+      </div>
+      <div class="not-found-projects" v-else>
+        Nenhum projeto encontrado...
       </div>
       <div class="text-more-projects-after">
         Em breve mais projetos serão adicionados...

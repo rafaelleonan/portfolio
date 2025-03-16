@@ -7,6 +7,7 @@ export const MockProjects = reactive<Project[]>([
         "id": 1,
         "title": "SISTEMA PARA GESTÃO DE HOSPITAIS",
         "current_index": 0,
+        "type_project": ["Fullstack", "Design", "Frontend", "Backend", "API RESTful", "Web"],
         "description": `Esse projeto foi planejado e desenvolvido para uma cadeira da faculdade PRÁTICAS INTEGRATIVAS.
             Ele foi desenvolvido com o framework Vue js 3 para o frontend, consumindo os dados de uma REST Full APIs em GO com Fiber.
             O banco de dados utilizado é o PostgreSQL, para a avaliação do professor os 2 projetos(frontend e backend) foram hospedados
@@ -284,6 +285,7 @@ export const MockProjects = reactive<Project[]>([
     {
         "id": 2,
         "title": "APP SIMULADO ENEM",
+        "type_project": ["Design", "Mobile"],
         "current_index": 0,
         "description": `Esse projeto foi planejado juntamente com o Antônio Guilherme, com o intuito de auxiliar no estudo de pessoas
                                     que realizam o ENEM a se prepararem com simulados, com questões de provas anteriores ou simulados personalizados.

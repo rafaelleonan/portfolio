@@ -6,7 +6,8 @@ import {useCountLoading, useLoading, useInfoLoading} from "~/composables/useLoad
 import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
 import {MockProjects} from "~/data/mock-projects";
 import {MockCertificates} from "~/data/mock-certificates";
-import {onMounted, nextTick} from "vue";
+import {onMounted} from "vue";
+import {useHead} from "#imports";
 
 const loading = useLoading();
 const counting = useCountLoading();
@@ -126,6 +127,10 @@ const preloadCertificatesImages = async () => {
 };
 
 onMounted(async () => {
+  useHead({
+    title: 'Carregando recursos',
+  });
+
   counting.value = 0
   loading.value = true;
   info.value = []

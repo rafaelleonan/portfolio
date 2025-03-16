@@ -12,7 +12,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Flutter"},
             {"tag": "default-app", "name": "Dart"}
-        ]
+        ],
+        "tags": ["Mobile", "iOS", "Android", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/introducao-a-programacao-com-ruby-e-jogos-1",
@@ -25,7 +26,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Lógica de programação"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://cursos.alura.com.br/course/introducao-a-programacao-com-ruby-e-jogos-2",
@@ -38,7 +40,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Lógica de programação"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://cursos.alura.com.br/course/introducao-a-programacao-com-ruby-e-jogos-3",
@@ -51,7 +54,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Lógica de programação"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://cursos.alura.com.br/course/ruby-on-rails-5",
@@ -64,7 +68,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Ruby On Rails"}
-        ]
+        ],
+        "tags": ["Lógica", "Web", "Fullstack", "Backend", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/ruby-on-rails-5-validacao-atualizacao-partials-deploy",
@@ -77,7 +82,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Ruby"},
             {"tag": "default-app", "name": "Ruby On Rails"}
-        ]
+        ],
+        "tags": ["Lógica", "Web", "Fullstack", "Backend", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/vue-parte2",
@@ -91,7 +97,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Vue js"},
             {"tag": "default-app", "name": "SPA"},
             {"tag": "default-app", "name": "JavaScript"},
-        ]
+        ],
+        "tags": ["Web", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/go-lang-web",
@@ -103,7 +110,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2020",
         "techs": [
             {"tag": "default-app", "name": "GO"}
-        ]
+        ],
+        "tags": ["Web", "Fullstack", "Backend", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/golang",
@@ -115,7 +123,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2020",
         "techs": [
             {"tag": "default-app", "name": "GO"}
-        ]
+        ],
+        "tags": ["Web", "Fullstack", "Backend", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/go-lang-oo",
@@ -128,7 +137,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "GO"},
             {"tag": "default-app", "name": "POO"},
-        ]
+        ],
+        "tags": ["Backend","POO"]
     },
     {
         "link": "https://cursos.alura.com.br/course/go-validacoes-testes-paginas-html",
@@ -141,7 +151,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "GO"},
             {"tag": "default-app", "name": "HTML"},
-        ]
+        ],
+        "tags": ["Web", "Fullstack", "Backend", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/fundamentos-android-kotlin",
@@ -154,7 +165,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Android"},
             {"tag": "default-app", "name": "Kotlin"},
-        ]
+        ],
+        "tags": ["Android", "Mobile", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/android-kotlin-persistencia-dados-room",
@@ -167,7 +179,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Android"},
             {"tag": "default-app", "name": "Kotlin"},
-        ]
+        ],
+        "tags": ["Android", "Mobile", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/android-kotlin-personalize-app",
@@ -180,7 +193,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Android"},
             {"tag": "default-app", "name": "Kotlin"},
-        ]
+        ],
+        "tags": ["Android", "Mobile", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/android-kotlin-migrations-relacionamento-room",
@@ -193,7 +207,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Android"},
             {"tag": "default-app", "name": "Kotlin"},
-        ]
+        ],
+        "tags": ["Android", "Mobile", "Frontend"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-orientacao-objetos",
@@ -206,7 +221,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Kotlin"},
             {"tag": "default-app", "name": "POO"},
-        ]
+        ],
+        "tags": ["Lógica", "Terminal", "POO"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-heranca-polimorfismo-interface",
@@ -219,7 +235,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Kotlin"},
             {"tag": "default-app", "name": "POO"},
-        ]
+        ],
+        "tags": ["Lógica", "Terminal", "POO"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-recursos-da-linguagem-com-pacotes-e-composicao",
@@ -231,7 +248,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2024",
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-exceptions-null-safety",
@@ -243,7 +261,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2024",
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-introducao-collections-arrays-listas",
@@ -255,7 +274,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2024",
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-recursos-do-paradigma-funcional",
@@ -267,7 +287,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2024",
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://cursos.alura.com.br/course/kotlin-collections-set-map",
@@ -279,7 +300,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2024",
         "techs": [
             {"tag": "default-app", "name": "Kotlin"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-87bd7a34-7c0e-47a4-91fc-c8583628fe42/",
@@ -292,7 +314,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Elixir"},
             {"tag": "default-app", "name": "Programação funcional"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal", "Progamação funcional"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-9ad3b702-32f2-4e9f-a1a1-55b05dba5596/",
@@ -305,7 +328,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Elixir"},
             {"tag": "default-app", "name": "Programação funcional"}
-        ]
+        ],
+        "tags": ["Lógica", "Terminal", "Progamação funcional"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-277a8a2d-a235-48aa-8ff3-6b14692b4ad0/",
@@ -319,7 +343,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Docker"},
             {"tag": "default-app", "name": "Docker Swarm"},
             {"tag": "default-app", "name": "Kubernetes"}
-        ]
+        ],
+        "tags": ["DevOps"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-c6480bed-681d-4998-aeb6-4eb0048870d4/",
@@ -332,7 +357,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Linux"},
             {"tag": "default-app", "name": "ShellScript"}
-        ]
+        ],
+        "tags": ["Terminal", "Lógica"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-bb81955d-6f98-4fbc-9b5d-3602bc849d0d/",
@@ -346,7 +372,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Adobe XD"},
             {"tag": "default-app", "name": "Adobe PSD"},
             {"tag": "default-app", "name": "Design UX/UI"}
-        ]
+        ],
+        "tags": ["Design"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-50a90aec-6e77-48d4-9e13-f263c8014798/",
@@ -359,7 +386,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Figma"},
             {"tag": "default-app", "name": "Design UI"}
-        ]
+        ],
+        "tags": ["Design"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-89e500c7-7a6c-4f76-8922-9df58fcfc3aa/",
@@ -372,7 +400,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "iOS"},
             {"tag": "default-app", "name": "Swift"}
-        ]
+        ],
+        "tags": ["iOS", "Mobile", "Frontend"]
     },
     {
         "link": "https://drive.google.com/file/d/1QUKAcKbgH8OeyeVm6LdGp1WXj8FB263e/view",
@@ -384,7 +413,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2022",
         "techs": [
             {"tag": "default-app", "name": "GO"},
-        ]
+        ],
+        "tags": ["Lógica"]
     },
     {
         "link": "https://drive.google.com/file/d/12GSDLJHYbYuTUg2T_wFHm7ooKdIHwwHR/view?usp=drive_link",
@@ -396,7 +426,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2017",
         "techs": [
             {"tag": "default-app", "name": "HTML"}
-        ]
+        ],
+        "tags": ["Frontend", "Web"]
     },
     {
         "link": "https://drive.google.com/file/d/1bDJHnbezaj7JVvH_FoABUUBnCNftrIsE/view?usp=drive_link",
@@ -408,7 +439,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2017",
         "techs": [
             {"tag": "default-app", "name": "CSS"}
-        ]
+        ],
+        "tags": ["Frontend", "Web"]
     },
     {
         "link": "https://drive.google.com/file/d/10gM-_DNJdcjp5XaB64COdVrBQVqkHA2E/view?usp=drive_link",
@@ -420,7 +452,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2017",
         "techs": [
             {"tag": "default-app", "name": "HTML"}
-        ]
+        ],
+        "tags": ["Frontend", "Web"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-35c234e5-a20c-4466-9dbd-89339cdaf912/",
@@ -434,7 +467,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "React js"},
             {"tag": "default-app", "name": "JavaScript"},
             {"tag": "default-app", "name": "React Hooks"},
-        ]
+        ],
+        "tags": ["Frontend", "Web"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-faef641d-c803-4b98-805d-beb2600fda05/",
@@ -448,7 +482,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Node js"},
             {"tag": "default-app", "name": "JavaScript"},
             {"tag": "default-app", "name": "Rest API"},
-        ]
+        ],
+        "tags": ["Frontend", "Web", "API RESTful"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-84f78411-5168-4925-b7ff-a04f88405105/",
@@ -462,7 +497,9 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "React js"},
             {"tag": "default-app", "name": "JavaScript"},
             {"tag": "default-app", "name": "Express"},
-        ]
+            {"tag": "default-app", "name": "Typescript"},
+        ],
+        "tags": ["Frontend", "Web"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-a2af6082-8245-413b-beca-53b703a89409/",
@@ -475,7 +512,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "iOS"},
             {"tag": "default-app", "name": "Swift"}
-        ]
+        ],
+        "tags": ["iOS", "Mobile", "Frontend"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-4468e666-8938-4eac-b1c0-fc37c1a8a214/",
@@ -489,7 +527,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Python"},
             {"tag": "default-app", "name": "Django"},
             {"tag": "default-app", "name": "Rest API"}
-        ]
+        ],
+        "tags": ["Frontend", "Web", "API RESTful", "Fullstack", "Backend"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-275a3c3e-14c0-4e45-bb9c-9566f441ae31/",
@@ -503,7 +542,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Linux"},
             {"tag": "default-app", "name": "Terminal"},
             {"tag": "default-app", "name": "Apache"}
-        ]
+        ],
+        "tags": ["Terminal"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-e29bd996-0660-4e72-9aa1-8d30bd172f05/",
@@ -516,7 +556,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "Flutter"},
             {"tag": "default-app", "name": "Dart"}
-        ]
+        ],
+        "tags": ["Frontend", "Web"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-90bd55f9-a0a1-4bec-8769-92b666d656df/",
@@ -528,7 +569,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2025",
         "techs": [
             {"tag": "default-app", "name": "React Native"}
-        ]
+        ],
+        "tags": ["Frontend", "Mobile", "Android", "iOS"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-cebb3fcd-49a0-4639-943f-6da6c64465cb/",
@@ -540,7 +582,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "issuer_date": "2025",
         "techs": [
             {"tag": "default-app", "name": "React Native"}
-        ]
+        ],
+        "tags": ["Frontend", "Mobile", "Android", "iOS"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-fa269090-f0d8-4041-b545-5cba68d00485/",
@@ -553,7 +596,8 @@ export const MockCertificates = reactive<Certificates[]>([
         "techs": [
             {"tag": "default-app", "name": "PHP"},
             {"tag": "default-app", "name": "POO"},
-        ]
+        ],
+        "tags": ["Frontend", "Web", "POO", "Backend", "Fullstack"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-b8806ee0-75f6-4466-8b48-0fdb03c134bd/",
@@ -568,7 +612,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Laravel"},
             {"tag": "default-app", "name": "Vue JS"},
             {"tag": "default-app", "name": "Rest API"},
-        ]
+        ],
+        "tags": ["Frontend", "Web", "API RESTful", "Backend", "Fullstack"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-f0f3d505-bb39-423f-bedc-e26aaedf703b/",
@@ -585,7 +630,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "POO"},
             {"tag": "default-app", "name": "JPA"},
             {"tag": "default-app", "name": "JWT"},
-        ]
+        ],
+        "tags": ["Frontend", "Web", "API RESTful", "Backend", "Fullstack", "POO"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-e7cffdbd-1317-4521-bb4b-fd45f1519dea/",
@@ -600,7 +646,8 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Spring Boot"},
             {"tag": "default-app", "name": "Rest API"},
             {"tag": "default-app", "name": "POO"},
-        ]
+        ],
+        "tags": ["Frontend", "Web", "API RESTful", "POO", "Backend", "Fullstack"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-d3269a6c-3b4c-4a06-8225-6e996f7dab5c/",
@@ -614,6 +661,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "Phoenix"},
             {"tag": "default-app", "name": "Elixir"},
             {"tag": "default-app", "name": "Rest API"},
-        ]
+        ],
+        "tags": ["Backend", "API RESTful"]
     }
 ])

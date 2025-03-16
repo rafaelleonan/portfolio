@@ -77,6 +77,7 @@ export interface Comment {
 export interface Project {
     id: number
     title: string
+    type_project: ("Frontend"  | "Mobile"  | "Desktop" | "Web" | "Backend" | "API RESTful" | "Fullstack" | "Design")[]
     current_index: number
     images: Image[]
     description: string
