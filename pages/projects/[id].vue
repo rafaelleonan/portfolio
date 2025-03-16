@@ -16,9 +16,7 @@ useHead({
 
 const route = useRoute()
 const router = useRouter()
-const project = ref<Project | null>(
-    MockProjects.find((item: Project) => item.id === Number(route.params.id)) || null
-);
+const project = ref<Project | null>(null);
 
 interface Notification {
   id: number
@@ -179,11 +177,9 @@ const getPointerClass = (currentIndex: number, index: number, last: number): str
 }
 
 onMounted(() => {
+  project.value = MockProjects.find((item: Project) => item.id === Number(route.params.id)) ?? null
   if (!project.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: 'Página não encontrada!!!'
-    })
+    router.push("/404")
   }
 });
 </script>

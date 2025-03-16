@@ -4,7 +4,8 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 12px;
 
   .card-link {
     position: relative;
@@ -19,7 +20,7 @@
     text-decoration: none;
     background-color: $rl-app-white;
     color: $rl-app-blue-500;
-    flex-grow: 0;
+    //flex-grow: 0;
 
     img {
       width: 100%;
