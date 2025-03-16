@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ["material-icons/iconfont/material-icons.css"],
+  modules: ['@nuxtjs/google-gtag'],
   //target: 'static',
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
@@ -25,6 +26,13 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/icon?family=Material+Icons",
         },
       ]
+    },
+  },
+  runtimeConfig: {
+    public: {
+      gtag: {
+          id: 'GTM-PHR9N4FB',
+      },
     },
   },
 })
