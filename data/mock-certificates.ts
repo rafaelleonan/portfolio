@@ -483,7 +483,7 @@ export const MockCertificates = reactive<Certificates[]>([
             {"tag": "default-app", "name": "JavaScript"},
             {"tag": "default-app", "name": "Rest API"},
         ],
-        "tags": ["Frontend", "Web", "API RESTful"]
+        "tags": ["Frontend", "Web", "API RESTful", "Backend", "Fullstack"]
     },
     {
         "link": "https://www.udemy.com/certificate/UC-84f78411-5168-4925-b7ff-a04f88405105/",
