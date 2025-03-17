@@ -11,9 +11,9 @@
     "deploy": "gh-pages -d dist -t true"
   },
   "dependencies": {
-    "@nuxtjs/google-gtag": "^1.0.4",
     "material-icons": "^1.13.12",
     "nuxt": "^3.13.0",
+    "nuxt-gtag": "^3.0.2",
     "pdfjs-dist": "^4.7.76",
     "vue": "latest",
     "vue-pdf-embed": "^2.1.0",
