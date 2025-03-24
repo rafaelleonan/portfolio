@@ -133,6 +133,24 @@ section {
   }
 }
 
+.switch-theme {
+  background-color: $rl-app-black-20;
+  color: var(--text-switch-color);
+  border: none;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: $rl-app-desktop-fs-lg;
+
+  &:hover {
+    background-color: $rl-app-black-50;
+  }
+}
+
 /* FLEXBOX & GRID */
 .app-flex {
   display: flex;
@@ -204,6 +222,8 @@ section {
     position: relative;
 
     .form-input {
+      background-color: var(--background-input-primary-color);
+      color: var(--text-primary-color);
       position: relative;
       width: 100%;
       min-height: 40px;
@@ -213,17 +233,17 @@ section {
       outline: none;
       border: 1px solid transparent;
       transition: all 250ms ease-in-out;
-      box-shadow: 2px 2px 4px $rl-app-blue-50;
+      box-shadow: 2px 2px 4px var(--box-shadow-form-input-color);
 
       &:focus {
-        border: 1px solid $rl-app-blue-100;
-        box-shadow: 3px 3px 6px $rl-app-blue-100;
+        border: 1px solid var(--border-input-primary-color-focus);
+        box-shadow: 3px 3px 6px var(--box-shadow-form-input-color);
       }
     }
 
     .dropdown-container {
       position: relative;
-      background-color: $rl-app-white;
+      background-color: var(--background-input-primary-color);
       border-radius: $rl-app-desktop-br-sm;
 
       .input-box {
@@ -234,9 +254,12 @@ section {
         outline: none;
         border: 1px solid transparent;
         transition: all 250ms ease-in-out;
-        box-shadow: 2px 2px 4px $rl-app-blue-50;
+        box-shadow: 2px 2px 4px var(--box-shadow-form-input-color);
+        background-color: var(--background-input-primary-color);
 
         input {
+          color: var(--text-primary-color);
+          background-color: var(--background-input-primary-color);
           text-transform: uppercase;
           transition: all 250ms ease-in-out;
           width: 100%;
@@ -249,7 +272,7 @@ section {
 
           &:focus {
             border: 1px solid $rl-app-blue-100;
-            box-shadow: 3px 3px 6px $rl-app-blue-100;
+            box-shadow: 3px 3px 6px var(--box-shadow-form-input-color);
           }
         }
 
@@ -266,8 +289,9 @@ section {
           height: 20px;
           border-radius: 50%;
           font-size: $rl-app-desktop-fs-md;
-          background-color: $rl-app-blue-500;
-          color: $rl-app-brown-500;
+          background-color: var(--background-input-primary-color);
+          color: var(--text-secondary-color);
+          box-shadow: 2px 2px 4px var(--box-shadow-form-input-color);
         }
 
         .icon-dropdown {
@@ -283,8 +307,9 @@ section {
           height: 25px;
           border-radius: $rl-app-desktop-br-sm;
           font-size: $rl-app-desktop-fs-md;
-          color: $rl-app-brown-500;
-          background-color: $rl-app-brown-100;
+          background-color: var(--background-input-primary-color);
+          color: var(--text-secondary-color);
+          box-shadow: 2px 2px 4px var(--box-shadow-form-input-color);
         }
       }
 
@@ -294,8 +319,9 @@ section {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: $rl-app-white;
-        border: 1px solid #ccc;
+        background-color: var(--background-input-primary-color);
+        color: var(--text-primary-color);
+        border: 1px solid var(--border-input-primary-color-focus);
         border-radius: $rl-app-desktop-br-sm;
         margin-top: 4px;
         max-height: 200px;
@@ -319,12 +345,12 @@ section {
             }
 
             &:hover {
-              background-color: $rl-app-white-50;
+              background-color: var(--background-option-primary-color-hover);
             }
 
             &.selected {
-              background-color: $rl-app-blue-500;
-              color: $rl-app-brown-500;
+              background-color: var(--background-option-selected-primary-color);
+              color: var(--text-secondary-color);
 
               .remove {
                 display: block;
@@ -333,11 +359,12 @@ section {
             }
 
             &.searched {
-              background-color: $rl-app-brown-200;
+              background-color: var(--background-searched-primary-color);
+              color: var(--text-searched-secondary-color);
 
               &:hover {
-                background-color: $rl-app-brown-500;
-                color: $rl-app-brown-50;
+                background-color: var(--background-searched-primary-color-hover);
+                color: var(--text-searched-secondary-color-hover);
               }
             }
           }
@@ -365,12 +392,12 @@ section {
               }
 
               &:hover {
-                background-color: $rl-app-white-50;
+                background-color: var(--background-option-primary-color-hover);
               }
 
               &.selected {
-                background-color: $rl-app-blue-500;
-                color: $rl-app-brown-500;
+                background-color: var(--background-option-selected-primary-color);
+                color: var(--text-secondary-color);
 
                 .remove {
                   display: block;
@@ -379,11 +406,11 @@ section {
               }
 
               &.searched {
-                background-color: $rl-app-brown-200;
+                background-color: var(--background-searched-primary-color);
+                color: var(--text-searched-secondary-color);
 
                 &:hover {
-                  background-color: $rl-app-brown-500;
-                  color: $rl-app-brown-50;
+                  background-color: var(--background-searched-primary-color-hover);
                 }
               }
             }

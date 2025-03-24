@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { useSidebar } from '~/composables/useSidebar';
+import { useTheme } from '~/composables/useTheme';
 import {ref} from "vue";
 
 const isSidebarVisible = useSidebar();
 const photoUrl = ref('/images/1629036542049_2.jpg')
+const { theme, toggleTheme } = useTheme();
 
 function toggleSidebar() {
   isSidebarVisible.value = !isSidebarVisible.value;
@@ -68,6 +70,9 @@ function toggleSidebar() {
 <!--        </svg>-->
 <!--        <span>BTC</span>-->
 <!--      </nuxt-link>-->
+      <button @click="toggleTheme" class="switch-theme material-icons">
+        {{ theme === "light" ? "dark_mode" : "light_mode" }}
+      </button>
     </nav>
   </header>
 </template>
@@ -82,14 +87,14 @@ header {
 
   nav {
     position: relative;
-    background-color: $rl-app-blue-500;
+    background-color: var(--background-extreme-primary-color);
     display: flex;
     justify-content: start;
     align-items: center;
     padding-left: 100px;
     height: 68px;
     border-radius: $rl-app-desktop-br-lg;
-    box-shadow: 4px 4px 4px $rl-app-black-50;
+    box-shadow: 4px 4px 4px var(--box-shadow-color);
 
     .header-profile {
       display: flex;
@@ -201,6 +206,7 @@ header {
       gap: 8px;
       height: 48px;
       width: 48px;
+      transition: all 50ms ease-in-out;
 
       &.show-menu {
         width: 100%;
@@ -266,6 +272,10 @@ header {
         &.router-link-active, &:hover {
           border-bottom: none;
         }
+      }
+
+      .switch-theme {
+        display: none;
       }
     }
   }

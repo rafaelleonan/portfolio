@@ -1,8 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import {process} from "std-env";
+
 export default defineNuxtConfig({
   css: ["material-icons/iconfont/material-icons.css"],
   modules: ['nuxt-gtag'],
   gtag: {
+    // enabled: process.env.NODE_ENV === 'production',
     id: process.env.NUXT_PUBLIC_GA_ID || ''
   },
   //target: 'static',

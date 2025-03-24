@@ -1,4 +1,3 @@
-
 /* COR PRIMÁRIA E SUAS VARIAÇÕES: #1b2932 */
 $rl-app-blue-50: #e8eaeb;
 $rl-app-blue-100: #b8bdbf;
@@ -302,3 +301,121 @@ $rl-app-pb-13: #{$rl-app-size-13}px;
 $rl-app-pb-14: #{$rl-app-size-14}px;
 $rl-app-pb-15: #{$rl-app-size-15}px;
 $rl-app-pb-16: #{$rl-app-size-16}px;
+
+
+:root {
+  /* BACKGROUND COLOR */
+  --background-primary-color: #fff;
+  --background-extreme-primary-color: #1b2932;
+  --background-secondary-color: #faf7f4;
+  --background-card-primary-color: #e8eaeb;
+  --background-card-primary-color-hover: #b8bdbf;
+  --background-input-primary-color: #fff;
+  --background-option-primary-color-hover: rgba(255, 255, 255, 0.5);
+  --background-option-selected-primary-color: #1b2932;
+  --background-searched-primary-color: #e6d9ca;
+  --background-searched-primary-color-hover: #54493b;
+  --background-code-primary-color: #1b2932;
+  --background-card-resume-color: #eee6db;
+  --background-btn-back-color: #eee6db;
+  --background-btn-back-color-hover: #e6d9ca;
+  --background-card-tech-primary-color: rgba(255, 255, 255, 0.5);
+
+  /* TEXT COLOR */
+  --text-primary-color: #1b2932;
+  --text-primary-color-hover: #0f171c;
+  --text-secondary-color: #C8AD8C;
+  --text-searched-secondary-color: #C8AD8C;
+  --text-searched-secondary-color-hover: #faf7f4;
+  --text-card-resume-color: #54493b;
+  --text-switch-color: #b8bdbf;
+
+  /* BORDER COLOR */
+  --border-card-primary-color: #1b2932;
+  --border-card-secondary-color: #C8AD8C;
+  --border-card-mini-primary-color: #1b2932;
+  --border-input-primary-color-focus: #b8bdbf;
+  --border-primary-header-section-color: rgba(184, 189, 191, 0.3);
+
+  /* BOX-SHADOW COLOR */
+  --box-shadow-color: #aaaaaa;
+  --box-shadow-form-input-color: #e8eaeb;
+}
+
+[data-theme="dark"] {
+  /* BACKGROUND COLOR */
+  --background-primary-color: #0b1115;
+  --background-extreme-primary-color: #0f171c;
+  --background-secondary-color: #54493b;
+  --background-card-primary-color: #1b2932;
+  --background-card-primary-color-hover: #0f171c;
+  --background-input-primary-color: #1b2932;
+  --background-option-primary-color-hover: rgba(0, 0, 0, 0.5);
+  --background-option-selected-primary-color: #0f171c;
+  --background-searched-primary-color: #d3bda3;
+  --background-searched-primary-color-hover: #54493b;
+  --background-code-primary-color: #0f171c;
+  --background-card-resume-color: rgba(84, 73, 59, 0.30);
+  --background-btn-back-color: rgba(84, 73, 59, 0.30);
+  --background-btn-back-color-hover: rgba(84, 73, 59, 0.8);
+  --background-card-tech-primary-color: rgba(0, 0, 0, 0.5);
+
+  /* TEXT COLOR */
+  --text-primary-color: #b8bdbf;
+  --text-primary-color-hover: #969da1;
+  --text-secondary-color: #faf7f4;
+  --text-searched-secondary-color: #54493b;
+  --text-searched-secondary-color-hover: #C8AD8C;
+  --text-card-resume-color: #C8AD8C;
+  --text-switch-color: #C8AD8C;
+
+  /* BORDER COLOR */
+  --border-card-primary-color: #1b2932;
+  --border-card-secondary-color: #C8AD8C;
+  --border-card-mini-primary-color: #b8bdbf;
+  --border-input-primary-color-focus: #0b1115;
+  --border-primary-header-section-color: rgba(184, 189, 191, 0.3);
+
+  /* BOX-SHADOW COLOR */
+  --box-shadow-color: rgba(0,0,0,0.3);
+  --box-shadow-form-input-color: rgba(0,0,0,0.3);
+}
+
+[data-theme="light"] {
+  /* BACKGROUND COLOR */
+  --background-primary-color: #fff;
+  --background-extreme-primary-color: #1b2932;
+  --background-secondary-color: #faf7f4;
+  --background-card-primary-color: #e8eaeb;
+  --background-card-primary-color-hover: #b8bdbf;
+  --background-input-primary-color: #fff;
+  --background-option-primary-color-hover: rgba(255, 255, 255, 0.5);
+  --background-option-selected-primary-color: #1b2932;
+  --background-searched-primary-color: #e6d9ca;
+  --background-searched-primary-color-hover: #C8AD8C;
+  --background-code-primary-color: #1b2932;
+  --background-card-resume-color: #eee6db;
+  --background-btn-back-color: #eee6db;
+  --background-btn-back-color-hover: #e6d9ca;
+  --background-card-tech-primary-color: rgba(255, 255, 255, 0.5);
+
+  /* TEXT COLOR */
+  --text-primary-color: #1b2932;
+  --text-primary-color-hover: #0f171c;
+  --text-secondary-color: #C8AD8C;
+  --text-searched-secondary-color: #54493b;
+  --text-searched-secondary-color-hover: #faf7f4;
+  --text-card-resume-color: #54493b;
+  --text-switch-color: #b8bdbf;
+
+  /* BORDER COLOR */
+  --border-card-primary-color: #1b2932;
+  --border-card-secondary-color: #C8AD8C;
+  --border-card-mini-primary-color: #1b2932;
+  --border-input-primary-color-focus: #b8bdbf;
+  --border-primary-header-section-color: rgba(184, 189, 191, 0.3);
+
+  /* BOX-SHADOW COLOR */
+  --box-shadow-color: #aaaaaa;
+  --box-shadow-form-input-color: #e8eaeb;
+}

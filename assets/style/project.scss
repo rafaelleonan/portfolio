@@ -202,7 +202,7 @@
   align-items: start;
   flex-direction: column;
   gap: 4px;
-  border-bottom: 1px solid $rl-app-grey-100;
+  border-bottom: 1px solid var(--border-primary-header-section-color);
 
   .h-section-1 {
     display: flex;
@@ -212,8 +212,8 @@
 
     .button-back {
       border-radius: 50%;
-      background-color: $rl-app-brown-50;
-      border: 1px solid $rl-app-brown-100;
+      background-color: var(--background-btn-back-color);
+      border: 1px solid var(--border-card-secondary-color);
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -225,15 +225,15 @@
       transition: all 250ms ease-in-out;
 
       &:hover {
-        background-color: $rl-app-brown-50;
-        border: 1px solid $rl-app-brown-500;
+        background-color: var(--background-btn-back-color-hover);
+        border: 1px solid var(--border-card-secondary-color);
       }
 
       i {
         position: absolute;
         font-size: 10px;
         right: 2.5px;
-        color: $rl-app-brown-500;
+        color: var(--text-secondary-color);
       }
     }
   }
@@ -297,14 +297,14 @@
 .title-content {
   font-size: $rl-app-desktop-fs-xl;
   font-weight: bold;
-  color: $rl-app-black;
+  color: var(--text-primary-color);
   display: block;
   margin-bottom: 15px;
 }
 
 .component-text {
   font-size: $rl-app-desktop-fs-xm;
-  color: $rl-app-black;
+  color: var(--text-primary-color);
 }
 
 .slide-card-resume {
@@ -321,6 +321,7 @@
     width: 100%;
 
     .card-resume {
+      transition: none;
       display: inline-flex;
       flex-direction: column;
       width: 100%;
@@ -331,7 +332,6 @@
       .card-title {
         font-size: $rl-app-desktop-fs-xm;
         font-weight: bold;
-        color: $rl-app-grey-900;
         display: block;
         text-decoration: underline;
       }
@@ -348,8 +348,8 @@
           flex-direction: column;
           width: 50%;
           height: 100%;
-          background-color: $rl-app-brown-100;
-          color: $rl-app-brown-900;
+          background-color: var(--background-card-resume-color);
+          color: var(--text-card-resume-color);
           transition: all 0.2s ease-in;
           text-align: justify;
           font-size: $rl-app-desktop-fs-xm;
@@ -475,7 +475,6 @@
   .title-instructions {
     font-size: $rl-app-desktop-fs-lg;
     font-weight: bold;
-    color: $rl-app-grey-900;
     display: block;
     margin-bottom: 10px;
   }
@@ -483,7 +482,7 @@
   .list-instructions {
     width: 100%;
     padding: 6px 12px;
-    background-color: $rl-app-brown-50;
+    background-color: var(--background-card-primary-color);
 
     .item-instruction {
       font-weight: 700;
@@ -494,7 +493,7 @@
         width: 100%;
         padding: 12px 8px;
         color: $rl-app-blue-50;
-        background-color: $rl-app-blue-500;
+        background-color: var(--background-code-primary-color);
         justify-content: start;
         align-items: center;
         gap: 8px;
@@ -1115,7 +1114,6 @@
         .card-title {
           font-size: $rl-app-desktop-fs-xm;
           font-weight: bold;
-          color: $rl-app-grey-900;
           display: block;
           text-decoration: underline;
         }

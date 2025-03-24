@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import {useToggleHeaderMobile} from "~/composables/useToggleHeaderMobile";
 import {ref} from "vue";
+import {useTheme} from "~/composables/useTheme";
 
 const isHeaderMobileVisible = useToggleHeaderMobile();
+const { theme, toggleTheme } = useTheme();
 
 const toggleHeaderMobile = () => isHeaderMobileVisible.value = !isHeaderMobileVisible.value
 
@@ -111,6 +113,9 @@ const photoUrl = ref('/images/1629036542049_2.jpg')
           <path d="M17.6438 1.98157L9.66491 9.74654C9.56992 9.83871 9.46702 9.90384 9.3562 9.94194C9.24538 9.98065 9.12665 10 9 10C8.87335 10 8.75462 9.98065 8.6438 9.94194C8.53298 9.90384 8.43008 9.83871 8.33509 9.74654L0.332454 1.98157C0.110818 1.76651 0 1.49769 0 1.17511C0 0.852534 0.118734 0.576036 0.356201 0.345622C0.593668 0.115207 0.870712 0 1.18734 0C1.50396 0 1.781 0.115207 2.01847 0.345622L9 7.11982L15.9815 0.345622C16.2032 0.130569 16.4761 0.0230408 16.8003 0.0230408C17.1252 0.0230408 17.4063 0.138248 17.6438 0.368663C17.8813 0.599078 18 0.867895 18 1.17511C18 1.48233 17.8813 1.75115 17.6438 1.98157Z"/>
         </svg>
       </div>
+      <button @click="toggleTheme" class="switch-theme material-icons" :class="{ 'hidden': isHeaderMobileVisible }">
+        {{ theme === "light" ? "dark_mode" : "light_mode" }}
+      </button>
       <p>© 2024 Rafael Leonan</p>
     </div>
     <div :class="{'click-to-close-mobile': isHeaderMobileVisible}" @click="toggleHeaderMobile"></div>
@@ -132,7 +137,7 @@ footer {
     width: 100%;
     padding: 18px 10px;
     text-align: center;
-    background-color: $rl-app-blue-500;
+    background-color: var(--background-extreme-primary-color);
     color: $rl-app-blue-200;
 
     .app-footer {
@@ -262,6 +267,10 @@ footer {
       }
     }
 
+    .switch-theme {
+      display: none;
+    }
+
     p {
       font-size: $rl-app-desktop-fs-sm;
       transition: font-size 250ms ease;
@@ -280,6 +289,7 @@ footer {
       padding: 8px;
       transition: all 250ms ease;
       gap: 10px;
+      //position: relative;
 
       .app-footer {
         gap: 8px;
@@ -433,6 +443,17 @@ footer {
 
         .icon-arrow {
           transition: transform 250ms ease;
+        }
+      }
+
+      .switch-theme {
+        position: absolute;
+        display: flex;
+        top: 10px;
+        right: 10px;
+
+        &.hidden {
+          display: none;
         }
       }
 
