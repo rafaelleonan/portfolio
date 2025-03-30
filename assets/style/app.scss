@@ -37,6 +37,7 @@ body {
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      scroll-behavior: smooth;
 
       .content {
         flex: 1;

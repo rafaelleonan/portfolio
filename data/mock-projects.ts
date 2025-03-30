@@ -718,6 +718,215 @@ export const MockProjects = reactive<Project[]>([
                 ]
             }
         ]
+    },
+    {
+        "id": 4,
+        "title": "APP 'CLONE' UBER",
+        "type_project": ["Mobile", "Frontend"],
+        "current_index": 0,
+        "description": `Um aplicativo desenvolvido durante o curso de Desenvolvimento Flutter Mobile, 
+                        com o objetivo de entender e aplicar conceitos fundamentais na criação de um aplicativo similar ao UBER.
+                         O projeto utiliza Firebase para gerenciamento de cadastro, autenticação de usuários, banco de dados 
+                         em tempo real, proporcionando uma experiência prática e completa de desenvolvimento mobile.`,
+        "post_date": "11/01/2025 19:55",
+        "images": [
+            { "alt": "Tela de Login", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_login.png" },
+            { "alt": "Tela de cadastro", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_cadastro.png" },
+            { "alt": "Tela inicial - permissão do usuário", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_permissao_localizacao.png" },
+            { "alt": "Configurações/Sair", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_botao_sair.png" },
+            { "alt": "Motorista - Aceitar corrida", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_aceitar_corrida.png" },
+            { "alt": "Motorista - Nenhuma corrida", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_painel_motorista.png" },
+            { "alt": "Motorista - Corrida", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_solicitacoes_de_viagens.png" },
+            { "alt": "Passageiro - Chamar uber", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_chamar_uber.png" },
+            { "alt": "Passageiro - Confirmar corrida", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_confirmar_corrida.png" },
+            { "alt": "Passageiro - Cancelar corrida", "src": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_cancelar_solicitacao.png" },
+        ],
+        "external_links": [
+            {
+                "label": "Repositório do projeto",
+                "url": "https://github.com/rafaelleonan/app-flutter-clone-uber"
+            },
+        ],
+        "technologies": [
+            { "name": "Flutter", "version": "3.22.2", "icon_url": "https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fflutter.svg?alt=media&token=fcc57e6f-5fb4-4a97-9fd9-71db7faf7d7b" },
+            { "name": "Dart", "version": ">=3.4.3 <4.0.0", "icon_url": "https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdart.svg?alt=media&token=fcc57e6f-5fb4-4a97-9fd9-71db7faf7d7b" },
+            { "name": "Firestore", "version": "^5.1.0", "icon_url": "https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=fcc57e6f-5fb4-4a97-9fd9-71db7faf7d7b" },
+            { "name": "Core", "version": "^3.2.0", "icon_url": "https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=fcc57e6f-5fb4-4a97-9fd9-71db7faf7d7b" },
+            { "name": "Auth", "version": "^5.1.2", "icon_url": "https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=fcc57e6f-5fb4-4a97-9fd9-71db7faf7d7b" },
+            { "name": "Storage", "version": "^12.1.1", "icon_url": "https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=fcc57e6f-5fb4-4a97-9fd9-71db7faf7d7b" },
+        ],
+        "sections": [
+            {
+                "id": 7,
+                "title": "Sobre o projeto",
+                "order": 1,
+                "components": [
+                    {
+                        "id": 1,
+                        "type": "text",
+                        "content": `<p>Um aplicativo desenvolvido durante o curso de Desenvolvimento Flutter Mobile, 
+                                        com o objetivo de entender e aplicar conceitos fundamentais na criação de um aplicativo
+                                         similar ao UBER. O projeto utiliza Firebase para gerenciamento de cadastro, 
+                                         autenticação de usuários, banco de dados em tempo real, proporcionando uma experiência 
+                                         prática e completa de desenvolvimento mobile.</p>`,
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "title": "Por tela",
+                "order": 2,
+                "components": [
+                    {
+                        "id": 2,
+                        "type": "carousel_image_with_text",
+                        "content": {
+                            "current_index": 0,
+                            "items": [
+                                {
+                                    "id": 1,
+                                    "title": "Tela de Login",
+                                    "text": `Tela de acesso ao app, onde o usuário informa suas credenciais de e-mail e senha cadastradas no sistema.
+                                             Caso o usuário ainda não tenha cadastro, possui um link redirecionando para o cadastro.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_login.png"
+                                },
+                                {
+                                    "id": 2,
+                                    "title": "Tela de cadastro",
+                                    "text": `Formulário de cadastro do passageiro/motorista no app, possui os campos de e-mail, nome e senha.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_cadastro.png"
+                                },
+                                {
+                                    "id": 3,
+                                    "title": "Tela inicial - permissão do usuário",
+                                    "text": `Pop-up para o usuário liberar a permissão de localização do dispositivo.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_permissao_localizacao.png"
+                                },
+                                {
+                                    "id": 4,
+                                    "title": "Configurações/Sair",
+                                    "text": `Dropdown com opções de configurações ou sair(encerrar sessão).`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_botao_sair.png"
+                                },
+                                {
+                                    "id": 5,
+                                    "title": "Motorista - Aceitar corrida",
+                                    "text": `Tela onde aparece a corrida para o motorista, ele pode aceitar a corrida.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_aceitar_corrida.png"
+                                },
+                                {
+                                    "id": 6,
+                                    "title": "Motorista - Nenhuma corrida",
+                                    "text": `Tela sem nenhuma corrida disponível para o motorista.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_painel_motorista.png"
+                                },
+                                {
+                                    "id": 7,
+                                    "title": "Motorista - Corrida",
+                                    "text": `Tela com informações da corrida atual. Informações de nome do passageiro e destino final.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_solicitacoes_de_viagens.png"
+                                },
+                                {
+                                    "id": 8,
+                                    "title": "Passageiro - Chamar uber",
+                                    "text": `Tela para o passageiro selecionar o destino e chamar uma corrida.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_chamar_uber.png"
+                                },
+                                {
+                                    "id": 9,
+                                    "title": "Passageiro - Confirmar corrida",
+                                    "text": `Pop-up para o usuário confirmar a corrida solicitada.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_confirmar_corrida.png"
+                                },
+                                {
+                                    "id": 10,
+                                    "title": "Passageiro - Cancelar corrida",
+                                    "text": `Botão para o usuário solicitar o cancelamento da corrida.`,
+                                    "image_url": "https://raw.githubusercontent.com/rafaelleonan/app-flutter-clone-uber/refs/heads/main/assets/images/simulator_screenshot_iphone13_ios16_4_tela_cancelar_solicitacao.png"
+                                },
+                            ]
+                        }
+                    },
+                ]
+            },
+            {
+                "id": 9,
+                "title": "Baixando e executando localmente",
+                "order": 3,
+                "components": [
+                    {
+                        "id": 4,
+                        "type": "text",
+                        "content": `<p>É necessário ter instalado e configurado em máquina o <b>Flutter 3.22.2</b> ou superior 
+                            com seus binários adicionados ao <b>$PATH</b> e <b>Dart >=3.4.3 <4.0.0</b> também adicionado ao <b>$PATH</b></p>`,
+                    },
+                    {
+                        "id": 5,
+                        "type": "code_or_instructions",
+                        "content": [
+                            {
+                                "title": "Instalando e executando via terminal",
+                                "instructions": [
+                                    {
+                                        "title": "Clonar o projeto:",
+                                        "type": "code",
+                                        "content": "git clone https://github.com/rafaelleonan/app-flutter-clone-uber.git"
+                                    },
+                                    {
+                                        "title": "Acessar o diretório raiz do projeto:",
+                                        "type": "code",
+                                        "content": "cd app-flutter-clone-uber"
+                                    },
+                                    {
+                                        "title": "Executar o projeto:",
+                                        "type": "code",
+                                        "content": "flutter run"
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            }
+        ],
+        "comments": [
+            {
+                "id": 1,
+                "user_name": "John Doe",
+                "content": "Great project! Loved the design.",
+                "posted_at": "10/12/2024 ás 17:11",
+                "replies": [
+                    {
+                        "id": 2,
+                        "user_name": "Author",
+                        "content": "Thank you, John!",
+                        "posted_at": "11/12/2024 ás 12:35",
+                        "reactions": [
+                            {
+                                "id": 1,
+                                "count": 1,
+                                "list_users_id": [1],
+                                "reaction_type": "like",
+                            }
+                        ]
+                    }
+                ],
+                "reactions": [
+                    {
+                        "id": 2,
+                        "count": 3,
+                        "list_users_id": [1, 3, 4],
+                        "reaction_type": "like",
+                    },
+                    {
+                        "id": 3,
+                        "count": 5,
+                        "list_users_id": [1, 5, 6, 7, 13],
+                        "reaction_type": "smile",
+                    }
+                ]
+            }
+        ]
     }
 ])
 

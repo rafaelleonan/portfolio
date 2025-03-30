@@ -47,6 +47,13 @@ const getSlideClass = (index: number, project: Project) => {
   return '';
 };
 
+const getSlideClassImg = (index: number, project: Project) => {
+  let classExtraMobile = project.type_project.filter(tech => tech === 'Mobile').length > 0 ? 'mobile' : ''
+  if (index === (project.current_index + 1)) return classExtraMobile;
+  if (index === (project.current_index - 1)) return classExtraMobile;
+  return '';
+};
+
 const initCarousels = async () => {
   await nextTick();
   carousels.value.forEach((carousel: HTMLDivElement, index: number) => {
@@ -332,7 +339,7 @@ onUnmounted(() => {
                   :key="`key_image_${iKey}`"
                   :class="getSlideClass(iKey, project)"
               >
-                <img :src="slide.src" :alt="slide.alt" />
+                <img :src="slide.src" :alt="slide.alt" :class="getSlideClassImg(iKey, project)" />
               </div>
             </div>
             <i class="btn-prev material-icons" @click.stop="showPrevSlide(project)">arrow_back_ios</i>
@@ -374,9 +381,6 @@ onUnmounted(() => {
       </div>
       <div class="not-found-projects" v-else>
         Nenhum projeto encontrado...
-      </div>
-      <div class="text-more-projects-after">
-        Em breve mais projetos serão adicionados...
       </div>
     </section>
   </div>

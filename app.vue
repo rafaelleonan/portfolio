@@ -6,12 +6,20 @@ import {useCountLoading, useLoading, useInfoLoading} from "~/composables/useLoad
 import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
 import {MockProjects} from "~/data/mock-projects";
 import {MockCertificates} from "~/data/mock-certificates";
-import {onMounted} from "vue";
+import {onMounted, watch} from "vue";
 import {useHead} from "#imports";
+import { useTheme } from '~/composables/useTheme';
+import {useRouter} from "vue-router";
 
 const loading = useLoading();
 const counting = useCountLoading();
 const info = useInfoLoading();
+const router = useRouter()
+
+watch(() => router.currentRoute.value, () => {
+  let main: HTMLElement | null  = document.querySelector("main")
+  if (main !== null) main.scrollTo({ top: 0, behavior: 'smooth' })
+})
 
 const preloadTrajectoriesImages = async () => {
   const promises = []
@@ -138,6 +146,7 @@ onMounted(async () => {
   await preloadTrajectoriesImages();
   await preloadProjectsImages();
   await preloadCertificatesImages();
+  useTheme();
   setTimeout(() => {
     loading.value = false;
     counting.value = 0

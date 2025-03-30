@@ -2,7 +2,8 @@
 import {process} from "std-env";
 
 export default defineNuxtConfig({
-  css: ["material-icons/iconfont/material-icons.css"],
+    $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
+    css: ["material-icons/iconfont/material-icons.css"],
   modules: ['nuxt-gtag'],
   gtag: {
     // enabled: process.env.NODE_ENV === 'production',
@@ -33,5 +34,6 @@ export default defineNuxtConfig({
         },
       ]
     },
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
 })
