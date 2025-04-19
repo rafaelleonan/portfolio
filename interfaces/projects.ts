@@ -3,11 +3,11 @@ export interface Image {
     alt: string
 }
 
-export interface ComponentImage {
+export interface ComponentMedia {
     id: number
     title: string
     text: string
-    image_url: string
+    url: string
 }
 
 export interface Instruction {
@@ -23,7 +23,7 @@ export interface ComponentInstructions {
 
 export interface ComponentCarousel {
     current_index: number
-    items: ComponentImage[]
+    items: ComponentMedia[]
 }
 
 export interface ExternalLink {
@@ -40,7 +40,7 @@ export interface Technology {
 export interface Component {
     id: number
     type: string
-    content: string | ComponentImage[] | ComponentCarousel | ComponentInstructions[]
+    content: string | ComponentMedia[] | ComponentCarousel | ComponentInstructions[]
 }
 
 export interface Section {

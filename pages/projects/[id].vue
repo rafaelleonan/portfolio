@@ -5,8 +5,7 @@ import {useHead} from '#imports';
 import type {
   Project,
   ComponentCarousel,
-  ComponentImage,
-  ComponentInstructions
+  ComponentInstructions, ComponentMedia
 } from "~/interfaces/projects";
 import {MockProjects} from "~/data/mock-projects";
 
@@ -68,6 +67,10 @@ const isComponentInstructions = (obj: any): obj is ComponentInstructions[] => {
   return obj && typeof obj === 'object' && 'title' in obj[0] && 'instructions' in obj[0]
 }
 
+const isComponentMedia = (obj: any): obj is ComponentMedia[] => {
+  return obj && typeof obj === 'object' && 'id' in obj[0] && 'title' in obj[0] && 'text' in obj[0] && 'url' in obj[0]
+}
+
 const copyText = (copyContent: string) => {
   const texto = document.createElement('textarea')
   texto.value = copyContent
@@ -80,20 +83,20 @@ const copyText = (copyContent: string) => {
   addNotification('Texto copiado para a área de transferência!')
 }
 
-const goToSlide = (carousel: string | ComponentImage[] | ComponentCarousel, index: number) => {
+const goToSlide = (carousel: string | ComponentMedia[] | ComponentCarousel, index: number) => {
   if (isComponentCarousel(carousel)) {
     carousel.current_index = index
   }
 }
 
-const showPrevSlide = (carousel: string | ComponentImage[] | ComponentCarousel) => {
+const showPrevSlide = (carousel: string | ComponentMedia[] | ComponentCarousel) => {
   if (isComponentCarousel(carousel)) {
     let totalSlides: number = carousel.items.length
     carousel.current_index = (carousel.current_index - 1 + totalSlides) % totalSlides
   }
 };
 
-const showNextSlide = (carousel: string | ComponentImage[] | ComponentCarousel) => {
+const showNextSlide = (carousel: string | ComponentMedia[] | ComponentCarousel) => {
   if (isComponentCarousel(carousel)) {
     let totalSlides: number = carousel.items.length
     carousel.current_index = (carousel.current_index + 1) % totalSlides
@@ -272,8 +275,8 @@ onMounted(() => {
                 <div class="resume-project">{{ item.text }}</div>
                 <div class="image-card">
                   <div class="image">
-                    <i class="material-icons" @click="openModalZoomImage(item.image_url)">zoom_out_map</i>
-                    <img :src="item.image_url" :alt="item.title" />
+                    <i class="material-icons" @click="openModalZoomImage(item.url)">zoom_out_map</i>
+                    <img :src="item.url" :alt="item.title" />
                   </div>
                 </div>
               </div>
@@ -314,6 +317,27 @@ onMounted(() => {
                   <i class="material-icons" @click="openModalZoomImage(inst.content)">zoom_out_map</i>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div v-else-if="component.type === 'image_with_text' && isComponentMedia(component.content)">
+          <div v-for="(item, iKey) in component.content" :key="`image_with_text_${iKey}`" class="component-text-with-image">
+            <div class="text">{{ item.text }}</div>
+            <div class="content-image">
+              <img :src="item.url" :alt="item.title"/>
+            </div>
+          </div>
+        </div>
+        <div v-else-if="component.type === 'video_with_text' && isComponentMedia(component.content)">
+          <div v-for="(item, iKey) in component.content" :key="`video_with_text_${iKey}`" class="component-text-with-video">
+            <div class="text">{{ item.text }}</div>
+            <div class="content-video">
+              <iframe
+                  :src="item.url"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+              </iframe>
             </div>
           </div>
         </div>

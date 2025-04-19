@@ -1,6 +1,20 @@
 <script setup lang="ts">
 import { useHead } from '#imports'
+import {reactive, onMounted} from "vue";
 import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
+import type {BadgeTech} from "~/interfaces/homepage";
+
+const stackCurrent = reactive<BadgeTech[]>([])
+
+onMounted(() => {
+  for (const tech of MockTechnologies) {
+    for (const badge of tech.badges) {
+      if (badge.current) {
+        stackCurrent.push(badge)
+      }
+    }
+  }
+})
 
 useHead({
   title: 'Portfólio',
@@ -20,6 +34,15 @@ useHead({
              conhecimento em armazenamento e leitura de dados com AWS S3, Firebase Firestore, além de banco de dados relacionais
              como MySQL e PostgreSQL. Também possuo experiência com Firebase Authentication e Storage.
            </span>
+        </div>
+      </div>
+    </section>
+    <section class="section-default">
+      <span class="title-section">STACK ATUAL</span>
+      <div class="stack-current">
+        <div class="tech-stack" v-for="(stack, sKey) in stackCurrent" :key="`stack_current_${sKey}`">
+          <span>{{ stack.title }}</span>
+          <img :src="stack.src"/>
         </div>
       </div>
     </section>

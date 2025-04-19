@@ -3,80 +3,80 @@ import type {BadgeCategory, BadgeTech} from "~/interfaces/homepage";
 import type {Trajectory} from "~/interfaces/geral";
 
 const Languages = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVASCRIPT" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fts.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "TYPESCRIPT" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpython.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PYTHON" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdart.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DART" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fruby.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fswift.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SWIFT" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felixir.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELIXIR" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkotlin.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KOTLIN" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVASCRIPT", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fts.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "TYPESCRIPT", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpython.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PYTHON", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdart.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DART", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fruby.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fswift.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SWIFT", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felixir.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELIXIR", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkotlin.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KOTLIN", current: false},
     { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fshellscript.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SHELLSCRIPT" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgo.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GO" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphp.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHP" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjava.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVA" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgo.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GO", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphp.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHP", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjava.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVA", current: false },
 ])
 
 const FrameworksAndLibraries = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fvue.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "VUE JS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fflutter.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FLUTTER" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frails.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY ON RAILS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdjango.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DJANGO" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphoenix.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHOENIX" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fspring-boot.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPRING BOOT" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Freact.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "REACT JS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felectron.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELECTRON JS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flaravel.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LARAVEL" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fnodejs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "NODE JS" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fvue.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "VUE JS", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fflutter.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FLUTTER", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frails.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY ON RAILS", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdjango.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DJANGO", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphoenix.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHOENIX", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fspring-boot.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPRING BOOT", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Freact.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "REACT JS", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felectron.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELECTRON JS", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flaravel.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LARAVEL", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fnodejs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "NODE JS", current: false },
 ])
 
 const DatabaseAndCloud = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmysql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MYSQL" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpostgresql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "POSTGRESQL" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE FIRESTORE" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-rds.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS RDS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-sqs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS SQS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fs3.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS S3" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-ec2.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS EC2" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmysql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MYSQL", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpostgresql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "POSTGRESQL", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE FIRESTORE", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-rds.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS RDS", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-sqs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS SQS", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fs3.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS S3", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-ec2.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS EC2", current: false },
 ])
 
 const DevOpsAndSettingsDevelopment = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER SWARM" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkubernetes.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KUBERNETES" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgit.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GIT & GIT FLOW" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkafka.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KAFKA" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER SWARM", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkubernetes.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KUBERNETES", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgit.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GIT & GIT FLOW", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkafka.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KAFKA", current: true },
 ])
 
 const FrondEndAndUxUi = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fhtml.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "HTML" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fcss.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "CSS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fsass.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SASS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffigma.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIGMA" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fadobe-xd.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ADOBE XD" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fhtml.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "HTML", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fcss.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "CSS", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fsass.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SASS", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffigma.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIGMA", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fadobe-xd.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ADOBE XD", current: false },
 ])
 
 const ArchitectureAndDevelopmentPatterns = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frest-api.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "API RESTful" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SSR" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPA" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MVC" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frest-api.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "API RESTful", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SSR", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPA", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MVC", current: false },
 ])
 
 const AuthAndStorage = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE AUTH" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE STORAGE" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE AUTH", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE STORAGE", current: false },
 ])
 
 const AgileMethodologies = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkanban.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KANBAN" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fscrum.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SCRUM" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkanban.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KANBAN", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fscrum.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SCRUM", current: true },
 ])
 
 const SO = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flinux.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LINUX" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmacos.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MACOS" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fwindows.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "WINDOWS" },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flinux.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LINUX", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmacos.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MACOS", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fwindows.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "WINDOWS", current: false },
 ])
 
 export const MockTechnologies = reactive<BadgeCategory[]>([
