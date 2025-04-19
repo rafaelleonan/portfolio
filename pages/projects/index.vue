@@ -387,5 +387,5 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
-@import "assets/style/projects";
+@use "assets/style/projects" as *;
 </style>

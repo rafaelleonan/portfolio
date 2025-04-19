@@ -144,5 +144,5 @@ useHead({
 </template>
 
 <style scoped lang="scss">
-@import "assets/style/homepage";
+@use "assets/style/homepage" as *;
 </style>

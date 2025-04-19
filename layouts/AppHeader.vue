@@ -78,7 +78,7 @@ function toggleSidebar() {
 </template>
 
 <style scoped lang="scss">
-@import "assets/style/variables.scss";
+@use "assets/style/variables" as *;
 
 header {
   padding: 25px 25px 0 25px;

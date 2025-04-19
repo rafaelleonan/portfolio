@@ -27,7 +27,7 @@ useHead({
 
 
 <style scoped lang="scss">
-@import "assets/style/variables";
+@use "assets/style/variables" as *;
 
 .page-error {
   display: flex;

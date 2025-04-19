@@ -123,7 +123,7 @@ const photoUrl = ref('/images/1629036542049_2.jpg')
 </template>
 
 <style lang="scss" scoped>
-@import "assets/style/variables.scss";
+@use "assets/style/variables" as *;
 
 footer {
   width: 100%;

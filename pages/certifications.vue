@@ -284,5 +284,5 @@ useHead({
 </template>
 
 <style scoped lang="scss">
-@import "assets/style/certifications";
+@use "assets/style/certifications" as *;
 </style>

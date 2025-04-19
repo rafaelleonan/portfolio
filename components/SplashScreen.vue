@@ -65,7 +65,7 @@ watch(
 </script>
 
 <style scoped lang="scss">
-@import 'assets/style/variables';
+@use 'assets/style/variables' as *;
 
 @keyframes spin {
   to {

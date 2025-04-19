@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as *;
 
 .bg-modal {
   display: none;
@@ -1138,6 +1138,47 @@
   }
 }
 
+.notifications {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  bottom: 20px;
+
+  .notification {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: $rl-app-desktop-br-sm;
+    background-color: $rl-app-blue-500;
+    color: $rl-app-blue-50;
+    font-size: $rl-app-desktop-fs-md;
+    font-weight: 600;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+
+    &.fade-out {
+      opacity: 0;
+    }
+
+    .close {
+      cursor: pointer;
+      color: $rl-app-blue-300;
+      transition: color 250ms ease-in-out;
+
+      &:hover {
+        color: $rl-app-blue-50;
+      }
+    }
+  }
+}
+
 @media (max-width: 600px) {
   .header-section {
     margin-bottom: 20px;
@@ -1257,5 +1298,18 @@
 
   .title-content {
     margin-bottom: 0;
+  }
+
+  .notifications {
+    left: 20px;
+    right: 20px;
+    transform: translateX(0%);
+
+    .notification {
+      box-shadow: 2px 2px 8px $rl-app-brown-900;
+      gap: 16px;
+      padding: 8px 12px;
+      font-size: $rl-app-desktop-fs-xs;
+    }
   }
 }

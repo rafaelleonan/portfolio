@@ -67,5 +67,5 @@ const downloadPdf = () => {
 </template>
 
 <style lang="scss">
-@import "assets/style/resume";
+@use "assets/style/resume" as *;
 </style>
