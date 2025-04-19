@@ -462,7 +462,7 @@ section {
 
   .app-card {
     .card-body {
-      font-size: $rl-app-desktop-fs-sm;
+      font-size: $rl-app-desktop-fs-md;
       text-align: justify;
     }
   }
@@ -474,6 +474,7 @@ section {
     border-radius: $rl-app-desktop-br-sm;
     text-transform: uppercase;
     font-size: $rl-app-desktop-fs-xs;
+    flex-grow: 1;
   }
 
   .form-filters {

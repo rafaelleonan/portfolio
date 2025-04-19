@@ -37,7 +37,7 @@ useHead({
         </div>
       </div>
     </section>
-    <section class="section-default">
+    <section class="section-default app-mt-2">
       <span class="title-section">STACK ATUAL</span>
       <div class="stack-current">
         <div class="tech-stack" v-for="(stack, sKey) in stackCurrent" :key="`stack_current_${sKey}`">

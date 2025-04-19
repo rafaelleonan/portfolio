@@ -33,7 +33,7 @@ import { ref, watch } from "vue";
 
 const count = useCountLoading()
 const infoList = useInfoLoading();
-const total = ref(205)
+const total = ref(267)
 const animatedCount = ref(0);
 const progress = ref(0);
 
