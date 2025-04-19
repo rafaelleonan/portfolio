@@ -39,7 +39,7 @@
   }
 }
 
-.stack-current {
+.stack {
   width: 100%;
   flex-wrap: wrap;
   display: flex;
@@ -59,6 +59,11 @@
     padding: 10px 0;
     border-radius: $rl-app-desktop-br-sm;
     flex-grow: 1;
+
+    &.all-techs {
+      min-width: 150px;
+      max-width: 200px;
+    }
 
     span {
       font-size: $rl-app-desktop-fs-sm;
@@ -296,8 +301,7 @@
               justify-content: space-between;
 
               .resume-image {
-                height: 50px;
-                width: 50px;
+                width: 60px;
                 min-width: auto !important;
                 padding: 4px;
                 border-radius: $rl-app-desktop-br-sm;
@@ -359,12 +363,17 @@
     }
   }
 
-  .stack-current {
+  .stack {
     gap: 10px;
 
     .tech-stack {
       gap: 8px;
       width: 100px;
+
+      &.all-techs {
+        min-width: 120px !important;
+        max-width: 140px !important;
+      }
 
       span {
         font-size: $rl-app-desktop-fs-xs;
