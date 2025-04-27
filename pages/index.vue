@@ -20,7 +20,7 @@ useHead({
   title: 'Portfólio de Desenvolvedor',
   meta: [
     { name: 'description', content: 'Projetos de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
-    { property: 'og:title', content: 'Projetos - Rafael Leonan' },
+    { property: 'og:title', content: 'Portfólio - Rafael Leonan' },
     { property: 'og:description', content: 'Projetos de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://rafaelleonan.com' },
