@@ -9,6 +9,19 @@ const pageCount = ref(0)
 
 useHead({
   title: 'Resumo',
+  meta: [
+    { name: 'description', content: 'Resumo/Currículo de Rafael Leonan.' },
+    { property: 'og:title', content: 'Resumo - Rafael Leonan' },
+    { property: 'og:description', content: 'Resumo/Currículo de Rafael Leonan.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://rafaelleonan.com/resume' },
+    { property: 'og:image', content: 'https://rafaelleonan.com/images/banner.jpg' },
+    { property: 'og:site_name', content: 'Rafael Leonan' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Resumo/Currículo - Rafael Leonan.' },
+    { name: 'twitter:description', content: 'Resumo/Currículo de Rafael Leonan.' },
+    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/banner.jpg' }
+  ]
 });
 
 const handleDocumentLoad = ({numPages}: any) => {

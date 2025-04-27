@@ -9,10 +9,6 @@ import type {
 } from "~/interfaces/projects";
 import {MockProjects} from "~/data/mock-projects";
 
-useHead({
-  title: 'Projetos',
-});
-
 const route = useRoute()
 const router = useRouter()
 const project = ref<Project | null>(null);
@@ -185,6 +181,24 @@ onMounted(() => {
     router.push("/404")
   }
 });
+
+useHead({
+  title: project.value?.title ?? 'Projeto',
+  meta: [
+    { name: 'description', content: project.value?.description },
+    { property: 'og:title', content: project.value?.title },
+    { property: 'og:description', content: project.value?.description },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: `https://rafaelleonan.com/projects/${project.value?.id}` },
+    { property: 'og:image', content: 'https://rafaelleonan.com/images/banner.jpg' },
+    { property: 'og:site_name', content: 'Rafael Leonan' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: project.value?.title ?? 'Projetos - Rafael Leonan' },
+    { name: 'twitter:description', content: project.value?.description },
+    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/banner.jpg' }
+  ]
+});
+
 </script>
 
 <template>

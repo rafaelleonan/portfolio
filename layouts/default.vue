@@ -146,11 +146,25 @@ const preloadCertificatesImages = async () => {
   await Promise.all(promises);
 };
 
-onMounted(async () => {
-  useHead({
-    title: 'Carregando recursos',
-  });
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} | Rafael Leonan` : 'Rafael Leonan';
+  },
+  htmlAttrs: {
+    lang: 'pt-BR'
+  },
+  link: [
+    { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+  ],
+  meta: [
+    { charset: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'author', content: 'Rafael Leonan' },
+    { name: 'theme-color', content: '#1b2932' }
+  ]
+});
 
+onMounted(async () => {
   counting.value = 0
   loading.value = true;
   info.value = []
@@ -168,8 +182,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <SplashScreen v-if="loading"/>
-  <main v-else style="overflow-x: hidden">
+  <SplashScreen v-if="loading" />
+  <main v-else style="overflow-x: hidden;">
     <AppHeader/>
     <div class="content">
       <NuxtPage />
