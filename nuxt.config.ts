@@ -1,11 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import {process} from "std-env";
 import { MockProjects } from './data/mock-projects';
+import {undefined} from "zod";
+import {routes} from "vue-router/auto-routes";
 
 export default defineNuxtConfig({
+	srcDir: "",
 	ssr: false,
 	target: 'static',
-  $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
   css: ["material-icons/iconfont/material-icons.css"],
   modules: ['nuxt-gtag', '@nuxtjs/sitemap'],
   gtag: {
@@ -38,6 +40,9 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+	site: {
+		url: "https://rafaelleonan.com"
+	},
 	sitemap: {
 		hostname: 'https://rafaelleonan.com',
 		gzip: true,
