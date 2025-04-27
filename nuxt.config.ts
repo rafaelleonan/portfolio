@@ -1,15 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import {process} from "std-env";
+import { MockProjects } from './data/mock-projects';
 
 export default defineNuxtConfig({
-    $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
-    css: ["material-icons/iconfont/material-icons.css"],
-  modules: ['nuxt-gtag'],
+	ssr: false,
+	target: 'static',
+  $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
+  css: ["material-icons/iconfont/material-icons.css"],
+  modules: ['nuxt-gtag', '@nuxtjs/sitemap'],
   gtag: {
     // enabled: process.env.NODE_ENV === 'production',
     id: process.env.NUXT_PUBLIC_GA_ID || ''
   },
-  //target: 'static',
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   app: {
@@ -36,4 +38,20 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+	sitemap: {
+		hostname: 'https://rafaelleonan.com',
+		gzip: true,
+		routes: async () => {
+			const routes = [
+				'/',
+				'/resume',
+				'/projects',
+				'/certifications'
+			];
+			
+			const projectRoutes = MockProjects.map(project => `/projects/${project.id}`);
+			
+			return [...routes, ...projectRoutes];
+		}
+	}
 })
