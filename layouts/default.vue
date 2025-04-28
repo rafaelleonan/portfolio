@@ -184,7 +184,7 @@ onMounted(async () => {
 </script>
 
 <template>
-<!--  <SplashScreen v-if="loading" />-->
+  <SplashScreen v-if="loading" />
   <main style="overflow-x: hidden;">
     <AppHeader/>
     <div class="content">
