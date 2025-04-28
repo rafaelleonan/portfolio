@@ -184,8 +184,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <SplashScreen v-if="loading" />
-  <main v-else style="overflow-x: hidden;">
+<!--  <SplashScreen v-if="loading" />-->
+  <main style="overflow-x: hidden;">
     <AppHeader/>
     <div class="content">
       <NuxtPage />
