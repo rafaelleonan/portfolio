@@ -10,16 +10,16 @@ import type {BadgeCategory} from "~/interfaces/homepage";
 useHead({
   title: 'Projetos',
   meta: [
-    { name: 'description', content: 'Projetos de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
+    { name: 'description', content: 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.' },
     { property: 'og:title', content: 'Projetos - Rafael Leonan' },
-    { property: 'og:description', content: 'Projetos de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc..' },
+    { property: 'og:description', content: 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://rafaelleonan.com/projects' },
     { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
     { property: 'og:site_name', content: 'Rafael Leonan' },
-    { name: 'twitter:card', content: 'summary_large_image' },
+
     { name: 'twitter:title', content: 'Projetos - Rafael Leonan.' },
-    { name: 'twitter:description', content: 'Projetos de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
+    { name: 'twitter:description', content: 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.' },
     { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
   ]
 });

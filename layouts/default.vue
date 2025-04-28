@@ -160,7 +160,9 @@ useHead({
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'author', content: 'Rafael Leonan' },
-    { name: 'theme-color', content: '#1b2932' }
+    { name: 'theme-color', content: '#1b2932' },
+    { name: 'keywords', content: 'Rafael Leonan, Portfólio, Projetos, Desenvolvedor Fullstack, Fullstack, Software, Web Developer, Flutter, Vue.js, Go, Ruby, Rails, JavaScript, TypeScript, PostgreSQL, MySQL, Frontend, Backend' },
+    { name: 'robots', content: 'index, follow, max-image-preview:large' }
   ]
 });
 
