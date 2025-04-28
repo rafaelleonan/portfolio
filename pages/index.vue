@@ -19,16 +19,16 @@ onMounted(() => {
 useHead({
   title: 'Portfólio de Desenvolvedor',
   meta: [
-    { name: 'description', content: 'Projetos de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
+    { name: 'description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack.' },
     { property: 'og:title', content: 'Portfólio - Rafael Leonan' },
-    { property: 'og:description', content: 'Projetos de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
+    { property: 'og:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://rafaelleonan.com' },
     { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
     { property: 'og:site_name', content: 'Rafael Leonan' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Portfólio de Desenvolvedor - Rafael Leonan.' },
-    { name: 'twitter:description', content: 'Portfólio de Desenvolvedor de Rafael Leonan.' },
+    { name: 'twitter:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack' },
     { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
   ]
 });

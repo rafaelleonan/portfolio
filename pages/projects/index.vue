@@ -17,7 +17,6 @@ useHead({
     { property: 'og:url', content: 'https://rafaelleonan.com/projects' },
     { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
     { property: 'og:site_name', content: 'Rafael Leonan' },
-
     { name: 'twitter:title', content: 'Projetos - Rafael Leonan.' },
     { name: 'twitter:description', content: 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.' },
     { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
