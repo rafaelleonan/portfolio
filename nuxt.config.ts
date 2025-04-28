@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      titleTemplate: '%s - Rafael Leonan',
+      titleTemplate: '%s | Rafael Leonan',
       link: [
         {
           rel: 'preconnect',
