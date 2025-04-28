@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import {process} from "std-env";
 import { MockProjects } from './data/mock-projects';
-import {undefined} from "zod";
-import {routes} from "vue-router/auto-routes";
 
 export default defineNuxtConfig({
 	srcDir: "",
@@ -61,11 +59,7 @@ export default defineNuxtConfig({
 	},
 	nitro: {
 		prerender: {
-			routes: [
-				'/projects/1',
-				'/projects/2',
-				'/projects/3',
-			]
+			routes: MockProjects.map((project) => `/projects/${project.id}`)
 		}
 	}
 })
