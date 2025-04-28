@@ -190,12 +190,12 @@ useHead({
     { property: 'og:description', content: project.value?.description },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: `https://rafaelleonan.com/projects/${project.value?.id}` },
-    { property: 'og:image', content: 'https://rafaelleonan.com/images/banner.jpg' },
+    { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
     { property: 'og:site_name', content: 'Rafael Leonan' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: project.value?.title ?? 'Projetos - Rafael Leonan' },
     { name: 'twitter:description', content: project.value?.description },
-    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/banner.jpg' }
+    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
   ]
 });
 
