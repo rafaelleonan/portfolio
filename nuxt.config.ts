@@ -37,21 +37,6 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/icon?family=Material+Icons",
         },
       ],
-	    // meta: [
-		  //   { name: 'keywords', content: 'Rafael Leonan, Portfólio, Projetos, Desenvolvedor Fullstack, Fullstack, Software, Web Developer, Flutter, Vue.js, Go, Ruby, Rails, JavaScript, TypeScript, PostgreSQL, MySQL, Frontend, Backend' },
-		  //   { name: 'description', content: 'Rafael Leonan - Desenvolvedor Fullstack com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc..' },
-		  //   { property: 'og:title', content: 'Portfólio - Rafael Leonan' },
-		  //   { property: 'og:description', content: 'Rafael Leonan - Desenvolvedor Fullstack com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc..' },
-		  //   { property: 'og:type', content: 'website' },
-		  //   { property: 'og:url', content: 'https://rafaelleonan.com' },
-		  //   { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
-		  //   { property: 'og:site_name', content: 'Rafael Leonan' },
-		  //   { name: 'twitter:card', content: 'summary_large_image' },
-		  //   { name: 'twitter:title', content: 'Portfólio - Rafael Leonan' },
-		  //   { name: 'twitter:description', content: 'Rafael Leonan - Desenvolvedor Fullstack com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc..' },
-		  //   { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' },
-		  //   { name: 'robots', content: 'index, follow, max-image-preview:large' }
-	    // ]
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },
@@ -72,6 +57,15 @@ export default defineNuxtConfig({
 			const projectRoutes = MockProjects.map(project => `/projects/${project.id}`);
 			
 			return [...routes, ...projectRoutes];
+		}
+	},
+	nitro: {
+		prerender: {
+			routes: [
+				'/projects/1',
+				'/projects/2',
+				'/projects/3',
+			]
 		}
 	}
 })
