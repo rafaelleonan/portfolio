@@ -5,7 +5,7 @@ import {useHead} from '#imports';
 import type {
   Project,
   ComponentCarousel,
-  ComponentInstructions, ComponentMedia
+  ComponentInstructions, ComponentMedia, Notification
 } from "~/interfaces/projects";
 import {MockProjects} from "~/data/mock-projects";
 
@@ -13,11 +13,28 @@ const route = useRoute()
 const router = useRouter()
 const project = ref<Project | null>(null);
 
-interface Notification {
-  id: number
-  message: string
-  fading: boolean
+const idURL = Number(route.params.id);
+project.value = MockProjects.find((item: Project) => item.id === idURL) ?? null
+if (!project.value) {
+  router.push("/404")
 }
+
+useHead({
+  title: project.value?.title ?? 'Projeto',
+  meta: [
+    { name: 'description', content: project.value?.description },
+    { property: 'og:title', content: project.value?.title },
+    { property: 'og:description', content: project.value?.description },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: `https://rafaelleonan.com/projects/${project.value?.id}` },
+    { property: 'og:image', content: project.value?.card_banner ?? 'https://rafaelleonan.com/images/og-image.png' },
+    { property: 'og:site_name', content: 'Rafael Leonan' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: project.value?.title ?? 'Projetos - Rafael Leonan' },
+    { name: 'twitter:description', content: project.value?.description },
+    { name: 'twitter:image', content: project.value?.card_banner ?? 'https://rafaelleonan.com/images/og-image.png' }
+  ]
+});
 
 const notifications = ref<Notification[]>([])
 const modalZoomImage = ref<HTMLDivElement | null>(null)
@@ -174,28 +191,6 @@ const getPointerClass = (currentIndex: number, index: number, last: number): str
   if (currentIndex === (last - 1) && (currentIndex - 2) === index) return 'show'
   else return 'hidden'
 }
-
-project.value = MockProjects.find((item: Project) => item.id === Number(route.params.id)) ?? null
-if (!project.value) {
-  router.push("/404")
-}
-
-useHead({
-  title: project.value?.title ?? 'Projeto',
-  meta: [
-    { name: 'description', content: project.value?.description },
-    { property: 'og:title', content: project.value?.title },
-    { property: 'og:description', content: project.value?.description },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: `https://rafaelleonan.com/projects/${project.value?.id}` },
-    { property: 'og:image', content: 'https://rafaelleonan.com/images/banner-test.png' },
-    { property: 'og:site_name', content: 'Rafael Leonan' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: project.value?.title ?? 'Projetos - Rafael Leonan' },
-    { name: 'twitter:description', content: project.value?.description },
-    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/banner-test.png' }
-  ]
-});
 
 </script>
 

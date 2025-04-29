@@ -86,4 +86,11 @@ export interface Project {
     technologies: Technology[]
     sections: Section[]
     comments: Comment[]
+	  card_banner?: string
+}
+
+export interface Notification {
+	id: number
+	message: string
+	fading: boolean
 }

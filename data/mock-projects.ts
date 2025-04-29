@@ -7,6 +7,7 @@ export const MockProjects = reactive<Project[]>([
       "id": 1,
       "title": "SISTEMA PARA GESTÃO DE HOSPITAIS",
       "current_index": 0,
+	    "card_banner": "https://rafaelleonan.com/images/banner-project-1.png",
       "type_project": ["Fullstack", "Design", "Frontend", "Backend", "API RESTful", "Web"],
       "description": `Esse projeto foi planejado e desenvolvido para uma cadeira da faculdade PRÁTICAS INTEGRATIVAS.
           Ele foi desenvolvido com o framework Vue js 3 para o frontend, consumindo os dados de uma REST Full APIs em GO com Fiber.
