@@ -56,7 +56,7 @@ useHead({
       <div class="hard-skills">
         <div class="d-flex d-flex--justify-between">
           <span class="title-sm">HARD SKILLS</span>
-          <a class="d-flex d-flex--align-center d-flex--justify-between d-flex--gap-4px" href="#">
+          <a class="d-flex d-flex--align-center d-flex--justify-between d-flex--gap-4px" @click="router.push('/about')">
             <span class="text--uppercase text--size-12px">Ver todos</span>
             <span class="material-icons text--size-16px">open_in_new</span>
           </a>
