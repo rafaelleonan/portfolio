@@ -1,0 +1,492 @@
+@use "variables" as *;
+
+.star-brown {
+  color: var(--color-solid-brown-2);
+}
+
+.about-me {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  gap: 10px;
+
+  .header-about-me {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+
+    img {
+      height: 80px;
+    }
+
+    div {
+      .title-about-me {
+        font-size: $rl-app-desktop-fs-h3;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .subtitle-about-me {
+        font-size: $rl-app-desktop-fs-xl;
+        font-weight: lighter;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+      }
+
+      .links {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
+        
+        a {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          gap: 4px;
+          border-bottom: 1px solid var(--br-solid-brown);
+
+          .material-icons {
+            font-size: $rl-app-desktop-fs-md;
+          }
+        }
+      }
+    }
+  }
+
+  .contacts {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .item-contact {
+      position: relative;
+      padding: 4px 6px;
+      min-height: 30px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 2px;
+      text-decoration: none;
+      transition: all 250ms;
+      cursor: pointer;
+      border-radius: $rl-app-desktop-br-sm;
+      font-size: $rl-app-desktop-fs-md;
+      background-color: var(--bg-solid-input-1);
+      color: var(--color-solid-input-1);
+
+      .material-icons {
+        font-size: $rl-app-desktop-fs-sm;
+      }
+
+      ul {
+        &.item-options {
+          transition: all 250ms;
+          left: 0;
+          right: 0;
+          top: 15px;
+          z-index: -1;
+          position: absolute;
+          display: none;
+          list-style: none;
+          padding: 0;
+          border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+
+          .item-option {
+            min-height: 30px;
+            transition: all 250ms;
+            width: 100%;
+            padding: 4px 6px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--bg-solid-input-1);
+            color: var(--color-solid-input-1);
+            box-shadow: 1px 1px 2px var(--bs-solid-blue-1);
+            font-size: $rl-app-desktop-fs-xs;
+            font-weight: bold;
+
+            &:last-child {
+              border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
+            }
+
+            &:not(:last-child) {
+              border-bottom: 1px solid $rl-app-blue-500
+            }
+
+            &:hover {
+              background-color: var(--bg-solid-dropdown-item-hover-1);
+            }
+          }
+        }
+      }
+
+      &:focus {
+        background-color: var(--bg-solid-dropdown-item-hover-1);
+
+        ul {
+          &.item-options {
+            z-index: 99;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .text-about-me {
+    font-size: $rl-app-desktop-fs-lg;
+    font-weight: 200;
+    word-spacing: 4px;
+    letter-spacing: 2px;
+    line-height: 25px;
+    text-align: justify;
+  }
+}
+
+.hard-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .stack-current {
+    border-left: 2px solid var(--br-solid-brown);
+    padding-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background: var(--bg-opacity-1);
+
+    .stack-title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: $rl-app-desktop-fs-md;
+      color: var(--br-solid-brown);
+    }
+
+    .list-hs {
+      display: flex;
+      gap: 10px;
+      justify-content: start;
+      align-items: center;
+      overflow-x: auto;
+      padding-bottom: 14px;
+      padding-top: 10px;
+
+      .item-hs {
+        display: flex;
+        gap: 10px;
+        justify-content: start;
+        align-items: center;
+        padding-right: 12px;
+
+        img {
+          height: 50px;
+        }
+
+        .text-hs {
+          .title-hs, .subtitle-hs {
+            text-wrap: nowrap;
+          }
+
+          .subtitle-hs {
+            .material-icons {
+              font-size: 14px;
+              color: var(--color-solid-brown-2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.formacoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  border-radius: 10px;
+
+  .formacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 300px;
+    height: 340px;
+    background-color: var(--bg-solid-input-1);
+    border: 1px solid var(--br-solid-brown);
+    border-radius: 0 0 $rl-app-desktop-br-md $rl-app-desktop-br-md;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+
+    .formacao-pdf {
+      width: 100%;
+      position: relative;
+
+      .material-icons {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        z-index: 99;
+        color: $rl-app-brown-500;
+        border: 1px solid $rl-app-brown-500;
+        padding: 2px;
+      }
+    }
+
+    .formacao-info {
+      padding: 15px 10px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+
+      .formacao-title {
+        color: var(--color-solid-brown-2);
+        font-size: $rl-app-desktop-fs-md;
+        font-weight: bold;
+      }
+
+      .formacao-issuer, .formacao-duration {
+        color: var(--color-solid-input-1);
+        font-weight: 300;
+        font-size: $rl-app-desktop-fs-sm;
+      }
+    }
+  }
+}
+
+.trajectory {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+
+  .trail {
+    position: absolute;
+    width: 10px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-solid-blue-2);
+  }
+
+  .item-trajectory {
+    z-index: 99;
+    background-color: var(--bg-solid-blue-1);
+    width: 80%;
+    border: 2px solid var(--bg-solid-blue-2);
+    border-radius: 10px;
+
+    .year-trajectory {
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bolder;
+      font-size: $rl-app-desktop-fs-xl;
+      letter-spacing: 6px;
+      background-color: var(--bg-solid-blue-2);
+      color: var(--color-solid-blue-3);
+    }
+
+    .text-trajectory {
+      width: 100%;
+      padding: 18px 12px;
+      background-color: var(--bg-solid-blue-1);
+      font-size: $rl-app-desktop-fs-md;
+      line-height: 25px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      word-spacing: 4px;
+      text-align: center;
+    }
+
+    .resume-trajectory {
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+
+      .resume-trajectory-item {
+
+        .resume-images {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          justify-content: center;
+          align-items: center;
+
+          .resume-image {
+            width: 60px;
+            height: 60px;
+          }
+        }
+
+        .resume-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          justify-content: center;
+          align-items: center;
+
+          a {
+            &::before, &::after {
+              content: " ♦ ";
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+
+  .hard-skills {
+    gap: 10px;
+
+    .stack-current {
+
+      .stack-title {
+        font-size: $rl-app-desktop-fs-xs;
+      }
+
+      .list-hs {
+        gap: 8px;
+
+        .item-hs {
+          gap: 8px;
+          min-width: 160px;
+
+          img {
+            height: 30px;
+          }
+
+          .text-hs {
+            .subtitle-hs {
+              .material-icons {
+                font-size: $rl-app-desktop-fs-xs;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .about-me {
+
+    .header-about-me {
+
+      img {
+        height: auto;
+        width: 68px;
+      }
+
+      div {
+        .title-about-me {
+          font-size: $rl-app-desktop-fs-lg;
+        }
+
+        .subtitle-about-me {
+          font-weight: 400;
+          font-size: $rl-app-desktop-fs-sm;
+          letter-spacing: 2px;
+        }
+
+        .links {
+
+          a {
+            font-size: $rl-app-desktop-fs-xs;
+          }
+        }
+      }
+    }
+
+    .text-about-me {
+      font-size: $rl-app-desktop-fs-md;
+    }
+
+    .contacts {
+      .item-contact {
+        flex-grow: 1;
+        font-size: $rl-app-desktop-fs-sm;
+
+        .material-icons {
+          font-size: $rl-app-desktop-fs-xs;
+        }
+
+        &.link {
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .formacoes {
+    flex-direction: column;
+  }
+
+  .trajectory {
+    .item-trajectory {
+      width: 95%;
+
+      .year-trajectory {
+        font-size: $rl-app-desktop-fs-lg;
+        letter-spacing: 6px;
+      }
+
+      .text-trajectory {
+        background-color: var(--bg-solid-blue-1);
+        font-size: $rl-app-desktop-fs-sm;
+        line-height: 25px;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+      }
+
+      .resume-trajectory {
+        .resume-trajectory-item {
+          .resume-images {
+            .resume-image {
+              width: 40px;
+              height: 40px;
+            }
+          }
+
+          .resume-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+
+            a {
+              font-size: $rl-app-desktop-fs-sm;
+
+              &::before, &::after {
+                content: " ♦ ";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

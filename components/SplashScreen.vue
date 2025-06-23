@@ -1,26 +1,23 @@
 <template>
   <div class="splash-screen">
     <div class="content-splash-screen">
+      <div class="passagem-biblica">
+        <i>"Eu sou o <b class="text--weight-700">caminho</b>, a <b class="text--weight-700">verdade</b>, e a <b class="text--weight-700">vida </b>; ninguém vem ao Pai, senão por mim."</i>
+        <span>— <b class="jesus-cristo">Jesus Cristo</b> (João 14:6)</span>
+      </div>
       <div class="loader-content">
         <div class="loader-text typing-text">
           rafaelleonan.com
         </div>
-      </div>
-      <div class="progress-bar-container">
-        <div
-            class="progress-bar"
-            :style="{ width: `${progress}%` }"
-        ></div>
-        <span class="progress-bar-text">
-          Carregando recursos...
-          ({{ animatedCount }}%)
-        </span>
-      </div>
-      <div class="info">
-        <div class="item-info" v-for="(info, infoKey) in infoList" :key="`info-${infoKey}`">
-          <b>>_</b>
-          <b>[{{ info.local }}]</b>
-          <span>{{ info.value }}</span>
+        <div class="progress-bar-container">
+          <div
+              class="progress-bar"
+              :style="{ width: `${progress}%` }"
+          ></div>
+          <span class="progress-bar-text">
+            Carregando recursos...
+            ({{ animatedCount }}%)
+          </span>
         </div>
       </div>
     </div>
@@ -67,6 +64,18 @@ watch(
 <style scoped lang="scss">
 @use 'assets/style/variables' as *;
 
+@keyframes gradientMove {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -75,12 +84,12 @@ watch(
 
 @keyframes typing {
   from { width: 0 }
-  to { width: 100% }
+  to { width: 220px }
 }
 
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: $rl-app-brown-500; }
+  50% { border-color: $rl-app-blue-50; }
 }
 
 .typing-text {
@@ -89,9 +98,9 @@ watch(
   padding-right: 2px;
   white-space: nowrap;
   overflow: hidden;
-  font-size: $rl-app-desktop-fs-h2 !important;
+  font-size: $rl-app-desktop-fs-lg !important;
   text-align: center;
-  border-right: .15em solid $rl-app-brown-500;
+  border-right: .15em solid var(--br-solid-blue-2);
   margin: 0 auto;
   letter-spacing: .15em;
   animation:
@@ -109,97 +118,89 @@ watch(
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $rl-app-blue-900;
+  background: var(--bg-gradient-1);
   font-size: 1.5rem;
   z-index: 9999;
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
+  overflow: hidden;
 
   .content-splash-screen {
     height: 100%;
-    width: 400px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    padding: 0 50px;
 
-    .loader-content {
-      width: 100%;
+    .passagem-biblica {
+      flex-grow: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      text-align: center;
+      line-height: 50px;
 
-      .loader {
-        width: 50px;
-        height: 50px;
-        border: 5px solid $rl-app-blue-500;
-        border-top-color: $rl-app-brown-500;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
+      i {
+        color: var(--color-solid-brown-1);
+        font-size: $rl-app-desktop-fs-h1;
+        font-weight: 300;
       }
+
+      span {
+        color: $rl-app-brown-500;
+        font-size: $rl-app-desktop-fs-h2;
+        font-weight: 400;
+
+        .jesus-cristo {
+          font-weight: 700 !important;
+        }
+      }
+    }
+
+    .loader-content {
+      position: fixed;
+      bottom: 80px;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
 
       .loader-text {
         font-size: $rl-app-desktop-fs-lg;
         font-weight: bold;
-        color: $rl-app-brown-500;
+        color: var(--color-solid-blue-1);
       }
-    }
 
-    .progress-bar-container {
-      width: 100%;
-      height: 30px;
-      background-color: $rl-app-blue-900;
-      border-radius: $rl-app-desktop-br-md;
-      margin-top: 20px;
-      border: 1px solid $rl-app-brown-500;
-      position: relative;
-
-      .progress-bar {
-        height: 100%;
-        background-color: $rl-app-blue-500;
+      .progress-bar-container {
+        width: 80%;
+        height: 30px;
+        background-color: transparent;
         border-radius: $rl-app-desktop-br-md;
-        transition: width 200ms ease-out;
-      }
+        margin-top: 0;
+        border: 1px solid var(--br-solid-blue-2);
+        position: relative;
 
-      .progress-bar-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 99;
-        font-size: $rl-app-desktop-fs-md;
-        font-weight: bold;
-        color: $rl-app-brown-500;
-        text-wrap: nowrap;
-      }
-    }
-
-    .info {
-      background-color: $rl-app-blue-500;
-      border-radius: $rl-app-desktop-br-sm;
-      padding: 10px;
-      width: 100%;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      justify-content: end;
-      overflow: hidden;
-
-      .item-info {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        gap: 10px;
-
-        b {
-          color: $rl-app-brown-500;
-          font-size: $rl-app-desktop-fs-xxs;
+        .progress-bar {
+          height: 100%;
+          background-color: var(--bg-solid-blue-3);
+          border-radius: $rl-app-desktop-br-md;
+          transition: width 200ms ease-out;
         }
-        span {
-          font-size: $rl-app-desktop-fs-xxs;
-          font-weight: lighter;
-          color: $rl-app-blue-50;
+
+        .progress-bar-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 99;
+          font-size: $rl-app-desktop-fs-md;
+          color: var(--color-solid-blue-2);
+          text-wrap: nowrap;
         }
       }
     }
@@ -213,26 +214,28 @@ watch(
 
   .splash-screen {
     .content-splash-screen {
-      width: 300px;
+      padding: 0 14px;
       gap: 10px;
+      width: 100%;
+
+      .passagem-biblica {
+        transform: translateY(-100px);
+      }
 
       .loader-content {
+        bottom: 60px;
         gap: 10px;
-
-        .loader {
-          width: 30px;
-          height: 30px;
-          border: 4px solid $rl-app-blue-500;
-        }
 
         .loader-text {
           font-size: $rl-app-desktop-fs-md;
         }
-      }
 
-      .progress-bar-container {
-        .progress-bar-text {
-          font-size: $rl-app-desktop-fs-sm;
+        .progress-bar-container {
+          width: 100%;
+
+          .progress-bar-text {
+            font-size: $rl-app-desktop-fs-sm;
+          }
         }
       }
     }

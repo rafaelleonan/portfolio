@@ -230,89 +230,88 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="page">
-    <section class="section-default">
-      <span class="title-section">MEUS PROJETOS</span>
-      <div class="form-filters">
-        <div class="form-filter col-4">
-          <input type="text" class="form-input" v-model="filterProjectName" placeholder="NOME PROJETO"/>
-        </div>
-        <div class="form-filter col-4">
-          <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="toggleSelect">
-              <input
-                  type="text"
-                  v-model="searchProjectType"
-                  :placeholder="placeholderSelectTypeProject()"
-                  class="input"
-              />
-              <span class="material-icons clear-all"
-                    @click="clearFilterProjectType()"
-                    v-if="(filterProjectTypeSelected.length > 0 || searchProjectType.length > 0) && !isOpen"
-              >
+  <section class="section">
+    <span class="title-sm">MEUS PROJETOS</span>
+    <div class="form-filters mt-1">
+      <div class="form-filter col-4">
+        <input type="text" class="form-input" v-model="filterProjectName" placeholder="NOME PROJETO"/>
+      </div>
+      <div class="form-filter col-4">
+        <div class="dropdown-container" @click.stop>
+          <div class="input-box" @click="toggleSelect">
+            <input
+                type="text"
+                v-model="searchProjectType"
+                :placeholder="placeholderSelectTypeProject()"
+                class="input"
+            />
+            <span class="material-icons clear-all"
+                  @click="clearFilterProjectType()"
+                  v-if="(filterProjectTypeSelected.length > 0 || searchProjectType.length > 0) && !isOpen"
+            >
                 close
               </span>
-              <span class="material-icons icon-dropdown"
-                    v-else
-              >
+            <span class="material-icons icon-dropdown"
+                  v-else
+            >
                 {{ isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
-            </div>
+          </div>
 
-            <ul v-if="isOpen" class="dropdown">
-              <li
-                  v-if="listProjectTypesSearch.length > 0"
-                  v-for="(option, key) in listProjectTypesSearch"
-                  :key="`option-${key}`"
-              >
-                <div class="option"
-                     @click="toggleOptionSelectTypeProject(option)"
-                     :class="{
+          <ul v-if="isOpen" class="dropdown">
+            <li
+                v-if="listProjectTypesSearch.length > 0"
+                v-for="(option, key) in listProjectTypesSearch"
+                :key="`option-${key}`"
+            >
+              <div class="option"
+                   @click="toggleOptionSelectTypeProject(option)"
+                   :class="{
                        'selected': filterProjectTypeSelected.some((o) => o.toUpperCase() === option.toUpperCase()),
                        'searched': searchProjectType.toUpperCase() === option.toUpperCase()
                      }"
-                >
-                  {{ option }}
-                  <span class="material-icons remove">close</span>
-                </div>
-              </li>
-              <div class="not-found-results" v-else>
-                Nenhum resultado encontrado
-              </div>
-            </ul>
-          </div>
-        </div>
-        <div class="form-filter col-4">
-          <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="toggleSelectTwo">
-              <input
-                  type="text"
-                  v-model="searchTechnology"
-                  :placeholder="placeholderSelectTechnology()"
-                  class="input"
-              />
-              <span class="material-icons clear-all"
-                    @click="clearFilterTechnologies()"
-                    v-if="(filterProjectTechSelected.length > 0 || searchTechnology.length > 0) && !isOpenTwo"
               >
+                {{ option }}
+                <span class="material-icons remove">close</span>
+              </div>
+            </li>
+            <div class="not-found-results" v-else>
+              Nenhum resultado encontrado
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="form-filter col-4">
+        <div class="dropdown-container" @click.stop>
+          <div class="input-box" @click="toggleSelectTwo">
+            <input
+                type="text"
+                v-model="searchTechnology"
+                :placeholder="placeholderSelectTechnology()"
+                class="input"
+            />
+            <span class="material-icons clear-all"
+                  @click="clearFilterTechnologies()"
+                  v-if="(filterProjectTechSelected.length > 0 || searchTechnology.length > 0) && !isOpenTwo"
+            >
                 close
               </span>
-              <span class="material-icons icon-dropdown"
-                    v-else
-              >
+            <span class="material-icons icon-dropdown"
+                  v-else
+            >
                 {{ isOpenTwo ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
-            </div>
+          </div>
 
-            <ul v-if="isOpenTwo" class="dropdown">
-              <li
-                  v-if="listTechnologiesSearch.length > 0"
-                  v-for="(option, key) in listTechnologiesSearch"
-                  :key="`option-${key}`"
-              >
-                <div class="select-group">
-                  <span class="title-group">{{ option.title }}</span>
-                  <div class="option-group"
+          <ul v-if="isOpenTwo" class="dropdown">
+            <li
+                v-if="listTechnologiesSearch.length > 0"
+                v-for="(option, key) in listTechnologiesSearch"
+                :key="`option-${key}`"
+            >
+              <div class="select-group">
+                <span class="title-group">{{ option.title }}</span>
+                <div class="option-group"
                      v-for="(tech, techKey) in option.badges"
                      :key="`option-key-tech-${techKey}`"
                      :class="{
@@ -320,82 +319,81 @@ onUnmounted(() => {
                        'searched': searchTechnology.toUpperCase() === tech.title.toUpperCase()
                      }"
                      @click="toggleOptionSelect(tech.title)"
-                  >
-                    {{ tech.title }}
-                    <span class="material-icons remove">close</span>
-                  </div>
+                >
+                  {{ tech.title }}
+                  <span class="material-icons remove">close</span>
                 </div>
-              </li>
-              <div class="not-found-results" v-else>
-                Nenhum resultado encontrado
               </div>
-            </ul>
-          </div>
+            </li>
+            <div class="not-found-results" v-else>
+              Nenhum resultado encontrado
+            </div>
+          </ul>
         </div>
       </div>
-      <div class="card-project"
+    </div>
+    <div class="card-project mt-4"
          v-if="computedProjects.length > 0"
          v-for="(project, pKey) in computedProjects"
          :key="`key_project_${pKey}`"
          @click="goToProject(project.id)"
-      >
-        <div class="images-project">
-          <div class="background-blur">
-            <img class="background-image" :src="project.images[project.current_index].src" :alt="project.images[project.current_index].alt"/>
-            <div class="background-filter"></div>
-          </div>
-          <div class="slider">
-            <div class="slides">
-              <div
-                  v-for="(slide, iKey) in project.images"
-                  :key="`key_image_${iKey}`"
-                  :class="getSlideClass(iKey, project)"
-              >
-                <img :src="slide.src" :alt="slide.alt" :class="getSlideClassImg(iKey, project)" />
-              </div>
-            </div>
-            <i class="btn-prev material-icons" @click.stop="showPrevSlide(project)">arrow_back_ios</i>
-            <i class="btn-next material-icons" @click.stop="showNextSlide(project)">arrow_forward_ios</i>
-          </div>
+    >
+      <div class="images-project">
+        <div class="background-blur">
+          <img class="background-image" :src="project.images[project.current_index].src" :alt="project.images[project.current_index].alt"/>
+          <div class="background-filter"></div>
         </div>
+        <div class="slider">
+          <div class="slides">
+            <div
+                v-for="(slide, iKey) in project.images"
+                :key="`key_image_${iKey}`"
+                :class="getSlideClass(iKey, project)"
+            >
+              <img :src="slide.src" :alt="slide.alt" :class="getSlideClassImg(iKey, project)" />
+            </div>
+          </div>
+          <i class="btn-prev material-icons" @click.stop="showPrevSlide(project)">arrow_back_ios</i>
+          <i class="btn-next material-icons" @click.stop="showNextSlide(project)">arrow_forward_ios</i>
+        </div>
+      </div>
 
-        <div class="resume-project">
-          <div class="header">
-            <span class="title">{{ project.title }}</span>
-            <i class="material-icons">open_in_new</i>
-          </div>
-          <div ref="carousel"
-               class="carousel-techs"
-               @mousedown.passive="(event: MouseEvent | TouchEvent) => startDrag(event, pKey)"
-               @touchstart.passive="(event: MouseEvent | TouchEvent) => startDrag(event, pKey)">
-            <div class="badge-xs slide-techs" v-for="(tech, techKey) in project.technologies" :key="`tech-key-${techKey}`">
-              <img :src="tech.icon_url" width="12px" :alt="tech.name" />
-              <div class="badge-title">{{ tech.name }}</div>
-              <div class="badge-version">{{ tech.version }}</div>
-            </div>
-          </div>
-          <div class="text-resume">
-            {{ project.description }}
+      <div class="resume-project">
+        <div class="header">
+          <span class="title">{{ project.title }}</span>
+          <i class="material-icons">open_in_new</i>
+        </div>
+        <div ref="carousel"
+             class="carousel-techs"
+             @mousedown.passive="(event: MouseEvent | TouchEvent) => startDrag(event, pKey)"
+             @touchstart.passive="(event: MouseEvent | TouchEvent) => startDrag(event, pKey)">
+          <div class="badge-xs slide-techs" v-for="(tech, techKey) in project.technologies" :key="`tech-key-${techKey}`">
+            <img :src="tech.icon_url" width="12px" :alt="tech.name" />
+            <div class="badge-title">{{ tech.name }}</div>
+            <div class="badge-version">{{ tech.version }}</div>
           </div>
         </div>
-      </div>
-      <div class="not-found-projects" v-else-if="filterProjectName.length > 0 || filterProjectTechSelected.length > 0 || filterProjectTypeSelected.length > 0">
-        Nenhum resultado encontrado para os filtros aplicados
-        <div v-if="filterProjectName.length > 0" class="item-not-found">
-          NOME DO PROJETO: {{ filterProjectName }}
-        </div>
-        <div v-if="filterProjectTechSelected.length > 0" class="item-not-found">
-          TECNOLOGIAS: {{ filterProjectTechSelected.join(", ") }}
-        </div>
-        <div v-if="filterProjectTypeSelected.length > 0" class="item-not-found">
-          TAGS: {{ filterProjectTypeSelected.join(", ") }}
+        <div class="text-resume">
+          {{ project.description }}
         </div>
       </div>
-      <div class="not-found-projects" v-else>
-        Nenhum projeto encontrado...
+    </div>
+    <div class="not-found-projects" v-else-if="filterProjectName.length > 0 || filterProjectTechSelected.length > 0 || filterProjectTypeSelected.length > 0">
+      Nenhum resultado encontrado para os filtros aplicados
+      <div v-if="filterProjectName.length > 0" class="item-not-found">
+        NOME DO PROJETO: {{ filterProjectName }}
       </div>
-    </section>
-  </div>
+      <div v-if="filterProjectTechSelected.length > 0" class="item-not-found">
+        TECNOLOGIAS: {{ filterProjectTechSelected.join(", ") }}
+      </div>
+      <div v-if="filterProjectTypeSelected.length > 0" class="item-not-found">
+        TAGS: {{ filterProjectTypeSelected.join(", ") }}
+      </div>
+    </div>
+    <div class="not-found-projects" v-else>
+      Nenhum projeto encontrado...
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">

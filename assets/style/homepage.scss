@@ -1,333 +1,151 @@
 @use "variables" as *;
 
-.card-experience {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 10px 10px 10px;
-  position: relative;
-  gap: 10px;
-
-  &:first-child {
-    border-radius: $rl-app-desktop-br-md $rl-app-desktop-br-md 0 0;
-  }
-
-  &:last-child {
-    border-radius: 0 0 $rl-app-desktop-br-md $rl-app-desktop-br-md;
-  }
-
-  .title-card-experience {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    font-weight: 700;
-    text-transform: uppercase;
-    transform: translateX(-50%);
-
-    .divisor {
-      flex-grow: 1;
-      height: 1px;
-      background-color: $rl-app-blue-100;
-    }
-  }
+.star-brown {
+  color: var(--color-solid-brown-2);
 }
 
-.stack {
+.about-me {
   width: 100%;
-  flex-wrap: wrap;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-
-  .tech-stack {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    width: 110px;
-    background-color: var(--background-card-primary-color);
-    padding: 10px 0;
-    border-radius: $rl-app-desktop-br-sm;
-    flex-grow: 1;
-
-    &.all-techs {
-      min-width: 150px;
-      max-width: 200px;
-    }
-
-    span {
-      font-size: $rl-app-desktop-fs-sm;
-      font-weight: bold;
-    }
-
-    img {
-      width: 50px;
-      height: 50px;
-    }
-  }
-}
-
-.trajectory {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 45px;
-  position: relative;
+  gap: 12px;
 
-  .trail {
-    position: absolute;
-    height: 100%;
-    width: 10px;
-    background-image:
-            linear-gradient(to bottom, $rl-app-brown-variant-2, $rl-app-brown-variant-1),
-            url('../../public/images/CircuitOne.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    left: 50%;
-    transform: translateX(-50%);
+  .title-about-me {
+    font-size: $rl-app-desktop-fs-h3;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 
-  .item-trajectory {
-    position: relative;
+  .subtitle-about-me {
+    font-size: $rl-app-desktop-fs-xl;
+    font-weight: lighter;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .text-about-me {
+    font-size: $rl-app-desktop-fs-lg;
+    font-weight: 200;
+    word-spacing: 4px;
+    letter-spacing: 2px;
+    line-height: 25px;
+    text-align: justify;
+  }
+}
+
+.hard-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .list-hs {
     display: flex;
+    gap: 10px;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    overflow: hidden;
+    padding-bottom: 12px;
 
-    .pointer-time, .pointer-end {
-      position: absolute;
+    .item-hs {
       display: flex;
-      justify-content: center;
+      gap: 10px;
+      justify-content: start;
       align-items: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      color: $rl-app-brown-900;
-      font-weight: 800;
-      background-color: $rl-app-brown-500;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+      min-width: 200px;
 
-    .pointer-time {
-      top: -25px;
-    }
+      img {
+        height: 50px;
+      }
 
-    .pointer-end {
-      bottom: -25px;
-    }
+      .text-hs {
+        .title-hs, .subtitle-hs {
+          text-wrap: nowrap;
+        }
 
-    .left-side {
-      max-width: 49%;
-      height: 100%;
-      flex-grow: 1;
-      text-align: justify;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 15px 15px 0;
-    }
-
-    .right-side {
-      max-width: 49%;
-      height: 100%;
-      flex-grow: 1;
-      text-align: justify;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0 15px 15px;
-    }
-
-    .right-side, .left-side {
-      &.html-side {
-        min-height: 280px;
-        background-color: var(--background-card-primary-color);
-        border-radius: $rl-app-desktop-br-md;
-        padding: 15px !important;
-        display: flex;
-        flex-direction: column;
-
-        .resume-year {
-          .resume-images {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 8px;
-
-            .resume-image {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              border: 1px solid var(--border-card-mini-primary-color);
-              height: 60px;
-              min-width: 60px;
-              transition: all 350ms ease-in-out;
-              cursor: pointer;
-              padding: 4px;
-              border-radius: $rl-app-desktop-br-md;
-
-              &:hover {
-                background-color: var(--background-card-primary-color-hover);
-              }
-            }
-          }
-
-          .resume-links {
-            display: flex;
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 10px;
-
-            .links-title {
-              color: var(--text-primary-color);
-              display: flex;
-              justify-content: start;
-              align-items: center;
-              width: 100%;
-              gap: 10px;
-
-              .divisor {
-                width: 100%;
-                height: 1px;
-                background-color: var(--text-primary-color);
-              }
-            }
-
-            .resume-link {
-              color: var(--text-primary-color);
-              transition: color 350ms ease-in-out;
-
-              &:hover {
-                color: var(--text-primary-color-hover);
-              }
-            }
+        .subtitle-hs {
+          .material-icons {
+            font-size: 14px;
+            color: var(--color-solid-brown-2);
           }
         }
+      }
+    }
+  }
+}
+
+.certifications {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .list-certificates {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+    .item-certificate {
+      cursor: pointer;
+      width: 290px;
+      background-color: var(--bg-solid-blue-1);
+      border-radius: 6px;
+      box-shadow: 4px 4px 8px var(--bs-solid-blue-1);
+      transition: transform 300ms ease;
+
+      img {
+        border-radius: 6px 6px 0 0;
+        height: 200px;
+      }
+
+      .footer-certificate {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 6px 12px;
+
+        .title-certificate {
+          text-align: justify;
+          text-transform: capitalize;
+          font-size: $rl-app-desktop-fs-md;
+          word-spacing: 2px;
+        }
+
+        .subtitle-certificate {
+          font-size: $rl-app-desktop-fs-sm;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.01)
       }
     }
   }
 }
 
 @media (max-width: 600px) {
-  .trajectory {
-    gap: 45px;
-    margin-top: 20px;
-    margin-bottom: 0;
 
-    .trail {
-      left: 0;
-      width: 0;
-      transform: none;
-      display: none;
-    }
+  .hard-skills {
+    gap: 10px;
 
-    .item-trajectory {
-      gap: 4px;
-      padding: 20px 0;
-      flex-direction: column;
-      width: 100%;
+    .list-hs {
+      gap: 8px;
 
-      &:nth-child(odd) {
-        flex-direction: column-reverse;
-      }
+      .item-hs {
+        gap: 8px;
+        min-width: 160px;
 
-      &:last-child {
-        padding-bottom: 10px !important;
-      }
-
-      .pointer-end {
-        display: none;
-      }
-
-      .pointer-time {
-        width: 100%;
-        height: 35px;
-        font-size: $rl-app-desktop-fs-xm;
-        border-radius: $rl-app-desktop-br-sm;
-      }
-
-      .pointer-time {
-        top: -24px;
-
-        &.first-pointer {
-          top: -15px !important;
+        img {
+          height: 40px;
         }
-      }
 
-      .left-side {
-        padding: 8px 0 8px 0;
-      }
-
-      .right-side {
-        padding: 8px 0 8px 0;
-      }
-
-      .right-side, .left-side {
-        width: 100% !important;
-        max-width: 100% !important;
-        font-size: $rl-app-desktop-fs-md;
-
-        &.html-side {
-          min-height: 150px;
-          padding: 8px !important;
-          width: 100%;
-          gap: 4px;
-
-          .resume-year {
-            height: 100%;
-            width: 95%;
-
-            .resume-images {
-              margin-bottom: 4px;
-              flex-wrap: nowrap;
-              overflow-x: auto;
-              justify-content: space-between;
-
-              .resume-image {
-                width: 60px;
-                min-width: auto !important;
-                padding: 4px;
-                border-radius: $rl-app-desktop-br-sm;
-                border-width: 0.5px;
-              }
-            }
-
-            .resume-links {
-              gap: 8px;
-
-              .links-title {
-                font-size: $rl-app-desktop-fs-sm;
-                gap: 6px;
-
-                .divisor {
-                  display: none;
-                }
-              }
-
-              .resume-link {
-                transition: color 350ms ease-in-out;
-
-                &:hover {
-                  color: $rl-app-white;
-                }
-              }
+        .text-hs {
+          .subtitle-hs {
+            .material-icons {
+              font-size: 10px;
             }
           }
         }
@@ -335,55 +153,43 @@
     }
   }
 
-  .card-experience {
-    padding-top: 20px;
-    border-left: 1px solid $rl-app-blue-500;
-    border-right: 1px solid $rl-app-blue-500;
-    border-bottom: 1px solid $rl-app-blue-500;
-    margin-top: 20px;
-    background-color: var(--background-card-tech-primary-color);
+  .certifications {
+    gap: 10px;
 
-    &:first-child {
-      margin-top: 0;
-      border-radius: $rl-app-desktop-br-sm $rl-app-desktop-br-sm 0 0;
-    }
+    .list-certificates {
+      gap: 6px;
 
-    &:last-child {
-      border-radius: 0 0 $rl-app-desktop-br-sm $rl-app-desktop-br-sm;
-    }
+      .item-certificate {
 
-    .title-card-experience {
-      font-size: $rl-app-desktop-fs-sm;
-      top: -8px;
-      gap: 4px;
+        img {
+          height: 160px;
+        }
 
-      .divisor {
-        background-color: $rl-app-blue-500;
+        .footer-certificate {
+          .title-certificate {
+            font-size: $rl-app-desktop-fs-sm;
+          }
+
+          .subtitle-certificate {
+            font-size: $rl-app-desktop-fs-xs;
+          }
+        }
       }
     }
   }
 
-  .stack {
-    gap: 10px;
+  .about-me {
+    .title-about-me {
+      font-size: $rl-app-desktop-fs-xl;
+    }
 
-    .tech-stack {
-      gap: 8px;
-      width: 100px;
+    .subtitle-about-me {
+      font-weight: 300;
+      font-size: $rl-app-desktop-fs-md;
+    }
 
-      &.all-techs {
-        min-width: 120px !important;
-        max-width: 140px !important;
-      }
-
-      span {
-        font-size: $rl-app-desktop-fs-xs;
-        font-weight: bold;
-      }
-
-      img {
-        width: 30px;
-        height: 30px;
-      }
+    .text-about-me {
+      font-size: $rl-app-desktop-fs-md;
     }
   }
 }

@@ -1,3 +1,5 @@
+@use "sass:map";
+
 /* COR PRIMÁRIA E SUAS VARIAÇÕES: #1b2932 */
 $rl-app-blue-50: #e8eaeb;
 $rl-app-blue-100: #b8bdbf;
@@ -110,312 +112,159 @@ $rl-app-mobile-br-md: #{$rl-app-size-3}px;
 $rl-app-mobile-br-lg: #{$rl-app-size-5}px;
 $rl-app-mobile-br-xl: #{$rl-app-size-7}px;
 
-/* MARGINs */
-// MARGIN ALL
-$rl-app-m-0: $rl-app-size-0;
-$rl-app-m-1: #{$rl-app-size-1}px;
-$rl-app-m-2: #{$rl-app-size-2}px;
-$rl-app-m-3: #{$rl-app-size-3}px;
-$rl-app-m-4: #{$rl-app-size-4}px;
-$rl-app-m-5: #{$rl-app-size-5}px;
-$rl-app-m-6: #{$rl-app-size-6}px;
-$rl-app-m-7: #{$rl-app-size-7}px;
-$rl-app-m-8: #{$rl-app-size-8}px;
-$rl-app-m-9: #{$rl-app-size-9}px;
-$rl-app-m-10: #{$rl-app-size-10}px;
-$rl-app-m-11: #{$rl-app-size-11}px;
-$rl-app-m-12: #{$rl-app-size-12}px;
-$rl-app-m-13: #{$rl-app-size-13}px;
-$rl-app-m-14: #{$rl-app-size-14}px;
-$rl-app-m-15: #{$rl-app-size-15}px;
-$rl-app-m-16: #{$rl-app-size-16}px;
+/* DEPOIS PASSAR AS VARIÁVEIS PARA O ARQUIVO _VARIABLES.SCSS */
+// Mapa das cores do projeto, só um exemplo simplificado
+$colors: (
+  "blue-50": #e8eaeb,
+  "blue-100": #b8bdbf,
+  "blue-200": #969da1,
+  "blue-300": #667076,
+  "blue-400": #49545b,
+  "blue-500": #1b2932,
+  "blue-600": #19252e,
+  "blue-700": #131d24,
+  "blue-800": #0f171c,
+  "blue-900": #0b1115,
 
-// MARGIN-RIGHT
-$rl-app-mr-0: $rl-app-size-0;
-$rl-app-mr-1: #{$rl-app-size-1}px;
-$rl-app-mr-2: #{$rl-app-size-2}px;
-$rl-app-mr-3: #{$rl-app-size-3}px;
-$rl-app-mr-4: #{$rl-app-size-4}px;
-$rl-app-mr-5: #{$rl-app-size-5}px;
-$rl-app-mr-6: #{$rl-app-size-6}px;
-$rl-app-mr-7: #{$rl-app-size-7}px;
-$rl-app-mr-8: #{$rl-app-size-8}px;
-$rl-app-mr-9: #{$rl-app-size-9}px;
-$rl-app-mr-10: #{$rl-app-size-10}px;
-$rl-app-mr-11: #{$rl-app-size-11}px;
-$rl-app-mr-12: #{$rl-app-size-12}px;
-$rl-app-mr-13: #{$rl-app-size-13}px;
-$rl-app-mr-14: #{$rl-app-size-14}px;
-$rl-app-mr-15: #{$rl-app-size-15}px;
-$rl-app-mr-16: #{$rl-app-size-16}px;
+  "brown-50": #faf7f4,
+  "brown-100": #eee6db,
+  "brown-200": #e6d9ca,
+  "brown-300": #dac8b2,
+  "brown-400": #d3bda3,
+  "brown-500": #C8AD8C,
+  "brown-600": #b69d7f,
+  "brown-700": #8e7b63,
+  "brown-800": #6e5f4d,
+  "brown-900": #54493b,
+  "brown-op-1-10": rgba(200, 173, 140, 0.1),
+  "brown-op-2-10": rgba(84, 73, 59, 0.1),
 
-// MARGIN-LEFT
-$rl-app-ml-0: $rl-app-size-0;
-$rl-app-ml-1: #{$rl-app-size-1}px;
-$rl-app-ml-2: #{$rl-app-size-2}px;
-$rl-app-ml-3: #{$rl-app-size-3}px;
-$rl-app-ml-4: #{$rl-app-size-4}px;
-$rl-app-ml-5: #{$rl-app-size-5}px;
-$rl-app-ml-6: #{$rl-app-size-6}px;
-$rl-app-ml-7: #{$rl-app-size-7}px;
-$rl-app-ml-8: #{$rl-app-size-8}px;
-$rl-app-ml-9: #{$rl-app-size-9}px;
-$rl-app-ml-10: #{$rl-app-size-10}px;
-$rl-app-ml-11: #{$rl-app-size-11}px;
-$rl-app-ml-12: #{$rl-app-size-12}px;
-$rl-app-ml-13: #{$rl-app-size-13}px;
-$rl-app-ml-14: #{$rl-app-size-14}px;
-$rl-app-ml-15: #{$rl-app-size-15}px;
-$rl-app-ml-16: #{$rl-app-size-16}px;
+  "grey-50": #f2f2f2,
+  "grey-100": #d8d8d8,
+  "grey-200": #c5c5c5,
+  "grey-300": #aaaaaa,
+  "grey-400": #999999,
+  "grey-500": #808080,
+  "grey-600": #747474,
+  "grey-700": #5b5b5b,
+  "grey-800": #464646,
+  "grey-900": #363636,
 
-// MARGIN-TOP
-$rl-app-mt-0: $rl-app-size-0;
-$rl-app-mt-1: #{$rl-app-size-1}px;
-$rl-app-mt-2: #{$rl-app-size-2}px;
-$rl-app-mt-3: #{$rl-app-size-3}px;
-$rl-app-mt-4: #{$rl-app-size-4}px;
-$rl-app-mt-5: #{$rl-app-size-5}px;
-$rl-app-mt-6: #{$rl-app-size-6}px;
-$rl-app-mt-7: #{$rl-app-size-7}px;
-$rl-app-mt-8: #{$rl-app-size-8}px;
-$rl-app-mt-9: #{$rl-app-size-9}px;
-$rl-app-mt-10: #{$rl-app-size-10}px;
-$rl-app-mt-11: #{$rl-app-size-11}px;
-$rl-app-mt-12: #{$rl-app-size-12}px;
-$rl-app-mt-13: #{$rl-app-size-13}px;
-$rl-app-mt-14: #{$rl-app-size-14}px;
-$rl-app-mt-15: #{$rl-app-size-15}px;
-$rl-app-mt-16: #{$rl-app-size-16}px;
+  "white": #fff,
+  "white-10": rgba(255, 255, 255, 0.1),
+  "white-20": rgba(255, 255, 255, 0.2),
+  "white-30": rgba(255, 255, 255, 0.3),
+  "white-40": rgba(255, 255, 255, 0.4),
+  "white-50": rgba(255, 255, 255, 0.5),
+  "white-60": rgba(255, 255, 255, 0.6),
+  "white-70": rgba(255, 255, 255, 0.7),
+  "white-80": rgba(255, 255, 255, 0.8),
+  "white-90": rgba(255, 255, 255, 0.9),
 
-// MARGIN-BOTTOM
-$rl-app-mb-0: $rl-app-size-0;
-$rl-app-mb-1: #{$rl-app-size-1}px;
-$rl-app-mb-2: #{$rl-app-size-2}px;
-$rl-app-mb-3: #{$rl-app-size-3}px;
-$rl-app-mb-4: #{$rl-app-size-4}px;
-$rl-app-mb-5: #{$rl-app-size-5}px;
-$rl-app-mb-6: #{$rl-app-size-6}px;
-$rl-app-mb-7: #{$rl-app-size-7}px;
-$rl-app-mb-8: #{$rl-app-size-8}px;
-$rl-app-mb-9: #{$rl-app-size-9}px;
-$rl-app-mb-10: #{$rl-app-size-10}px;
-$rl-app-mb-11: #{$rl-app-size-11}px;
-$rl-app-mb-12: #{$rl-app-size-12}px;
-$rl-app-mb-13: #{$rl-app-size-13}px;
-$rl-app-mb-14: #{$rl-app-size-14}px;
-$rl-app-mb-15: #{$rl-app-size-15}px;
-$rl-app-mb-16: #{$rl-app-size-16}px;
+  "black": #000,
+  "black-10": rgba(0, 0, 0, 0.1),
+  "black-20": rgba(0, 0, 0, 0.2),
+  "black-30": rgba(0, 0, 0, 0.3),
+  "black-40": rgba(0, 0, 0, 0.4),
+  "black-50": rgba(0, 0, 0, 0.5),
+  "black-60": rgba(0, 0, 0, 0.6),
+  "black-70": rgba(0, 0, 0, 0.7),
+  "black-80": rgba(0, 0, 0, 0.8),
+  "black-90": rgba(0, 0, 0, 0.9),
 
-/* PADDINGs */
-// PADDING ALL
-$rl-app-p-0: $rl-app-size-0;
-$rl-app-p-1: #{$rl-app-size-1}px;
-$rl-app-p-2: #{$rl-app-size-2}px;
-$rl-app-p-3: #{$rl-app-size-3}px;
-$rl-app-p-4: #{$rl-app-size-4}px;
-$rl-app-p-5: #{$rl-app-size-5}px;
-$rl-app-p-6: #{$rl-app-size-6}px;
-$rl-app-p-7: #{$rl-app-size-7}px;
-$rl-app-p-8: #{$rl-app-size-8}px;
-$rl-app-p-9: #{$rl-app-size-9}px;
-$rl-app-p-10: #{$rl-app-size-10}px;
-$rl-app-p-11: #{$rl-app-size-11}px;
-$rl-app-p-12: #{$rl-app-size-12}px;
-$rl-app-p-13: #{$rl-app-size-13}px;
-$rl-app-p-14: #{$rl-app-size-14}px;
-$rl-app-p-15: #{$rl-app-size-15}px;
-$rl-app-p-16: #{$rl-app-size-16}px;
+  "gradient-light-linear-1": linear-gradient(to bottom right, #fff, #e8eaeb, #fff, #e8eaeb, #fff),
+  "gradient-dark-radial-1": radial-gradient(circle at top left, #0b1115, #0f171c, #131d24, #0f171c, #0b1115),
+);
 
-// PADDING-RIGHT
-$rl-app-pr-0: $rl-app-size-0;
-$rl-app-pr-1: #{$rl-app-size-1}px;
-$rl-app-pr-2: #{$rl-app-size-2}px;
-$rl-app-pr-3: #{$rl-app-size-3}px;
-$rl-app-pr-4: #{$rl-app-size-4}px;
-$rl-app-pr-5: #{$rl-app-size-5}px;
-$rl-app-pr-6: #{$rl-app-size-6}px;
-$rl-app-pr-7: #{$rl-app-size-7}px;
-$rl-app-pr-8: #{$rl-app-size-8}px;
-$rl-app-pr-9: #{$rl-app-size-9}px;
-$rl-app-pr-10: #{$rl-app-size-10}px;
-$rl-app-pr-11: #{$rl-app-size-11}px;
-$rl-app-pr-12: #{$rl-app-size-12}px;
-$rl-app-pr-13: #{$rl-app-size-13}px;
-$rl-app-pr-14: #{$rl-app-size-14}px;
-$rl-app-pr-15: #{$rl-app-size-15}px;
-$rl-app-pr-16: #{$rl-app-size-16}px;
+// Definição do tema light
+$theme-light: (
+/* BACKGROUNDS */
+  "bg-solid-blue-1": map.get($colors, "blue-50"),
+  "bg-solid-blue-2": map.get($colors, "blue-500"),
+  "bg-solid-blue-3": map.get($colors, "blue-200"),
+  "bg-solid-blue-4": map.get($colors, "blue-50"),
+  "bg-gradient-1": map.get($colors, "gradient-light-linear-1"),
+  "bg-solid-input-1": map.get($colors, "white"),
+  "bg-solid-input-2": map.get($colors, "blue-50"),
+  "bg-solid-dropdown-item-hover-1": map.get($colors, "blue-50"),
+  "bg-solid-card-hover-1": map.get($colors, "blue-100"),
+  "bg-solid-brown-1": map.get($colors, "brown-100"),
+  "bg-opacity-1": map.get($colors, "brown-op-1-10"),
 
-// PADDING-LEFT
-$rl-app-pl-0: $rl-app-size-0;
-$rl-app-pl-1: #{$rl-app-size-1}px;
-$rl-app-pl-2: #{$rl-app-size-2}px;
-$rl-app-pl-3: #{$rl-app-size-3}px;
-$rl-app-pl-4: #{$rl-app-size-4}px;
-$rl-app-pl-5: #{$rl-app-size-5}px;
-$rl-app-pl-6: #{$rl-app-size-6}px;
-$rl-app-pl-7: #{$rl-app-size-7}px;
-$rl-app-pl-8: #{$rl-app-size-8}px;
-$rl-app-pl-9: #{$rl-app-size-9}px;
-$rl-app-pl-10: #{$rl-app-size-10}px;
-$rl-app-pl-11: #{$rl-app-size-11}px;
-$rl-app-pl-12: #{$rl-app-size-12}px;
-$rl-app-pl-13: #{$rl-app-size-13}px;
-$rl-app-pl-14: #{$rl-app-size-14}px;
-$rl-app-pl-15: #{$rl-app-size-15}px;
-$rl-app-pl-16: #{$rl-app-size-16}px;
+/* BORDERS */
+  "br-solid-blue-1": map.get($colors, "blue-200"),
+  "br-solid-blue-2": map.get($colors, "blue-900"),
+  "br-solid-brown": map.get($colors, "brown-500"),
+  "br-solid-input-focus-1": map.get($colors, "blue-100"),
+  "br-solid-input-1": map.get($colors, "blue-50"),
+  "br-solid-tag-1": map.get($colors, "blue-500"),
+  "br-solid-header-page": map.get($colors, "black-10"),
 
-// PADDING-TOP
-$rl-app-pt-0: $rl-app-size-0;
-$rl-app-pt-1: #{$rl-app-size-1}px;
-$rl-app-pt-2: #{$rl-app-size-2}px;
-$rl-app-pt-3: #{$rl-app-size-3}px;
-$rl-app-pt-4: #{$rl-app-size-4}px;
-$rl-app-pt-5: #{$rl-app-size-5}px;
-$rl-app-pt-6: #{$rl-app-size-6}px;
-$rl-app-pt-7: #{$rl-app-size-7}px;
-$rl-app-pt-8: #{$rl-app-size-8}px;
-$rl-app-pt-9: #{$rl-app-size-9}px;
-$rl-app-pt-10: #{$rl-app-size-10}px;
-$rl-app-pt-11: #{$rl-app-size-11}px;
-$rl-app-pt-12: #{$rl-app-size-12}px;
-$rl-app-pt-13: #{$rl-app-size-13}px;
-$rl-app-pt-14: #{$rl-app-size-14}px;
-$rl-app-pt-15: #{$rl-app-size-15}px;
-$rl-app-pt-16: #{$rl-app-size-16}px;
+/* BOX SHADOW */
+  "bs-solid-blue-1": map.get($colors, "blue-100"),
+  "bs-solid-black-1": map.get($colors, "black-30"),
 
-// PADDING-BOTTOM
-$rl-app-pb-0: $rl-app-size-0;
-$rl-app-pb-1: #{$rl-app-size-1}px;
-$rl-app-pb-2: #{$rl-app-size-2}px;
-$rl-app-pb-3: #{$rl-app-size-3}px;
-$rl-app-pb-4: #{$rl-app-size-4}px;
-$rl-app-pb-5: #{$rl-app-size-5}px;
-$rl-app-pb-6: #{$rl-app-size-6}px;
-$rl-app-pb-7: #{$rl-app-size-7}px;
-$rl-app-pb-8: #{$rl-app-size-8}px;
-$rl-app-pb-9: #{$rl-app-size-9}px;
-$rl-app-pb-10: #{$rl-app-size-10}px;
-$rl-app-pb-11: #{$rl-app-size-11}px;
-$rl-app-pb-12: #{$rl-app-size-12}px;
-$rl-app-pb-13: #{$rl-app-size-13}px;
-$rl-app-pb-14: #{$rl-app-size-14}px;
-$rl-app-pb-15: #{$rl-app-size-15}px;
-$rl-app-pb-16: #{$rl-app-size-16}px;
+/* COLORS */
+  "color-solid-blue-1": map.get($colors, "blue-900"),
+  "color-solid-blue-2": map.get($colors, "blue-500"),
+  "color-solid-blue-3": map.get($colors, "blue-50"),
+  "color-solid-brown-1": map.get($colors, "brown-900"),
+  "color-solid-brown-2": map.get($colors, "brown-500"),
+  "color-solid-brown-3": map.get($colors, "brown-500"),
+  "color-solid-brown-4": map.get($colors, "brown-700"),
+  "color-solid-input-1": map.get($colors, "blue-500"),
+);
 
+$theme-dark: (
+/* BACKGROUNDS */
+  "bg-solid-blue-1": map.get($colors, "blue-900"),
+  "bg-solid-blue-2": map.get($colors, "blue-700"),
+  "bg-solid-blue-3": map.get($colors, "blue-500"),
+  "bg-solid-blue-4": map.get($colors, "blue-700"),
+  "bg-gradient-1": map.get($colors, "gradient-dark-radial-1"),
+  "bg-solid-input-1": map.get($colors, "blue-900"),
+  "bg-solid-input-2": map.get($colors, "blue-500"),
+  "bg-solid-dropdown-item-hover-1": map.get($colors, "blue-500"),
+  "bg-solid-card-hover-1": map.get($colors, "blue-500"),
+  "bg-solid-brown-1": map.get($colors, "brown-900"),
+  "bg-opacity-1": map.get($colors, "brown-op-2-10"),
+
+/* BORDERS */
+  "br-solid-blue-1": map.get($colors, "blue-500"),
+  "br-solid-blue-2": map.get($colors, "blue-50"),
+  "br-solid-brown": map.get($colors, "brown-500"),
+  "br-solid-brown-1": map.get($colors, "brown-100"),
+  "br-solid-input-focus-1": map.get($colors, "blue-400"),
+  "br-solid-input-1": map.get($colors, "blue-500"),
+  "br-solid-tag-1": map.get($colors, "blue-50"),
+  "br-solid-header-page": map.get($colors, "white-10"),
+
+/* BOX SHADOW */
+  "bs-solid-blue-1": map.get($colors, "blue-900"),
+  "bs-solid-black-1": map.get($colors, "black-50"),
+
+/* COLORS */
+  "color-solid-blue-1": map.get($colors, "blue-50"),
+  "color-solid-blue-2": map.get($colors, "blue-100"),
+  "color-solid-blue-3": map.get($colors, "blue-100"),
+  "color-solid-brown-1": map.get($colors, "brown-50"),
+  "color-solid-brown-2": map.get($colors, "brown-600"),
+  "color-solid-brown-3": map.get($colors, "brown-500"),
+  "color-solid-brown-4": map.get($colors, "brown-500"),
+  "color-solid-input-1": map.get($colors, "blue-50"),
+);
+
+// Função para gerar as variáveis CSS de um tema
+@mixin generate-css-vars($theme-map) {
+  @each $name, $color in $theme-map {
+    --#{$name}: #{$color};
+  }
+}
 
 :root {
-  /* BACKGROUND COLOR */
-  --background-primary-color: #fff;
-  --background-extreme-primary-color: #1b2932;
-  --background-secondary-color: #faf7f4;
-  --background-card-primary-color: #e8eaeb;
-  --background-card-primary-color-hover: #b8bdbf;
-  --background-input-primary-color: #fff;
-  --background-option-primary-color-hover: rgba(255, 255, 255, 0.5);
-  --background-option-selected-primary-color: #1b2932;
-  --background-searched-primary-color: #e6d9ca;
-  --background-searched-primary-color-hover: #54493b;
-  --background-code-primary-color: #1b2932;
-  --background-card-resume-color: #eee6db;
-  --background-btn-back-color: #eee6db;
-  --background-btn-back-color-hover: #e6d9ca;
-  --background-card-tech-primary-color: rgba(255, 255, 255, 0.5);
-
-  /* TEXT COLOR */
-  --text-primary-color: #1b2932;
-  --text-primary-color-hover: #0f171c;
-  --text-secondary-color: #C8AD8C;
-  --text-searched-secondary-color: #C8AD8C;
-  --text-searched-secondary-color-hover: #faf7f4;
-  --text-card-resume-color: #54493b;
-  --text-switch-color: #b8bdbf;
-
-  /* BORDER COLOR */
-  --border-card-primary-color: #1b2932;
-  --border-card-secondary-color: #C8AD8C;
-  --border-card-mini-primary-color: #1b2932;
-  --border-input-primary-color-focus: #b8bdbf;
-  --border-primary-header-section-color: rgba(184, 189, 191, 0.3);
-
-  /* BOX-SHADOW COLOR */
-  --box-shadow-color: #aaaaaa;
-  --box-shadow-form-input-color: #e8eaeb;
+  @include generate-css-vars($theme-light);
 }
 
-[data-theme="dark"] {
-  /* BACKGROUND COLOR */
-  --background-primary-color: #0b1115;
-  --background-extreme-primary-color: #0f171c;
-  --background-secondary-color: #54493b;
-  --background-card-primary-color: #1b2932;
-  --background-card-primary-color-hover: #0f171c;
-  --background-input-primary-color: #1b2932;
-  --background-option-primary-color-hover: rgba(0, 0, 0, 0.5);
-  --background-option-selected-primary-color: #0f171c;
-  --background-searched-primary-color: #d3bda3;
-  --background-searched-primary-color-hover: #54493b;
-  --background-code-primary-color: #0f171c;
-  --background-card-resume-color: rgba(84, 73, 59, 0.30);
-  --background-btn-back-color: rgba(84, 73, 59, 0.30);
-  --background-btn-back-color-hover: rgba(84, 73, 59, 0.8);
-  --background-card-tech-primary-color: rgba(0, 0, 0, 0.5);
-
-  /* TEXT COLOR */
-  --text-primary-color: #b8bdbf;
-  --text-primary-color-hover: #969da1;
-  --text-secondary-color: #faf7f4;
-  --text-searched-secondary-color: #54493b;
-  --text-searched-secondary-color-hover: #C8AD8C;
-  --text-card-resume-color: #C8AD8C;
-  --text-switch-color: #C8AD8C;
-
-  /* BORDER COLOR */
-  --border-card-primary-color: #1b2932;
-  --border-card-secondary-color: #C8AD8C;
-  --border-card-mini-primary-color: #b8bdbf;
-  --border-input-primary-color-focus: #0b1115;
-  --border-primary-header-section-color: rgba(184, 189, 191, 0.3);
-
-  /* BOX-SHADOW COLOR */
-  --box-shadow-color: rgba(0,0,0,0.3);
-  --box-shadow-form-input-color: rgba(0,0,0,0.3);
-}
-
-[data-theme="light"] {
-  /* BACKGROUND COLOR */
-  --background-primary-color: #fff;
-  --background-extreme-primary-color: #1b2932;
-  --background-secondary-color: #faf7f4;
-  --background-card-primary-color: #e8eaeb;
-  --background-card-primary-color-hover: #b8bdbf;
-  --background-input-primary-color: #fff;
-  --background-option-primary-color-hover: rgba(255, 255, 255, 0.5);
-  --background-option-selected-primary-color: #1b2932;
-  --background-searched-primary-color: #e6d9ca;
-  --background-searched-primary-color-hover: #C8AD8C;
-  --background-code-primary-color: #1b2932;
-  --background-card-resume-color: #eee6db;
-  --background-btn-back-color: #eee6db;
-  --background-btn-back-color-hover: #e6d9ca;
-  --background-card-tech-primary-color: rgba(255, 255, 255, 0.5);
-
-  /* TEXT COLOR */
-  --text-primary-color: #1b2932;
-  --text-primary-color-hover: #0f171c;
-  --text-secondary-color: #C8AD8C;
-  --text-searched-secondary-color: #54493b;
-  --text-searched-secondary-color-hover: #faf7f4;
-  --text-card-resume-color: #54493b;
-  --text-switch-color: #b8bdbf;
-
-  /* BORDER COLOR */
-  --border-card-primary-color: #1b2932;
-  --border-card-secondary-color: #C8AD8C;
-  --border-card-mini-primary-color: #1b2932;
-  --border-input-primary-color-focus: #b8bdbf;
-  --border-primary-header-section-color: rgba(184, 189, 191, 0.3);
-
-  /* BOX-SHADOW COLOR */
-  --box-shadow-color: #aaaaaa;
-  --box-shadow-form-input-color: #e8eaeb;
+[data-theme='dark'] {
+  @include generate-css-vars($theme-dark);
 }

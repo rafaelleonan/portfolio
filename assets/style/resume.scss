@@ -5,11 +5,15 @@
   box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
 }
 
+.app-vue-pdf-embed {
+  width: 80%;
+}
+
 .pdf-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
   background-color: $rl-app-blue-500;
   margin-bottom: 20px;
 
@@ -61,6 +65,9 @@
 }
 
 @media (max-width: 600px) {
+  .app-vue-pdf-embed {
+    width: 100%;
+  }
   .pdf-controls {
     display: flex;
     justify-content: center;

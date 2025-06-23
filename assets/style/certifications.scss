@@ -14,11 +14,11 @@
     width: 240px;
     border-radius: $rl-app-desktop-br-sm;
     cursor: pointer;
-    box-shadow: 0 0 8px var(--box-shadow-color);
+    box-shadow: 0 0 8px var(--bs-solid-blue-1);
     transition: all 250ms linear;
     text-decoration: none;
-    background-color: var(--background-card-primary-color);
-    color: var(--text-primary-color);
+    background-color: var(--bg-solid-blue-1);
+    color: var(--color-solid-blue-1);
 
     img {
       width: 100%;
@@ -35,7 +35,6 @@
 
       .card-l-subtitle {
         font-size: $rl-app-desktop-fs-xxs;
-        color: var(--text-primary-color);
         font-weight: 600;
       }
 
@@ -56,8 +55,7 @@
           border-radius: $rl-app-desktop-br-sm;
 
           &.default-app {
-            border: 1px solid var(--border-card-primary-color);
-            background-color: var(--background-card-primary-color);
+            border: 1px solid var(--br-solid-tag-1);
           }
         }
       }
@@ -65,7 +63,7 @@
 
     &:hover {
       transform: scale(1.01);
-      box-shadow: 0 4px 8px var(--box-shadow-color);
+      box-shadow: 0 4px 8px var(--bs-solid-blue-1);
     }
   }
 }
@@ -93,14 +91,12 @@
 
         .card-l-subtitle {
           font-size: $rl-app-desktop-fs-xxs;
-          color: $rl-app-grey-500;
           font-weight: lighter;
         }
       }
 
       &:hover {
         transform: scale(1.01);
-        box-shadow: 0 4px 8px var(--box-shadow-color);
       }
     }
   }

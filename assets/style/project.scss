@@ -202,7 +202,7 @@
   align-items: start;
   flex-direction: column;
   gap: 4px;
-  border-bottom: 1px solid var(--border-primary-header-section-color);
+  border-bottom: 1px solid var(--br-solid-header-page);
 
   .h-section-1 {
     display: flex;
@@ -212,8 +212,8 @@
 
     .button-back {
       border-radius: 50%;
-      background-color: var(--background-btn-back-color);
-      border: 1px solid var(--border-card-secondary-color);
+      background-color: var(--bg-solid-brown-1);
+      border: 1px solid var(--br-solid-brown);
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -221,19 +221,13 @@
       height: 20px;
       position: relative;
       cursor: pointer;
-      margin-bottom: 12px;
       transition: all 250ms ease-in-out;
-
-      &:hover {
-        background-color: var(--background-btn-back-color-hover);
-        border: 1px solid var(--border-card-secondary-color);
-      }
 
       i {
         position: absolute;
         font-size: 10px;
         right: 2.5px;
-        color: var(--text-secondary-color);
+        color: var(--color-solid-brown-3);
       }
     }
   }
@@ -246,7 +240,6 @@
     gap: 6px;
 
     .posted-at {
-      color: $rl-app-grey-500;
       font-size: $rl-app-desktop-fs-xs;
 
       span {
@@ -259,8 +252,8 @@
       flex-wrap: wrap;
       justify-content: start;
       align-items: center;
+      margin: 12px 0;
       gap: 4px;
-      color: $rl-app-grey-500;
       font-size: $rl-app-desktop-fs-xs;
 
       span {
@@ -268,16 +261,22 @@
       }
 
       a {
-        color: $rl-app-grey-500;
         transition: all 250ms ease-in-out;
+        padding: 2px 4px;
+
+        &::before,
+        &::after {
+          content: "•";
+          margin: 0 2px;
+        }
 
         &:first-child {
           margin-left: 4px;
         }
 
         &:hover {
-          background-color: $rl-app-grey-50;
-          color: $rl-app-grey-900;
+          background-color: var(--bg-solid-brown-1);
+          color: var(--color-solid-brown-1);
           border-radius: 2px;
         }
       }
@@ -297,14 +296,12 @@
 .title-content {
   font-size: $rl-app-desktop-fs-xl;
   font-weight: bold;
-  color: var(--text-primary-color);
   display: block;
   margin-bottom: 15px;
 }
 
 .component-text {
   font-size: $rl-app-desktop-fs-xm;
-  color: var(--text-primary-color);
 }
 
 .slide-card-resume {
@@ -339,17 +336,17 @@
       .card-body {
         display: flex;
         width: 100%;
-        height: 250px;
+        height: 300px;
         padding: 4px 0;
         justify-content: space-between;
+        gap: 4px;
 
         .resume-project {
           display: flex;
           flex-direction: column;
-          width: 50%;
+          flex-grow: 1;
           height: 100%;
-          background-color: var(--background-card-resume-color);
-          color: var(--text-card-resume-color);
+          background-color: var(--bg-opacity-1);
           transition: all 0.2s ease-in;
           text-align: justify;
           font-size: $rl-app-desktop-fs-xm;
@@ -357,17 +354,19 @@
           font-weight: 500;
           overflow: hidden;
           border-radius: $rl-app-desktop-br-sm 0 0 $rl-app-desktop-br-sm;
-          padding: 4px 8px;
+          padding: 16px;
           border-left: 2px solid $rl-app-brown-500;
         }
 
         .image-card {
           position: relative;
-          width: 48%;
+          max-width: 50%;
+          min-width: 40%;
           display: flex;
           justify-content: center;
           align-items: center;
           height: 100%;
+          overflow: hidden;
 
           .image {
             display: flex;
@@ -480,8 +479,8 @@
 
   .list-instructions {
     width: 100%;
-    padding: 6px 12px;
-    background-color: var(--background-card-primary-color);
+    padding: 12px;
+    background-color: var(--bg-solid-blue-4);
 
     .item-instruction {
       font-weight: 700;
@@ -492,7 +491,7 @@
         width: 100%;
         padding: 12px 8px;
         color: $rl-app-blue-50;
-        background-color: var(--background-code-primary-color);
+        background-color: $rl-app-blue-500;
         justify-content: start;
         align-items: center;
         gap: 8px;
@@ -554,10 +553,13 @@
   }
 
   .content-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 
     img {
-      width: 100%;
+      max-height: 600px;
     }
   }
 }
@@ -588,6 +590,48 @@
   }
 }
 
+.notifications {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  top: 20px;
+
+  .notification {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: $rl-app-desktop-br-sm;
+    background-color: $rl-app-blue-500;
+    color: $rl-app-blue-50;
+    font-size: $rl-app-desktop-fs-md;
+    font-weight: 600;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+
+    &.fade-out {
+      opacity: 0;
+    }
+
+    .close {
+      cursor: pointer;
+      color: $rl-app-blue-300;
+      transition: color 250ms ease-in-out;
+
+      &:hover {
+        color: $rl-app-blue-50;
+      }
+    }
+  }
+}
+
+/* TODO: APÓS IMPLEMENTAR COMENTÁRIOS AJUSTAR TEMA E RESPONSIVIDADE */
 .form-comment {
   position: relative;
   display: flex;
@@ -1137,51 +1181,41 @@
     }
   }
 }
-
-.notifications {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  bottom: 20px;
-
-  .notification {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    align-items: center;
-    padding: 15px 20px;
-    border-radius: $rl-app-desktop-br-sm;
-    background-color: $rl-app-blue-500;
-    color: $rl-app-blue-50;
-    font-size: $rl-app-desktop-fs-md;
-    font-weight: 600;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
-
-    &.fade-out {
-      opacity: 0;
-    }
-
-    .close {
-      cursor: pointer;
-      color: $rl-app-blue-300;
-      transition: color 250ms ease-in-out;
-
-      &:hover {
-        color: $rl-app-blue-50;
-      }
-    }
-  }
-}
+/* TODO: APÓS IMPLEMENTAR COMENTÁRIOS AJUSTAR TEMA E RESPONSIVIDADE */
 
 @media (max-width: 600px) {
   .header-section {
     margin-bottom: 20px;
+
+    .h-section-1 {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      gap: 20px;
+
+      .button-back {
+        border-radius: 10px;
+        background-color: var(--bg-solid-brown-1);
+        border: 1px solid var(--br-solid-brown);
+        justify-content: start;
+        width: 100%;
+        height: 40px;
+        padding-left: 20px;
+
+        &::after {
+          width: 100%;
+          text-align: center;
+          content: "Voltar";
+          color: var(--color-solid-brown-3);
+        }
+
+        i {
+          position: relative;
+          font-size: 12px;
+          color: var(--color-solid-brown-3);
+        }
+      }
+    }
   }
 
   .slide-card-resume {
@@ -1211,6 +1245,7 @@
             width: 100%;
             height: 100%;
             max-height: 255px;
+            max-width: 100%;
 
             .image {
               position: relative;

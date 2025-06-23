@@ -3,8 +3,9 @@ import {useHead} from "#imports";
 import {MockCertificates} from "~/data/mock-certificates";
 import {onMounted, ref, computed, onUnmounted} from "vue";
 import type {BadgeCategory} from "~/interfaces/homepage";
-import type {Tech} from "~/interfaces/certificates";
+import type {Certificates, Tech} from "~/interfaces/certificates";
 import {MockTechnologies} from "~/data/mock-homepage";
+import {useRoute, useRouter} from "vue-router";
 
 const filterCertificateName = ref('')
 const filterCertificateTechSelected = ref<string[]>([])
@@ -13,6 +14,9 @@ const filterCertificateTypeSelected = ref<string[]>([])
 const searchProjectType = ref<string>("")
 const isOpen = ref(false);
 const isOpenTwo = ref(false);
+const route = useRoute();
+const router = useRouter();
+const certFilterQuery = ref('')
 
 const toggleOptionSelectTypeProject = (option: string) => {
   if (!filterCertificateTypeSelected.value.some((o) => o.toUpperCase() === option.toUpperCase())) {
@@ -123,6 +127,12 @@ const toggleSelectTwo = () => {
 }
 
 onMounted(() => {
+  if ('id' in route.query && route.query.id !== null && route.query.id.length > 0) {
+    let cert;
+    cert = MockCertificates.find((cert) => cert.id === route.query.id)
+    filterCertificateName.value = cert?.title ?? ''
+    router.replace({ query: {} });
+  }
   document.addEventListener("click", closeDropdown);
   document.addEventListener("click", closeDropdownTwo);
 });
@@ -152,148 +162,146 @@ useHead({
 </script>
 
 <template>
-  <div class="app-page">
-    <section class="section-default">
-      <span class="title-section">
-        Meus certificados
-      </span>
-      <div class="form-filters">
-        <div class="form-filter col-4">
-          <input type="text" class="form-input" v-model="filterCertificateName" placeholder="CERTIFICADO"/>
-        </div>
-        <div class="form-filter col-4">
-          <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="toggleSelect">
-              <input
-                  type="text"
-                  v-model="searchProjectType"
-                  :placeholder="placeholderSelectTypeProject()"
-                  class="input"
-              />
-              <span class="material-icons clear-all"
-                    @click="clearFilterProjectType()"
-                    v-if="(filterCertificateTypeSelected.length > 0 || searchProjectType.length > 0) && !isOpen"
-              >
+  <section class="section">
+    <span class="title-sm text--uppercase">
+      Meus certificados
+    </span>
+    <div class="form-filters mt-1">
+      <div class="form-filter col-4">
+        <input type="text" class="form-input" v-model="filterCertificateName" placeholder="CERTIFICADO"/>
+      </div>
+      <div class="form-filter col-4">
+        <div class="dropdown-container" @click.stop>
+          <div class="input-box" @click="toggleSelect">
+            <input
+                type="text"
+                v-model="searchProjectType"
+                :placeholder="placeholderSelectTypeProject()"
+                class="input"
+            />
+            <span class="material-icons clear-all"
+                  @click="clearFilterProjectType()"
+                  v-if="(filterCertificateTypeSelected.length > 0 || searchProjectType.length > 0) && !isOpen"
+            >
                 close
               </span>
-              <span class="material-icons icon-dropdown"
-                    v-else
-              >
+            <span class="material-icons icon-dropdown"
+                  v-else
+            >
                 {{ isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
-            </div>
-  
-            <ul v-if="isOpen" class="dropdown">
-              <li
-                  v-if="listProjectTypesSearch.length > 0"
-                  v-for="(option, key) in listProjectTypesSearch"
-                  :key="`option-${key}`"
-              >
-                <div class="option"
-                     @click="toggleOptionSelectTypeProject(option)"
-                     :class="{
+          </div>
+
+          <ul v-if="isOpen" class="dropdown">
+            <li
+                v-if="listProjectTypesSearch.length > 0"
+                v-for="(option, key) in listProjectTypesSearch"
+                :key="`option-${key}`"
+            >
+              <div class="option"
+                   @click="toggleOptionSelectTypeProject(option)"
+                   :class="{
                        'selected': filterCertificateTypeSelected.some((o) => o.toUpperCase() === option.toUpperCase()),
                        'searched': searchProjectType.toUpperCase() === option.toUpperCase()
                      }"
-                >
-                  {{ option }}
-                  <span class="material-icons remove">close</span>
-                </div>
-              </li>
-              <div class="not-found-results" v-else>
-                Nenhum resultado encontrado
-              </div>
-            </ul>
-          </div>
-        </div>
-        <div class="form-filter col-4">
-          <div class="dropdown-container" @click.stop>
-            <div class="input-box" @click="toggleSelectTwo">
-              <input
-                  type="text"
-                  v-model="searchTechnology"
-                  :placeholder="placeholderSelectTechnology()"
-                  class="input"
-              />
-              <span class="material-icons clear-all"
-                    @click="clearFilterTechnologies()"
-                    v-if="(filterCertificateTechSelected.length > 0 || searchTechnology.length > 0) && !isOpenTwo"
               >
+                {{ option }}
+                <span class="material-icons remove">close</span>
+              </div>
+            </li>
+            <div class="not-found-results" v-else>
+              Nenhum resultado encontrado
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="form-filter col-4">
+        <div class="dropdown-container" @click.stop>
+          <div class="input-box" @click="toggleSelectTwo">
+            <input
+                type="text"
+                v-model="searchTechnology"
+                :placeholder="placeholderSelectTechnology()"
+                class="input"
+            />
+            <span class="material-icons clear-all"
+                  @click="clearFilterTechnologies()"
+                  v-if="(filterCertificateTechSelected.length > 0 || searchTechnology.length > 0) && !isOpenTwo"
+            >
                 close
               </span>
-              <span class="material-icons icon-dropdown"
-                    v-else
-              >
+            <span class="material-icons icon-dropdown"
+                  v-else
+            >
                 {{ isOpenTwo ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
               </span>
-            </div>
-  
-            <ul v-if="isOpenTwo" class="dropdown">
-              <li
-                  v-if="listTechnologiesSearch.length > 0"
-                  v-for="(option, key) in listTechnologiesSearch"
-                  :key="`option-${key}`"
-              >
-                <div class="select-group">
-                  <span class="title-group">{{ option.title }}</span>
-                  <div class="option-group"
-                       v-for="(tech, techKey) in option.badges"
-                       :key="`option-key-tech-${techKey}`"
-                       :class="{
+          </div>
+
+          <ul v-if="isOpenTwo" class="dropdown">
+            <li
+                v-if="listTechnologiesSearch.length > 0"
+                v-for="(option, key) in listTechnologiesSearch"
+                :key="`option-${key}`"
+            >
+              <div class="select-group">
+                <span class="title-group">{{ option.title }}</span>
+                <div class="option-group"
+                     v-for="(tech, techKey) in option.badges"
+                     :key="`option-key-tech-${techKey}`"
+                     :class="{
                        'selected': filterCertificateTechSelected.some((o) => o.toUpperCase() === tech.title.toUpperCase()),
                        'searched': searchTechnology.toUpperCase() === tech.title.toUpperCase()
                      }"
-                       @click="toggleOptionSelect(tech.title)"
-                  >
-                    {{ tech.title }}
-                    <span class="material-icons remove">close</span>
-                  </div>
+                     @click="toggleOptionSelect(tech.title)"
+                >
+                  {{ tech.title }}
+                  <span class="material-icons remove">close</span>
                 </div>
-              </li>
-              <div class="not-found-results" v-else>
-                Nenhum resultado encontrado
               </div>
-            </ul>
-          </div>
+            </li>
+            <div class="not-found-results" v-else>
+              Nenhum resultado encontrado
+            </div>
+          </ul>
         </div>
       </div>
-      <section class="list-certs app-mt-2" v-if="computedCertifications.length > 0">
-        <a v-for="(cert, key) in computedCertifications" :key="`cert-${key}`"
-           :href="cert.link"
-           target="_blank" rel="noopener noreferrer"
-           class="card-link">
-          <img :src="cert.image" :alt="cert.title">
-          <div class="card-l-text">
-            <span class="card-l-title">{{ cert.title }}</span><br/>
-            <div class="tags">
+    </div>
+    <div class="list-certs mt-2" v-if="computedCertifications.length > 0">
+      <a v-for="(cert, key) in computedCertifications" :key="`cert-${key}`"
+         :href="cert.link"
+         target="_blank" rel="noopener noreferrer"
+         class="card-link">
+        <img :src="cert.image" :alt="cert.title">
+        <div class="card-l-text">
+          <span class="card-l-title">{{ cert.title }}</span><br/>
+          <div class="tags">
               <span class="tag"
                     v-for="(tag, tKey) in cert.techs"
                     :class="tag.tag"
                     :key="`tag-${tKey}`">
                 {{ tag.name }}
               </span>
-            </div>
-            <span class="card-l-subtitle">{{ cert.description }}</span>
           </div>
-        </a>
-      </section>
-      <div class="not-found-projects" v-else-if="filterCertificateName.length > 0 || filterCertificateTechSelected.length > 0 || filterCertificateTypeSelected.length > 0">
-        Nenhum resultado encontrado para os filtros aplicados
-        <div v-if="filterCertificateName.length > 0" class="item-not-found">
-          CERTIFICADO: {{ filterCertificateName }}
+          <span class="card-l-subtitle">{{ cert.description }}</span>
         </div>
-        <div v-if="filterCertificateTechSelected.length > 0" class="item-not-found">
-          TECNOLOGIAS: {{ filterCertificateTechSelected.join(", ") }}
-        </div>
-        <div v-if="filterCertificateTypeSelected.length > 0" class="item-not-found">
-          TAGS: {{ filterCertificateTypeSelected.join(", ") }}
-        </div>
+      </a>
+    </div>
+    <div class="not-found-projects" v-else-if="filterCertificateName.length > 0 || filterCertificateTechSelected.length > 0 || filterCertificateTypeSelected.length > 0">
+      Nenhum resultado encontrado para os filtros aplicados
+      <div v-if="filterCertificateName.length > 0" class="item-not-found">
+        CERTIFICADO: {{ filterCertificateName }}
       </div>
-      <div class="not-found-projects" v-else>
-        Nenhum certificado encontrado...
+      <div v-if="filterCertificateTechSelected.length > 0" class="item-not-found">
+        TECNOLOGIAS: {{ filterCertificateTechSelected.join(", ") }}
       </div>
-    </section>
-  </div>
+      <div v-if="filterCertificateTypeSelected.length > 0" class="item-not-found">
+        TAGS: {{ filterCertificateTypeSelected.join(", ") }}
+      </div>
+    </div>
+    <div class="not-found-projects" v-else>
+      Nenhum certificado encontrado...
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">

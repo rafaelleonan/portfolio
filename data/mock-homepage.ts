@@ -3,80 +3,80 @@ import type {BadgeCategory, BadgeTech} from "~/interfaces/homepage";
 import type {Trajectory} from "~/interfaces/geral";
 
 const Languages = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVASCRIPT", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fts.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "TYPESCRIPT", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpython.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PYTHON", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdart.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DART", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fruby.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fswift.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SWIFT", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felixir.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELIXIR", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkotlin.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KOTLIN", current: false},
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fshellscript.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SHELLSCRIPT" },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgo.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GO", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphp.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHP", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjava.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVA", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVASCRIPT", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fts.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "TYPESCRIPT", current: true, proficiency_level: 3 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpython.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PYTHON", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdart.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DART", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fruby.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fswift.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SWIFT", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felixir.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELIXIR", current: false, proficiency_level: 1 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkotlin.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KOTLIN", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fshellscript.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SHELLSCRIPT", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgo.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GO", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphp.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHP", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fjava.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "JAVA", current: false, proficiency_level: 2 },
 ])
 
 const FrameworksAndLibraries = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fvue.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "VUE JS", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fflutter.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FLUTTER", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frails.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY ON RAILS", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdjango.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DJANGO", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphoenix.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHOENIX", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fspring-boot.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPRING BOOT", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Freact.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "REACT JS", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felectron.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELECTRON JS", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flaravel.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LARAVEL", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fnodejs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "NODE JS", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fvue.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "VUE JS", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fflutter.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FLUTTER", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frails.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "RUBY ON RAILS", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdjango.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DJANGO", current: false, proficiency_level: 1 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fphoenix.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "PHOENIX", current: false, proficiency_level: 1 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fspring-boot.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPRING BOOT", current: false, proficiency_level: 1 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Freact.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "REACT JS", current: false, proficiency_level: 1 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Felectron.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ELECTRON JS", current: false, proficiency_level: 1 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flaravel.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LARAVEL", current: false, proficiency_level: 1 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fnodejs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "NODE JS", current: false, proficiency_level: 2 },
 ])
 
 const DatabaseAndCloud = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmysql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MYSQL", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpostgresql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "POSTGRESQL", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE FIRESTORE", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-rds.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS RDS", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-sqs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS SQS", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fs3.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS S3", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-ec2.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS EC2", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmysql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MYSQL", current: false, proficiency_level: 3 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fpostgresql.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "POSTGRESQL", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE FIRESTORE", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-rds.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS RDS", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-sqs.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS SQS", current: false, proficiency_level: 3 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fs3.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS S3", current: false, proficiency_level: 3 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Faws-ec2.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "AWS EC2", current: false, proficiency_level: 2 },
 ])
 
 const DevOpsAndSettingsDevelopment = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER SWARM", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkubernetes.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KUBERNETES", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgit.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GIT & GIT FLOW", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkafka.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KAFKA", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER", current: false, proficiency_level: 3 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fdocker.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "DOCKER SWARM", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkubernetes.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KUBERNETES", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fgit.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "GIT & GIT FLOW", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkafka.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KAFKA", current: true, proficiency_level: 2 },
 ])
 
 const FrondEndAndUxUi = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fhtml.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "HTML", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fcss.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "CSS", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fsass.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SASS", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffigma.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIGMA", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fadobe-xd.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ADOBE XD", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fhtml.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "HTML", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fcss.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "CSS", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fsass.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SASS", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffigma.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIGMA", current: false, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fadobe-xd.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "ADOBE XD", current: false, proficiency_level: 2 },
 ])
 
 const ArchitectureAndDevelopmentPatterns = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frest-api.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "API RESTful", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SSR", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPA", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MVC", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Frest-api.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "API RESTful", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SSR", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SPA", current: false, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fprocess.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MVC", current: false, proficiency_level: 4 },
 ])
 
 const AuthAndStorage = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE AUTH", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE STORAGE", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE AUTH", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Ffirebase.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "FIREBASE STORAGE", current: false, proficiency_level: 2 },
 ])
 
 const AgileMethodologies = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkanban.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KANBAN", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fscrum.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SCRUM", current: true },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fkanban.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "KANBAN", current: true, proficiency_level: 4 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fscrum.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "SCRUM", current: true, proficiency_level: 3 },
 ])
 
 const SO = reactive<BadgeTech[]>([
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flinux.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LINUX", current: false },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmacos.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MACOS", current: true },
-    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fwindows.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "WINDOWS", current: false },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Flinux.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "LINUX", current: false, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fmacos.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "MACOS", current: true, proficiency_level: 2 },
+    { src: `https://firebasestorage.googleapis.com/v0/b/portfolio-2cd49.firebasestorage.app/o/projects%2Fsati%2Ftech%2Fwindows.svg?alt=media&token=e2647def-590e-4562-b60b-b3921bdd8dad`, title: "WINDOWS", current: false, proficiency_level: 2 },
 ])
 
 export const MockTechnologies = reactive<BadgeCategory[]>([
@@ -115,8 +115,8 @@ export const MockTrajectories = reactive<Trajectory[]>([
                 "type": "links",
                 "data": [
                     { "url": "/certifications", "text": "Coding nas Escolas" },
-                    { "url": "/certifications", "text": "Curso HTML" },
-                    { "url": "/certifications", "text": "Curso CSS" },
+                    { "url": "/certifications?id=12GSDLJHYbYuTUg2T_wFHm7ooKdIHwwHR", "text": "Curso HTML" },
+                    { "url": "/certifications?id=1bDJHnbezaj7JVvH_FoABUUBnCNftrIsE", "text": "Curso CSS" },
                 ],
                 "text": "Links"
             },
@@ -145,6 +145,7 @@ export const MockTrajectories = reactive<Trajectory[]>([
                 "type": "links",
                 "data": [
                     { "url": "https://github.com/rafaelleonan/calculadora-juros-java", "text": "Repo. do projeto java (Calculadora)" },
+                    { "url": "/projects/3", "text": "Projeto java (Calculadora)" },
                 ],
                 "text": "Links"
             },
@@ -242,7 +243,7 @@ export const MockTrajectories = reactive<Trajectory[]>([
                     { "url": "https://github.com/rafaelleonan/curso-ruby-II", "text": "Repo. II curso Ruby" },
                     { "url": "https://github.com/rafaelleonan/curso-ruby-III", "text": "Repo. III curso Ruby" },
                     { "url": "https://github.com/rafaelleonan/curso-ruby-on-rails", "text": "Repo. curso Ruby on Rails" },
-                    { "url": "/certifications", "text": "Certificado Flutter" },
+                    { "url": "/certifications?id=UC-e29bd996-0660-4e72-9aa1-8d30bd172f05", "text": "Certificado Flutter" },
                 ],
                 "text": "Links"
             },
@@ -272,9 +273,9 @@ export const MockTrajectories = reactive<Trajectory[]>([
             {
                 "type": "links",
                 "data": [
-                    { "url": "/certifications", "text": "Certificado Elixir" },
-                    { "url": "/certifications", "text": "Certificado Elixir com Phoenix" },
-                    { "url": "/certifications", "text": "Certificado GopherCon 2022" },
+                    { "url": "/certifications?id=UC-9ad3b702-32f2-4e9f-a1a1-55b05dba5596", "text": "Certificado Elixir" },
+                    { "url": "/certifications?id=UC-d3269a6c-3b4c-4a06-8225-6e996f7dab5c", "text": "Certificado Elixir com Phoenix" },
+                    { "url": "/certifications?id=1QUKAcKbgH8OeyeVm6LdGp1WXj8FB263e", "text": "Certificado GopherCon 2022" },
                 ],
                 "text": "Links"
             },
@@ -330,10 +331,10 @@ export const MockTrajectories = reactive<Trajectory[]>([
             {
                 "type": "links",
                 "data": [
-                    { "url": "/certifications", "text": "Certificado Docker" },
-                    { "url": "/certifications", "text": "Certificado UI & UX Adobe XD" },
-                    { "url": "/certifications", "text": "Certificado UI & UX Figma" },
-                    { "url": "/certifications", "text": "Certificado iOS nativo" },
+                    { "url": "/certifications?id=UC-277a8a2d-a235-48aa-8ff3-6b14692b4ad0", "text": "Certificado Docker" },
+                    { "url": "/certifications?id=UC-bb81955d-6f98-4fbc-9b5d-3602bc849d0d", "text": "Certificado UI & UX Adobe XD" },
+                    { "url": "/certifications?id=UC-50a90aec-6e77-48d4-9e13-f263c8014798", "text": "Certificado UI & UX Figma" },
+                    { "url": "/certifications?id=UC-89e500c7-7a6c-4f76-8922-9df58fcfc3aa", "text": "Certificado iOS nativo" },
                 ],
                 "text": "Links"
             },
@@ -360,10 +361,10 @@ export const MockTrajectories = reactive<Trajectory[]>([
             {
                 "type": "links",
                 "data": [
-                    { "url": "/certifications", "text": "Certificado React JS" },
-                    { "url": "/certifications", "text": "Certificado TypeScript" },
-                    { "url": "/certifications", "text": "Certificado Django" },
-                    { "url": "/certifications", "text": "Certificado SpringBoot" },
+                    { "url": "/certifications?id=UC-35c234e5-a20c-4466-9dbd-89339cdaf912", "text": "Certificado React JS" },
+                    { "url": "/certifications?id=UC-84f78411-5168-4925-b7ff-a04f88405105", "text": "Certificado TypeScript" },
+                    { "url": "/certifications?id=UC-4468e666-8938-4eac-b1c0-fc37c1a8a214", "text": "Certificado Django" },
+                    { "url": "/certifications?id=UC-f0f3d505-bb39-423f-bedc-e26aaedf703b", "text": "Certificado SpringBoot" },
                 ],
                 "text": "Links"
             },

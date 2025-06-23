@@ -4,6 +4,7 @@ export interface Tech {
 }
 
 export interface Certificates {
+	  id: string
     link: string
     certificate_id: string
     image: string

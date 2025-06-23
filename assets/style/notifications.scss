@@ -1,0 +1,62 @@
+@use "variables" as *;
+
+.notifications-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+
+  .notification {
+    min-width: 220px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    opacity: 0.95;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    &.success {
+      border: 1px solid $rl-app-brown-50;
+      background-color: $rl-app-blue-500;
+    }
+    &.error {
+      background-color: #f44336;
+    }
+    &.info {
+      background-color: #2196f3;
+    }
+    &.warning {
+      background-color: #f3d021;
+    }
+
+    button {
+      border: none;
+      border-radius: 50%;
+      font-size: $rl-app-desktop-fs-md;
+      color: #fff;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}

@@ -3,20 +3,36 @@
 import AppHeader from "~/layouts/AppHeader.vue";
 import AppFooter from "~/layouts/AppFooter.vue";
 import SplashScreen from "~/components/SplashScreen.vue";
+import Notification from "~/components/Notification.vue";
 import {useCountLoading, useLoading, useInfoLoading} from "~/composables/useLoading";
 import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
 import {MockProjects} from "~/data/mock-projects";
 import {MockCertificates} from "~/data/mock-certificates";
-import {onMounted, watch} from "vue";
+import {computed, onMounted, reactive, ref, watch} from "vue";
 import {useHead} from "#imports";
 import { useTheme } from '~/composables/useTheme';
 import {useRouter} from "vue-router";
-import type {ComponentCarousel, ComponentInstructions, ComponentMedia} from "~/interfaces/projects";
+import type {ComponentCarousel, ComponentInstructions} from "~/interfaces/projects";
+import Modal from "~/components/Modal.vue";
+import {useOptionsImage} from "~/composables/useOptionsImage";
 
 const loading = useLoading();
 const counting = useCountLoading();
 const info = useInfoLoading();
 const router = useRouter()
+const { isOpen, srcImage, altImage, closeModal } = useOptionsImage()
+
+const modalZoomImage = ref<HTMLDivElement | null>(null)
+const imageUrlZoom = ref('')
+const valueScaleImgInitial = ref(1)
+const imageRef = ref<HTMLImageElement | null>(null);
+const lensStyle = reactive({
+  display: 'none',
+  left: '0px',
+  top: '0px',
+  width: '100px',
+  height: '100px',
+});
 
 watch(() => router.currentRoute.value, () => {
   let main: HTMLElement | null  = document.querySelector("main")
@@ -146,6 +162,47 @@ const preloadCertificatesImages = async () => {
   await Promise.all(promises);
 };
 
+const onMouseMove = (event: MouseEvent) => {
+  if (imageRef.value) {
+    const container = imageRef.value.parentElement as HTMLElement
+    const containerRect = container.getBoundingClientRect()
+    const lensSize = parseInt(lensStyle.width) / 2
+    let x = event.clientX - containerRect.left - lensSize
+    let y = event.clientY - containerRect.top - lensSize
+    const scaleX = imageRef.value.offsetWidth / container.offsetWidth
+    const scaleY = imageRef.value.offsetHeight / container.offsetHeight
+
+    x = Math.max(0, Math.min(x, containerRect.width - lensSize * 2))
+    y = Math.max(0, Math.min(y, containerRect.height - lensSize * 2))
+
+    lensStyle.left = `${x}px`
+    lensStyle.top = `${y}px`
+    lensStyle.display = 'block'
+
+    imageRef.value.style.transformOrigin = `${(x + lensSize) * scaleX}px ${(y + lensSize) * scaleY}px`
+    imageRef.value.style.transform = `scale(${valueScaleImgInitial.value})`
+  }
+};
+
+const onMouseLeave = () => {
+  lensStyle.display = 'none';
+  if (imageRef.value) {
+    imageRef.value.style.transform = 'scale(1)';
+  }
+};
+
+const toggleZoom = (value: string) => {
+  if (value === '+') {
+    if (valueScaleImgInitial.value < 2) valueScaleImgInitial.value = parseFloat((valueScaleImgInitial.value + 0.1).toFixed(1))
+  } else {
+    if (valueScaleImgInitial.value > 1) valueScaleImgInitial.value = parseFloat((valueScaleImgInitial.value - 0.1).toFixed(1))
+  }
+}
+
+const computedValue = computed((): string => {
+  return valueScaleImgInitial.value === 1 ? '100%' : `${parseFloat((valueScaleImgInitial.value * 100).toFixed(1))}%`
+})
+
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} | Rafael Leonan` : 'Rafael Leonan';
@@ -169,6 +226,7 @@ useHead({
 onMounted(async () => {
   counting.value = 0
   loading.value = true;
+  document.body.classList.add('overflow--hidden');
   info.value = []
   await preloadTechnologiesImages();
   await preloadTrajectoriesImages();
@@ -176,6 +234,7 @@ onMounted(async () => {
   await preloadCertificatesImages();
   useTheme();
   setTimeout(() => {
+    document.body.classList.remove('overflow--hidden');
     loading.value = false;
     counting.value = 0
     info.value = []
@@ -184,14 +243,46 @@ onMounted(async () => {
 </script>
 
 <template>
+  <Notification />
+  <Modal
+    :show="isOpen"
+    :hidden-footer="true"
+    :onCancel="closeModal"
+    @update:show="(val) => isOpen = val"
+  >
+    <template #header>
+      <div class="options-zoom-image">
+        <button type="button"
+                :disabled="valueScaleImgInitial <= 1"
+                class="btn-action material-icons"
+                @click="toggleZoom('-')">
+          zoom_out
+        </button>
+        <span>{{ computedValue }}</span>
+        <button type="button"
+                :disabled="valueScaleImgInitial === 2"
+                class="btn-action material-icons"
+                @click="toggleZoom('+')">
+          zoom_in
+        </button>
+      </div>
+    </template>
+    <template #default>
+      <div class="zoom-container"
+           @mousemove="onMouseMove"
+           @mouseleave="onMouseLeave">
+        <img :src="srcImage" :alt="altImage" class="zoom-image" ref="imageRef" />
+        <div class="zoom-lens" :style="lensStyle"></div>
+      </div>
+    </template>
+  </Modal>
+
   <SplashScreen v-if="loading" />
-  <main style="overflow-x: hidden;">
-    <AppHeader/>
-    <div class="content">
-      <NuxtPage />
-    </div>
-    <AppFooter/>
+  <AppHeader/>
+  <main>
+    <NuxtPage />
   </main>
+  <AppFooter/>
 </template>
 
 <style scoped lang="scss">
