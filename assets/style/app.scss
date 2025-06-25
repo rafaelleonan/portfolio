@@ -84,13 +84,6 @@ body {
     #__nuxt {
       main {
         padding-top: 98px;
-
-        .content {
-          width: 100%;
-          overflow-x: hidden;
-          overflow-y: auto;
-          padding: 12px 12px 80px 12px;
-        }
       }
     }
   }
@@ -101,10 +94,7 @@ body {
   body {
     #__nuxt {
       main {
-        .content {
-          width: 80%;
-          padding: 12px 12px 80px 12px;
-        }
+        padding-top: 98px;
       }
     }
   }

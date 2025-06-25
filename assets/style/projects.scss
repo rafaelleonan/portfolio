@@ -43,6 +43,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
 
       .background-image {
         position: relative;
@@ -154,6 +155,7 @@
             box-shadow: 0 4px 4px 0 $rl-app-black-50;
             width: auto;
             max-height: 100%;
+            max-width: 100%;
             transition: all 0.8s ease-in;
           }
         }

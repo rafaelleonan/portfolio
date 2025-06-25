@@ -227,13 +227,15 @@ header {
       display: flex;
       justify-content: start;
       align-items: center;
+      gap: 12px;
 
       a {
         display: flex;
         justify-content: center;
         align-items: center;
         color: $rl-app-blue-50;
-        font-size: $rl-app-desktop-fs-sm;
+        //font-size: $rl-app-desktop-fs-sm;
+        font-size: clamp(10px, 1vw + 0.1rem, 28px);
         height: 42px;
         text-decoration: none;
         text-transform: uppercase;
@@ -241,11 +243,7 @@ header {
         padding: 6pt;
         background-color: transparent;
         transition: all ease-in-out 300ms;
-        gap: 10px;
-
-        &:not(:last-child) {
-          margin-right: 26px;
-        }
+        gap: 6px;
 
         &:hover {
           color: $rl-app-brown-500;
@@ -277,7 +275,8 @@ header {
         background-color: $rl-app-blue-50;
         color: var(--bg-solid-blue-2);
         border: 1px solid $rl-app-blue-50;
-        font-size: 18px;
+        //font-size: 18px;
+        font-size: clamp(10px, 1vw + 0.1rem, 28px);
         height: 18px;
         width: 18px;
         display: flex;
@@ -332,7 +331,6 @@ header {
           cursor: pointer;
 
           .material-icons {
-            font-size: $rl-app-desktop-fs-h1;
             color: $rl-app-blue-50;
             margin: 0 !important;
           }
@@ -409,8 +407,30 @@ header {
   }
 }
 
-@media (min-width: 601px) and (max-width: 850px) {
+@media (min-width: 601px) and (max-width: 750px) {
+  header {
+    padding: 12px;
+    z-index: 99;
+    position: fixed;
 
+    nav {
+      position: relative;
+      transition: all 200ms ease-in-out;
+      flex-grow: 1;
+      overflow: hidden;
+
+      .nav-links {
+        gap: 16px;
+
+        a {
+          gap: 4px;
+          flex-direction: column;
+          padding: 3pt;
+          height: auto;
+        }
+      }
+    }
+  }
 }
 
 </style>
