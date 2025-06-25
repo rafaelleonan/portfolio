@@ -351,6 +351,7 @@ header {
         transition: all 300ms ease-in-out;
         overflow: hidden;
         padding: 0;
+        gap: 0;
 
         a {
           justify-content: start;
