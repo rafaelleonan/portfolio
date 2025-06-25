@@ -207,7 +207,7 @@ watch(
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .typing-text {
     font-size: $rl-app-desktop-fs-h4 !important;
   }
@@ -237,6 +237,98 @@ watch(
             font-size: $rl-app-desktop-fs-sm;
           }
         }
+      }
+    }
+  }
+}
+
+@media (min-height: 380px) and (max-height: 550px) {
+  .splash-screen {
+    .content-splash-screen {
+      justify-content: space-between;
+      padding: 0 20px;
+
+      .passagem-biblica {
+        justify-content: center;
+        line-height: 50px;
+      }
+
+      .loader-content {
+        bottom: 20px;
+        gap: 4px;
+
+        .loader-text {
+          font-size: $rl-app-desktop-fs-sm;
+        }
+
+        .progress-bar-container {
+          height: 15px;
+          border-radius: 4px;
+
+          .progress-bar {
+            border-radius: 4px;
+          }
+
+          .progress-bar-text {
+            font-size: $rl-app-desktop-fs-xxs;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-height: 315px) and (max-height: 379px) {
+  .splash-screen {
+    .content-splash-screen {
+      justify-content: space-between;
+      padding: 0 20px;
+
+      .passagem-biblica {
+        padding-top: 40px;
+        justify-content: start;
+        line-height: 50px;
+      }
+
+      .loader-content {
+        bottom: 10px;
+        gap: 0;
+
+        .loader-text {
+          font-size: $rl-app-desktop-fs-xxs;
+        }
+
+        .progress-bar-container {
+          height: 18px;
+          border-radius: 2px;
+
+          .progress-bar {
+            border-radius: 2px;
+          }
+
+          .progress-bar-text {
+            font-size: $rl-app-desktop-fs-xxs;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 314px) {
+  .splash-screen {
+    .content-splash-screen {
+      justify-content: space-between;
+      padding: 0 10px;
+
+      .passagem-biblica {
+        padding-top: 20px;
+        justify-content: center;
+        line-height: 30px;
+      }
+
+      .loader-content {
+        display: none;
       }
     }
   }
