@@ -23,5 +23,5 @@ const { notifications, removeNotification } = useNotifications()
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/style/notifications.scss';
+@use "@/assets/style/notifications" as *;
 </style>

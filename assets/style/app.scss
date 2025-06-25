@@ -7,7 +7,6 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   scroll-behavior: smooth;
-  transition: all 300ms ease-in-out;
   scrollbar-width: thin;
   scrollbar-color: $rl-app-brown-500 $rl-app-brown-50;
 
@@ -84,7 +83,7 @@ body {
   body {
     #__nuxt {
       main {
-        flex-direction: column-reverse;
+        padding-top: 98px;
 
         .content {
           width: 100%;
