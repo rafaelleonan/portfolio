@@ -88,15 +88,15 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Debug Environment Variables Before Nuxt Build
-        run: |
-          echo "Verificando NUXT_PUBLIC_FIREBASE_API_KEY: ${NUXT_PUBLIC_FIREBASE_API_KEY:+true}"
-          echo "Verificando NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN:+true}"
-          echo "Verificando NUXT_PUBLIC_FIREBASE_PROJECT_ID: ${NUXT_PUBLIC_FIREBASE_PROJECT_ID:+true}"
-          echo "Verificando NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET:+true}"
-          echo "Verificando NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:+true}"
-          echo "Verificando NUXT_PUBLIC_FIREBASE_APP_ID: ${NUXT_PUBLIC_FIREBASE_APP_ID:+true}"
-          echo "Verificando NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID: ${NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID:+true}"
+#      - name: Debug Environment Variables Before Nuxt Build
+#        run: |
+#          echo "Verificando NUXT_PUBLIC_FIREBASE_API_KEY: ${NUXT_PUBLIC_FIREBASE_API_KEY:+true}"
+#          echo "Verificando NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN:+true}"
+#          echo "Verificando NUXT_PUBLIC_FIREBASE_PROJECT_ID: ${NUXT_PUBLIC_FIREBASE_PROJECT_ID:+true}"
+#          echo "Verificando NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET:+true}"
+#          echo "Verificando NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:+true}"
+#          echo "Verificando NUXT_PUBLIC_FIREBASE_APP_ID: ${NUXT_PUBLIC_FIREBASE_APP_ID:+true}"
+#          echo "Verificando NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID: ${NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID:+true}"
       - name: Static HTML export with Nuxt
         run: ${{ steps.detect-package-manager.outputs.manager }} run generate
         env:
