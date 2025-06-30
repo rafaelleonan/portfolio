@@ -6,7 +6,6 @@ import { useRuntimeConfig } from '#imports'
 
 export default defineNuxtPlugin((nuxtApp) => {
 	const config = useRuntimeConfig()
-	console.log('Runtime Config Public:', config.public)
 	
 	if (!config.public.firebaseApiKey) {
 		console.error('Erro: Chaves do Firebase não encontradas no runtimeConfig.public. Verifique .env e/ou GitHub Secrets.')
@@ -21,8 +20,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 		messagingSenderId: config.public.firebaseMessagingSenderId,
 		appId: config.public.firebaseAppId,
 	}
-	
-	console.log('Firebase Config', firebaseConfig)
 	
 	const app = initializeApp(firebaseConfig)
 	const auth = getAuth(app)
