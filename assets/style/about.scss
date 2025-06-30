@@ -357,6 +357,74 @@
   }
 }
 
+.contact-freelancer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 50px;
+
+  img {
+    cursor: pointer;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .text-contact {
+    max-width: 500px;
+    width: 100%;
+    text-align: justify;
+    font-size: $rl-app-desktop-fs-xm;
+  }
+}
+
+.form-contact {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+
+    label {
+      width: 100%;
+
+      input, textarea {
+        margin-top: 8px;
+        background-color: var(--bg-solid-input-1);
+        color: var(--color-solid-input-1);
+        transition: all 250ms ease-in-out;
+        outline: none;
+        padding: 10px 12px;
+        width: 100%;
+        border: 1px solid var(--br-solid-input-1);
+
+        &:focus {
+          border: 1px solid var(--br-solid-input-focus-1);
+        }
+      }
+    }
+  }
+
+  .actions-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+}
+
 @media (max-width: 600px) {
 
   .hard-skills {
@@ -488,5 +556,9 @@
         }
       }
     }
+  }
+
+  .contact-freelancer {
+    gap: 4px;
   }
 }

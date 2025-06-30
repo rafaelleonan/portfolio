@@ -7,6 +7,8 @@ import 'vue-pdf-embed/dist/styles/annotationLayer.css'
 import 'vue-pdf-embed/dist/styles/textLayer.css'
 import { useNotifications } from '@/composables/useNotifications'
 import {useOptionsImage} from "~/composables/useOptionsImage";
+import Modal from "~/components/Modal.vue";
+const { createDocument, auth } = useFirebase()
 
 const useOptImage = useOptionsImage()
 const formacoes = reactive([
@@ -23,6 +25,12 @@ const formacoes = reactive([
     "image": "/images/ADS-DIPLOMA-1.jpg"
   }
 ])
+
+const sendingForm = ref(false)
+const openModal = ref(false)
+const formName = ref("")
+const formContact = ref("")
+const formDescription = ref("")
 
 const stackCurrent = ref<BadgeCategory[]>(MockTechnologies.map(category => ({
       ...category,
@@ -47,6 +55,43 @@ const callPhone = () => window.open('tel:85984491127', '_blank');
 const sendWhatsapp = () => window.open('https://wa.me/5585984491127', 'blank')
 
 const sendEmail = () => window.open('mailto:faelleonan@gmail.com', 'blank')
+
+const sendMessage = async () => {
+  if (formName.value === null || formName.value.trim().length === 0) {
+    addNotification("Informe o campo de nome!", 'error', 8000)
+    return
+  }
+
+  if (formContact.value === null || formContact.value.trim().length === 0) {
+    addNotification("Informe o campo de contato!", 'error', 8000)
+    return
+  }
+
+  if (formDescription.value === null || formDescription.value.trim().length === 0) {
+    addNotification("Informe o campo de motivo!", 'error', 8000)
+    return
+  }
+
+  sendingForm.value = true
+  await createDocument('messages_contact', {
+    nome: formName.value,
+    email: formContact.value,
+    mensagem: formDescription.value,
+    enviadoEm: new Date(),
+    uid: auth.currentUser?.uid || null,
+  })
+  sendingForm.value = false
+
+  addNotification("Mensagem recebida com sucesso!", 'success', 8000)
+  closeModalContact()
+}
+
+const closeModalContact = () => {
+  openModal.value = false
+  formName.value = ""
+  formContact.value = ""
+  formDescription.value = ""
+}
 
 useHead({
   title: 'Sobre mim',
@@ -284,6 +329,65 @@ useHead({
                 </div>
               </div>
               <div class="trail"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section bg-solid-blue-1">
+      <Modal
+          :show="openModal"
+          title="Entrar em contato"
+          size="sm"
+          :hidden-footer="true"
+          @update:show="(val) => openModal = val"
+      >
+        <template #default>
+          <form class="form-contact" @submit.prevent="sendMessage">
+            <div class="inputs">
+              <label for="name">
+                <span>NOME</span>
+                <input type="text" name="name" id="name" v-model="formName" required/>
+              </label>
+              <label for="contact">
+                <span>CONTATO(EMAIL/TELEFONE/LINK)</span>
+                <input type="text" name="contact" id="contact" v-model="formContact" required/>
+              </label>
+              <label for="description">
+                <span>MOTIVO DO CONTATO</span>
+                <textarea rows="5" name="description" id="description" v-model="formDescription" required/>
+              </label>
+            </div>
+            <div class="actions-form">
+              <button type="button" class="btn btn--sm w-100" :disabled="sendingForm" @click="closeModalContact">
+                CANCELAR
+              </button>
+              <button type="submit" class="btn btn--sm w-100" :disabled="sendingForm">
+                {{ sendingForm ? 'ENVIANDO...' : 'ENVIAR'}}
+              </button>
+            </div>
+          </form>
+        </template>
+      </Modal>
+      <div class="accordion">
+        <div class="accordion__item">
+          <input type="checkbox" id="accordion-send-message" class="accordion__input" />
+          <label for="accordion-send-message" class="accordion__label">
+            <span class="title-sm">
+              ENTRAR EM CONTATO/FREELANCER
+            </span>
+
+            <span class="material-icons title-sm">
+              keyboard_arrow_down
+            </span>
+          </label>
+          <div class="accordion__content">
+            <div class="contact-freelancer">
+              <img src="/gifs/glootie.gif" @click="openModal = !openModal"/>
+              <div class="text-contact">
+                <p>Tem uma proposta de projeto, trabalho freelancer ou deseja iniciar uma colaboração? Fico à disposição para conversar!</p>
+                <button class="btn btn--lg w-100" @click="openModal = !openModal">Entrar em contato</button>
+              </div>
             </div>
           </div>
         </div>

@@ -561,6 +561,51 @@ section {
   }
 }
 
+.btn {
+  padding: 6px 10px;
+  background: transparent;
+  font-size: $rl-app-desktop-fs-md;
+  border: 1px solid var(--br-solid-btn-1);
+  border-radius: $rl-app-desktop-br-sm;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  color: var(--color-solid-btn-1);
+
+  &--xs {
+    font-size: $rl-app-desktop-fs-xs;
+    padding: 4px 8px;
+  }
+
+  &--sm {
+    font-size: $rl-app-desktop-fs-sm;
+    padding: 8px 12px;
+  }
+
+  &--lg {
+    font-size: $rl-app-desktop-fs-lg;
+    padding: 12px 16px;
+  }
+
+  &--xl {
+    font-size: $rl-app-desktop-fs-xl;
+    padding: 16px 20px;
+  }
+
+  &:hover {
+    border-color: var(--br-solid-btn-focus-1);
+    color: var(--color-solid-btn-focus-1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      color: var(--color-solid-btn-1);
+      border: 1px solid var(--br-solid-btn-1);
+    }
+  }
+}
+
 .options-zoom-image {
   display: flex;
   justify-content: center;

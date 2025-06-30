@@ -22,8 +22,6 @@ const info = useInfoLoading();
 const router = useRouter()
 const { isOpen, srcImage, altImage, closeModal } = useOptionsImage()
 
-const modalZoomImage = ref<HTMLDivElement | null>(null)
-const imageUrlZoom = ref('')
 const valueScaleImgInitial = ref(1)
 const imageRef = ref<HTMLImageElement | null>(null);
 const lensStyle = reactive({

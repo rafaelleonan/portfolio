@@ -1,6 +1,6 @@
 <template>
   <div class="notifications-container">
-    <TransitionGroup name="fade" tag="div">
+    <TransitionGroup name="fade" tag="div" class="notifications">
       <div
           v-for="n in notifications"
           :key="n.id"
