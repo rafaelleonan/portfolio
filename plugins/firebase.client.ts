@@ -2,27 +2,29 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
-import {useRuntimeConfig} from "#imports";
-import {process} from "std-env";
+import { useRuntimeConfig } from '#imports'
 
 export default defineNuxtPlugin((nuxtApp) => {
-	let firebaseConfig: any
-	nuxtApp.hook('app:mounted', () => {
-		const config = useRuntimeConfig()
-		console.log('Config app:mounted: ', config)
-		firebaseConfig = {
-			apiKey: config.public.firebaseApiKey ?? process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
-			authDomain: config.public.firebaseAuthDomain ?? process.env.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-			projectId: config.public.firebaseProjectId ?? process.env.NUXT_PUBLIC_FIREBASE_PROJECT_ID,
-			storageBucket: config.public.firebaseStorageBucket ?? process.env.NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-			messagingSenderId: config.public.firebaseMessagingSenderId ?? process.env.NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-			appId: config.public.firebaseAppId ?? process.env.NUXT_PUBLIC_FIREBASE_APP_ID,
-		}
-	})
-	console.log('firebaseConfig: ', firebaseConfig)
+	const config = useRuntimeConfig()
+	console.log('Runtime Config Public:', config.public)
+	
+	if (!config.public.firebaseApiKey) {
+		console.error('Erro: Chaves do Firebase não encontradas no runtimeConfig.public. Verifique .env e/ou GitHub Secrets.')
+		return
+	}
+	
+	const firebaseConfig = {
+		apiKey: config.public.firebaseApiKey,
+		authDomain: config.public.firebaseAuthDomain,
+		projectId: config.public.firebaseProjectId,
+		storageBucket: config.public.firebaseStorageBucket,
+		messagingSenderId: config.public.firebaseMessagingSenderId,
+		appId: config.public.firebaseAppId,
+	}
+	
+	console.log('Firebase Config', firebaseConfig)
 	
 	const app = initializeApp(firebaseConfig)
-	
 	const auth = getAuth(app)
 	const db = getFirestore(app)
 	
