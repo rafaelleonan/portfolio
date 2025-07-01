@@ -5,6 +5,7 @@ const props = defineProps<{
   show: boolean;
   hiddenFooter?: boolean;
   hiddenHeader?: boolean;
+  noCloseModalClickBackdrop?: boolean;
   title?: string;
   size?: string;
   onConfirm?: () => void;
@@ -38,7 +39,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div v-if="show" class="modal-backdrop" @click.self="handleCancel">
+  <div v-if="show" class="modal-backdrop" @click.self="noCloseModalClickBackdrop ? () => {} : handleCancel()">
     <div class="modal-container" :class="{'modal-sm': size === 'sm', 'modal-lg': size === 'lg'}">
       <!-- Header -->
       <header class="modal-header" v-if="!hiddenHeader">

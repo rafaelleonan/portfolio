@@ -72,18 +72,76 @@ const sendMessage = async () => {
     return
   }
 
+  let userIP = '';
+  let dataIP = '';
   sendingForm.value = true
-  await createDocument('messages_contact', {
-    nome: formName.value,
-    email: formContact.value,
-    mensagem: formDescription.value,
-    enviadoEm: new Date(),
-    uid: auth.currentUser?.uid || null,
-  })
-  sendingForm.value = false
 
-  addNotification("Mensagem recebida com sucesso!", 'success', 8000)
-  closeModalContact()
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    userIP = data.ip;
+    dataIP = data;
+  } catch (ipError) {
+    userIP = 'Não disponível';
+    dataIP = 'Não disponível';
+  }
+
+  const userAgent = navigator.userAgent;
+  let browser = '';
+  let so = '';
+
+  if (userAgent.includes('Chrome')) {
+    browser = 'Google Chrome'
+  } else if (userAgent.includes('Firefox')) {
+    browser = 'Mozilla Firefox'
+  } else if (userAgent.includes('Safari')) {
+    browser = 'Apple Safari'
+  } else if (userAgent.includes('Edge')) {
+    browser = 'Microsoft Edge'
+  } else {
+    browser = userAgent
+  }
+
+  if (userAgent.includes('Windows')) {
+    so = 'Windows'
+  } else if (userAgent.includes('Macintosh') || userAgent.includes('Mac OS X')) {
+    so = 'MacOS'
+  } else if (userAgent.includes('Linux')) {
+    so = 'Linux'
+  } else if (userAgent.includes('Android')) {
+    so = 'Android'
+  } else if (userAgent.includes('iOS')) {
+    so = 'iOS'
+  } else {
+    so = userAgent
+  }
+
+  const deviceType = (window.matchMedia("(pointer:coarse)").matches || window.matchMedia("(hover:none)").matches) ? "Mobile" : "Desktop"
+
+  try {
+    await createDocument('messages_contact', {
+      name: formName.value,
+      contact: formContact.value,
+      message: formDescription.value,
+      sendingIn: new Date(),
+      browser: browser,
+      so: so,
+      userAgent: userAgent,
+      deviceType: deviceType,
+      language: navigator.language,
+      dataIP: dataIP,
+      userIP: userIP,
+      uid: auth.currentUser?.uid || null,
+    });
+
+    addNotification("Mensagem recebida com sucesso!", 'success', 8000);
+    closeModalContact();
+  } catch (error) {
+    console.error("Erro ao enviar mensagem:", error);
+    addNotification("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.", 'error', 10000);
+  } finally {
+    sendingForm.value = false;
+  }
 }
 
 const closeModalContact = () => {
@@ -92,6 +150,14 @@ const closeModalContact = () => {
   formContact.value = ""
   formDescription.value = ""
 }
+
+const trackButtonClick = (event: any, accordion: string) => {
+  useTrackEvent('view_accordion', {
+    event_label: `Visualizar da seção: ${accordion}`,
+    event_value: event.target.checked
+  })
+};
+
 
 useHead({
   title: 'Sobre mim',
@@ -180,7 +246,7 @@ useHead({
     <section class="section bg-solid-blue-1">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-formacao" class="accordion__input" />
+          <input type="checkbox" id="accordion-formacao" class="accordion__input" @change="trackButtonClick($event, 'Formação')" />
           <label for="accordion-formacao" class="accordion__label">
             <span class="title-sm">
               FORMAÇÃO
@@ -211,7 +277,7 @@ useHead({
     <section class="section">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-stack-current" class="accordion__input" />
+          <input type="checkbox" id="accordion-stack-current" class="accordion__input" @change="trackButtonClick($event, 'Hard Skills')" />
           <label for="accordion-stack-current" class="accordion__label">
             <span class="title-sm">
               STACK ATUAL
@@ -249,7 +315,7 @@ useHead({
     <section class="section bg-solid-blue-1">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-techs" class="accordion__input" />
+          <input type="checkbox" id="accordion-techs" class="accordion__input" @change="trackButtonClick($event,'Tecnologias')" />
           <label for="accordion-techs" class="accordion__label">
             <span class="title-sm">
               TECNOLOGIAS
@@ -287,7 +353,7 @@ useHead({
     <section class="section">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-trajectory" class="accordion__input" />
+          <input type="checkbox" id="accordion-trajectory" class="accordion__input" @change="trackButtonClick($event,'Trajetória')" />
           <label for="accordion-trajectory" class="accordion__label">
             <span class="title-sm">
               TRAJETÓRIA
@@ -336,11 +402,12 @@ useHead({
     </section>
     <section class="section bg-solid-blue-1">
       <Modal
-          :show="openModal"
-          title="Entrar em contato"
-          size="sm"
-          :hidden-footer="true"
-          @update:show="(val) => openModal = val"
+        :show="openModal"
+        :no-close-modal-click-backdrop="sendingForm"
+        title="Entrar em contato"
+        size="sm"
+        :hidden-footer="true"
+        @update:show="(val) => openModal = val"
       >
         <template #default>
           <form class="form-contact" @submit.prevent="sendMessage">
@@ -371,7 +438,7 @@ useHead({
       </Modal>
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-send-message" class="accordion__input" />
+          <input type="checkbox" id="accordion-send-message" class="accordion__input" @change="trackButtonClick($event,'Entrar em contato/freelancer')" />
           <label for="accordion-send-message" class="accordion__label">
             <span class="title-sm">
               ENTRAR EM CONTATO/FREELANCER
