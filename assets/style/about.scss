@@ -207,6 +207,81 @@
   }
 }
 
+.soft-skills {
+  width: 100% ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  .soft-skill {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 8px;
+    border: 1px solid var(--br-solid-blue-2);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: $rl-app-desktop-br-sm;
+    transition: all 300ms ease-in-out;
+    flex-grow: 1;
+    flex-direction: column;
+    min-height: 130px;
+    max-width: 350px;
+
+    &:hover {
+      color: var(--bg-solid-brown-2);
+      border-color: var(--bg-solid-brown-2);
+      background-color: var(--bg-solid-blue-2);
+    }
+
+    .header-skill {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 6px;
+
+      .material-icons {
+        font-size: $rl-app-desktop-fs-h4;
+      }
+
+      .label-skill {
+        font-weight: 700;
+        font-size: $rl-app-desktop-fs-md;
+      }
+    }
+
+    .description-skill {
+      text-align: justify;
+      font-weight: 300;
+      font-size: $rl-app-desktop-fs-sm;
+    }
+
+    .level-skill {
+      display: flex;
+      align-self: end;
+
+      .material-icons {
+        font-size: $rl-app-desktop-fs-xm;
+      }
+    }
+  }
+}
+
+.avaliar {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  .material-icons {
+    font-size: 40px;
+    cursor: pointer;
+  }
+}
+
 .formacoes {
   display: flex;
   justify-content: center;
@@ -386,7 +461,7 @@
   padding: 10px 0;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 
   .inputs {
     display: flex;
@@ -394,10 +469,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 20px;
+    gap: 12px;
 
     label {
       width: 100%;
+      font-size: $rl-app-desktop-fs-md;
 
       input, textarea {
         margin-top: 8px;
@@ -405,9 +481,10 @@
         color: var(--color-solid-input-1);
         transition: all 250ms ease-in-out;
         outline: none;
-        padding: 10px 12px;
+        padding: 8px 10px;
         width: 100%;
         border: 1px solid var(--br-solid-input-1);
+        resize: none;
 
         &:focus {
           border: 1px solid var(--br-solid-input-focus-1);

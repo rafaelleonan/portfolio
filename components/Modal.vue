@@ -42,13 +42,12 @@ onBeforeUnmount(() => {
   <div v-if="show" class="modal-backdrop" @click.self="noCloseModalClickBackdrop ? () => {} : handleCancel()">
     <div class="modal-container" :class="{'modal-sm': size === 'sm', 'modal-lg': size === 'lg'}">
       <!-- Header -->
-      <header class="modal-header" v-if="!hiddenHeader">
+      <header class="modal-header mb-2" v-if="!hiddenHeader">
         <div class="d-flex d-flex--align-center d-flex--justify-between w-100">
           <h2 v-if="title">{{ title }}</h2>
+          <slot name="header" v-else></slot>
           <span class="material-icons cursor--pointer" @click="handleCancel">close</span>
         </div>
-
-        <slot name="header"></slot>
       </header>
 
       <!-- Content -->
@@ -86,7 +85,7 @@ onBeforeUnmount(() => {
     background: var(--bg-solid-blue-1);
     border-radius: 8px;
     max-width: 900px;
-    max-height: 600px;
+    max-height: 95%;
     width: 100%;
     padding: 1.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -94,10 +93,6 @@ onBeforeUnmount(() => {
 
     .modal-header h2 {
       margin: 0 0 1rem;
-    }
-
-    .modal-body {
-      margin-bottom: 1rem;
     }
 
     .modal-footer {

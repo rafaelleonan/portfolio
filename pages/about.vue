@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import { useHead } from '#imports';
 import type {BadgeCategory} from "~/interfaces/homepage";
 import {MockTechnologies, MockTrajectories} from "~/data/mock-homepage";
@@ -8,7 +8,8 @@ import 'vue-pdf-embed/dist/styles/textLayer.css'
 import { useNotifications } from '@/composables/useNotifications'
 import {useOptionsImage} from "~/composables/useOptionsImage";
 import Modal from "~/components/Modal.vue";
-const { createDocument, auth } = useFirebase()
+import type {SoftSkill} from "~/interfaces/about";
+const { createDocument, getCollection, auth } = useFirebase()
 
 const useOptImage = useOptionsImage()
 const formacoes = reactive([
@@ -27,10 +28,16 @@ const formacoes = reactive([
 ])
 
 const sendingForm = ref(false)
+const sendingFormSoftSkill = ref(false)
 const openModal = ref(false)
+const openModalSoftSkills = ref(false)
 const formName = ref("")
 const formContact = ref("")
 const formDescription = ref("")
+const hoverRating = ref(0)
+const selectedRating = ref(0)
+const softSkill = ref<SoftSkill>()
+const softSkills = ref<SoftSkill[]>([])
 
 const stackCurrent = ref<BadgeCategory[]>(MockTechnologies.map(category => ({
       ...category,
@@ -135,20 +142,23 @@ const sendMessage = async () => {
     });
 
     addNotification("Mensagem recebida com sucesso!", 'success', 8000);
-    closeModalContact();
+    toggleModalContact();
   } catch (error) {
-    console.error("Erro ao enviar mensagem:", error);
     addNotification("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.", 'error', 10000);
   } finally {
     sendingForm.value = false;
   }
 }
 
-const closeModalContact = () => {
-  openModal.value = false
+const clearForm = () => {
   formName.value = ""
   formContact.value = ""
   formDescription.value = ""
+}
+
+const toggleModalContact = () => {
+  openModal.value = !openModal.value
+  clearForm()
 }
 
 const trackButtonClick = (event: any, accordion: string) => {
@@ -158,6 +168,140 @@ const trackButtonClick = (event: any, accordion: string) => {
   })
 };
 
+const viewDetailsSoftSkills = (soft_skill: SoftSkill) => {
+  clearForm()
+  softSkill.value = soft_skill
+  openModalSoftSkills.value = true
+}
+
+const toggleModalSoftSkills = () => {
+  openModal.value = !openModal.value
+  clearForm()
+}
+
+const getStarValue = (event: any, starIndex: number) => {
+  const { offsetX, target } = event
+  const width = target.offsetWidth
+  const isHalf = offsetX < width / 2
+  return isHalf ? starIndex - 0.5 : starIndex
+}
+
+const handleMouseMove = (event: any, starIndex: number) => {
+  hoverRating.value = getStarValue(event, starIndex)
+}
+
+const getStarIcon = (starIndex: number) => {
+  const value = hoverRating.value || selectedRating.value
+  if (starIndex <= Math.floor(value)) {
+    return 'star'
+  } else if (starIndex - 0.5 === value) {
+    return 'star_half'
+  } else {
+    return 'star_outline'
+  }
+}
+
+const getSoftSkills = async () => {
+  const snapshot = await getCollection("/soft_skills");
+  softSkills.value = snapshot.docs.map(doc => ({
+    id: doc.id,
+    label: doc.data()["label"],
+    description: doc.data()["description"],
+    icon: doc.data()["icon"],
+    level: doc.data()["level"],
+    // ...doc.data(),
+  }))
+}
+
+const sendFeedbackSoftSkill = async () => {
+  if (formName.value === null || formName.value.trim().length === 0) {
+    addNotification("Informe o campo de nome!", 'error', 8000)
+    return
+  }
+
+  if (formContact.value === null || formContact.value.trim().length === 0) {
+    addNotification("Informe o campo de contato!", 'error', 8000)
+    return
+  }
+
+  let userIP = '';
+  let dataIP = '';
+  sendingFormSoftSkill.value = true
+
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    userIP = data.ip;
+    dataIP = data;
+  } catch (ipError) {
+    userIP = 'Não disponível';
+    dataIP = 'Não disponível';
+  }
+
+  const userAgent = navigator.userAgent;
+  let browser = '';
+  let so = '';
+
+  if (userAgent.includes('Chrome')) {
+    browser = 'Google Chrome'
+  } else if (userAgent.includes('Firefox')) {
+    browser = 'Mozilla Firefox'
+  } else if (userAgent.includes('Safari')) {
+    browser = 'Apple Safari'
+  } else if (userAgent.includes('Edge')) {
+    browser = 'Microsoft Edge'
+  } else {
+    browser = userAgent
+  }
+
+  if (userAgent.includes('Windows')) {
+    so = 'Windows'
+  } else if (userAgent.includes('Macintosh') || userAgent.includes('Mac OS X')) {
+    so = 'MacOS'
+  } else if (userAgent.includes('Linux')) {
+    so = 'Linux'
+  } else if (userAgent.includes('Android')) {
+    so = 'Android'
+  } else if (userAgent.includes('iOS')) {
+    so = 'iOS'
+  } else {
+    so = userAgent
+  }
+
+  const deviceType = (window.matchMedia("(pointer:coarse)").matches || window.matchMedia("(hover:none)").matches) ? "Mobile" : "Desktop"
+
+  try {
+    await createDocument('soft_skill_feedback', {
+      name: formName.value,
+      contact: formContact.value,
+      feedback: formDescription.value,
+      levelSelected: selectedRating.value,
+      labelFeedback: softSkill.value?.label,
+      idSoftSkill: softSkill.value?.id,
+      sendingIn: new Date(),
+      browser: browser,
+      so: so,
+      userAgent: userAgent,
+      deviceType: deviceType,
+      language: navigator.language,
+      dataIP: dataIP,
+      userIP: userIP,
+      uid: auth.currentUser?.uid || null,
+    });
+
+    addNotification("Feedback recebido com sucesso!", 'success', 8000);
+    clearForm()
+    openModalSoftSkills.value = false
+  } catch (error) {
+    addNotification("Ocorreu um erro ao enviar seu feedback. Por favor, tente novamente.", 'error', 10000);
+  } finally {
+    sendingFormSoftSkill.value = false;
+  }
+}
+
+onMounted(async () => {
+  await getSoftSkills()
+})
 
 useHead({
   title: 'Sobre mim',
@@ -315,10 +459,114 @@ useHead({
     <section class="section bg-solid-blue-1">
       <div class="accordion">
         <div class="accordion__item">
+          <input type="checkbox" id="accordion-soft-skills" class="accordion__input" @change="trackButtonClick($event, 'Soft Skills')" />
+          <label for="accordion-soft-skills" class="accordion__label">
+            <span class="title-sm">
+              SOFT SKILLS
+            </span>
+
+            <span class="material-icons title-sm">
+              keyboard_arrow_down
+            </span>
+          </label>
+          <div class="accordion__content">
+            <Modal
+              :show="openModalSoftSkills"
+              :no-close-modal-click-backdrop="sendingFormSoftSkill"
+              size="sm"
+              :hidden-footer="true"
+              @update:show="(val) => openModalSoftSkills = val"
+            >
+              <template #header>
+                <div class="d-flex d-flex--align-center d-flex--justify-start d-flex--gap-12px">
+                  <div class="material-icons">{{ softSkill?.icon }}</div>
+                  <div class="text--bolder text---size-18px">{{ softSkill?.label }}</div>
+                  <div v-if="softSkill">
+                    <span v-for="star in 5" :key="`star-${star}`" class="material-icons text--size-12px">
+                        {{
+                        star <= Math.floor(softSkill.level)
+                            ? 'star'
+                            : star === Math.ceil(softSkill.level) && softSkill.level % 1 >= 0.5
+                                ? 'star_half'
+                                : 'star_outline'
+                      }}
+                      </span>
+                  </div>
+                </div>
+              </template>
+              <template #default>
+                <i class="text--bolder text--size-12px">"{{ softSkill?.description }}"</i>
+                <hr/>
+                <div class="ptb-1">Trabalha ou já trabalhou comigo? Se puder, pode me dar um feedback sobre essa soft skill</div>
+                <form class="form-contact" @submit.prevent="sendFeedbackSoftSkill">
+                  <div class="avaliar" @mouseleave="hoverRating = 0">
+                  <span
+                    v-for="star in 5"
+                    :key="star"
+                    class="material-icons"
+                    @mousemove="handleMouseMove($event, star)"
+                    @click="selectedRating = getStarValue($event, star)"
+                  >
+                    {{ getStarIcon(star) }}
+                  </span>
+                  </div>
+                  <div class="inputs">
+                    <label for="name">
+                      <span>NOME</span>
+                      <input type="text" name="name" id="name" v-model="formName" required/>
+                    </label>
+                    <label for="contact">
+                      <span>CONTATO(EMAIL/TELEFONE/LINK)</span>
+                      <input type="text" name="contact" id="contact" v-model="formContact" required/>
+                    </label>
+                    <label for="description">
+                      <span>FEEDBACK (opcional)</span>
+                      <textarea rows="2" name="description" id="description" v-model="formDescription"/>
+                    </label>
+                  </div>
+                  <div class="actions-form">
+                    <button type="button" class="btn btn--sm w-100" :disabled="sendingForm" @click="toggleModalSoftSkills">
+                      CANCELAR
+                    </button>
+                    <button type="submit" class="btn btn--sm w-100" :disabled="sendingFormSoftSkill">
+                      {{ sendingFormSoftSkill ? 'ENVIANDO...' : 'ENVIAR'}}
+                    </button>
+                  </div>
+                </form>
+              </template>
+            </Modal>
+            <div class="soft-skills">
+              <div class="soft-skill" v-for="(soft, softKey) in softSkills"
+                   :key="`soft-skill-${softKey}`" @click="viewDetailsSoftSkills(soft)">
+                <div class="header-skill">
+                  <span class="material-icons">{{ soft.icon }}</span>
+                  <span class="label-skill">{{ soft.label }}</span>
+                </div>
+                <span class="description-skill">{{ soft.description }}</span>
+                <div class="level-skill">
+                    <span v-for="star in 5" :key="`star-${star}`" class="material-icons">
+                      {{
+                        star <= Math.floor(soft.level)
+                            ? 'star'
+                            : star === Math.ceil(soft.level) && soft.level % 1 >= 0.5
+                                ? 'star_half'
+                                : 'star_outline'
+                      }}
+                    </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="accordion">
+        <div class="accordion__item">
           <input type="checkbox" id="accordion-techs" class="accordion__input" @change="trackButtonClick($event,'Tecnologias')" />
           <label for="accordion-techs" class="accordion__label">
             <span class="title-sm">
-              TECNOLOGIAS
+              HARD SKILLS
             </span>
 
             <span class="material-icons title-sm">
@@ -350,7 +598,7 @@ useHead({
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section bg-solid-blue-1">
       <div class="accordion">
         <div class="accordion__item">
           <input type="checkbox" id="accordion-trajectory" class="accordion__input" @change="trackButtonClick($event,'Trajetória')" />
@@ -400,7 +648,7 @@ useHead({
         </div>
       </div>
     </section>
-    <section class="section bg-solid-blue-1">
+    <section class="section">
       <Modal
         :show="openModal"
         :no-close-modal-click-backdrop="sendingForm"
@@ -426,7 +674,7 @@ useHead({
               </label>
             </div>
             <div class="actions-form">
-              <button type="button" class="btn btn--sm w-100" :disabled="sendingForm" @click="closeModalContact">
+              <button type="button" class="btn btn--sm w-100" :disabled="sendingForm" @click="toggleModalContact">
                 CANCELAR
               </button>
               <button type="submit" class="btn btn--sm w-100" :disabled="sendingForm">
@@ -450,10 +698,10 @@ useHead({
           </label>
           <div class="accordion__content">
             <div class="contact-freelancer">
-              <img src="/gifs/glootie.gif" @click="openModal = !openModal"/>
+              <img src="/gifs/glootie.gif" @click="toggleModalContact"/>
               <div class="text-contact">
                 <p>Tem uma proposta de projeto, trabalho freelancer ou deseja iniciar uma colaboração? Fico à disposição para conversar!</p>
-                <button class="btn btn--lg w-100" @click="openModal = !openModal">Entrar em contato</button>
+                <button class="btn btn--lg w-100" @click="toggleModalContact">Entrar em contato</button>
               </div>
             </div>
           </div>
