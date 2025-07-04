@@ -8,7 +8,7 @@ import 'vue-pdf-embed/dist/styles/textLayer.css'
 import { useNotifications } from '@/composables/useNotifications'
 import {useOptionsImage} from "~/composables/useOptionsImage";
 import Modal from "~/components/Modal.vue";
-import type {SoftSkill} from "~/interfaces/about";
+import type {SoftSkill, SoftSkillFeedback} from "~/interfaces/about";
 const { createDocument, getCollection, auth } = useFirebase()
 
 const useOptImage = useOptionsImage()
@@ -27,17 +27,22 @@ const formacoes = reactive([
   }
 ])
 
+const loadingSoftSkills = ref(false)
 const sendingForm = ref(false)
 const sendingFormSoftSkill = ref(false)
 const openModal = ref(false)
+const modalChoiceView = ref<"choice" | "form_feedback" | "view_feedbacks">("choice")
 const openModalSoftSkills = ref(false)
 const formName = ref("")
+const formCargo = ref("")
 const formContact = ref("")
 const formDescription = ref("")
 const hoverRating = ref(0)
 const selectedRating = ref(0)
 const softSkill = ref<SoftSkill>()
 const softSkills = ref<SoftSkill[]>([])
+const softSkillFeedbacks = ref<SoftSkillFeedback[]>([])
+const feedbacksBySoftSkill = ref<SoftSkillFeedback[]>([])
 
 const stackCurrent = ref<BadgeCategory[]>(MockTechnologies.map(category => ({
       ...category,
@@ -152,8 +157,10 @@ const sendMessage = async () => {
 
 const clearForm = () => {
   formName.value = ""
+  formCargo.value = ""
   formContact.value = ""
   formDescription.value = ""
+  selectedRating.value = 0
 }
 
 const toggleModalContact = () => {
@@ -162,20 +169,29 @@ const toggleModalContact = () => {
 }
 
 const trackButtonClick = (event: any, accordion: string) => {
-  useTrackEvent('view_accordion', {
+  useTrackEvent(`view_accordion_${accordion}`, {
     event_label: `Visualizar da seção: ${accordion}`,
     event_value: event.target.checked
   })
 };
 
-const viewDetailsSoftSkills = (soft_skill: SoftSkill) => {
+const viewDetails = (choice: "choice" | "form_feedback" | "view_feedbacks" = "choice") => {
   clearForm()
-  softSkill.value = soft_skill
-  openModalSoftSkills.value = true
+  modalChoiceView.value = choice
 }
 
-const toggleModalSoftSkills = () => {
-  openModal.value = !openModal.value
+const openModalSoftSkillsAndFeedbacks = (soft_skill: SoftSkill) => {
+  softSkill.value = soft_skill
+  openModalSoftSkills.value = true
+  feedbacksBySoftSkill.value = []
+  feedbacksBySoftSkill.value = softSkillFeedbacks.value?.filter((feed) => feed.soft_skill_id === soft_skill.id)
+  modalChoiceView.value = "choice"
+  clearForm()
+}
+
+const closeModalSoftSkillsAndFeedbacks = () => {
+  openModalSoftSkills.value = false
+  modalChoiceView.value = "choice"
   clearForm()
 }
 
@@ -213,7 +229,20 @@ const getSoftSkills = async () => {
   }))
 }
 
+const getSoftSkillFeedbacks = async () => {
+  const snapshot = await getCollection("/soft_skill_feedback");
+  softSkillFeedbacks.value = snapshot.docs.map(doc => ({
+    id: doc.id,
+    soft_skill_id: doc.data()["softSkillId"],
+    name: doc.data()["name"],
+    cargo: doc.data()["cargo"],
+    feedback : doc.data()["feedback"],
+    levelSelected: doc.data()["levelSelected"],
+  }))
+}
+
 const sendFeedbackSoftSkill = async () => {
+
   if (formName.value === null || formName.value.trim().length === 0) {
     addNotification("Informe o campo de nome!", 'error', 8000)
     return
@@ -273,11 +302,12 @@ const sendFeedbackSoftSkill = async () => {
   try {
     await createDocument('soft_skill_feedback', {
       name: formName.value,
+      cargo: formCargo.value,
       contact: formContact.value,
       feedback: formDescription.value,
       levelSelected: selectedRating.value,
       labelFeedback: softSkill.value?.label,
-      idSoftSkill: softSkill.value?.id,
+      softSkillId: softSkill.value?.id,
       sendingIn: new Date(),
       browser: browser,
       so: so,
@@ -289,9 +319,10 @@ const sendFeedbackSoftSkill = async () => {
       uid: auth.currentUser?.uid || null,
     });
 
+    await getSoftSkillFeedbacks()
+
     addNotification("Feedback recebido com sucesso!", 'success', 8000);
-    clearForm()
-    openModalSoftSkills.value = false
+    closeModalSoftSkillsAndFeedbacks()
   } catch (error) {
     addNotification("Ocorreu um erro ao enviar seu feedback. Por favor, tente novamente.", 'error', 10000);
   } finally {
@@ -300,7 +331,13 @@ const sendFeedbackSoftSkill = async () => {
 }
 
 onMounted(async () => {
-  await getSoftSkills()
+  loadingSoftSkills.value = true
+  try {
+    await getSoftSkills()
+    await getSoftSkillFeedbacks()
+  } finally {
+    loadingSoftSkills.value = false
+  }
 })
 
 useHead({
@@ -472,16 +509,17 @@ useHead({
           <div class="accordion__content">
             <Modal
               :show="openModalSoftSkills"
-              :no-close-modal-click-backdrop="sendingFormSoftSkill"
+              :no-close-modal-click-backdrop="true"
               size="sm"
               :hidden-footer="true"
               @update:show="(val) => openModalSoftSkills = val"
             >
               <template #header>
-                <div class="d-flex d-flex--align-center d-flex--justify-start d-flex--gap-12px">
-                  <div class="material-icons">{{ softSkill?.icon }}</div>
-                  <div class="text--bolder text---size-18px">{{ softSkill?.label }}</div>
-                  <div v-if="softSkill">
+                <div class="d-flex d-flex--align-center d-flex--justify-start d-flex--gap-10px w-100">
+                  <div class="material-icons text--size-30px">{{ softSkill?.icon }}</div>
+                  <div class="text--bolder text---size-16px overflow--hidden text--ellipsis text--nowrap">
+                    {{ softSkill?.label }}<br/>
+                    <div v-if="softSkill" class="overflow--hidden text--ellipsis text--nowrap">
                     <span v-for="star in 5" :key="`star-${star}`" class="material-icons text--size-12px">
                         {{
                         star <= Math.floor(softSkill.level)
@@ -491,53 +529,103 @@ useHead({
                                 : 'star_outline'
                       }}
                       </span>
+                    </div>
                   </div>
                 </div>
               </template>
               <template #default>
-                <i class="text--bolder text--size-12px">"{{ softSkill?.description }}"</i>
-                <hr/>
-                <div class="ptb-1">Trabalha ou já trabalhou comigo? Se puder, pode me dar um feedback sobre essa soft skill</div>
-                <form class="form-contact" @submit.prevent="sendFeedbackSoftSkill">
-                  <div class="avaliar" @mouseleave="hoverRating = 0">
-                  <span
-                    v-for="star in 5"
-                    :key="star"
-                    class="material-icons"
-                    @mousemove="handleMouseMove($event, star)"
-                    @click="selectedRating = getStarValue($event, star)"
-                  >
-                    {{ getStarIcon(star) }}
-                  </span>
+                <div v-if="modalChoiceView === 'form_feedback'">
+                  <form class="form-contact" @submit.prevent="sendFeedbackSoftSkill">
+                    <div class="avaliar overflow--hidden text--nowrap text--ellipsis" @mouseleave="hoverRating = 0">
+                      <span
+                        v-for="star in 5"
+                        :key="star"
+                        class="material-icons"
+                        @mousemove="handleMouseMove($event, star)"
+                        @click="selectedRating = getStarValue($event, star)"
+                      >
+                        {{ getStarIcon(star) }}
+                      </span>
+                    </div>
+                    <div class="inputs">
+                      <label for="name">
+                        <span>NOME</span>
+                        <input type="text" name="name" id="name" v-model="formName" required/>
+                      </label>
+                      <label for="name">
+                        <span>CARGO (opcional)</span>
+                        <input type="text" name="name" id="name" placeholder="Ex: Project Owner, Tech Lead, Dev..." v-model="formCargo"/>
+                      </label>
+                      <label for="contact">
+                        <span>CONTATO(EMAIL/TELEFONE/LINK)</span>
+                        <input type="text" name="contact" id="contact" v-model="formContact" required/>
+                      </label>
+                      <label for="description">
+                        <span>FEEDBACK (opcional)</span>
+                        <textarea rows="2" name="description" id="description" v-model="formDescription"/>
+                      </label>
+                    </div>
+                    <div class="actions-form">
+                      <button type="button" class="btn btn--sm w-100" :disabled="sendingFormSoftSkill" @click="viewDetails()">
+                        VOLTAR
+                      </button>
+                      <button type="submit" class="btn btn--sm w-100" :disabled="sendingFormSoftSkill">
+                        {{ sendingFormSoftSkill ? 'ENVIANDO...' : 'ENVIAR'}}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div v-else-if="modalChoiceView === 'view_feedbacks'">
+                  <i class="text--bolder text--size-12px">"{{ softSkill?.description }}"</i>
+                  <div class="feedbacks">
+                    <div class="feedback" v-for="(feed, feedIndex) in feedbacksBySoftSkill" :key="`feedback-${feedIndex}`">
+                      <div class="header-feedback">
+                        <span class="title-feedback">
+                          {{ feed.name }}<br/>
+                          <i>{{ feed.cargo }}</i>
+                        </span>
+                        <div class="rating-feedback">
+                          <span v-for="star in 5" :key="`star-${star}`" class="material-icons text--size-12px">
+                          {{
+                            star <= Math.floor(feed.levelSelected)
+                                ? 'star'
+                                : star === Math.ceil(feed.levelSelected) && feed.levelSelected % 1 >= 0.5
+                                    ? 'star_half'
+                                    : 'star_outline'
+                          }}
+                        </span>
+                        </div>
+                      </div>
+                      <div class="description-feedback">
+                        "{{ feed.feedback }}"
+                      </div>
+                    </div>
                   </div>
-                  <div class="inputs">
-                    <label for="name">
-                      <span>NOME</span>
-                      <input type="text" name="name" id="name" v-model="formName" required/>
-                    </label>
-                    <label for="contact">
-                      <span>CONTATO(EMAIL/TELEFONE/LINK)</span>
-                      <input type="text" name="contact" id="contact" v-model="formContact" required/>
-                    </label>
-                    <label for="description">
-                      <span>FEEDBACK (opcional)</span>
-                      <textarea rows="2" name="description" id="description" v-model="formDescription"/>
-                    </label>
-                  </div>
-                  <div class="actions-form">
-                    <button type="button" class="btn btn--sm w-100" :disabled="sendingForm" @click="toggleModalSoftSkills">
-                      CANCELAR
+                  <button type="button" class="btn btn--sm w-100" @click="viewDetails()">
+                    VOLTAR
+                  </button>
+                </div>
+                <div v-else>
+                  <i class="text--bolder text--size-12px">"{{ softSkill?.description }}"</i>
+                  <hr/>
+                  <div class="ptb-1">Trabalha ou já trabalhou comigo? Se puder, pode me dar um feedback sobre essa soft skill</div>
+                  <div class="d-flex d-flex--justify-between d-flex--align-center d-flex--gap-12px">
+                    <button type="button" class="btn btn--sm w-100" @click="viewDetails('form_feedback')">
+                      ENVIAR FEEDBACK
                     </button>
-                    <button type="submit" class="btn btn--sm w-100" :disabled="sendingFormSoftSkill">
-                      {{ sendingFormSoftSkill ? 'ENVIANDO...' : 'ENVIAR'}}
+                    <button type="button" v-if="feedbacksBySoftSkill?.length > 0" class="btn btn--sm w-100" @click="viewDetails('view_feedbacks')">
+                      VER FEEDBACKS
                     </button>
                   </div>
-                </form>
+                </div>
               </template>
             </Modal>
-            <div class="soft-skills">
+            <div class="d-flex w-100 d-flex--align-center d-flex--justify-center" v-if="loadingSoftSkills">
+              <span class="text--ellipsis text--nowrap overflow--hidden"> Carregando Soft Skills... </span>
+            </div>
+            <div class="soft-skills" v-else-if="!loadingSoftSkills && softSkills.length > 0">
               <div class="soft-skill" v-for="(soft, softKey) in softSkills"
-                   :key="`soft-skill-${softKey}`" @click="viewDetailsSoftSkills(soft)">
+                   :key="`soft-skill-${softKey}`" @click="openModalSoftSkillsAndFeedbacks(soft)">
                 <div class="header-skill">
                   <span class="material-icons">{{ soft.icon }}</span>
                   <span class="label-skill">{{ soft.label }}</span>
@@ -555,6 +643,9 @@ useHead({
                     </span>
                 </div>
               </div>
+            </div>
+            <div class="d-flex w-100 d-flex--align-center d-flex--justify-center" v-else>
+              <span class="text--ellipsis text--nowrap overflow--hidden"> Nenhuma Soft Skills encontrada! </span>
             </div>
           </div>
         </div>

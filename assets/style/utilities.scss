@@ -97,6 +97,14 @@
     color: var(--color-solid-brown-2);
   }
 
+  &--nowrap {
+    text-wrap: nowrap;
+  }
+
+  &--ellipsis {
+    text-overflow: ellipsis;
+  }
+
 
   @for $ls from 0 through 10 {
     &--letter-spacing-#{$ls}px {
