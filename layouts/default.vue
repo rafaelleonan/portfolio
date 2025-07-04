@@ -15,6 +15,7 @@ import {useRouter} from "vue-router";
 import type {ComponentCarousel, ComponentInstructions} from "~/interfaces/projects";
 import Modal from "~/components/Modal.vue";
 import {useOptionsImage} from "~/composables/useOptionsImage";
+import {useSeo} from "~/composables/useSeo";
 
 const loading = useLoading();
 const counting = useCountLoading();
@@ -201,36 +202,7 @@ const computedValue = computed((): string => {
   return valueScaleImgInitial.value === 1 ? '100%' : `${parseFloat((valueScaleImgInitial.value * 100).toFixed(1))}%`
 })
 
-useHead({
-  titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} | Rafael Leonan` : 'Rafael Leonan';
-  },
-  htmlAttrs: {
-    lang: 'pt-BR'
-  },
-  link: [
-    { rel: 'icon', type: 'image/png', href: '/favicon.png' }
-  ],
-  meta: [
-    { charset: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'author', content: 'Rafael Leonan' },
-    { name: 'theme-color', content: '#1b2932' },
-    { name: 'keywords', content: 'Rafael Leonan, Portfólio, Projetos, Desenvolvedor Fullstack, Fullstack, Software, Web Developer, Flutter, Vue.js, Go, Ruby, Rails, JavaScript, TypeScript, PostgreSQL, MySQL, Frontend, Backend' },
-    { name: 'robots', content: 'index, follow, max-image-preview:large' },
-    { name: 'description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack.' },
-    { property: 'og:title', content: 'Portfólio - Rafael Leonan' },
-    { property: 'og:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://rafaelleonan.com' },
-    { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
-    { property: 'og:site_name', content: 'Rafael Leonan' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Portfólio de Desenvolvedor - Rafael Leonan.' },
-    { name: 'twitter:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack' },
-    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
-  ]
-});
+useSeo('Portfólio de Desenvolvedor', 'Portfólio de Rafael Leonan desenvolvedor fullstack.')
 
 onMounted(async () => {
   counting.value = 0

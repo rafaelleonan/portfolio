@@ -9,6 +9,7 @@ import type {
   ComponentInstructions, ComponentMedia
 } from "~/interfaces/projects";
 import {MockProjects} from "~/data/mock-projects";import {useOptionsImage} from "~/composables/useOptionsImage";
+import {useSeo} from "~/composables/useSeo";
 
 const useOptImage = useOptionsImage()
 const route = useRoute()
@@ -21,22 +22,8 @@ if (!project.value) {
   router.push("/404")
 }
 
-useHead({
-  title: project.value?.title ?? 'Projeto',
-  meta: [
-    { name: 'description', content: project.value?.description },
-    { property: 'og:title', content: project.value?.title },
-    { property: 'og:description', content: project.value?.description },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: `https://rafaelleonan.com/projects/${project.value?.id}` },
-    { property: 'og:image', content: project.value?.card_banner ?? 'https://rafaelleonan.com/images/og-image.png' },
-    { property: 'og:site_name', content: 'Rafael Leonan' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: project.value?.title ?? 'Projetos - Rafael Leonan' },
-    { name: 'twitter:description', content: project.value?.description },
-    { name: 'twitter:image', content: project.value?.card_banner ?? 'https://rafaelleonan.com/images/og-image.png' }
-  ]
-});
+useSeo(project.value?.title ?? 'Projeto', project.value?.description ?? 'Projeto portfólio rafaelleonan', project.value?.card_banner)
+
 
 const { addNotification } = useNotifications()
 

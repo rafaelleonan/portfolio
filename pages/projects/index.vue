@@ -6,22 +6,9 @@ import {MockTechnologies} from "~/data/mock-homepage";
 import type {Project, Technology} from "~/interfaces/projects";
 import {onMounted, onUnmounted, nextTick, ref, computed} from "vue";
 import type {BadgeCategory} from "~/interfaces/homepage";
+import {useSeo} from "~/composables/useSeo";
 
-useHead({
-  title: 'Projetos',
-  meta: [
-    { name: 'description', content: 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.' },
-    { property: 'og:title', content: 'Projetos - Rafael Leonan' },
-    { property: 'og:description', content: 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://rafaelleonan.com/projects' },
-    { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
-    { property: 'og:site_name', content: 'Rafael Leonan' },
-    { name: 'twitter:title', content: 'Projetos - Rafael Leonan.' },
-    { name: 'twitter:description', content: 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.' },
-    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
-  ]
-});
+useSeo('Projetos', 'Rafael Leonan - Projetos com tecnologias como Vue, Nuxt, Flutter, Ruby, Ruby On Rails, Python, Django, JavaScript, TypeScript, Go e etc.')
 
 const router = useRouter();
 const carousels = ref<HTMLDivElement[]>([]);

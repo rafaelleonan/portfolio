@@ -6,6 +6,7 @@ import type {BadgeCategory} from "~/interfaces/homepage";
 import type {Certificates, Tech} from "~/interfaces/certificates";
 import {MockTechnologies} from "~/data/mock-homepage";
 import {useRoute, useRouter} from "vue-router";
+import {useSeo} from "~/composables/useSeo";
 
 const filterCertificateName = ref('')
 const filterCertificateTechSelected = ref<string[]>([])
@@ -142,22 +143,7 @@ onUnmounted(() => {
   document.removeEventListener("click", closeDropdownTwo);
 });
 
-useHead({
-  title: 'Certificações',
-  meta: [
-    { name: 'description', content: 'Certificados de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
-    { property: 'og:title', content: 'Certificações - Rafael Leonan' },
-    { property: 'og:description', content: 'Certificados de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://rafaelleonan.com/certifications' },
-    { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
-    { property: 'og:site_name', content: 'Rafael Leonan' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Certificações - Rafael Leonan' },
-    { name: 'twitter:description', content: 'Certificados de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.' },
-    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
-  ]
-});
+useSeo('Certificações', 'Certificados de Rafael Leonan com tecnologias como Vue, Nuxt, Flutter, Rails, Python, Go e etc.')
 
 </script>
 

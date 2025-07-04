@@ -1,20 +1,7 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
-import { useHead } from '#imports';
+<script lang="ts" setup>
+import {useSeo} from "~/composables/useSeo";
 
-export default defineComponent({
-  name: "bitcoin",
-  methods: {
-    defineHead() {
-      useHead({
-        title: 'Bitcoin',
-      });
-    },
-  },
-  mounted() {
-    this.defineHead();
-  }
-})
+useSeo('BTC', 'Portfólio de Rafael Leonan desenvolvedor fullstack.')
 </script>
 
 <template>

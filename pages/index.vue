@@ -5,6 +5,7 @@ import {MockTechnologies} from "~/data/mock-homepage";
 import {MockCertificates} from "~/data/mock-certificates";
 import type {BadgeTech} from "~/interfaces/homepage";
 import {useRouter} from "vue-router";
+import {useSeo} from "~/composables/useSeo";
 
 const stackCurrent = reactive<BadgeTech[]>([])
 const router = useRouter()
@@ -19,22 +20,7 @@ onMounted(() => {
   }
 })
 
-useHead({
-  title: 'Portfólio de Desenvolvedor',
-  meta: [
-    { name: 'description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack.' },
-    { property: 'og:title', content: 'Portfólio - Rafael Leonan' },
-    { property: 'og:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://rafaelleonan.com' },
-    { property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png' },
-    { property: 'og:site_name', content: 'Rafael Leonan' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Portfólio de Desenvolvedor - Rafael Leonan.' },
-    { name: 'twitter:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack' },
-    { name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png' }
-  ]
-});
+useSeo('Portfólio de Desenvolvedor', 'Portfólio de Rafael Leonan desenvolvedor fullstack.')
 
 </script>
 
