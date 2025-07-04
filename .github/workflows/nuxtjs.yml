@@ -36,6 +36,29 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Set environment variables - 1
+        run: echo "NUXT_PUBLIC_GA_ID=${{ secrets.NUXT_PUBLIC_GA_ID }}" >> $GITHUB_ENV
+      - name: Set environment variables - 2
+        run: echo "NUXT_PUBLIC_FIREBASE_API_KEY=${{ secrets.NUXT_PUBLIC_FIREBASE_API_KEY }}" >> $GITHUB_ENV
+      - name: Set environment variables - 3
+        run: echo "NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ secrets.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+      - name: Set environment variables - 4
+        run: echo "NUXT_PUBLIC_FIREBASE_PROJECT_ID=${{ secrets.NUXT_PUBLIC_FIREBASE_PROJECT_ID }}" >> $GITHUB_ENV
+      - name: Set environment variables - 5
+        run: echo "NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${{ secrets.NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+      - name: Set environment variables - 6
+        run: echo "NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}" >> $GITHUB_ENV
+      - name: Set environment variables - 7
+        run: echo "NUXT_PUBLIC_FIREBASE_APP_ID=${{ secrets.NUXT_PUBLIC_FIREBASE_APP_ID }}" >> $GITHUB_ENV
+      - name: Set environment variables - 8
+        run: echo "NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID=${{ secrets.NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Static HTML export with Nuxt
+        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
       - name: Build Nuxt.js for SSG
         run: npm run generate
         env:
