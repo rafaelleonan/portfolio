@@ -350,13 +350,13 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
     <section class="section">
       <div class="about-me">
         <div class="header-about-me">
-          <img src="/images/1629036542049_2.jpg" alt="Foto perfil" />
-          <div class="d-flex d-flex--column d-flex--justify-center d-flex--gap-8px">
+          <img src="/images/1629036542049_2.jpg" alt="Foto perfil" v-intersect="'fade-in-left'"/>
+          <div class="d-flex d-flex--column d-flex--justify-center d-flex--gap-8px" v-intersect="'fade-in-right'">
             <span class="title-about-me"> Rafael Leonan </span>
             <span class="subtitle-about-me"> DESENVOLVEDOR FULL STACK </span>
           </div>
         </div>
-        <div class="contacts">
+        <div class="contacts" v-intersect="'fade-in-bottom'">
           <a class="item-contact" tabindex="0">
             <span class="material-icons">call</span>
             <span>(85) 9 8449-1127</span>
@@ -402,7 +402,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
             <span class="material-icons">open_in_new</span>
           </a>
         </div>
-        <div class="text-about-me mt-2">
+        <div class="text-about-me mt-2" v-intersect="'fade-in-bottom'">
           Sou desenvolvedor full stack com experiência em desenvolvimento de aplicações back-end: <b class="text--weight-700">APIs RESTful</b>,
           <b class="text--weight-700">serviços agendados (Cron Service)</b>, <b class="text--weight-700">Webhooks</b> e serviços de mensageria <b class="text--weight-700">Kafka</b> e <b class="text--weight-700">AWS SQS</b>, aplicações frond-end: mobile, web e desktop. Tenho
           conhecimento em armazenamento e leitura de dados com AWS S3, Firebase Firestore, além de banco de dados relacionais
@@ -410,7 +410,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
         </div>
       </div>
     </section>
-    <section class="section bg-solid-blue-1">
+    <section class="section bg-solid-blue-1" v-intersect="'fade-in-left'">
       <div class="accordion">
         <div class="accordion__item">
           <input type="checkbox" id="accordion-formacao" class="accordion__input" @change="trackButtonClick($event, 'Formação')" />
@@ -441,7 +441,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section" v-intersect="'fade-in-right'">
       <div class="accordion">
         <div class="accordion__item">
           <input type="checkbox" id="accordion-stack-current" class="accordion__input" @change="trackButtonClick($event, 'Hard Skills')" />
@@ -479,7 +479,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
         </div>
       </div>
     </section>
-    <section class="section bg-solid-blue-1">
+    <section class="section bg-solid-blue-1" v-intersect="'fade-in-left'">
       <div class="accordion">
         <div class="accordion__item">
           <input type="checkbox" id="accordion-soft-skills" class="accordion__input" @change="trackButtonClick($event, 'Soft Skills')" />
@@ -637,7 +637,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section" v-intersect="'fade-in-right'">
       <div class="accordion">
         <div class="accordion__item">
           <input type="checkbox" id="accordion-techs" class="accordion__input" @change="trackButtonClick($event,'Tecnologias')" />
@@ -675,7 +675,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
         </div>
       </div>
     </section>
-    <section class="section bg-solid-blue-1">
+    <section class="section bg-solid-blue-1" v-intersect="'fade-in-left'">
       <div class="accordion">
         <div class="accordion__item">
           <input type="checkbox" id="accordion-trajectory" class="accordion__input" @change="trackButtonClick($event,'Trajetória')" />
@@ -725,7 +725,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section" v-intersect="'fade-in-right'">
       <Modal
         :show="openModal"
         :no-close-modal-click-backdrop="sendingForm"

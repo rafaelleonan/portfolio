@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxtjs/sitemap": "^7.2.10",
     "firebase": "^11.9.1",
+    "html2pdf.js": "^0.10.3",
     "material-icons": "^1.13.12",
     "nuxt": "^3.13.0",
     "nuxt-gtag": "^3.0.2",

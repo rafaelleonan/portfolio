@@ -38,7 +38,7 @@
     padding-bottom: #{$i}rem;
   }
   .pt-#{$i} {
-    padding-top: #{$i}rem;
+    padding-top: #{$i}rem !important;
   }
   .pl-#{$i} {
     padding-left: #{$i}rem;
@@ -533,7 +533,6 @@ a {
   }
 }
 
-
 .badge-xs {
   background-color: $rl-app-blue-500;
   border-radius: 20px 100px 100px 20px;
@@ -662,6 +661,44 @@ section {
     border-radius: 50%;
     background: $rl-app-white-10;
     pointer-events: none;
+  }
+}
+
+.fade-in-top {
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: fadeInVertical 0.8s ease-out forwards;
+}
+
+.fade-in-bottom {
+  opacity: 0;
+  transform: translateY(100px);
+  animation: fadeInVertical 0.8s ease-out forwards;
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: fadeInHorizontal 0.8s ease-out forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  animation: fadeInHorizontal 0.8s ease-out forwards;
+}
+
+@keyframes fadeInHorizontal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInVertical {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

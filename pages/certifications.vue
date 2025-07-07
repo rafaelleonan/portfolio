@@ -149,14 +149,14 @@ useSeo('Certificações', 'Certificados de Rafael Leonan com tecnologias como Vu
 
 <template>
   <section class="section">
-    <span class="title-sm text--uppercase">
+    <div class="title-sm text--uppercase" v-intersect="'fade-in-left'">
       Meus certificados
-    </span>
+    </div>
     <div class="form-filters mt-1">
-      <div class="form-filter col-4">
+      <div class="form-filter col-4" v-intersect="'fade-in-left'">
         <input type="text" class="form-input" v-model="filterCertificateName" placeholder="CERTIFICADO"/>
       </div>
-      <div class="form-filter col-4">
+      <div class="form-filter col-4" v-intersect="'fade-in-left'">
         <div class="dropdown-container" @click.stop>
           <div class="input-box" @click="toggleSelect">
             <input
@@ -201,7 +201,7 @@ useSeo('Certificações', 'Certificados de Rafael Leonan com tecnologias como Vu
           </ul>
         </div>
       </div>
-      <div class="form-filter col-4">
+      <div class="form-filter col-4" v-intersect="'fade-in-left'">
         <div class="dropdown-container" @click.stop>
           <div class="input-box" @click="toggleSelectTwo">
             <input
@@ -252,7 +252,7 @@ useSeo('Certificações', 'Certificados de Rafael Leonan com tecnologias como Vu
         </div>
       </div>
     </div>
-    <div class="list-certs mt-2" v-if="computedCertifications.length > 0">
+    <div class="list-certs mt-2" v-if="computedCertifications.length > 0" v-intersect="'fade-in-bottom'">
       <a v-for="(cert, key) in computedCertifications" :key="`cert-${key}`"
          :href="cert.link"
          target="_blank" rel="noopener noreferrer"

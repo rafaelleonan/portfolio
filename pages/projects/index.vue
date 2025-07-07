@@ -218,12 +218,12 @@ onUnmounted(() => {
 
 <template>
   <section class="section">
-    <span class="title-sm">MEUS PROJETOS</span>
+    <div class="title-sm" v-intersect="'fade-in-left'">MEUS PROJETOS</div>
     <div class="form-filters mt-1">
-      <div class="form-filter col-4">
+      <div class="form-filter col-4" v-intersect="'fade-in-left'">
         <input type="text" class="form-input" v-model="filterProjectName" placeholder="NOME PROJETO"/>
       </div>
-      <div class="form-filter col-4">
+      <div class="form-filter col-4" v-intersect="'fade-in-left'">
         <div class="dropdown-container" @click.stop>
           <div class="input-box" @click="toggleSelect">
             <input
@@ -268,7 +268,7 @@ onUnmounted(() => {
           </ul>
         </div>
       </div>
-      <div class="form-filter col-4">
+      <div class="form-filter col-4" v-intersect="'fade-in-left'">
         <div class="dropdown-container" @click.stop>
           <div class="input-box" @click="toggleSelectTwo">
             <input
@@ -320,10 +320,11 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="card-project mt-4"
-         v-if="computedProjects.length > 0"
-         v-for="(project, pKey) in computedProjects"
-         :key="`key_project_${pKey}`"
-         @click="goToProject(project.id)"
+       v-if="computedProjects.length > 0"
+       v-for="(project, pKey) in computedProjects"
+       :key="`key_project_${pKey}`"
+       @click="goToProject(project.id)"
+       v-intersect="'fade-in-bottom'"
     >
       <div class="images-project">
         <div class="background-blur">

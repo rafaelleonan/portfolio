@@ -28,9 +28,9 @@ useSeo('Portfólio de Desenvolvedor', 'Portfólio de Rafael Leonan desenvolvedor
   <div class="w-100 d-flex d-flex--column d-flex--justify-center overflow--hidden">
     <section class="section ptb-5">
       <div class="about-me">
-        <span class="title-about-me"> Rafael Leonan </span>
-        <span class="subtitle-about-me"> DESENVOLVEDOR FULL STACK </span>
-        <div class="text-about-me mt-2">
+        <span class="title-about-me" v-intersect="'fade-in-top'"> Rafael Leonan </span>
+        <span class="subtitle-about-me" v-intersect="'fade-in-top'"> DESENVOLVEDOR FULL STACK </span>
+        <div class="text-about-me mt-2" v-intersect="'fade-in-top'">
           Sou desenvolvedor full stack com experiência em desenvolvimento de aplicações back-end: <b class="text--weight-700">APIs RESTful</b>,
           <b class="text--weight-700">serviços agendados (Cron Service)</b>, <b class="text--weight-700">Webhooks</b> e serviços de mensageria <b class="text--weight-700">Kafka</b> e <b class="text--weight-700">AWS SQS</b>, aplicações frond-end: mobile, web e desktop. Tenho
           conhecimento em armazenamento e leitura de dados com AWS S3, Firebase Firestore, além de banco de dados relacionais
@@ -41,14 +41,14 @@ useSeo('Portfólio de Desenvolvedor', 'Portfólio de Rafael Leonan desenvolvedor
     <section class="section ptb-5 bg-solid-blue-1">
       <div class="hard-skills">
         <div class="d-flex d-flex--justify-between">
-          <span class="title-sm">HARD SKILLS</span>
-          <a class="d-flex d-flex--align-center d-flex--justify-between d-flex--gap-4px cursor--pointer" @click="router.push('/about')">
+          <span class="title-sm" v-intersect="'fade-in-left'">HARD SKILLS</span>
+          <a class="d-flex d-flex--align-center d-flex--justify-between d-flex--gap-4px cursor--pointer" v-intersect="'fade-in-left'" @click="router.push('/about')">
             <span class="text--uppercase text--size-12px">Ver todos</span>
             <span class="material-icons text--size-16px">open_in_new</span>
           </a>
         </div>
         <div class="list-hs">
-          <div class="item-hs" v-for="(line, lineKey) in stackCurrent"
+          <div class="item-hs" v-intersect="'fade-in-left'" v-for="(line, lineKey) in stackCurrent"
                :key="`line-${lineKey}`">
             <img :src="line.src" :alt="line.title"/>
             <div class="text-hs">
@@ -67,15 +67,15 @@ useSeo('Portfólio de Desenvolvedor', 'Portfólio de Rafael Leonan desenvolvedor
     <section class="section ptb-5">
       <div class="certifications">
         <div class="d-flex d-flex--justify-between">
-          <span class="title-sm">CERTIFICADOS</span>
-          <a class="d-flex d-flex--align-center d-flex--justify-between d-flex--gap-4px cursor--pointer" @click="router.push('/certifications')">
+          <span class="title-sm" v-intersect="'fade-in-bottom'">CERTIFICADOS</span>
+          <a class="d-flex d-flex--align-center d-flex--justify-between d-flex--gap-4px cursor--pointer" v-intersect="'fade-in-bottom'" @click="router.push('/certifications')">
             <span class="text--uppercase text--size-12px">Ver todos</span>
             <span class="material-icons text--size-16px">open_in_new</span>
           </a>
         </div>
         <div class="list-certificates">
           <div v-for="(cert, certKey) in MockCertificates"
-               class="item-certificate"
+               class="item-certificate" v-intersect="'fade-in-bottom'"
                :key="`certificate-key-${certKey}`">
             <img :src="cert.image" :alt="cert.title"/>
             <div class="footer-certificate">
