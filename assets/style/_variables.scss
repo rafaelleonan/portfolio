@@ -191,6 +191,7 @@ $theme-light: (
   "bg-solid-brown-1": map.get($colors, "brown-100"),
   "bg-solid-brown-2": map.get($colors, "brown-500"),
   "bg-opacity-1": map.get($colors, "brown-op-1-10"),
+  "bg-opacity-2": map.get($colors, "white"),
 
 /* BORDERS */
   "br-solid-blue-1": map.get($colors, "blue-200"),
@@ -234,6 +235,7 @@ $theme-dark: (
   "bg-solid-brown-1": map.get($colors, "brown-900"),
   "bg-solid-brown-2": map.get($colors, "brown-700"),
   "bg-opacity-1": map.get($colors, "brown-op-2-10"),
+  "bg-opacity-2": map.get($colors, "blue-700"),
 
 /* BORDERS */
   "br-solid-blue-1": map.get($colors, "blue-500"),

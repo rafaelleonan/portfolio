@@ -87,10 +87,10 @@
     align-items: center;
     overflow: hidden;
     position: relative;
+    padding: 10px 0;
 
     .item-certificate {
       cursor: pointer;
-      width: 290px;
       background-color: var(--bg-solid-blue-1);
       border-radius: 6px;
       box-shadow: 4px 4px 8px var(--bs-solid-blue-1);

@@ -1,19 +1,42 @@
 <script lang="ts" setup>
 import {ref} from 'vue'
-import { useHead } from '#imports';
 import 'vue-pdf-embed/dist/styles/annotationLayer.css'
 import 'vue-pdf-embed/dist/styles/textLayer.css'
 import {useSeo} from "~/composables/useSeo";
+import {useTheme} from "~/composables/useTheme";
 
-const pdfUrl = ref('/docs/RAFAEL_LEONAN_ABREU_RODRIGUES.pdf')
+const pdfUrlDark = ref('/docs/RAFAEL_LEONAN_ABREU_RODRIGUES_DARK.pdf')
+const pdfUrlLight = ref('/docs/RAFAEL_LEONAN_ABREU_RODRIGUES_LIGHT.pdf')
 const pageCount = ref(0)
+const {theme} = useTheme()
 
 const handleDocumentLoad = ({numPages}: any) => {
   pageCount.value = numPages
+  setTimeout(() => {
+    const pages = document.querySelectorAll('.vue-pdf-embed__page'); // ou ajuste o seletor conforme necessário
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target); // remove o observador após animação
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    pages.forEach(page => {
+      // Garante que a classe de animação inicial esteja aplicada
+      page.classList.add('vue-pdf-embed__page');
+      observer.observe(page);
+    });
+  }, 200);
 }
 
 const downloadPdf = () => {
   const fileName = 'CURRICULO_RAFAEL_LEONAN_ABREU_RODRIGUES.pdf';
+  const pdfUrl = theme.value === 'dark' ? pdfUrlDark : pdfUrlLight
 
   // Verificar se o navegador suporta o atributo download
   const isHtml5DownloadSupported = 'download' in document.createElement('a');
@@ -53,7 +76,7 @@ useSeo('Resumo', 'Resumo/Currículo de Rafael Leonan.')
     </div>
     <div class="app-vue-pdf-embed">
       <client-only>
-        <PdfEmbed :source="pdfUrl"
+        <PdfEmbed :source="theme === 'dark' ? pdfUrlDark : pdfUrlLight"
                   @loaded="handleDocumentLoad"
                   annotation-layer
                   text-layer
@@ -63,6 +86,6 @@ useSeo('Resumo', 'Resumo/Currículo de Rafael Leonan.')
   </section>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use "assets/style/resume" as *;
 </style>

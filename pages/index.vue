@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useHead } from '#imports'
 import {reactive, onMounted} from "vue";
 import {MockTechnologies} from "~/data/mock-homepage";
 import {MockCertificates} from "~/data/mock-certificates";
@@ -89,6 +88,6 @@ useSeo('Portfólio de Desenvolvedor', 'Portfólio de Rafael Leonan desenvolvedor
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @use "assets/style/homepage" as *;
 </style>
