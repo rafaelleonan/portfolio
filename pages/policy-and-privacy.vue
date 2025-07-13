@@ -5,12 +5,24 @@ import 'vue-pdf-embed/dist/styles/textLayer.css'
 import {useSeo} from "~/composables/useSeo";
 import {useTheme} from "~/composables/useTheme";
 import {useConsent} from "~/composables/useConsent";
+import {useNotifications} from "~/composables/useNotifications";
 
 const pdfUrlDark = ref('/docs/politica-de-privacidade-dark.pdf')
 const pdfUrlLight = ref('/docs/politica-de-privacidade-light.pdf')
 const pageCount = ref(0)
 const {theme} = useTheme()
-const { visualizeConsent, toggleConsent } = useConsent()
+const { visualizeConsent, consent, toggleConsent } = useConsent()
+const { addNotification } = useNotifications()
+
+const toggleConsentManager = () => {
+  if (visualizeConsent.value && (consent.value.feedback || consent.value.analytics)) {
+    toggleConsent(false)
+  } else if (!visualizeConsent.value) {
+    toggleConsent(true)
+  } else {
+    addNotification("É necessário aceitar, recusar ou configurar os cookies!", 'error', 8000)
+  }
+}
 
 const handleDocumentLoad = ({numPages}: any) => {
   pageCount.value = numPages
@@ -67,7 +79,7 @@ useSeo('Política e privacidade', 'Política e privacidade.')
             <span>BAIXAR</span>
             <span class="material-icons text--size-16px">download</span>
           </button>
-          <button @click="toggleConsent(!visualizeConsent)">
+          <button @click="toggleConsentManager">
             <span>GERENCIAR</span>
             <span class="material-icons text--size-16px">settings</span>
           </button>
