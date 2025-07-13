@@ -259,6 +259,7 @@ onMounted(async () => {
   </Modal>
 
   <SplashScreen v-if="loading" />
+  <PolicyAndPrivacy v-if="!loading" />
   <AppHeader/>
   <main>
     <NuxtPage />

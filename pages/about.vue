@@ -10,7 +10,10 @@ import {useOptionsImage} from "~/composables/useOptionsImage";
 import Modal from "~/components/Modal.vue";
 import type {SoftSkill, SoftSkillFeedback} from "~/interfaces/about";
 import {useSeo} from "~/composables/useSeo";
+import {useConsent} from "~/composables/useConsent";
+
 const { createDocument, getCollection, auth } = useFirebase()
+const { consent } = useConsent()
 
 const useOptImage = useOptionsImage()
 const formacoes = reactive([
@@ -70,6 +73,11 @@ const sendWhatsapp = () => window.open('https://wa.me/5585984491127', 'blank')
 const sendEmail = () => window.open('mailto:faelleonan@gmail.com', 'blank')
 
 const sendMessage = async () => {
+  if (!consent.value.feedback) {
+    addNotification("É necessário ativar o cookie de formulários e feedbacks para prosseguir", 'error', 8000)
+    return
+  }
+
   if (formName.value === null || formName.value.trim().length === 0) {
     addNotification("Informe o campo de nome!", 'error', 8000)
     return
@@ -243,6 +251,11 @@ const getSoftSkillFeedbacks = async () => {
 }
 
 const sendFeedbackSoftSkill = async () => {
+
+  if (!consent.value.feedback) {
+    addNotification("É necessário ativar o cookie de formulários e feedback para prosseguir", 'error', 8000)
+    return
+  }
 
   if (formName.value === null || formName.value.trim().length === 0) {
     addNotification("Informe o campo de nome!", 'error', 8000)

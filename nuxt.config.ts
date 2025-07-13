@@ -19,8 +19,13 @@ export default defineNuxtConfig({
 		}
 	},
   gtag: {
-    // enabled: process.env.NODE_ENV === 'production',
-    id: process.env.NUXT_PUBLIC_GA_ID || ''
+    id: process.env.NUXT_PUBLIC_GA_ID || '',
+	  initCommands: [
+		  ['consent', 'default', {
+			  analytics_storage: 'denied',
+			  wait_for_update: 500
+		  }]
+	  ]
   },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },

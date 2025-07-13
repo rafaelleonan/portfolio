@@ -89,7 +89,7 @@ watch(
 
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: $rl-app-blue-50; }
+  50% { border-color: var(--color-solid-blue-1); }
 }
 
 .typing-text {
@@ -182,7 +182,7 @@ watch(
         background-color: transparent;
         border-radius: $rl-app-desktop-br-md;
         margin-top: 0;
-        border: 1px solid var(--br-solid-blue-2);
+        border: 1px solid var(--bg-solid-blue-3);
         position: relative;
 
         .progress-bar {
