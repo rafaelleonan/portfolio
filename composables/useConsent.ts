@@ -19,15 +19,26 @@ export const useConsent = () => {
 		consent.value = options
 		consentCookie.value = options
 		toggleConsent(false)
+		toggleConsentCookie(false)
 	}
 	
 	const resetConsent = () => {
 		consent.value = { essential: true, analytics: false, feedback: false }
 		consentCookie.value = { essential: true, analytics: false, feedback: false }
 		toggleConsent(false)
+		toggleConsentCookie(false)
 	}
 	
-	const visualizeConsent = useState<boolean>('visualizeConsent', () => true)
+	const visualizeConsentCookie = useCookie<boolean>('visualize_consent', {
+		maxAge: 60 * 60 * 24 * 365,
+		default: () => true
+	})
+	
+	const toggleConsentCookie = (value: boolean) => {
+		visualizeConsentCookie.value = value
+	}
+	
+	const visualizeConsent = useState<boolean>('visualizeConsent', () => visualizeConsentCookie.value!)
 	
 	const toggleConsent = (value: boolean) => {
 		visualizeConsent.value = value
@@ -35,6 +46,7 @@ export const useConsent = () => {
 	
 	return {
 		consent,
+		visualizeConsentCookie,
 		visualizeConsent,
 		toggleConsent,
 		setConsent,

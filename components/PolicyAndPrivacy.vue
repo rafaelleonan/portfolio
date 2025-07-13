@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade">
-    <div v-if="visualizeConsent" class="cookie-consent">
+    <div v-if="visualizeConsent || visualizeConsentCookie" class="cookie-consent">
       <div class="options-consent" v-if="showSettings">
         <h3>Preferências de Cookies</h3>
         <p>
@@ -49,7 +49,7 @@
           <button @click="handleAcceptAll">Aceitar e Prosseguir</button>
           <button @click="showConfigureCookies">Configurar</button>
           <button @click="handleDecline">Recusar todos</button>
-          <button @click="onlyClose" v-if="consent.analytics || consent.feedback">Fechar</button>
+          <button @click="onlyClose" v-if="consent.analytics || consent.feedback || !visualizeConsentCookie">Fechar</button>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@ import { ref } from 'vue'
 import {useGtag, useNotifications} from '#imports'
 
 const showSettings = ref(false)
-const { consent, visualizeConsent, setConsent, resetConsent, toggleConsent } = useConsent()
+const { consent, visualizeConsent, visualizeConsentCookie, setConsent, resetConsent, toggleConsent } = useConsent()
 const analytics = ref(consent.value.analytics)
 const feedback = ref(consent.value.feedback)
 
@@ -105,6 +105,9 @@ const handleDecline = () => {
   resetConsent()
   analytics.value = false
   feedback.value = false
+  gtag('consent', 'update', {
+    analytics_storage: 'denied'
+  })
   addNotification("Preferências atualizadas com sucesso! Cookies bloqueados.", 'success', 8000)
 }
 
