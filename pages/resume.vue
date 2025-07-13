@@ -62,9 +62,7 @@ useSeo('Resumo', 'Resumo/Currículo de Rafael Leonan.')
       <div class="actions-pdf">
         <button @click="downloadPdf">
           <span>BAIXAR</span>
-          <svg class="icon" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.166687 14.6667H11.8334V13H0.166687V14.6667ZM11.8334 5.5H8.50002V0.5H3.50002V5.5H0.166687L6.00002 11.3333L11.8334 5.5Z"/>
-          </svg>
+          <span class="material-icons text--size-16px">download</span>
         </button>
         <span class="total-pages-pdf">{{ pageCount }} página(s)</span>
       </div>

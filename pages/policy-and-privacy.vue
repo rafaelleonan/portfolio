@@ -4,11 +4,13 @@ import 'vue-pdf-embed/dist/styles/annotationLayer.css'
 import 'vue-pdf-embed/dist/styles/textLayer.css'
 import {useSeo} from "~/composables/useSeo";
 import {useTheme} from "~/composables/useTheme";
+import {useConsent} from "~/composables/useConsent";
 
 const pdfUrlDark = ref('/docs/politica-de-privacidade-dark.pdf')
 const pdfUrlLight = ref('/docs/politica-de-privacidade-light.pdf')
 const pageCount = ref(0)
 const {theme} = useTheme()
+const { visualizeConsent, toggleConsent } = useConsent()
 
 const handleDocumentLoad = ({numPages}: any) => {
   pageCount.value = numPages
@@ -60,12 +62,16 @@ useSeo('Política e privacidade', 'Política e privacidade.')
   <section class="section d-flex d-flex--align-center d-flex--column">
     <div class="pdf-controls">
       <div class="actions-pdf">
-        <button @click="downloadPdf">
-          <span>BAIXAR</span>
-          <svg class="icon" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.166687 14.6667H11.8334V13H0.166687V14.6667ZM11.8334 5.5H8.50002V0.5H3.50002V5.5H0.166687L6.00002 11.3333L11.8334 5.5Z"/>
-          </svg>
-        </button>
+        <div class="d-flex d-flex--align-center d-flex--gap-12px">
+          <button @click="downloadPdf">
+            <span>BAIXAR</span>
+            <span class="material-icons text--size-16px">download</span>
+          </button>
+          <button @click="toggleConsent(!visualizeConsent)">
+            <span>GERENCIAR</span>
+            <span class="material-icons text--size-16px">settings</span>
+          </button>
+        </div>
         <span class="total-pages-pdf">{{ pageCount }} página(s)</span>
       </div>
     </div>
