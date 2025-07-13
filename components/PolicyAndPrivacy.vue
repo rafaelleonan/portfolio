@@ -5,7 +5,9 @@
         <h3>Preferências de Cookies</h3>
         <p>
           Para mais informações dos dados utilizados, acesse a política de privacidade:<br/>
-          <a href="/docs/politica-de-privacidade.pdf" rel="noopener noreferrer" target="_blank">Política de Privacidade</a>.
+          <nuxt-link to="/policy-and-privacy">
+            Política de Privacidade
+          </nuxt-link>
         </p>
         <form @submit.prevent="handleAcceptOptions">
           <label class="switch-checkbox">
@@ -39,7 +41,9 @@
       <div class="d-flex d-flex--column d-flex--align-center d-flex--justify-center d-flex--gap-20px" v-else>
         <p>
           Este site utiliza cookies e coleta dados para melhorar sua experiência.<br/>
-          <a href="/docs/politica-de-privacidade.pdf" rel="noopener noreferrer" target="_blank">Política de Privacidade</a>.
+          <nuxt-link to="/policy-and-privacy">
+            Política de Privacidade
+          </nuxt-link>
         </p>
         <div class="button-actions">
           <button @click="handleAcceptAll">Aceitar e Prosseguir</button>

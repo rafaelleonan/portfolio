@@ -5,8 +5,8 @@ import 'vue-pdf-embed/dist/styles/textLayer.css'
 import {useSeo} from "~/composables/useSeo";
 import {useTheme} from "~/composables/useTheme";
 
-const pdfUrlDark = ref('/docs/RAFAEL_LEONAN_ABREU_RODRIGUES_DARK.pdf')
-const pdfUrlLight = ref('/docs/RAFAEL_LEONAN_ABREU_RODRIGUES_LIGHT.pdf')
+const pdfUrlDark = ref('/docs/politica-de-privacidade-dark.pdf')
+const pdfUrlLight = ref('/docs/politica-de-privacidade-light.pdf')
 const pageCount = ref(0)
 const {theme} = useTheme()
 
@@ -34,7 +34,7 @@ const handleDocumentLoad = ({numPages}: any) => {
 }
 
 const downloadPdf = () => {
-  const fileName = 'CURRICULO_RAFAEL_LEONAN_ABREU_RODRIGUES.pdf';
+  const fileName = 'politica-de-privacidade-rafaelleonan.pdf';
   const pdfUrl = theme.value === 'dark' ? pdfUrlDark : pdfUrlLight
 
   const isHtml5DownloadSupported = 'download' in document.createElement('a');
@@ -52,7 +52,7 @@ const downloadPdf = () => {
   }
 }
 
-useSeo('Resumo', 'Resumo/Currículo de Rafael Leonan.')
+useSeo('Política e privacidade', 'Política e privacidade.')
 
 </script>
 

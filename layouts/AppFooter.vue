@@ -10,7 +10,9 @@ const { visualizeConsent, toggleConsent } = useConsent()
     <div class="footer">
       <span>© 2024 - 2025 Rafael Leonan</span>
       <div class="d-flex d-flex--align-center d-flex--gap-12px">
-        <a href="/docs/politica-de-privacidade.pdf" rel="noopener noreferrer" target="_blank">Política de Privacidade</a>
+        <nuxt-link to="/policy-and-privacy">
+          Política de Privacidade
+        </nuxt-link>
         •
         <a @click="toggleConsent(!visualizeConsent)" class="cursor--pointer">Gerenciar Privacidade</a>
       </div>
