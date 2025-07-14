@@ -426,7 +426,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
     <section class="section bg-solid-blue-1" v-intersect="{ class: 'fade-in-left', delay: 0 }">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-formacao" class="accordion__input" @change="trackButtonClick($event, 'Formação')" />
+          <input type="checkbox" id="accordion-formacao" class="accordion__input" @change="trackButtonClick($event, 'academic')" />
           <label for="accordion-formacao" class="accordion__label">
             <span class="title-sm">
               FORMAÇÃO
@@ -457,7 +457,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
     <section class="section" v-intersect="{ class: 'fade-in-left', delay: 100 }">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-stack-current" class="accordion__input" @change="trackButtonClick($event, 'Hard Skills')" />
+          <input type="checkbox" id="accordion-stack-current" class="accordion__input" @change="trackButtonClick($event, 'stack_current')" />
           <label for="accordion-stack-current" class="accordion__label">
             <span class="title-sm">
               STACK ATUAL
@@ -495,7 +495,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
     <section class="section bg-solid-blue-1" v-intersect="{ class: 'fade-in-left', delay: 300 }">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-soft-skills" class="accordion__input" @change="trackButtonClick($event, 'Soft Skills')" />
+          <input type="checkbox" id="accordion-soft-skills" class="accordion__input" @change="trackButtonClick($event, 'soft_skills')" />
           <label for="accordion-soft-skills" class="accordion__label">
             <span class="title-sm">
               SOFT SKILLS
@@ -653,7 +653,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
     <section class="section" v-intersect="{ class: 'fade-in-left', delay: 400 }">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-techs" class="accordion__input" @change="trackButtonClick($event,'Tecnologias')" />
+          <input type="checkbox" id="accordion-techs" class="accordion__input" @change="trackButtonClick($event,'hard_skills')" />
           <label for="accordion-techs" class="accordion__label">
             <span class="title-sm">
               HARD SKILLS
@@ -691,7 +691,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
     <section class="section bg-solid-blue-1" v-intersect="{ class: 'fade-in-left', delay: 500 }">
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-trajectory" class="accordion__input" @change="trackButtonClick($event,'Trajetória')" />
+          <input type="checkbox" id="accordion-trajectory" class="accordion__input" @change="trackButtonClick($event,'trajectory')" />
           <label for="accordion-trajectory" class="accordion__label">
             <span class="title-sm">
               TRAJETÓRIA
@@ -776,7 +776,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
       </Modal>
       <div class="accordion">
         <div class="accordion__item">
-          <input type="checkbox" id="accordion-send-message" class="accordion__input" @change="trackButtonClick($event,'Entrar em contato/freelancer')" />
+          <input type="checkbox" id="accordion-send-message" class="accordion__input" @change="trackButtonClick($event,'contact_me')" />
           <label for="accordion-send-message" class="accordion__label">
             <span class="title-sm">
               ENTRAR EM CONTATO/FREELANCER
