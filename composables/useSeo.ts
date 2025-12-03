@@ -1,8 +1,48 @@
 export const useSeo = (title: string, description: string, image?: string) => {
-	useHead({
-		titleTemplate: (titleChunk) => {
-			return titleChunk || title ? `${titleChunk ?? title} | Rafael Leonan` : 'Rafael Leonan';
+	const route = useRoute();
+	const basePath = 'https://rafaelleonan.com';
+	const fullUrl = `${basePath}${route.fullPath}`;
+
+	const personSchema = {
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Rafael Leonan",
+		"jobTitle": "Desenvolvedor Full Stack",
+		"url": basePath,
+		"image": `${basePath}/images/og-image.png`,
+		"description": "Sou desenvolvedor full stack em Fortaleza, Ceará, com experiência em aplicações back-end: APIs RESTful, Cron Services, Webhooks e integrações.",
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Fortaleza",
+			"addressRegion": "CE",
+			"addressCountry": "Brasil"
 		},
+		"sameAs": [
+			"https://www.linkedin.com/in/rafael-leonan",
+			"https://github.com/rafaelleonan"
+		]
+	};
+
+	const schemaRoutes = [
+		'/',
+		'/resume',
+		'/projects',
+		'/certifications',
+		'/about'
+	];
+
+	const shouldIncludeSchema =  schemaRoutes.includes(route.path);
+	const scripts = shouldIncludeSchema
+		? [{
+			   type: 'application/ld+json',
+			   children: JSON.stringify(personSchema)
+	    }]
+		: [];
+
+	useHead({
+		// titleTemplate: (titleChunk) => {
+		// 	return titleChunk || title ? `${titleChunk ?? title} | Rafael Leonan` : 'Rafael Leonan';
+		// },
 		title: title,
 		meta: [
 			{ charset: 'utf-8' },
@@ -15,7 +55,7 @@ export const useSeo = (title: string, description: string, image?: string) => {
 			{ property: 'og:title', content: title },
 			{ property: 'og:description', content: description },
 			{ property: 'og:type', content: 'website' },
-			{ property: 'og:url', content: 'https://rafaelleonan.com/about' },
+			{ property: 'og:url', content: fullUrl },
 			{ property: 'og:image', content: image || 'https://rafaelleonan.com/images/og-image.png' },
 			{ property: 'og:site_name', content: 'Rafael Leonan' },
 			{ name: 'twitter:card', content: 'summary_large_image' },
@@ -23,29 +63,12 @@ export const useSeo = (title: string, description: string, image?: string) => {
 			{ name: 'twitter:description', content: description },
 			{ name: 'twitter:image', content: image || 'https://rafaelleonan.com/images/og-image.png' }
 		],
-		script: [
-        {
-          type: 'application/ld+json',
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Rafael Leonan",
-            "jobTitle": "Desenvolvedor Full Stack",
-            "url": "https://rafaelleonan.com",
-            "image": "https://rafaelleonan.com/images/og-image.png",
-            "description": "Sou desenvolvedor full stack em Fortaleza, Ceará, com experiência em aplicações back-end: APIs RESTful, Cron Services, Webhooks e integrações.",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Fortaleza",
-              "addressRegion": "CE",
-              "addressCountry": "Brasil"
-            },
-            "sameAs": [
-              "https://www.linkedin.com/in/rafael-leonan",
-              "https://github.com/rafaelleonan"
-            ]
-          })
-        }
-      ]
+		link: [
+			{
+				rel: 'canonical',
+				href: fullUrl
+			}
+		],
+		script: scripts
 	})
 }

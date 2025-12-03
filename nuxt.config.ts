@@ -58,7 +58,8 @@ export default defineNuxtConfig({
         },
         {
           rel: 'preconnect',
-          href: 'https://fonts.gstatic.com'
+          href: 'https://fonts.gstatic.com',
+		      crossorigin: '',
         },
         {
           rel: 'stylesheet',
@@ -83,7 +84,9 @@ export default defineNuxtConfig({
 				'/',
 				'/resume',
 				'/projects',
-				'/certifications'
+				'/certifications',
+				'/about',
+				'/policy-and-privacy'
 			];
 			
 			const projectRoutes = MockProjects.map(project => `/projects/${project.id}`);
