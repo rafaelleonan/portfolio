@@ -40,9 +40,9 @@ export const useSeo = (title: string, description: string, image?: string) => {
 		: [];
 
 	useHead({
-		// titleTemplate: (titleChunk) => {
-		// 	return titleChunk || title ? `${titleChunk ?? title} | Rafael Leonan` : 'Rafael Leonan';
-		// },
+		titleTemplate: (titleChunk) => {
+			return titleChunk || title ? `${titleChunk ?? title} | Rafael Leonan` : 'Rafael Leonan';
+		},
 		title: title,
 		meta: [
 			{ charset: 'utf-8' },

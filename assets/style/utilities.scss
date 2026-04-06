@@ -265,6 +265,7 @@ a {
   gap: 12px;
 
   .form-filter {
+    z-index: 99;
     position: relative;
 
     .form-input {

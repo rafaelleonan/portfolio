@@ -2,8 +2,11 @@
   <div class="splash-screen">
     <div class="content-splash-screen">
       <div class="passagem-biblica">
-        <i>"Eu sou o <b class="text--weight-700">caminho</b>, a <b class="text--weight-700">verdade</b>, e a <b class="text--weight-700">vida </b>; ninguém vem ao Pai, senão por mim."</i>
-        <span>— <b class="jesus-cristo">Jesus Cristo</b> (João 14:6)</span>
+        <div v-html="fraseAtual.html"></div>
+        <span>
+          — <b class="jesus-cristo">{{ fraseAtual.autor }}</b>
+          ({{ fraseAtual.referencia }})
+        </span>
       </div>
       <div class="loader-content">
         <div class="loader-text typing-text">
@@ -25,14 +28,96 @@
 </template>
 
 <script setup>
-import {useCountLoading, useInfoLoading} from "~/composables/useLoading";
-import { ref, watch } from "vue";
+import { useCountLoading } from "~/composables/useLoading";
+import { ref, watch, onMounted, computed } from "vue";
 
-const count = useCountLoading()
-const infoList = useInfoLoading();
-const total = ref(267)
+const count = useCountLoading();
+const total = ref(267);
 const animatedCount = ref(0);
 const progress = ref(0);
+
+// 1. Inicie com um objeto vazio ou a primeira frase para evitar erro de template
+const fraseAtual = ref({ html: '', autor: '', referencia: '' });
+
+const frases = [
+  {
+    html: '<i>"Eu sou o <b class="text--weight-700">caminho</b>, a <b class="text--weight-700">verdade</b>, e a <b class="text--weight-700">vida</b>; ninguém vem ao Pai, senão por mim."</i>',
+    autor: 'Jesus Cristo',
+    referencia: 'João 14:6'
+  },
+  {
+    html: '<i>"<b class="text--weight-700">Tudo posso</b> naquele que me fortalece."</i>',
+    autor: 'Apóstolo Paulo',
+    referencia: 'Filipenses 4:13'
+  },
+  {
+    html: '<i>"<b class="text--weight-700">O Senhor</b> é o meu pastor; nada me faltará."</i>',
+    autor: 'Rei Davi',
+    referencia: 'Salmos 23:1'
+  },
+  {
+    html: '<i>"<b class="text--weight-700">Não fui eu que lhe ordenei?</b> Seja <b class="text--weight-700">forte</b> e <b class="text--weight-700">corajoso</b>! Não se apavore nem desanime."</i>',
+    autor: 'Deus',
+    referencia: 'Josué 1:9'
+  },
+  {
+    html: '<i>"Busquem, pois, em <b class="text--weight-700">primeiro lugar</b> o <b class="text--weight-700">Reino de Deus</b> e a sua justiça."</i>',
+    autor: 'Jesus Cristo',
+    referencia: 'Mateus 6:33'
+  },
+  {
+    html: '<i>"O <b class="text--weight-700">amor</b> é paciente, o amor é bondoso. <b class="text--weight-700">Tudo sofre</b>, tudo crê, tudo espera, tudo suporta."</i>',
+    autor: 'Apóstolo Paulo',
+    referencia: '1 Coríntios 13:4-7'
+  },
+  {
+    html: '<i>"Pois eu bem sei os <b class="text--weight-700">planos</b> que tenho para vocês, planos de fazê-los <b class="text--weight-700">prosperar</b> e não de causar dano."</i>',
+    autor: 'Deus',
+    referencia: 'Jeremias 29:11'
+  },
+  {
+    html: '<i>"Entregue o seu <b class="text--weight-700">caminho</b> ao Senhor; <b class="text--weight-700">confie nele</b>, e ele agirá."</i>',
+    autor: 'Rei Davi',
+    referencia: 'Salmos 37:5'
+  },
+  {
+    html: '<i>"Lâmpada para os meus pés é a <b class="text--weight-700">tua palavra</b> e <b class="text--weight-700">luz</b>, para o meu caminho."</i>',
+    autor: 'Salmista',
+    referencia: 'Salmos 119:105'
+  },
+  {
+    html: '<i>"O coração do homem traça o seu caminho, mas o <b class="text--weight-700">Senhor</b> lhe <b class="text--weight-700">dirige os passos</b>."</i>',
+    autor: 'Salomão',
+    referencia: 'Provérbios 16:9'
+  },
+  {
+    html: '<i>"Vinde a mim, todos os que estais <b class="text--weight-700">cansados e sobrecarregados</b>, e eu vos <b class="text--weight-700">aliviarei</b>."</i>',
+    autor: 'Jesus Cristo',
+    referencia: 'Mateus 11:28'
+  },
+  {
+    html: '<i>"A <b class="text--weight-700">alegria</b> do Senhor é a vossa <b class="text--weight-700">força</b>."</i>',
+    autor: 'Neemias',
+    referencia: 'Neemias 8:10'
+  }
+];
+
+const setRandomPhrase = () => {
+  // Garantimos que o localStorage só seja acessado no cliente (importante para Nuxt SSG)
+  const lastIndex = typeof window !== 'undefined' ? localStorage.getItem('lastPhraseIndex') : null;
+  let newIndex;
+
+  do {
+    newIndex = Math.floor(Math.random() * frases.length);
+  } while (String(newIndex) === lastIndex && frases.length > 1);
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('lastPhraseIndex', String(newIndex));
+  }
+
+  // CORREÇÃO: Atribuímos o objeto diretamente, sem envolver em outro ref()
+  fraseAtual.value = frases[newIndex];
+};
 
 watch(
     () => count.value,
@@ -55,10 +140,13 @@ watch(
           progress.value = animatedCount.value;
         }
       }
-
       requestAnimationFrame(animate);
     }
 );
+
+onMounted(() => {
+  setRandomPhrase();
+});
 </script>
 
 <style scoped lang="scss">
@@ -142,19 +230,17 @@ watch(
       align-items: center;
       text-align: center;
       line-height: 50px;
-
-      i {
-        color: var(--color-solid-brown-1);
-        font-size: $rl-app-desktop-fs-h1;
-        font-weight: 300;
-      }
+      color: var(--color-solid-brown-1);
+      font-size: 40px;
+      font-weight: 300;
+      gap: 15px;
 
       span {
         color: $rl-app-brown-500;
         font-size: $rl-app-desktop-fs-h2;
         font-weight: 400;
 
-        .jesus-cristo {
+        .author {
           font-weight: 700 !important;
         }
       }
@@ -232,10 +318,6 @@ watch(
 
         .progress-bar-container {
           width: 100%;
-
-          .progress-bar-text {
-            font-size: $rl-app-desktop-fs-sm;
-          }
         }
       }
     }
@@ -245,7 +327,8 @@ watch(
 @media (min-height: 380px) and (max-height: 550px) {
   .splash-screen {
     .content-splash-screen {
-      justify-content: space-between;
+      justify-content: center;
+      gap: 20px;
       padding: 0 20px;
 
       .passagem-biblica {
@@ -255,22 +338,17 @@ watch(
 
       .loader-content {
         bottom: 20px;
-        gap: 4px;
+        gap: 8px;
 
         .loader-text {
           font-size: $rl-app-desktop-fs-sm;
         }
 
         .progress-bar-container {
-          height: 15px;
           border-radius: 4px;
 
           .progress-bar {
             border-radius: 4px;
-          }
-
-          .progress-bar-text {
-            font-size: $rl-app-desktop-fs-xxs;
           }
         }
       }
@@ -281,33 +359,23 @@ watch(
 @media (min-height: 315px) and (max-height: 379px) {
   .splash-screen {
     .content-splash-screen {
-      justify-content: space-between;
+      justify-content: center;
+      gap: 20px;
       padding: 0 20px;
-
-      .passagem-biblica {
-        padding-top: 40px;
-        justify-content: start;
-        line-height: 50px;
-      }
 
       .loader-content {
         bottom: 10px;
-        gap: 0;
+        gap: 8px;
 
         .loader-text {
           font-size: $rl-app-desktop-fs-xxs;
         }
 
         .progress-bar-container {
-          height: 18px;
           border-radius: 2px;
 
           .progress-bar {
             border-radius: 2px;
-          }
-
-          .progress-bar-text {
-            font-size: $rl-app-desktop-fs-xxs;
           }
         }
       }
@@ -318,14 +386,9 @@ watch(
 @media (max-height: 314px) {
   .splash-screen {
     .content-splash-screen {
-      justify-content: space-between;
+      justify-content: center;
+      gap: 20px;
       padding: 0 10px;
-
-      .passagem-biblica {
-        padding-top: 20px;
-        justify-content: center;
-        line-height: 30px;
-      }
 
       .loader-content {
         display: none;

@@ -8,12 +8,12 @@ const { visualizeConsent, toggleConsent } = useConsent()
 <template>
   <footer>
     <div class="footer">
-      <span>© 2024 - 2025 Rafael Leonan</span>
+      <span>© 2024 <span aria-hidden="true">•</span> {{ new Date().getFullYear() }} | Rafael Leonan</span>
       <div class="d-flex d-flex--align-center d-flex--gap-12px">
         <nuxt-link to="/policy-and-privacy">
           Política de Privacidade
         </nuxt-link>
-        •
+        <span aria-hidden="true">•</span>
         <a @click="toggleConsent(!visualizeConsent)" class="cursor--pointer">Gerenciar Privacidade</a>
       </div>
     </div>
