@@ -46,7 +46,7 @@
           </nuxt-link>
         </p>
         <div class="button-actions">
-          <button @click="handleAcceptAll">Aceitar e Prosseguir</button>
+          <button @click="handleAcceptAll">Aceitar TODOS e Prosseguir</button>
           <button @click="showConfigureCookies">Configurar</button>
           <button @click="handleDecline">Recusar todos</button>
           <button @click="onlyClose" v-if="consent.analytics || consent.feedback || !visualizeConsentCookie">Fechar</button>
@@ -72,8 +72,8 @@ const { addNotification } = useNotifications()
 const handleAcceptAll = () => {
   setConsent({
     essential: true,
-    analytics: analytics.value,
-    feedback: feedback.value
+    analytics: true,
+    feedback: true
   })
   gtag('consent', 'update', {
     analytics_storage: 'granted'

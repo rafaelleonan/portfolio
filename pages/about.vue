@@ -74,7 +74,7 @@ const sendEmail = () => window.open('mailto:faelleonan@gmail.com', 'blank')
 
 const sendMessage = async () => {
   if (!consent.value.feedback) {
-    addNotification("É necessário ativar o cookie de formulários e feedbacks para prosseguir", 'error', 8000)
+    addNotification("É necessário ativar o cookie de formulários e feedbacks para prosseguir!!!", 'error', 8000)
     return
   }
 

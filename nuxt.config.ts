@@ -31,7 +31,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      titleTemplate: '%s | Rafael Leonan',
+		titleTemplate: ((titleChunk: string | undefined) => {
+			return titleChunk ? `${titleChunk} | Rafael Leonan` : 'Rafael Leonan - Desenvolvedor Full Stack';
+		}) as any,
 	    meta: [
 		    { charset: 'utf-8' },
 		    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
