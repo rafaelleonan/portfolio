@@ -76,6 +76,7 @@ export interface Comment {
 
 export interface Project {
     id: number
+    slug_hash: string
     title: string
     type_project: ("Frontend"  | "Mobile"  | "Desktop" | "Web" | "Backend" | "API RESTful" | "Fullstack" | "Design")[]
     current_index: number
@@ -86,7 +87,8 @@ export interface Project {
     technologies: Technology[]
     sections: Section[]
     comments: Comment[]
-	  card_banner?: string
+    card_banner?: string
+    updated_at?: string
 }
 
 export interface Notification {

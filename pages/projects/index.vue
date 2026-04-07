@@ -23,8 +23,8 @@ const searchProjectType = ref<string>("")
 const isOpen = ref(false);
 const isOpenTwo = ref(false);
 
-const goToProject = (projectId: number) => {
-  router.push(`/projects/${projectId}`);
+const goToProject = (slug_hash: string) => {
+  router.push(`/projects/${slug_hash}`);
 };
 
 const showPrevSlide = (project: Project) => {
@@ -323,7 +323,7 @@ onUnmounted(() => {
        v-if="computedProjects.length > 0"
        v-for="(project, pKey) in computedProjects"
        :key="`key_project_${pKey}`"
-       @click="goToProject(project.id)"
+       @click="goToProject(project.slug_hash)"
        v-intersect="'fade-in-bottom'"
     >
       <div class="images-project">
