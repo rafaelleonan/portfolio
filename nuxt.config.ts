@@ -46,17 +46,17 @@ export default defineNuxtConfig({
                     content: 'Rafael Leonan, Portfólio, Projetos, Desenvolvedor Fullstack, Fullstack, Software, Web Developer, Flutter, Vue.js, Go, Ruby, Rails, JavaScript, TypeScript, PostgreSQL, MySQL, Frontend, Backend'
                 },
                 {name: 'robots', content: 'index, follow, max-image-preview:large'},
-                {name: 'description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack.'},
-                {property: 'og:title', content: 'Portfólio - Rafael Leonan'},
-                {property: 'og:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack'},
+                {name: 'description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack.', tagPriority: 'critical'},
+                {property: 'og:title', content: 'Portfólio - Rafael Leonan', tagPriority: 'critical'},
+                {property: 'og:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack', tagPriority: 'critical'},
                 {property: 'og:type', content: 'website'},
                 {property: 'og:url', content: 'https://rafaelleonan.com'},
-                {property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png'},
-                {property: 'og:site_name', content: 'Rafael Leonan'},
+                {property: 'og:image', content: 'https://rafaelleonan.com/images/og-image.png', tagPriority: 'critical'},
+                {property: 'og:site_name', content: 'Rafael Leonan', tagPriority: 'critical'},
                 {name: 'twitter:card', content: 'summary_large_image'},
-                {name: 'twitter:title', content: 'Portfólio de Desenvolvedor - Rafael Leonan.'},
-                {name: 'twitter:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack'},
-                {name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png'}
+                {name: 'twitter:title', content: 'Portfólio de Desenvolvedor - Rafael Leonan.', tagPriority: 'critical'},
+                {name: 'twitter:description', content: 'Portfólio de Rafael Leonan desenvolvedor fullstack', tagPriority: 'critical'},
+                {name: 'twitter:image', content: 'https://rafaelleonan.com/images/og-image.png', tagPriority: 'critical'}
             ],
             link: [
                 {
