@@ -16,8 +16,8 @@ const route = useRoute()
 const router = useRouter()
 const project = ref<Project | null>(null);
 
-const idURL = Number(route.params.id);
-project.value = MockProjects.find((item: Project) => item.id === idURL) ?? null
+const slug = route.params.slug;
+project.value = MockProjects.find((item: Project) => item.slug_hash === slug) ?? null
 if (!project.value) {
   router.push("/404")
 }

@@ -1,4 +1,4 @@
-import {reactive} from "#imports";
+import {reactive} from "vue";
 import type {BadgeCategory, BadgeTech} from "~/interfaces/homepage";
 import type {Trajectory} from "~/interfaces/geral";
 

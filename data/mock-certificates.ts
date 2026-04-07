@@ -1,4 +1,5 @@
 import type {Certificates} from "~/interfaces/certificates";
+import {reactive} from "vue";
 
 export const MockCertificates = reactive<Certificates[]>([
     {
