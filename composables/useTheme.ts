@@ -1,20 +1,16 @@
-import { useState, useCookie } from "#app";
-
+// composables/useTheme.ts
 export const useTheme = () => {
-    const theme = useState<"light" | "dark">("theme", () => "light");
-
-    const themeCookie = useCookie("theme");
-
-    if (themeCookie.value) {
-        theme.value = themeCookie.value as "light" | "dark";
-        document.documentElement.setAttribute("data-theme", theme.value);
-    }
+    const colorMode = useColorMode()
 
     const toggleTheme = () => {
-        theme.value = theme.value === "light" ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", theme.value);
-        themeCookie.value = theme.value;
-    };
+        // colorMode.preference pode ser 'system', 'light' ou 'dark'
+        // Se estiver no system, decidimos para onde ir com base no valor real atual
+        colorMode.preference = colorMode.value === 'light' ? 'dark' : 'light'
+    }
 
-    return { theme, toggleTheme };
-};
+    return {
+        theme: computed(() => colorMode.value),
+        preference: computed(() => colorMode.preference),
+        toggleTheme
+    }
+}

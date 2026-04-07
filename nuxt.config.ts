@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     ssr: false,
     target: 'static',
     css: ["material-icons/iconfont/material-icons.css"],
-    modules: ['nuxt-gtag', '@nuxtjs/sitemap'],
+    modules: ['nuxt-gtag', '@nuxtjs/sitemap', '@nuxtjs/color-mode'],
     runtimeConfig: {
         public: {
             firebaseApiKey: process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
@@ -163,5 +163,11 @@ export default defineNuxtConfig({
         prerender: {
             routes: MockProjects.map((project) => `/projects/${project.slug_hash}`)
         }
+    },
+    colorMode: {
+        preference: 'system',
+        fallback: 'light',
+        dataValue: 'theme',
+        classSuffix: ''
     }
 })
