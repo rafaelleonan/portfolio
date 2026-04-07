@@ -33,7 +33,7 @@ useSeo('Portfólio de Desenvolvedor', 'Portfólio de Rafael Leonan desenvolvedor
           Sou desenvolvedor full stack com experiência em desenvolvimento de aplicações back-end: <b class="text--weight-700">APIs RESTful</b>,
           <b class="text--weight-700">serviços agendados (Cron Service)</b>, <b class="text--weight-700">Webhooks</b> e serviços de mensageria <b class="text--weight-700">Kafka</b> e <b class="text--weight-700">AWS SQS</b>, aplicações frond-end: mobile, web e desktop. Tenho
           conhecimento em armazenamento e leitura de dados com AWS S3, Firebase Firestore, além de banco de dados relacionais
-          como <b class="text--weight-700">MySQL</b> e <b class="text--weight-700">PostgreSQL</b>. Possuo experiência com <b class="text--weight-700">Firebase Authentication</b> e <b class="text--weight-700">Storage</b> em projetos pessoais.
+          como <b class="text--weight-700">MySQL</b> e <b class="text--weight-700">PostgreSQL</b>. Possuo experiência com <b class="text--weight-700">Firebase Authentication</b>, <b class="text--weight-700">Storage</b> e <b class="text--weight-700">Docker/Docker compose</b> em projetos pessoais.
         </div>
       </div>
     </section>

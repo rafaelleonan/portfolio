@@ -11,9 +11,11 @@ import Modal from "~/components/Modal.vue";
 import type {SoftSkill, SoftSkillFeedback} from "~/interfaces/about";
 import {useSeo} from "~/composables/useSeo";
 import {useConsent} from "~/composables/useConsent";
+import {useModal} from "~/composables/useModal"
 
 const { createDocument, getCollection, auth } = useFirebase()
 const { consent } = useConsent()
+const { openModal, closeModal } = useModal();
 
 const useOptImage = useOptionsImage()
 const formacoes = reactive([
@@ -34,9 +36,7 @@ const formacoes = reactive([
 const loadingSoftSkills = ref(false)
 const sendingForm = ref(false)
 const sendingFormSoftSkill = ref(false)
-const openModal = ref(false)
 const modalChoiceView = ref<"choice" | "form_feedback" | "view_feedbacks">("choice")
-const openModalSoftSkills = ref(false)
 const formName = ref("")
 const formCargo = ref("")
 const formContact = ref("")
@@ -156,7 +156,7 @@ const sendMessage = async () => {
     });
 
     addNotification("Mensagem recebida com sucesso!", 'success', 8000);
-    toggleModalContact();
+    closeModalContact();
   } catch (error) {
     addNotification("Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.", 'error', 10000);
   } finally {
@@ -172,8 +172,13 @@ const clearForm = () => {
   selectedRating.value = 0
 }
 
-const toggleModalContact = () => {
-  openModal.value = !openModal.value
+const openModalContact = () => {
+  openModal('meu-projeto-1')
+  clearForm()
+}
+
+const closeModalContact = () => {
+  closeModal()
   clearForm()
 }
 
@@ -191,7 +196,7 @@ const viewDetails = (choice: "choice" | "form_feedback" | "view_feedbacks" = "ch
 
 const openModalSoftSkillsAndFeedbacks = (soft_skill: SoftSkill) => {
   softSkill.value = soft_skill
-  openModalSoftSkills.value = true
+  openModal('modal-contato')
   feedbacksBySoftSkill.value = []
   feedbacksBySoftSkill.value = softSkillFeedbacks.value?.filter((feed) => feed.soft_skill_id === soft_skill.id)
   modalChoiceView.value = "choice"
@@ -199,7 +204,7 @@ const openModalSoftSkillsAndFeedbacks = (soft_skill: SoftSkill) => {
 }
 
 const closeModalSoftSkillsAndFeedbacks = () => {
-  openModalSoftSkills.value = false
+  closeModal()
   modalChoiceView.value = "choice"
   clearForm()
 }
@@ -419,7 +424,7 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
           Sou desenvolvedor full stack com experiência em desenvolvimento de aplicações back-end: <b class="text--weight-700">APIs RESTful</b>,
           <b class="text--weight-700">serviços agendados (Cron Service)</b>, <b class="text--weight-700">Webhooks</b> e serviços de mensageria <b class="text--weight-700">Kafka</b> e <b class="text--weight-700">AWS SQS</b>, aplicações frond-end: mobile, web e desktop. Tenho
           conhecimento em armazenamento e leitura de dados com AWS S3, Firebase Firestore, além de banco de dados relacionais
-          como <b class="text--weight-700">MySQL</b> e <b class="text--weight-700">PostgreSQL</b>. Possuo experiência com <b class="text--weight-700">Firebase Authentication</b> e <b class="text--weight-700">Storage</b> em projetos pessoais.
+          como <b class="text--weight-700">MySQL</b> e <b class="text--weight-700">PostgreSQL</b>. Possuo experiência com <b class="text--weight-700">Firebase Authentication</b>, <b class="text--weight-700">Storage</b> e <b class="text--weight-700">Docker/Docker compose</b> em projetos pessoais.
         </div>
       </div>
     </section>
@@ -507,11 +512,10 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
           </label>
           <div class="accordion__content">
             <Modal
-              :show="openModalSoftSkills"
+              id="modal-contato"
               :no-close-modal-click-backdrop="true"
               size="sm"
               :hidden-footer="true"
-              @update:show="(val) => openModalSoftSkills = val"
             >
               <template #header>
                 <div class="d-flex d-flex--align-center d-flex--justify-start d-flex--gap-10px w-100">
@@ -739,40 +743,31 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
       </div>
     </section>
     <section class="section" v-intersect="{ class: 'fade-in-left', delay: 600 }">
-      <Modal
-        :show="openModal"
-        :no-close-modal-click-backdrop="sendingForm"
-        title="Entrar em contato"
-        size="sm"
-        :hidden-footer="true"
-        @update:show="(val) => openModal = val"
-      >
-        <template #default>
-          <form class="form-contact" @submit.prevent="sendMessage">
-            <div class="inputs">
-              <label for="name">
-                <span>NOME</span>
-                <input type="text" name="name" id="name" v-model="formName" required/>
-              </label>
-              <label for="contact">
-                <span>CONTATO(EMAIL/TELEFONE/LINK)</span>
-                <input type="text" name="contact" id="contact" v-model="formContact" required/>
-              </label>
-              <label for="description">
-                <span>MOTIVO DO CONTATO</span>
-                <textarea rows="5" name="description" id="description" v-model="formDescription" required/>
-              </label>
-            </div>
-            <div class="actions-form">
-              <button type="button" class="btn btn--sm w-100" :disabled="sendingForm" @click="toggleModalContact">
-                CANCELAR
-              </button>
-              <button type="submit" class="btn btn--sm w-100" :disabled="sendingForm">
-                {{ sendingForm ? 'ENVIANDO...' : 'ENVIAR'}}
-              </button>
-            </div>
-          </form>
-        </template>
+      <Modal id="meu-projeto-1" title="Entrar em contato" :hidden-footer="true">
+        <form class="form-contact" @submit.prevent="sendMessage">
+          <div class="inputs">
+            <label for="name">
+              <span>NOME</span>
+              <input type="text" name="name" id="name" v-model="formName" required/>
+            </label>
+            <label for="contact">
+              <span>CONTATO(EMAIL/TELEFONE/LINK)</span>
+              <input type="text" name="contact" id="contact" v-model="formContact" required/>
+            </label>
+            <label for="description">
+              <span>MOTIVO DO CONTATO</span>
+              <textarea rows="5" name="description" id="description" v-model="formDescription" required/>
+            </label>
+          </div>
+          <div class="actions-form">
+            <button type="button" class="btn btn--sm w-100" :disabled="sendingForm" @click="closeModalContact">
+              CANCELAR
+            </button>
+            <button type="submit" class="btn btn--sm w-100" :disabled="sendingForm">
+              {{ sendingForm ? 'ENVIANDO...' : 'ENVIAR'}}
+            </button>
+          </div>
+        </form>
       </Modal>
       <div class="accordion">
         <div class="accordion__item">
@@ -788,10 +783,10 @@ useSeo('Sobre mim', 'Sobre mim - Rafael Leonan desenvolvedor fullstack.')
           </label>
           <div class="accordion__content">
             <div class="contact-freelancer">
-              <img src="/gifs/glootie.gif" @click="toggleModalContact"/>
+              <img src="/gifs/glootie.gif" @click="openModalContact"/>
               <div class="text-contact">
                 <p>Tem uma proposta de projeto, trabalho freelancer ou deseja iniciar uma colaboração? Fico à disposição para conversar!</p>
-                <button class="btn btn--lg w-100" @click="toggleModalContact">Entrar em contato</button>
+                <button class="btn btn--lg w-100" @click="openModalContact">Entrar em contato</button>
               </div>
             </div>
           </div>
