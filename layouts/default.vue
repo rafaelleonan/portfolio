@@ -21,7 +21,7 @@ const loading = useLoading();
 const counting = useCountLoading();
 const info = useInfoLoading();
 const router = useRouter()
-const { isOpen, srcImage, altImage, closeModal } = useOptionsImage()
+const { srcImage, altImage, closeModal } = useOptionsImage()
 
 const valueScaleImgInitial = ref(1)
 const imageRef = ref<HTMLImageElement | null>(null);
@@ -226,10 +226,9 @@ onMounted(async () => {
 <template>
   <Notification />
   <Modal
-    :show="isOpen"
+    id="modal-zoom"
     :hidden-footer="true"
     :onCancel="closeModal"
-    @update:show="(val) => isOpen = val"
   >
     <template #header>
       <div class="options-zoom-image">

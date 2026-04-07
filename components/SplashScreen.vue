@@ -259,7 +259,7 @@ onMounted(() => {
       .loader-text {
         font-size: $rl-app-desktop-fs-lg;
         font-weight: bold;
-        color: var(--color-solid-blue-1);
+        color: var(--color-solid-brown-1);
       }
 
       .progress-bar-container {
@@ -268,12 +268,12 @@ onMounted(() => {
         background-color: transparent;
         border-radius: $rl-app-desktop-br-md;
         margin-top: 0;
-        border: 1px solid var(--bg-solid-blue-3);
+        border: 1px solid var(--bg-solid-brown-progress);
         position: relative;
 
         .progress-bar {
           height: 100%;
-          background-color: var(--bg-solid-blue-3);
+          background-color: var(--bg-solid-brown-progress);
           border-radius: $rl-app-desktop-br-md;
           transition: width 200ms ease-out;
         }
@@ -285,7 +285,7 @@ onMounted(() => {
           transform: translate(-50%, -50%);
           z-index: 99;
           font-size: $rl-app-desktop-fs-md;
-          color: var(--color-solid-blue-2);
+          color: var(--color-solid-brown-progress);
           text-wrap: nowrap;
         }
       }

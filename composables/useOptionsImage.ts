@@ -1,27 +1,29 @@
-import { useState } from '#app'
+import {useModal} from "~/composables/useModal"
 
 export const useOptionsImage = () => {
-	const isOpen = useState<boolean>('globalModal_isOpen', () => false);
+	// Pegamos as funções do sistema de modal global que criamos
+	const { openModal: openGlobal, closeModal: closeGlobal } = useModal();
+
 	const srcImage = useState<string>('globalModal_srcImage', () => '');
 	const altImage = useState<string>('globalModal_altImage', () => '');
-	
-	function openModal(imageSrc: string, imageAlt: string) {
+
+	function openImageModal(imageSrc: string, imageAlt: string) {
 		srcImage.value = imageSrc;
 		altImage.value = imageAlt;
-		isOpen.value = true;
+		// Chamamos o ID específico do modal de zoom
+		openGlobal('modal-zoom');
 	}
-	
-	function closeModal() {
-		isOpen.value = false;
+
+	function closeImageModal() {
+		closeGlobal();
 		srcImage.value = '';
 		altImage.value = '';
 	}
-	
+
 	return {
-		isOpen,
 		srcImage,
 		altImage,
-		openModal,
-		closeModal
+		openModal: openImageModal,
+		closeModal: closeImageModal
 	}
 }

@@ -195,6 +195,7 @@ $theme-light: (
   "bg-opacity-1": map.get($colors, "brown-op-1-10"),
   "bg-opacity-2": map.get($colors, "white"),
   "bg-opacity-3": map.get($colors, "white-90"),
+  "bg-solid-brown-progress": map.get($colors, "brown-200"),
 
 /* BORDERS */
   "br-solid-blue-1": map.get($colors, "blue-200"),
@@ -222,6 +223,7 @@ $theme-light: (
   "color-solid-brown-2": map.get($colors, "brown-500"),
   "color-solid-brown-3": map.get($colors, "brown-500"),
   "color-solid-brown-4": map.get($colors, "brown-700"),
+  "color-solid-brown-progress": map.get($colors, "brown-800"),
   "color-solid-input-1": map.get($colors, "blue-500"),
 );
 
@@ -243,6 +245,7 @@ $theme-dark: (
   "bg-opacity-1": map.get($colors, "brown-op-2-10"),
   "bg-opacity-2": map.get($colors, "blue-700"),
   "bg-opacity-3": map.get($colors, "black-90"),
+  "bg-solid-brown-progress": map.get($colors, "brown-800"),
 
 /* BORDERS */
   "br-solid-blue-1": map.get($colors, "blue-500"),
@@ -271,6 +274,7 @@ $theme-dark: (
   "color-solid-brown-2": map.get($colors, "brown-600"),
   "color-solid-brown-3": map.get($colors, "brown-500"),
   "color-solid-brown-4": map.get($colors, "brown-500"),
+  "color-solid-brown-progress": map.get($colors, "brown-100"),
   "color-solid-input-1": map.get($colors, "blue-50"),
 );
 
